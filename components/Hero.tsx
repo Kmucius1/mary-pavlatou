@@ -87,7 +87,7 @@ export default function Hero() {
         className="max-lg:min-h-[60vw]"
       >
         <Image
-          src="/images/endsheet-hires.jpg"
+          src="/images/endsheet-portrait.jpg"
           alt="Mary Pavlatou — Portrait"
           fill
           priority

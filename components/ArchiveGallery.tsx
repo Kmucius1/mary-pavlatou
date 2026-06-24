@@ -27,7 +27,7 @@ export default function ArchiveGallery() {
           <div className="animate-fade-up">
             <div style={{ position: "relative", aspectRatio: "3/4", border: "1px solid rgba(201,168,76,0.3)" }}>
               <Image
-                src="/images/endsheet-hires.jpg"
+                src="/images/endsheet-portrait.jpg"
                 alt="Mary Pavlatou — Portrait"
                 fill
                 sizes="(max-width: 1024px) 90vw, 50vw"
@@ -64,7 +64,7 @@ export default function ArchiveGallery() {
             <div>
               <div style={{ position: "relative", aspectRatio: "4/3", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Image
-                  src="/images/title-page.jpg"
+                  src="/images/cover-hires.jpg"
                   alt="Mary Pavlatou — Archive Title Page"
                   fill
                   sizes="(max-width: 1024px) 90vw, 45vw"

@@ -70,7 +70,7 @@ export default function BookFeature() {
 
             <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden" }}>
               <Image
-                src="/images/title-page.jpg"
+                src="/images/cover-hires.jpg"
                 alt="Mary Pavlatou — The Memorial Archive Book"
                 fill
                 sizes="(max-width: 768px) 90vw, 50vw"
