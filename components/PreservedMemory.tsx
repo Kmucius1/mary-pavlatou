@@ -1,3 +1,22 @@
+const notes = [
+  {
+    heading: "Lovingly Preserved",
+    body: "Through photographs, newspaper clippings, and historical notes, her life and legacy have been carefully preserved for generations.",
+  },
+  {
+    heading: "Kept by Her Sons",
+    body: "Lovingly kept for decades by her three sons — each piece of the archive a testament to a mother whose life illuminated the world.",
+  },
+  {
+    heading: "The Pulos Brothers",
+    body: "Photo and article compilation by The Pulos Brothers. A labor of love assembled across a lifetime of memory.",
+  },
+  {
+    heading: "Mary James",
+    body: "Photo restoration, article restoration, and book design by Mary James — bringing each image back to its full, luminous life.",
+  },
+];
+
 function StatueSilhouette({ side }: { side: "left" | "right" }) {
   const flip = side === "right";
   return (
@@ -5,195 +24,141 @@ function StatueSilhouette({ side }: { side: "left" | "right" }) {
       className="hidden xl:block absolute top-0 bottom-0"
       style={{
         [side]: 0,
-        width: "140px",
+        width: "160px",
         overflow: "hidden",
-        opacity: 0.18,
+        opacity: 0.16,
+        pointerEvents: "none",
       }}
     >
       <svg
-        width="140"
+        width="160"
         height="100%"
-        viewBox="0 0 140 400"
+        viewBox="0 0 160 500"
         fill="none"
         preserveAspectRatio="xMidYMax meet"
-        style={{ transform: flip ? "scaleX(-1)" : undefined, height: "100%", minHeight: "300px" }}
+        style={{ transform: flip ? "scaleX(-1)" : undefined, height: "100%", minHeight: "360px" }}
       >
-        {/* Pedestal */}
-        <rect x="30" y="360" width="80" height="12" fill="#c9a84c" />
-        <rect x="20" y="372" width="100" height="8" fill="#c9a84c" />
-        <rect x="10" y="380" width="120" height="16" fill="#c9a84c" />
+        {/* Base */}
+        <rect x="20" y="470" width="120" height="15" fill="#8b6914" />
+        <rect x="10" y="485" width="140" height="12" fill="#8b6914" />
+        <rect x="0"  y="460" width="160" height="12" fill="#8b6914" />
 
-        {/* Torso/body */}
-        <path
-          d="M50,140 Q45,200 40,280 Q38,320 42,360 L98,360 Q102,320 100,280 Q95,200 90,140 Z"
-          fill="#c9a84c"
-        />
+        {/* Column */}
+        <rect x="120" y="0" width="30" height="470" fill="#8b6914" opacity="0.4" />
+        {[122, 127, 132, 137, 142].map((x) => (
+          <rect key={x} x={x} y="0" width="1.5" height="470" fill="#000" opacity="0.25" />
+        ))}
+        <rect x="117" y="0"   width="36" height="10" fill="#8b6914" opacity="0.65" />
+        <rect x="117" y="460" width="36" height="10" fill="#8b6914" opacity="0.65" />
 
-        {/* Draped fabric folds */}
-        <path d="M50,140 Q55,200 58,280" stroke="#8b6914" strokeWidth="1.5" fill="none" opacity="0.5" />
-        <path d="M60,140 Q62,200 64,280" stroke="#8b6914" strokeWidth="1.5" fill="none" opacity="0.5" />
-        <path d="M70,135 Q70,200 70,280" stroke="#8b6914" strokeWidth="1.5" fill="none" opacity="0.5" />
-        <path d="M80,140 Q78,200 76,280" stroke="#8b6914" strokeWidth="1.5" fill="none" opacity="0.5" />
+        {/* Figure torso */}
+        <path d="M40,155 Q35,230 30,330 Q28,400 32,460 L95,460 Q99,400 97,330 Q92,230 87,155 Z" fill="#8b6914" />
+        {/* Fabric folds */}
+        {[45, 55, 65, 75, 82].map((x) => (
+          <path key={x} d={`M${x},155 Q${x+2},230 ${x},330`} stroke="#5a4008" strokeWidth="1.2" fill="none" opacity="0.5" />
+        ))}
 
-        {/* Left arm raised with fabric */}
-        <path
-          d="M50,140 Q35,120 20,100 Q15,95 18,90 Q30,105 42,120"
-          fill="#c9a84c"
-          stroke="#c9a84c"
-          strokeWidth="1"
-        />
-
-        {/* Right arm/wing suggestion */}
-        <path
-          d="M90,150 Q105,130 118,110 Q122,106 120,100 Q108,118 96,138"
-          fill="#c9a84c"
-          stroke="#c9a84c"
-          strokeWidth="1"
-        />
+        {/* Arms */}
+        <path d="M40,160 Q22,138 8,118 Q4,112 7,106 Q22,124 38,148" fill="#8b6914" />
+        <path d="M87,165 Q105,143 118,123 Q122,117 119,111 Q104,130 88,156" fill="#8b6914" />
 
         {/* Neck */}
-        <rect x="62" y="115" width="16" height="28" fill="#c9a84c" />
+        <rect x="58" y="128" width="16" height="30" fill="#8b6914" />
 
         {/* Head */}
-        <ellipse cx="70" cy="105" rx="18" ry="20" fill="#c9a84c" />
+        <ellipse cx="66" cy="116" rx="20" ry="23" fill="#8b6914" />
 
-        {/* Headdress/laurel */}
-        <path
-          d="M52,98 Q55,85 60,90 Q63,80 70,85 Q77,80 80,90 Q85,85 88,98"
-          stroke="#c9a84c"
-          strokeWidth="2"
-          fill="#c9a84c"
-          opacity="0.8"
-        />
-
-        {/* Column at side */}
-        <rect x="115" y="0" width="20" height="380" fill="#c9a84c" opacity="0.35" />
-        {[117, 121, 125, 129].map((x) => (
-          <rect key={x} x={x} y="0" width="1.5" height="380" fill="#000" opacity="0.25" />
-        ))}
-        <rect x="112" y="0" width="26" height="8" fill="#c9a84c" opacity="0.55" />
-        <rect x="112" y="372" width="26" height="8" fill="#c9a84c" opacity="0.55" />
+        {/* Crown/wreath */}
+        <path d="M46,108 Q50,92 56,98 Q60,88 66,94 Q72,88 76,98 Q82,92 86,108" stroke="#8b6914" strokeWidth="2.5" fill="#8b6914" opacity="0.9" />
       </svg>
     </div>
-  );
-}
-
-const archiveNotes = [
-  {
-    text: "Through photographs, newspaper clippings, and historical notes, her life and legacy have been carefully preserved.",
-  },
-  {
-    text: "Lovingly kept for decades by her three sons.",
-  },
-  {
-    text: "Photo and article compilation by The Pulos Brothers.",
-    italic: true,
-  },
-  {
-    text: "Photo restoration, article restoration and book design by Mary James.",
-    italic: true,
-  },
-];
-
-function GoldDividerVertical() {
-  return (
-    <div
-      className="hidden md:block flex-shrink-0"
-      style={{
-        width: "1px",
-        background: "linear-gradient(to bottom, transparent 0%, rgba(139,105,20,0.4) 20%, rgba(139,105,20,0.4) 80%, transparent 100%)",
-        margin: "0 4px",
-      }}
-    />
   );
 }
 
 export default function PreservedMemory() {
   return (
     <section
-      id="legacy"
-      className="parchment-bg relative overflow-hidden py-14 md:py-20"
       style={{
-        borderTop: "1px solid rgba(139,105,20,0.35)",
-        borderBottom: "1px solid rgba(139,105,20,0.35)",
+        position: "relative",
+        overflow: "hidden",
+        padding: "clamp(64px, 10vh, 120px) clamp(24px, 6vw, 80px)",
       }}
+      className="parchment-bg"
     >
-      {/* Statue silhouettes */}
       <StatueSilhouette side="left" />
       <StatueSilhouette side="right" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-16">
+      {/* Gold rules */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(139,105,20,0.6) 30%, rgba(139,105,20,0.6) 70%, transparent)" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(139,105,20,0.6) 30%, rgba(139,105,20,0.6) 70%, transparent)" }} />
+
+      <div style={{ position: "relative", zIndex: 10, maxWidth: "1100px", margin: "0 auto" }}>
 
         {/* Section title */}
-        <div className="flex items-center gap-4 mb-10">
-          <div style={{ flex: 1, height: "1px", background: "linear-gradient(to right, transparent, rgba(139,105,20,0.6))" }} />
-          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" className="flex-shrink-0">
-            <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#8b6914" opacity="0.8" />
-          </svg>
-          <h2
-            className="font-display tracking-[0.35em] text-[11px] md:text-[13px] uppercase flex-shrink-0"
-            style={{ color: "#6b5520" }}
-          >
-            Preserved in Memory
-          </h2>
-          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" className="flex-shrink-0">
-            <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#8b6914" opacity="0.8" />
-          </svg>
-          <div style={{ flex: 1, height: "1px", background: "linear-gradient(to left, transparent, rgba(139,105,20,0.6))" }} />
-        </div>
+        <div className="text-center mb-14 animate-fade-in">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div style={{ flex: 1, maxWidth: "140px", height: "1px", background: "linear-gradient(to right, transparent, rgba(139,105,20,0.6))" }} />
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#8b6914" opacity="0.8" />
+            </svg>
+            <h2
+              className="font-display"
+              style={{ color: "#6b5520", fontSize: "12px", letterSpacing: "0.35em", textTransform: "uppercase" }}
+            >
+              Preserved in Memory
+            </h2>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#8b6914" opacity="0.8" />
+            </svg>
+            <div style={{ flex: 1, maxWidth: "140px", height: "1px", background: "linear-gradient(to left, transparent, rgba(139,105,20,0.6))" }} />
+          </div>
 
-        {/* Laurel wreath under title */}
-        <div className="flex justify-center mb-8">
-          <svg width="120" height="20" viewBox="0 0 120 20" fill="none">
-            {[0, 7, 14, 21, 28].map((offset) => (
-              <path
-                key={`l${offset}`}
-                d={`M${offset},10 Q${offset + 4},3 ${offset + 9},10`}
-                stroke="#8b6914"
-                strokeWidth="0.9"
-                fill="none"
-                opacity="0.65"
-              />
+          {/* Laurel wreath */}
+          <svg width="140" height="20" viewBox="0 0 140 20" fill="none" style={{ opacity: 0.65 }}>
+            {[0, 9, 18, 27, 36].map((x) => (
+              <path key={`l${x}`} d={`M${x},10 Q${x+5},3 ${x+11},10`} stroke="#8b6914" strokeWidth="0.9" fill="none" />
             ))}
-            <line x1="37" y1="10" x2="83" y2="10" stroke="#8b6914" strokeWidth="0.5" opacity="0.4" />
-            {[83, 90, 97, 104, 111].map((offset) => (
-              <path
-                key={`r${offset}`}
-                d={`M${offset},10 Q${offset + 4},3 ${offset + 9},10`}
-                stroke="#8b6914"
-                strokeWidth="0.9"
-                fill="none"
-                opacity="0.65"
-              />
+            <line x1="47" y1="10" x2="93" y2="10" stroke="#8b6914" strokeWidth="0.5" />
+            <circle cx="70" cy="10" r="1.5" fill="#8b6914" />
+            {[93, 102, 111, 120, 129].map((x) => (
+              <path key={`r${x}`} d={`M${x},10 Q${x+5},3 ${x+11},10`} stroke="#8b6914" strokeWidth="0.9" fill="none" />
             ))}
           </svg>
         </div>
 
-        {/* 4-column archive notes */}
-        <div className="flex flex-col md:flex-row items-stretch gap-0">
-          {archiveNotes.map((note, i) => (
-            <div key={i} className="flex items-stretch">
-              <div
-                className="flex-1 flex flex-col items-center justify-center text-center px-5 py-4 md:py-0"
-              >
-                {/* Top diamond ornament */}
-                <div className="mb-3">
-                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                    <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#8b6914" opacity="0.55" />
-                  </svg>
-                </div>
-
-                <p
-                  className={`text-[14px] md:text-[13.5px] leading-relaxed ${note.italic ? "italic" : ""} font-serif`}
-                  style={{ color: "#2c200e", maxWidth: "200px" }}
-                >
-                  {note.text}
-                </p>
+        {/* 4 archive note cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px" style={{ border: "1px solid rgba(139,105,20,0.2)" }}>
+          {notes.map((note, i) => (
+            <div
+              key={i}
+              className="animate-fade-up"
+              style={{
+                animationDelay: `${i * 0.1}s`,
+                padding: "clamp(24px, 3vw, 36px)",
+                borderRight: i < notes.length - 1 ? "1px solid rgba(139,105,20,0.15)" : undefined,
+                textAlign: "center",
+              }}
+            >
+              {/* Diamond ornament */}
+              <div className="flex justify-center mb-5">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#8b6914" opacity="0.6" />
+                </svg>
               </div>
 
-              {/* Vertical divider between columns */}
-              {i < archiveNotes.length - 1 && <GoldDividerVertical />}
+              <h3
+                className="font-display"
+                style={{ color: "#6b5520", fontSize: "10px", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "14px" }}
+              >
+                {note.heading}
+              </h3>
+
+              <p
+                className="font-serif"
+                style={{ color: "#2c1e0e", fontSize: "clamp(14px, 1.5vw, 16px)", lineHeight: 1.8 }}
+              >
+                {note.body}
+              </p>
             </div>
           ))}
         </div>

@@ -1,124 +1,136 @@
-"use client";
 import IdentityCard from "./IdentityCard";
 
-function GreekKeyEdge({ side }: { side: "left" | "right" }) {
+function GoldDividerRow() {
   return (
-    <div
-      className="absolute top-0 bottom-0 hidden xl:block"
-      style={{
-        [side]: 0,
-        width: "18px",
-        background: `
-          repeating-linear-gradient(
-            180deg,
-            rgba(201,168,76,0.5) 0px,
-            rgba(201,168,76,0.5) 2px,
-            transparent 2px,
-            transparent 6px
-          )
-        `,
-        borderRight: side === "left" ? "1px solid rgba(201,168,76,0.3)" : undefined,
-        borderLeft: side === "right" ? "1px solid rgba(201,168,76,0.3)" : undefined,
-      }}
-    />
-  );
-}
-
-function ColumnSilhouette() {
-  return (
-    <svg
-      width="60"
-      height="340"
-      viewBox="0 0 60 340"
-      fill="none"
-      className="absolute bottom-0 left-8 hidden lg:block opacity-[0.07]"
-      preserveAspectRatio="xMidYMax meet"
-    >
-      {/* Capital top */}
-      <rect x="0" y="10" width="60" height="8" fill="#c9a84c" />
-      <rect x="5" y="18" width="50" height="5" fill="#c9a84c" />
-      {/* Shaft */}
-      <rect x="12" y="23" width="36" height="280" fill="#c9a84c" />
-      {/* Flutes */}
-      {[15, 21, 27, 33, 39, 45].map((x) => (
-        <rect key={x} x={x} y="23" width="2" height="280" fill="#000" opacity="0.35" />
-      ))}
-      {/* Base */}
-      <rect x="5" y="303" width="50" height="5" fill="#c9a84c" />
-      <rect x="0" y="308" width="60" height="8" fill="#c9a84c" />
-      <rect x="0" y="316" width="60" height="6" fill="#c9a84c" opacity="0.6" />
-      <rect x="0" y="322" width="60" height="10" fill="#c9a84c" opacity="0.4" />
-    </svg>
-  );
-}
-
-function GoldOrnamentLine() {
-  return (
-    <div className="flex items-center gap-2 my-3">
-      <div style={{ width: "40px", height: "1px", background: "#c9a84c" }} />
+    <div className="flex items-center gap-3 my-5">
+      <div style={{ width: "48px", height: "1px", background: "#c9a84c" }} />
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M7 0 L8.2 5.8 L14 7 L8.2 8.2 L7 14 L5.8 8.2 L0 7 L5.8 5.8 Z" fill="#c9a84c" />
+        <path d="M7 0 L8.4 5.6 L14 7 L8.4 8.4 L7 14 L5.6 8.4 L0 7 L5.6 5.6 Z" fill="#c9a84c" />
       </svg>
-      <div style={{ width: "40px", height: "1px", background: "#c9a84c" }} />
+      <div style={{ width: "48px", height: "1px", background: "#c9a84c" }} />
     </div>
+  );
+}
+
+function LaurelWreath() {
+  return (
+    <svg width="140" height="28" viewBox="0 0 140 28" fill="none" className="mb-6 opacity-80">
+      {/* Left branch */}
+      {[0, 9, 18, 27, 36].map((x) => (
+        <path key={`l${x}`} d={`M${x},14 Q${x+5},6 ${x+11},14`} stroke="#c9a84c" strokeWidth="1" fill="none" />
+      ))}
+      {/* Stem center */}
+      <line x1="47" y1="14" x2="93" y2="14" stroke="#c9a84c" strokeWidth="0.6" />
+      <circle cx="70" cy="14" r="2" fill="#c9a84c" />
+      {/* Right branch */}
+      {[93, 102, 111, 120, 129].map((x) => (
+        <path key={`r${x}`} d={`M${x},14 Q${x+5},6 ${x+11},14`} stroke="#c9a84c" strokeWidth="1" fill="none" />
+      ))}
+    </svg>
   );
 }
 
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden marble-bg"
-      style={{ minHeight: "92vh" }}
+      id="home"
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        overflow: "hidden",
+        backgroundColor: "#08080a",
+      }}
     >
-      {/* Side decorative edge strips */}
-      <GreekKeyEdge side="left" />
-      <GreekKeyEdge side="right" />
+      {/* ── Real book cover as hero background: positioned to show front cover (right half) ── */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url('/images/mary-cover.jpg')",
+          backgroundSize: "200% auto",
+          backgroundPosition: "right center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.82,
+        }}
+      />
 
-      {/* Three-column layout */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] min-h-[92vh]">
+      {/* ── Gradient overlay: deep on left for text, subtle on right ── */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(100deg, #08080a 0%, #08080a 32%, rgba(8,8,10,0.82) 52%, rgba(8,8,10,0.3) 72%, rgba(8,8,10,0.6) 100%)",
+        }}
+      />
 
-        {/* ── LEFT: Title Block ── */}
-        <div className="flex flex-col justify-center items-start px-10 md:px-14 lg:px-10 xl:px-14 py-16 relative z-10 order-1 lg:order-1">
-          <ColumnSilhouette />
+      {/* ── Top & bottom gold lines ── */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #c9a84c 25%, #c9a84c 75%, transparent)" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #c9a84c 25%, #c9a84c 75%, transparent)" }} />
 
-          {/* Name */}
+      {/* ── Page edge Greek key strips ── */}
+      <div className="hidden xl:block" style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: "16px", background: "repeating-linear-gradient(180deg, rgba(201,168,76,0.4) 0px, rgba(201,168,76,0.4) 2px, transparent 2px, transparent 6px)", borderRight: "1px solid rgba(201,168,76,0.2)" }} />
+      <div className="hidden xl:block" style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: "16px", background: "repeating-linear-gradient(180deg, rgba(201,168,76,0.4) 0px, rgba(201,168,76,0.4) 2px, transparent 2px, transparent 6px)", borderLeft: "1px solid rgba(201,168,76,0.2)" }} />
+
+      {/* ── Hero content grid ── */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+          minHeight: "100vh",
+          display: "grid",
+          gridTemplateColumns: "1fr auto",
+          gap: "clamp(20px, 4vw, 60px)",
+          alignItems: "center",
+          padding: "clamp(80px, 12vh, 140px) clamp(28px, 6vw, 80px) clamp(60px, 8vh, 100px)",
+          maxWidth: "1360px",
+          margin: "0 auto",
+        }}
+        className="max-lg:grid-cols-1"
+      >
+        {/* LEFT: Name + text */}
+        <div className="animate-fade-up">
+          <LaurelWreath />
+
           <h1
-            className="font-display leading-[0.88] tracking-wide text-left"
-            style={{ color: "#c9a84c" }}
+            className="gold-shimmer font-display"
+            style={{
+              fontSize: "clamp(64px, 10vw, 148px)",
+              letterSpacing: "0.04em",
+              lineHeight: 0.86,
+              margin: 0,
+            }}
           >
-            <span
-              className="block"
-              style={{ fontSize: "clamp(64px, 9vw, 120px)", letterSpacing: "0.04em" }}
-            >
-              MARY
-            </span>
-            <span
-              className="block"
-              style={{
-                fontSize: "clamp(40px, 6vw, 80px)",
-                letterSpacing: "0.03em",
-                marginTop: "-4px",
-              }}
-            >
-              PAVLATOU
-            </span>
+            MARY
+            <br />
+            PAVLATOU
           </h1>
 
-          {/* Ornament line */}
-          <GoldOrnamentLine />
+          <GoldDividerRow />
 
-          {/* Archive subtitle */}
           <p
-            className="font-display tracking-[0.3em] text-[11px] uppercase mb-4"
-            style={{ color: "#c9a84c", opacity: 0.85 }}
+            className="font-display animate-fade-up delay-2"
+            style={{
+              color: "#c9a84c",
+              fontSize: "clamp(9px, 1vw, 11px)",
+              letterSpacing: "0.35em",
+              textTransform: "uppercase",
+              marginBottom: "20px",
+              opacity: 0.9,
+            }}
           >
             An Official Memorial Archive
           </p>
 
-          {/* Supporting line */}
           <p
-            className="font-serif italic text-[17px] leading-relaxed max-w-[320px] mb-8"
-            style={{ color: "#e8e0cc" }}
+            className="font-serif italic animate-fade-up delay-3"
+            style={{
+              color: "#e4dac8",
+              fontSize: "clamp(16px, 2vw, 21px)",
+              lineHeight: 1.65,
+              maxWidth: "420px",
+              marginBottom: "48px",
+            }}
           >
             International Fashion Model. Greek Icon.
             <br />
@@ -127,96 +139,61 @@ export default function Hero() {
             Press, and Memory.
           </p>
 
-          {/* CTA Button */}
-          <a
-            href="#her-story"
-            className="font-display text-[10px] tracking-[0.3em] uppercase px-7 py-3 transition-all duration-300 group"
-            style={{
-              color: "#c9a84c",
-              border: "1px solid #c9a84c",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget;
-              el.style.background = "#c9a84c";
-              el.style.color = "#0a0a0a";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget;
-              el.style.background = "transparent";
-              el.style.color = "#c9a84c";
-            }}
-          >
+          <a href="#her-story" className="cta-btn animate-fade-up delay-4">
             Explore the Archive
-            <span style={{ fontSize: "14px" }}>→</span>
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+              <path d="M0 5 H14 M10 1 L14 5 L10 9" stroke="currentColor" strokeWidth="1.2" fill="none" />
+            </svg>
           </a>
-        </div>
 
-        {/* ── CENTER: Hero Portrait ── */}
-        <div
-          className="relative flex items-end justify-center order-2 lg:order-2"
-          style={{ minHeight: "420px" }}
-        >
-          {/* Photo area — replace src with the real hero portrait */}
-          <div
-            className="relative w-full h-full"
-            style={{ minHeight: "420px" }}
+          {/* Subtitle: 1950s */}
+          <p
+            className="font-display animate-fade-up delay-5"
+            style={{
+              color: "rgba(201,168,76,0.45)",
+              fontSize: "10px",
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              marginTop: "32px",
+            }}
           >
-            {/* Placeholder — swap for: <Image src="/images/mary-hero.jpg" ... /> */}
-            <div
-              className="img-placeholder w-full h-full absolute inset-0 flex flex-col items-center justify-center gap-3"
-              style={{
-                background: "linear-gradient(180deg, #1a1516 0%, #0d0b0c 60%, #0a0a0a 100%)",
-              }}
-            >
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3">
-                <circle cx="24" cy="20" r="10" stroke="#c9a84c" strokeWidth="1.5" />
-                <path
-                  d="M8,44 C8,33 40,33 40,44"
-                  stroke="#c9a84c"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-              </svg>
-              <p
-                className="font-display text-[9px] tracking-[0.2em] uppercase text-center px-4"
-                style={{ color: "rgba(201,168,76,0.35)" }}
-              >
-                Hero Portrait
-                <br />
-                Place mary-hero.jpg in /public/images/
-              </p>
-            </div>
-
-            {/* Gradient fade at bottom to blend with section below */}
-            <div
-              className="absolute bottom-0 left-0 right-0 pointer-events-none"
-              style={{
-                height: "120px",
-                background:
-                  "linear-gradient(to bottom, transparent 0%, #0d0d0d 100%)",
-              }}
-            />
-          </div>
+            1950&rsquo;s International Fashion Model
+          </p>
         </div>
 
-        {/* ── RIGHT: Identity Card ── */}
-        <div className="flex flex-col items-center justify-center px-6 py-14 order-3 lg:order-3">
+        {/* RIGHT: Identity card */}
+        <div
+          className="animate-fade-up delay-3 max-lg:hidden"
+          style={{ alignSelf: "center" }}
+        >
           <IdentityCard />
         </div>
       </div>
 
-      {/* Bottom gold divider */}
+      {/* Identity card for mobile — below text */}
+      <div
+        className="lg:hidden"
+        style={{
+          position: "relative",
+          zIndex: 10,
+          display: "flex",
+          justifyContent: "center",
+          padding: "0 24px 80px",
+        }}
+      >
+        <IdentityCard />
+      </div>
+
+      {/* Bottom fade to next section */}
       <div
         style={{
           position: "absolute",
           bottom: 0,
           left: 0,
           right: 0,
-          height: "1px",
-          background: "linear-gradient(90deg, transparent 0%, #c9a84c 20%, #c9a84c 80%, transparent 100%)",
+          height: "100px",
+          background: "linear-gradient(to bottom, transparent 0%, #0a0a0a 100%)",
+          pointerEvents: "none",
         }}
       />
     </section>
