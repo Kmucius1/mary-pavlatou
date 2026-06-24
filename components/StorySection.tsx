@@ -58,7 +58,7 @@ export default function StorySection() {
               className="font-serif"
               style={{ color: "#d8d0bc", fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
             >
-              Maria Metaxas Mariatou was a{" "}
+              Mary Pavlatou was a{" "}
               <em style={{ color: "#e4c875" }}>Renaissance Woman</em> in the
               true meaning of the word — far ahead of her time in many ways, for
               it was a different world for women back in those years.

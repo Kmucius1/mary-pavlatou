@@ -68,13 +68,13 @@ export default function BookFeature() {
               />
             ))}
 
-            <div style={{ position: "relative", aspectRatio: "2/1.1", overflow: "hidden" }}>
+            <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden" }}>
               <Image
-                src="/images/mary-cover2.jpg"
+                src="/images/title-page.jpg"
                 alt="Mary Pavlatou — The Memorial Archive Book"
                 fill
                 sizes="(max-width: 768px) 90vw, 50vw"
-                style={{ objectFit: "cover", objectPosition: "center" }}
+                style={{ objectFit: "contain", objectPosition: "center", background: "#f5f0e8" }}
               />
             </div>
           </div>

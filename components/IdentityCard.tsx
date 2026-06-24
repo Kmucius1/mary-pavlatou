@@ -44,10 +44,6 @@ export default function IdentityCard() {
       value: "Mary Pavlatou",
     },
     {
-      label: "Maiden name:",
-      value: "Maria Metaxas Mariatou",
-    },
-    {
       label: "Married name:",
       value: "Maria Pulos",
     },

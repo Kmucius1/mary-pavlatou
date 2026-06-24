@@ -10,13 +10,13 @@ const pillars = [
   {
     roman: "II",
     title: "Child Hero of World War II",
-    body: "Maria was a child hero of World War II. The Metaxas Family significantly affected the outcome of World War II, which played a great part in saving the world.",
+    body: "Mary was a child hero of World War II. Her family significantly affected the outcome of World War II, which played a great part in saving the world.",
     accent: "A Legacy Written in History",
   },
   {
     roman: "III",
     title: "Noble Lineage",
-    body: "The Metaxas Family was ennobled by the Venetian Empire in 1691 with the perpetual title of Count and Countess — a lineage spanning centuries.",
+    body: "Her family was ennobled by the Venetian Empire in 1691 with the perpetual title of Count and Countess — a lineage of grace spanning centuries.",
     accent: "Venetian Empire · 1691",
   },
   {
