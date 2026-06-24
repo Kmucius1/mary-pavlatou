@@ -30,7 +30,7 @@ export default function DedicationQuote() {
           }}
         >
           <Image
-            src="/images/endsheet2.jpg"
+            src="/images/endsheet-hires.jpg"
             alt="Mary Pavlatou — Archive Endsheet Portrait"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"

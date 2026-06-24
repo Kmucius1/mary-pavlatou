@@ -46,7 +46,7 @@ export default function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "url('/images/mary-cover.jpg')",
+          backgroundImage: "url('/images/cover-hires.jpg')",
           backgroundSize: "200% auto",
           backgroundPosition: "right center",
           backgroundRepeat: "no-repeat",

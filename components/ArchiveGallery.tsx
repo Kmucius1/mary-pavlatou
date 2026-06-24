@@ -71,7 +71,7 @@ export default function ArchiveGallery() {
               />
             ))}
             <Image
-              src="/images/endsheet2.jpg"
+              src="/images/endsheet-hires.jpg"
               alt="Mary Pavlatou — Archive Endsheet, Portrait & Dedication"
               fill
               priority
@@ -87,14 +87,14 @@ export default function ArchiveGallery() {
           </p>
         </div>
 
-        {/* 3-column grid: cover-pdf / mary-cover / mary-dustjacket */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        {/* 4-column grid: full cover / front cover / title page / dust jacket */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
           {[
             {
-              src: "/images/cover-pdf.jpg",
-              alt: "Mary Pavlatou — Book Cover",
-              label: "The Archive — Book Cover",
-              objectPosition: "center",
+              src: "/images/cover-hires.jpg",
+              alt: "Mary Pavlatou — Book Cover Full Spread",
+              label: "The Archive — Full Cover Spread",
+              objectPosition: "right center",
             },
             {
               src: "/images/mary-cover.jpg",
@@ -103,9 +103,15 @@ export default function ArchiveGallery() {
               objectPosition: "right center",
             },
             {
+              src: "/images/title-page.jpg",
+              alt: "Mary Pavlatou — Interior Title Page",
+              label: "The Archive — Title Page",
+              objectPosition: "center top",
+            },
+            {
               src: "/images/mary-dustjacket.jpg",
               alt: "Mary Pavlatou — Dust Jacket Full Spread",
-              label: "The Archive — Dust Jacket Spread",
+              label: "The Archive — Dust Jacket",
               objectPosition: "right center",
             },
           ].map((frame) => (
