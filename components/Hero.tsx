@@ -93,17 +93,16 @@ export default function Hero() {
           <LaurelWreath />
 
           <h1
-            className="gold-shimmer font-display"
+            className="font-display"
             style={{
-              fontSize: "clamp(64px, 10vw, 148px)",
-              letterSpacing: "0.04em",
-              lineHeight: 0.86,
+              fontSize: "clamp(36px, 4.5vw, 66px)",
+              letterSpacing: "0.18em",
+              lineHeight: 1.1,
               margin: 0,
+              color: "#c9a84c",
             }}
           >
-            MARY
-            <br />
-            PAVLATOU
+            MARY PAVLATOU
           </h1>
 
           <GoldDividerRow />

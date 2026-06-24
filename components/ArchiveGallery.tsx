@@ -1,168 +1,138 @@
 import Image from "next/image";
 
+const row = [
+  {
+    src: "/images/hf-atelier.jpg",
+    alt: "1950s Parisian haute couture fashion house",
+    label: "Paris · The Fashion Houses",
+    objectPosition: "center 30%",
+    aspect: "16/9",
+  },
+  {
+    src: "/images/hf-vanity.jpg",
+    alt: "Vintage 1950s fashion still life — pearls, gardenias, silk",
+    label: "The World She Moved In",
+    objectPosition: "center",
+    aspect: "3/4",
+  },
+  {
+    src: "/images/title-page.jpg",
+    alt: "Mary Pavlatou — Archive Interior Title Page",
+    label: "The Archive — Title Page",
+    objectPosition: "center top",
+    aspect: "3/4",
+  },
+];
+
 export default function ArchiveGallery() {
   return (
     <section
       id="gallery"
       style={{
         backgroundColor: "#09090b",
-        padding: "clamp(64px, 10vh, 120px) clamp(24px, 6vw, 80px)",
+        padding: "clamp(80px, 12vh, 140px) clamp(24px, 6vw, 80px)",
         position: "relative",
       }}
     >
-      {/* Gold top rule */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #c9a84c 25%, #c9a84c 75%, transparent)" }} />
 
-      <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
 
         {/* Title */}
-        <div className="text-center mb-14 animate-fade-in">
+        <div className="text-center mb-16 animate-fade-in">
           <p
             className="font-display"
-            style={{ color: "rgba(201,168,76,0.5)", fontSize: "10px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "10px" }}
+            style={{ color: "rgba(201,168,76,0.5)", fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "14px" }}
           >
             Restored &amp; Preserved
           </p>
           <h2
             className="font-display"
-            style={{ color: "#c9a84c", fontSize: "clamp(13px, 1.8vw, 17px)", letterSpacing: "0.3em", textTransform: "uppercase" }}
+            style={{ color: "#c9a84c", fontSize: "clamp(13px, 1.6vw, 16px)", letterSpacing: "0.3em", textTransform: "uppercase" }}
           >
             Archive Gallery
           </h2>
           <div className="flex items-center justify-center gap-3 mt-5">
-            <div style={{ width: "80px", height: "1px", background: "rgba(201,168,76,0.6)" }} />
-            <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-              <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#c9a84c" opacity="0.7" />
+            <div style={{ width: "60px", height: "1px", background: "rgba(201,168,76,0.5)" }} />
+            <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
+              <path d="M3 0 L6 3 L3 6 L0 3 Z" fill="rgba(201,168,76,0.6)" />
             </svg>
-            <div style={{ width: "80px", height: "1px", background: "rgba(201,168,76,0.6)" }} />
+            <div style={{ width: "60px", height: "1px", background: "rgba(201,168,76,0.5)" }} />
           </div>
         </div>
 
-        {/* FEATURED: Endsheet full-width — her actual portrait */}
-        <div className="animate-fade-up mb-6" style={{ position: "relative" }}>
+        {/* Featured portrait — endsheet */}
+        <div className="animate-fade-up mb-10">
           <div
             style={{
               position: "relative",
-              width: "100%",
-              aspectRatio: "16/7",
-              overflow: "hidden",
-              border: "1px solid rgba(201,168,76,0.5)",
-              boxShadow: "0 0 80px rgba(201,168,76,0.12), inset 0 0 0 1px rgba(201,168,76,0.08)",
+              width: "min(480px, 100%)",
+              margin: "0 auto",
+              aspectRatio: "3/4",
+              border: "1px solid rgba(201,168,76,0.45)",
+              boxShadow: "0 0 80px rgba(201,168,76,0.1)",
             }}
           >
-            {/* Corner pieces */}
             {[
-              { top: -1, left: -1, borderWidth: "3px 0 0 3px" },
-              { top: -1, right: -1, borderWidth: "3px 3px 0 0" },
-              { bottom: -1, left: -1, borderWidth: "0 0 3px 3px" },
-              { bottom: -1, right: -1, borderWidth: "0 3px 3px 0" },
+              { top: -1, left: -1, borderWidth: "2px 0 0 2px" },
+              { top: -1, right: -1, borderWidth: "2px 2px 0 0" },
+              { bottom: -1, left: -1, borderWidth: "0 0 2px 2px" },
+              { bottom: -1, right: -1, borderWidth: "0 2px 2px 0" },
             ].map((s, i) => (
-              <div
-                key={i}
-                style={{
-                  position: "absolute",
-                  width: "24px",
-                  height: "24px",
-                  borderColor: "#c9a84c",
-                  borderStyle: "solid",
-                  zIndex: 10,
-                  ...s,
-                }}
-              />
+              <div key={i} style={{ position: "absolute", width: "20px", height: "20px", borderColor: "#c9a84c", borderStyle: "solid", zIndex: 10, ...s }} />
             ))}
             <Image
               src="/images/endsheet-hires.jpg"
-              alt="Mary Pavlatou — Archive Endsheet, Portrait & Dedication"
+              alt="Mary Pavlatou — Archive Portrait & Dedication"
               fill
               priority
-              sizes="100vw"
-              style={{ objectFit: "cover", objectPosition: "center 20%" }}
+              sizes="480px"
+              style={{ objectFit: "cover", objectPosition: "center 10%" }}
             />
           </div>
           <p
             className="font-display text-center mt-4"
-            style={{ color: "rgba(201,168,76,0.6)", fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase" }}
+            style={{ color: "rgba(201,168,76,0.55)", fontSize: "8px", letterSpacing: "0.3em", textTransform: "uppercase" }}
           >
-            The Archive Endsheet — Portrait &amp; Dedication
+            Mary Pavlatou — The Archive Portrait
           </p>
         </div>
 
-        {/* 4-column grid: full cover / front cover / title page / dust jacket */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-          {[
-            {
-              src: "/images/cover-hires.jpg",
-              alt: "Mary Pavlatou — Book Cover Full Spread",
-              label: "The Archive — Full Cover Spread",
-              objectPosition: "right center",
-            },
-            {
-              src: "/images/mary-cover.jpg",
-              alt: "Mary Pavlatou — Front Cover Art",
-              label: "The Archive — Front Cover",
-              objectPosition: "right center",
-            },
-            {
-              src: "/images/title-page.jpg",
-              alt: "Mary Pavlatou — Interior Title Page",
-              label: "The Archive — Title Page",
-              objectPosition: "center top",
-            },
-            {
-              src: "/images/mary-dustjacket.jpg",
-              alt: "Mary Pavlatou — Dust Jacket Full Spread",
-              label: "The Archive — Dust Jacket",
-              objectPosition: "right center",
-            },
-          ].map((frame) => (
-            <div key={frame.src} className="animate-fade-up flex flex-col items-center gap-3">
+        {/* 3-column row: atelier / vanity / title page */}
+        <div
+          className="grid gap-6 mt-4"
+          style={{ gridTemplateColumns: "2fr 1fr 1fr" }}
+        >
+          {row.map((frame) => (
+            <div key={frame.src} className="animate-fade-up flex flex-col gap-3">
               <div
                 style={{
                   position: "relative",
                   width: "100%",
-                  aspectRatio: "3/4",
+                  aspectRatio: frame.aspect,
                   overflow: "hidden",
-                  border: "1px solid rgba(201,168,76,0.35)",
-                  boxShadow: "0 0 40px rgba(201,168,76,0.08)",
+                  border: "1px solid rgba(201,168,76,0.25)",
                 }}
               >
-                {/* Corner pieces */}
                 {[
                   { top: -1, left: -1, borderWidth: "2px 0 0 2px" },
                   { top: -1, right: -1, borderWidth: "2px 2px 0 0" },
                   { bottom: -1, left: -1, borderWidth: "0 0 2px 2px" },
                   { bottom: -1, right: -1, borderWidth: "0 2px 2px 0" },
                 ].map((s, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      position: "absolute",
-                      width: "16px",
-                      height: "16px",
-                      borderColor: "#c9a84c",
-                      borderStyle: "solid",
-                      zIndex: 10,
-                      ...s,
-                    }}
-                  />
+                  <div key={i} style={{ position: "absolute", width: "14px", height: "14px", borderColor: "#c9a84c", borderStyle: "solid", zIndex: 10, ...s }} />
                 ))}
                 <Image
                   src={frame.src}
                   alt={frame.alt}
                   fill
-                  sizes="(max-width: 768px) 90vw, 33vw"
+                  sizes="(max-width: 768px) 90vw, 40vw"
                   style={{ objectFit: "cover", objectPosition: frame.objectPosition }}
                 />
               </div>
               <p
                 className="font-display"
-                style={{
-                  color: "rgba(201,168,76,0.5)",
-                  fontSize: "8px",
-                  letterSpacing: "0.25em",
-                  textTransform: "uppercase",
-                  textAlign: "center",
-                }}
+                style={{ color: "rgba(201,168,76,0.45)", fontSize: "8px", letterSpacing: "0.25em", textTransform: "uppercase" }}
               >
                 {frame.label}
               </p>
@@ -172,13 +142,12 @@ export default function ArchiveGallery() {
 
         {/* Caption */}
         <p
-          className="font-serif italic text-center mt-12 animate-fade-in delay-4"
-          style={{ color: "rgba(201,168,76,0.4)", fontSize: "clamp(13px, 1.5vw, 15px)" }}
+          className="font-serif italic text-center mt-14 animate-fade-in delay-4"
+          style={{ color: "rgba(201,168,76,0.35)", fontSize: "clamp(13px, 1.4vw, 15px)" }}
         >
           Each image carefully restored, translated, and researched for accuracy.
-          <br />
           Photo restoration and book design by{" "}
-          <span style={{ color: "rgba(201,168,76,0.65)" }}>Mary James</span>.
+          <span style={{ color: "rgba(201,168,76,0.55)" }}>Mary James</span>.
         </p>
       </div>
     </section>
