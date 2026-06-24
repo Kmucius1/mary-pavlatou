@@ -4,37 +4,37 @@ const pillars = [
   {
     roman: "I",
     title: "Renaissance Woman",
-    body: "A recipient of numerous awards in dance, music, art, writing, oratory, academia, and sports. She spoke several languages and earned advanced university degrees.",
-    accent: "Dancer · Musician · Scholar · Athlete · Orator",
+    body: "Awards in dance, music, art, writing, oratory, academia, and sports. She spoke several languages and earned advanced university degrees.",
+    accent: "Dancer · Musician · Scholar · Athlete",
   },
   {
     roman: "II",
     title: "Child Hero of World War II",
-    body: "Maria was a child hero of World War II. The Metaxas Family also significantly affected the outcome of World War II, which played a great part in saving the world.",
+    body: "Maria was a child hero of World War II. The Metaxas Family significantly affected the outcome of World War II, which played a great part in saving the world.",
     accent: "A Legacy Written in History",
   },
   {
     roman: "III",
     title: "Noble Lineage",
-    body: "The Metaxas Family was ennobled by the Venetian Empire in 1691 with the perpetual title of Count and Countess — a lineage of grace and distinction spanning centuries.",
-    accent: "Venetian Empire · 1691 · Count & Countess",
+    body: "The Metaxas Family was ennobled by the Venetian Empire in 1691 with the perpetual title of Count and Countess — a lineage spanning centuries.",
+    accent: "Venetian Empire · 1691",
   },
   {
     roman: "IV",
     title: "Icon of Her Era",
-    body: "She caught the attention of Aristotle Onassis — a man seen in the company of Marilyn Monroe, Elizabeth Taylor, and others — who later married Jackie Kennedy.",
-    accent: "Onassis · Monroe · Taylor · Kennedy",
+    body: "She moved in the highest circles — catching the attention of Aristotle Onassis, seen alongside Marilyn Monroe, Elizabeth Taylor, and others.",
+    accent: "Onassis · Monroe · Taylor",
   },
   {
     roman: "V",
     title: "Stage, Screen & Television",
-    body: "Aside from the world of fashion, she was offered the opportunity of appearing in movies, on television, and on stage — a woman whose presence transcended any single art form.",
+    body: "Beyond fashion, she was offered opportunities in film, television, and theatre — a woman whose presence transcended any single art form.",
     accent: "Film · Television · Theatre",
   },
   {
     roman: "VI",
     title: "The Third Man",
-    body: "Her signature runway modeling music was the theme from the motion picture The Third Man — a worldwide musical hit that became inseparable from her presence on the catwalk.",
+    body: "Her signature runway music was the theme from The Third Man — a worldwide hit that became inseparable from her presence on the catwalk.",
     accent: "Her Runway Signature",
   },
 ];
@@ -44,104 +44,45 @@ export default function LegacySection() {
     <section
       id="legacy"
       style={{
-        position: "relative",
-        overflow: "hidden",
-        backgroundColor: "#09090b",
-        padding: "clamp(64px, 10vh, 120px) clamp(24px, 6vw, 80px)",
+        backgroundColor: "#09080a",
+        padding: "clamp(80px, 12vh, 140px) clamp(32px, 7vw, 100px)",
       }}
     >
-      {/* Subtle Art Deco bg texture */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "url('/images/mary-dustjacket.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.05,
-          filter: "saturate(0) blur(1px)",
-        }}
-      />
-      <div style={{ position: "absolute", inset: 0, background: "rgba(9,9,11,0.96)" }} />
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
-      <div style={{ position: "relative", zIndex: 10, maxWidth: "1280px", margin: "0 auto" }}>
-
-        {/* Section header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div style={{ flex: 1, maxWidth: "180px", height: "1px", background: "linear-gradient(to right, transparent, #c9a84c)" }} />
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#c9a84c" />
-            </svg>
-            <h2
-              className="font-display"
-              style={{ color: "#c9a84c", fontSize: "12px", letterSpacing: "0.35em", textTransform: "uppercase" }}
-            >
-              A Life of Distinction
-            </h2>
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#c9a84c" />
-            </svg>
-            <div style={{ flex: 1, maxWidth: "180px", height: "1px", background: "linear-gradient(to left, transparent, #c9a84c)" }} />
-          </div>
+        {/* Header */}
+        <div style={{ marginBottom: "clamp(56px, 8vw, 96px)" }}>
           <p
-            className="font-serif italic"
-            style={{ color: "rgba(201,168,76,0.6)", fontSize: "clamp(15px, 2vw, 19px)" }}
+            className="font-display"
+            style={{ color: "rgba(201,168,76,0.45)", fontSize: "9px", letterSpacing: "0.45em", textTransform: "uppercase", marginBottom: "18px" }}
           >
-            Beyond the runway — a life of extraordinary breadth
+            A Life of Distinction
           </p>
+          <div style={{ width: "40px", height: "1px", background: "rgba(201,168,76,0.5)" }} />
         </div>
 
-        {/* 6-pillar grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px" style={{ border: "1px solid rgba(201,168,76,0.15)" }}>
+        {/* 2-col grid — more breathing room */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16 lg:gap-x-24 lg:gap-y-20">
           {pillars.map((p, i) => (
-            <div
-              key={i}
-              className="animate-fade-up"
-              style={{
-                animationDelay: `${i * 0.1}s`,
-                padding: "clamp(28px, 4vw, 44px)",
-                borderRight: i % 2 !== 1 ? "1px solid rgba(201,168,76,0.12)" : undefined,
-                borderBottom: "1px solid rgba(201,168,76,0.12)",
-                position: "relative",
-                transition: "background 0.3s",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.04)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}
-            >
-              {/* Roman numeral */}
+            <div key={i} className="animate-fade-up" style={{ animationDelay: `${i * 0.08}s` }}>
               <p
                 className="font-display"
-                style={{ color: "rgba(201,168,76,0.25)", fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1, marginBottom: "16px", letterSpacing: "0.05em" }}
+                style={{ color: "rgba(201,168,76,0.18)", fontSize: "clamp(36px, 5vw, 60px)", lineHeight: 1, marginBottom: "20px", letterSpacing: "0.05em" }}
               >
                 {p.roman}
               </p>
-
-              {/* Divider */}
-              <div style={{ width: "32px", height: "1px", background: "#c9a84c", marginBottom: "16px" }} />
-
-              {/* Title */}
+              <div style={{ width: "28px", height: "1px", background: "rgba(201,168,76,0.6)", marginBottom: "18px" }} />
               <h3
                 className="font-display"
-                style={{ color: "#c9a84c", fontSize: "clamp(11px, 1.3vw, 14px)", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "14px" }}
+                style={{ color: "#c9a84c", fontSize: "clamp(10px, 1.1vw, 12px)", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "16px" }}
               >
                 {p.title}
               </h3>
-
-              {/* Body */}
               <p
                 className="font-serif"
-                style={{ color: "#c0b89e", fontSize: "clamp(14px, 1.5vw, 16px)", lineHeight: 1.75, marginBottom: "18px" }}
+                style={{ color: "rgba(205,196,178,0.8)", fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: 1.85 }}
               >
                 {p.body}
-              </p>
-
-              {/* Accent tag */}
-              <p
-                className="font-display"
-                style={{ color: "rgba(201,168,76,0.45)", fontSize: "9px", letterSpacing: "0.25em", textTransform: "uppercase" }}
-              >
-                {p.accent}
               </p>
             </div>
           ))}
