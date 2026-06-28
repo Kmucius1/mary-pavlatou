@@ -36,7 +36,7 @@ export default function TempleSection() {
           className="font-serif italic"
           style={{
             color: "rgba(245,240,228,0.9)",
-            fontSize: "clamp(16px, 2.2vw, 26px)",
+            fontSize: "clamp(34px, 2.2vw, 26px)",
             textAlign: "center",
             maxWidth: "600px",
             lineHeight: 1.7,
@@ -45,12 +45,12 @@ export default function TempleSection() {
         >
           &ldquo;She made the world and the universe<br className="hidden md:block" /> a much better place.&rdquo;
         </p>
-        <div style={{ width: "32px", height: "1px", background: "rgba(201,168,76,0.5)", margin: "20px auto 0" }} />
+        <div style={{ width: "32px", height: "1px", background: "rgba(245,208,80,0.5)", margin: "20px auto 0" }} />
         <p
           className="font-display"
           style={{
-            color: "rgba(201,168,76,0.5)",
-            fontSize: "8px",
+            color: "rgba(245,208,80,0.5)",
+            fontSize: "28px",
             letterSpacing: "0.4em",
             textTransform: "uppercase",
             marginTop: "14px",

@@ -5,9 +5,6 @@ export default function Hero() {
     <section
       id="home"
       style={{
-        minHeight: "100vh",
-        position: "relative",
-        overflow: "hidden",
         backgroundColor: "#09080a",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -22,18 +19,18 @@ export default function Hero() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "clamp(100px, 14vh, 160px) clamp(32px, 6vw, 80px) clamp(80px, 10vh, 120px)",
+          padding: "clamp(64px, 8vh, 100px) clamp(28px, 5vw, 64px) clamp(48px, 6vh, 80px)",
           backgroundColor: "#09080a",
         }}
       >
         <p
           className="font-display animate-fade-in"
           style={{
-            color: "rgba(201,168,76,0.5)",
-            fontSize: "9px",
+            color: "rgba(245,208,80,0.5)",
+            fontSize: "24px",
             letterSpacing: "0.45em",
             textTransform: "uppercase",
-            marginBottom: "28px",
+            marginBottom: "20px",
           }}
         >
           An Official Memorial Archive
@@ -42,27 +39,27 @@ export default function Hero() {
         <h1
           className="font-display animate-fade-up"
           style={{
-            fontSize: "clamp(26px, 3.5vw, 48px)",
+            fontSize: "clamp(36px, 2.8vw, 38px)",
             letterSpacing: "0.22em",
             lineHeight: 1.15,
-            color: "#c9a84c",
-            margin: "0 0 28px",
+            color: "#f5d050",
+            margin: "0 0 20px",
             fontWeight: 400,
           }}
         >
           MARY PAVLATOU
         </h1>
 
-        <div style={{ width: "40px", height: "1px", background: "#c9a84c", marginBottom: "28px", opacity: 0.6 }} />
+        <div style={{ width: "36px", height: "1px", background: "#f5d050", marginBottom: "20px", opacity: 0.6 }} />
 
         <p
           className="font-serif italic animate-fade-up delay-2"
           style={{
             color: "rgba(228,216,196,0.7)",
-            fontSize: "clamp(14px, 1.6vw, 18px)",
-            lineHeight: 1.8,
-            maxWidth: "340px",
-            marginBottom: "48px",
+            fontSize: "clamp(21px, 1.4vw, 16px)",
+            lineHeight: 1.75,
+            maxWidth: "300px",
+            marginBottom: "32px",
           }}
         >
           International Fashion Model · Greek Icon
@@ -81,35 +78,25 @@ export default function Hero() {
       {/* RIGHT — Her portrait */}
       <div
         style={{
-          position: "relative",
-          minHeight: "clamp(500px, 70vw, 100vh)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "clamp(32px,4vh,56px) clamp(20px,3vw,48px)",
+          backgroundColor: "#09080a",
         }}
-        className="max-lg:min-h-[60vw]"
       >
         <Image
-          src="/images/endsheet-portrait.jpg"
+          src="/images/mary-glamour-portrait.jpg"
           alt="Mary Pavlatou — Portrait"
-          fill
+          width={900}
+          height={1660}
           priority
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          style={{ objectFit: "cover", objectPosition: "center 12%" }}
-        />
-        {/* Fade left edge into the dark text panel */}
-        <div
-          className="hidden lg:block"
           style={{
-            position: "absolute",
-            top: 0, left: 0, bottom: 0,
-            width: "120px",
-            background: "linear-gradient(to right, #09080a, transparent)",
+            width: "auto",
+            height: "clamp(280px, 46vh, 520px)",
+            display: "block",
           }}
         />
-        {/* Subtle bottom fade */}
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0,
-          height: "100px",
-          background: "linear-gradient(to bottom, transparent, #09080a)",
-        }} />
       </div>
     </section>
   );

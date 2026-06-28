@@ -2,18 +2,18 @@ function SectionTitle({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-4 mb-10">
       <svg width="8" height="8" viewBox="0 0 8 8" fill="none" className="flex-shrink-0">
-        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#c9a84c" />
+        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#f5d050" />
       </svg>
       <h2
         className="font-display"
-        style={{ color: "#c9a84c", fontSize: "12px", letterSpacing: "0.35em", textTransform: "uppercase", flexShrink: 0 }}
+        style={{ color: "#f5d050", fontSize: "27px", letterSpacing: "0.35em", textTransform: "uppercase", flexShrink: 0 }}
       >
         {label}
       </h2>
       <svg width="8" height="8" viewBox="0 0 8 8" fill="none" className="flex-shrink-0">
-        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#c9a84c" />
+        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#f5d050" />
       </svg>
-      <div style={{ flex: 1, height: "1px", background: "linear-gradient(to right, #c9a84c, transparent)" }} />
+      <div style={{ flex: 1, height: "1px", background: "linear-gradient(to right, #f5d050, transparent)" }} />
     </div>
   );
 }
@@ -21,13 +21,13 @@ function SectionTitle({ label }: { label: string }) {
 function TempleIcon() {
   return (
     <svg width="48" height="40" viewBox="0 0 48 40" fill="none" style={{ opacity: 0.7 }}>
-      <polygon points="2,14 24,2 46,14" stroke="#c9a84c" strokeWidth="1.5" fill="none" />
-      <rect x="2" y="14" width="44" height="4" fill="#c9a84c" opacity="0.7" />
+      <polygon points="2,14 24,2 46,14" stroke="#f5d050" strokeWidth="1.5" fill="none" />
+      <rect x="2" y="14" width="44" height="4" fill="#f5d050" opacity="0.7" />
       {[7, 14, 21, 28, 35].map((x) => (
-        <rect key={x} x={x} y="18" width="3" height="16" fill="#c9a84c" opacity="0.6" />
+        <rect key={x} x={x} y="18" width="3" height="16" fill="#f5d050" opacity="0.6" />
       ))}
-      <rect x="0" y="34" width="48" height="3" fill="#c9a84c" opacity="0.8" />
-      <rect x="0" y="37" width="48" height="2" fill="#c9a84c" opacity="0.5" />
+      <rect x="0" y="34" width="48" height="3" fill="#f5d050" opacity="0.8" />
+      <rect x="0" y="37" width="48" height="2" fill="#f5d050" opacity="0.5" />
     </svg>
   );
 }
@@ -51,57 +51,64 @@ export default function StorySection() {
 
             <div className="flex items-center gap-6 mb-10">
               <TempleIcon />
-              <div style={{ flex: 1, height: "1px", background: "rgba(201,168,76,0.25)" }} />
+              <div style={{ flex: 1, height: "1px", background: "rgba(245,208,80,0.62)" }} />
             </div>
 
             <p
               className="font-serif"
-              style={{ color: "#d8d0bc", fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
+              style={{ color: "#d8d0bc", fontSize: "clamp(34px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
             >
-              Mary Pavlatou was a{" "}
-              <em style={{ color: "#e4c875" }}>Renaissance Woman</em> in the
-              true meaning of the word — far ahead of her time in many ways, for
-              it was a different world for women back in those years.
+              Mary Pavlatou was a trailblazing{" "}
+              <em style={{ color: "#f8e060" }}>international celebrity fashion model</em>{" "}
+              who stood at the pinnacle of postwar European style. She was the
+              first Greek woman to earn an official certified diploma as a
+              professional mannequin — a credential earned through rigorous
+              study at the{" "}
+              <span style={{ color: "#f8e060" }}>Patricia Vance School of Fashion</span>{" "}
+              in Chicago, where modeling was treated as a discipline of science,
+              art, and psychological understanding.
             </p>
 
             <p
               className="font-serif"
-              style={{ color: "#d8d0bc", fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
+              style={{ color: "#d8d0bc", fontSize: "clamp(34px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
             >
-              She was an international celebrity fashion model whose career
-              reached{" "}
-              <span style={{ color: "#e4c875" }}>
-                Athens, Paris, Milan, New York, Chicago
+              Her career carried her from{" "}
+              <span style={{ color: "#f8e060" }}>
+                Athens to Paris, Milan, New York, and Chicago
               </span>{" "}
-              and beyond — modeling fashions{" "}
+              — modeling fashions{" "}
               <em>most notably for the House of Christian Dior™</em> — as well
               as for Hubert de Givenchy, Jacques Fath, Pierre Balmain, Nina
-              Ricci and others.
+              Ricci and others. She appeared at Fifth Avenue department stores,
+              in Hollywood, and on the most prestigious runways in Greece.
             </p>
 
             <p
               className="font-serif"
-              style={{ color: "#d8d0bc", fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.85 }}
+              style={{ color: "#d8d0bc", fontSize: "clamp(34px, 2vw, 20px)", lineHeight: 1.85 }}
             >
-              Aside from modeling and fashion, she was offered the opportunity
-              of appearing in movies, on television, and on stage.
+              A Renaissance woman in every sense — she received awards in dance,
+              music, art, writing, oratory, academia, and sports. She spoke
+              several languages, earned advanced university degrees, and was
+              offered roles in film, television, and theatre.
             </p>
 
             {/* Signature music callout */}
             <div
               style={{
                 margin: "36px 0",
-                borderLeft: "2px solid #c9a84c",
+                borderLeft: "2px solid #f5d050",
                 paddingLeft: "24px",
               }}
             >
               <p
                 className="font-serif italic"
-                style={{ color: "#c9a84c", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.6 }}
+                style={{ color: "#f5d050", fontSize: "clamp(23px, 1.8vw, 18px)", lineHeight: 1.6 }}
               >
                 Her signature runway modeling music was the theme from the
                 motion picture{" "}
-                <em style={{ color: "#e4c875" }}>The Third Man</em> — a
+                <em style={{ color: "#f8e060" }}>The Third Man</em> — a
                 world-wide musical hit.
               </p>
             </div>
@@ -113,7 +120,7 @@ export default function StorySection() {
             {/* City list */}
             <div
               style={{
-                border: "1px solid rgba(201,168,76,0.25)",
+                border: "1px solid rgba(245,208,80,0.62)",
                 padding: "clamp(24px, 4vw, 40px)",
                 marginBottom: "32px",
                 position: "relative",
@@ -132,7 +139,7 @@ export default function StorySection() {
                     position: "absolute",
                     width: "16px",
                     height: "16px",
-                    borderColor: "#c9a84c",
+                    borderColor: "#f5d050",
                     borderStyle: "solid",
                     ...s,
                   }}
@@ -141,7 +148,7 @@ export default function StorySection() {
 
               <p
                 className="font-display"
-                style={{ color: "rgba(201,168,76,0.55)", fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "20px" }}
+                style={{ color: "rgba(245,208,80,0.55)", fontSize: "24px", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "20px" }}
               >
                 A Career Across Continents
               </p>
@@ -149,15 +156,15 @@ export default function StorySection() {
               <div className="flex flex-col gap-3">
                 {cities.map((city, i) => (
                   <div key={city} className="flex items-center gap-4">
-                    <div style={{ width: "6px", height: "6px", border: "1px solid #c9a84c", transform: "rotate(45deg)", flexShrink: 0 }} />
+                    <div style={{ width: "6px", height: "6px", border: "1px solid #f5d050", transform: "rotate(45deg)", flexShrink: 0 }} />
                     <span
                       className="font-serif"
-                      style={{ color: "#e4dac8", fontSize: "clamp(17px, 2vw, 22px)", letterSpacing: "0.06em" }}
+                      style={{ color: "#e4dac8", fontSize: "clamp(21px, 2vw, 22px)", letterSpacing: "0.06em" }}
                     >
                       {city}
                     </span>
                     {i < cities.length - 1 && (
-                      <div style={{ flex: 1, height: "1px", background: "rgba(201,168,76,0.15)" }} />
+                      <div style={{ flex: 1, height: "1px", background: "rgba(245,208,80,0.15)" }} />
                     )}
                   </div>
                 ))}
@@ -167,20 +174,20 @@ export default function StorySection() {
             {/* THE FIRST callout */}
             <div
               style={{
-                backgroundColor: "#c9a84c",
+                backgroundColor: "#f5d050",
                 padding: "clamp(20px, 3vw, 32px)",
                 position: "relative",
               }}
             >
               <p
                 className="font-display"
-                style={{ color: "#0a0a0a", fontSize: "9px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "12px" }}
+                style={{ color: "#0a0a0a", fontSize: "24px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "12px" }}
               >
                 A Historic First
               </p>
               <p
                 className="font-serif"
-                style={{ color: "#1a1208", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.6, fontWeight: 500 }}
+                style={{ color: "#1a1208", fontSize: "clamp(23px, 1.8vw, 18px)", lineHeight: 1.6, fontWeight: 500 }}
               >
                 She was the{" "}
                 <strong>First Greek Certified/Credentialed Professional Fashion Model</strong>,

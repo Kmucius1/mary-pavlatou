@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Cinzel, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -39,7 +42,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cinzel.variable} ${cormorant.variable}`}>
-      <body className="bg-black text-ivory antialiased">{children}</body>
+      <body className="bg-black text-ivory antialiased">
+        <Header />
+        {children}
+        <Footer />
+        <ScrollProgress />
+      </body>
     </html>
   );
 }

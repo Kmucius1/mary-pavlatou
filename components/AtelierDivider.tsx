@@ -28,7 +28,7 @@ export default function AtelierDivider() {
       }}>
         <p
           className="font-display"
-          style={{ color: "rgba(201,168,76,0.6)", fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
+          style={{ color: "rgba(245,208,80,0.6)", fontSize: "24px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
         >
           The Houses She Graced
         </p>
@@ -38,20 +38,20 @@ export default function AtelierDivider() {
             <span key={house} className="flex items-center gap-3 md:gap-5">
               <span
                 className="font-display"
-                style={{ color: "#c9a84c", fontSize: "clamp(9px, 1.1vw, 12px)", letterSpacing: "0.22em", textTransform: "uppercase" }}
+                style={{ color: "#f5d050", fontSize: "clamp(9px, 1.1vw, 12px)", letterSpacing: "0.22em", textTransform: "uppercase" }}
               >
                 {house}
               </span>
               {i < 4 && (
                 <svg width="5" height="5" viewBox="0 0 5 5" fill="none">
-                  <path d="M2.5 0 L5 2.5 L2.5 5 L0 2.5 Z" fill="rgba(201,168,76,0.4)" />
+                  <path d="M2.5 0 L5 2.5 L2.5 5 L0 2.5 Z" fill="rgba(245,208,80,0.78)" />
                 </svg>
               )}
             </span>
           ))}
         </div>
 
-        <div style={{ width: "48px", height: "1px", background: "rgba(201,168,76,0.4)", margin: "0 auto 20px" }} />
+        <div style={{ width: "48px", height: "1px", background: "rgba(245,208,80,0.78)", margin: "0 auto 20px" }} />
 
         <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
           {cities.map((city, i) => (
@@ -63,7 +63,7 @@ export default function AtelierDivider() {
                 {city}
               </span>
               {i < cities.length - 1 && (
-                <span style={{ color: "rgba(201,168,76,0.3)", fontSize: "10px" }}>·</span>
+                <span style={{ color: "rgba(245,208,80,0.68)", fontSize: "26px" }}>·</span>
               )}
             </span>
           ))}

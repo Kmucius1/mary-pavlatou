@@ -1,20 +1,20 @@
 function GoldSectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 mb-6">
-      <div style={{ height: "1px", flex: 1, background: "#c9a84c" }} />
+      <div style={{ height: "1px", flex: 1, background: "#f5d050" }} />
       <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#c9a84c" />
+        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#f5d050" />
       </svg>
       <h2
         className="font-display tracking-[0.3em] text-[11px] uppercase"
-        style={{ color: "#c9a84c" }}
+        style={{ color: "#f5d050" }}
       >
         {label}
       </h2>
       <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#c9a84c" />
+        <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="#f5d050" />
       </svg>
-      <div style={{ height: "1px", flex: 1, background: "#c9a84c" }} />
+      <div style={{ height: "1px", flex: 1, background: "#f5d050" }} />
     </div>
   );
 }
@@ -29,16 +29,16 @@ function TempleIcon() {
       className="my-4"
     >
       {/* Pediment (roof) */}
-      <polygon points="2,16 26,2 50,16" stroke="#c9a84c" strokeWidth="1.5" fill="none" />
+      <polygon points="2,16 26,2 50,16" stroke="#f5d050" strokeWidth="1.5" fill="none" />
       {/* Entablature */}
-      <rect x="2" y="16" width="48" height="4" fill="#c9a84c" opacity="0.7" />
+      <rect x="2" y="16" width="48" height="4" fill="#f5d050" opacity="0.7" />
       {/* Columns */}
       {[8, 17, 26, 35, 44].map((x) => (
-        <rect key={x} x={x} y="20" width="3" height="18" fill="#c9a84c" opacity="0.65" />
+        <rect key={x} x={x} y="20" width="3" height="18" fill="#f5d050" opacity="0.65" />
       ))}
       {/* Stylobate base */}
-      <rect x="0" y="38" width="52" height="3" fill="#c9a84c" opacity="0.8" />
-      <rect x="0" y="41" width="52" height="2" fill="#c9a84c" opacity="0.5" />
+      <rect x="0" y="38" width="52" height="3" fill="#f5d050" opacity="0.8" />
+      <rect x="0" y="41" width="52" height="2" fill="#f5d050" opacity="0.5" />
     </svg>
   );
 }
@@ -50,17 +50,17 @@ function LaurelSprig() {
         <path
           key={`l${offset}`}
           d={`M${offset},8 Q${offset + 3},3 ${offset + 7},8`}
-          stroke="#c9a84c"
+          stroke="#f5d050"
           strokeWidth="0.8"
           fill="none"
         />
       ))}
-      <line x1="27" y1="8" x2="73" y2="8" stroke="#c9a84c" strokeWidth="0.5" />
+      <line x1="27" y1="8" x2="73" y2="8" stroke="#f5d050" strokeWidth="0.5" />
       {[73, 78, 83, 88, 93].map((offset) => (
         <path
           key={`r${offset}`}
           d={`M${offset},8 Q${offset + 3},3 ${offset + 7},8`}
-          stroke="#c9a84c"
+          stroke="#f5d050"
           strokeWidth="0.8"
           fill="none"
         />
@@ -96,10 +96,10 @@ function ArchiveFrame({ label }: { label: string }) {
             height: "14px",
             ...pos,
             zIndex: 2,
-            borderTop: i < 2 ? "2px solid #c9a84c" : undefined,
-            borderBottom: i >= 2 ? "2px solid #c9a84c" : undefined,
-            borderLeft: i % 2 === 0 ? "2px solid #c9a84c" : undefined,
-            borderRight: i % 2 !== 0 ? "2px solid #c9a84c" : undefined,
+            borderTop: i < 2 ? "2px solid #f5d050" : undefined,
+            borderBottom: i >= 2 ? "2px solid #f5d050" : undefined,
+            borderLeft: i % 2 === 0 ? "2px solid #f5d050" : undefined,
+            borderRight: i % 2 !== 0 ? "2px solid #f5d050" : undefined,
           }}
         />
       ))}
@@ -112,12 +112,12 @@ function ArchiveFrame({ label }: { label: string }) {
         }}
       >
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" opacity="0.25">
-          <circle cx="14" cy="11" r="6" stroke="#c9a84c" strokeWidth="1.2" />
-          <path d="M4,26 C4,19.4 24,19.4 24,26" stroke="#c9a84c" strokeWidth="1.2" fill="none" />
+          <circle cx="14" cy="11" r="6" stroke="#f5d050" strokeWidth="1.2" />
+          <path d="M4,26 C4,19.4 24,19.4 24,26" stroke="#f5d050" strokeWidth="1.2" fill="none" />
         </svg>
         <p
           className="font-display text-[7px] tracking-[0.15em] text-center px-2"
-          style={{ color: "rgba(201,168,76,0.25)" }}
+          style={{ color: "rgba(245,208,80,0.62)" }}
         >
           {label}
         </p>
@@ -141,11 +141,11 @@ export default function MidSection() {
       className="relative"
       style={{
         backgroundColor: "#0d0d0d",
-        borderTop: "1px solid rgba(201,168,76,0.25)",
+        borderTop: "1px solid rgba(245,208,80,0.62)",
       }}
     >
       {/* Horizontal gold divider at top */}
-      <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, #c9a84c 30%, #c9a84c 70%, transparent)" }} />
+      <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, #f5d050 30%, #f5d050 70%, transparent)" }} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3">
 
@@ -154,7 +154,7 @@ export default function MidSection() {
           id="her-story"
           className="flex flex-col items-center px-8 md:px-10 py-12 text-center"
           style={{
-            borderRight: "1px solid rgba(201,168,76,0.2)",
+            borderRight: "1px solid rgba(245,208,80,0.55)",
           }}
         >
           <GoldSectionDivider label="Her Story" />
@@ -177,7 +177,7 @@ export default function MidSection() {
           id="fashion-houses"
           className="flex flex-col items-center px-8 py-12 text-center"
           style={{
-            borderRight: "1px solid rgba(201,168,76,0.2)",
+            borderRight: "1px solid rgba(245,208,80,0.55)",
           }}
         >
           <GoldSectionDivider label="Fashion Houses" />
@@ -194,7 +194,7 @@ export default function MidSection() {
                 {i < fashionHouses.length - 1 && (
                   <div className="my-2">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#c9a84c" opacity="0.6" />
+                      <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#f5d050" opacity="0.6" />
                     </svg>
                   </div>
                 )}
@@ -205,7 +205,7 @@ export default function MidSection() {
           {/* Bottom gold diamond */}
           <div className="mt-6">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#c9a84c" opacity="0.5" />
+              <path d="M5 0 L10 5 L5 10 L0 5 Z" fill="#f5d050" opacity="0.5" />
             </svg>
           </div>
         </div>
@@ -226,7 +226,7 @@ export default function MidSection() {
 
           <p
             className="font-serif italic text-[12px] text-center mt-4"
-            style={{ color: "rgba(201,168,76,0.45)" }}
+            style={{ color: "rgba(245,208,80,0.82)" }}
           >
             Photo &amp; article compilation by The Pulos Brothers
           </p>
@@ -234,7 +234,7 @@ export default function MidSection() {
       </div>
 
       {/* Bottom gold line */}
-      <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, #c9a84c 30%, #c9a84c 70%, transparent)" }} />
+      <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, #f5d050 30%, #f5d050 70%, transparent)" }} />
     </section>
   );
 }
