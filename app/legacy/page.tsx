@@ -60,21 +60,15 @@ export default function LegacyPage() {
 
           {/* Center: Main portrait */}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <div style={{
-              padding: "3px",
-              background: "linear-gradient(135deg, #E8D690 0%, #B9974D 30%, #F5E8C0 50%, #B9974D 70%, #E8D690 100%)",
-              boxShadow: "0 16px 64px rgba(0,0,0,0.5)",
-            }}>
-              <div style={{ padding: "8px", background: "#1C1814" }}>
-                <Image
-                  src="/images/book-portrait-black-outfit.png"
-                  alt="Mary Pavlatou — Colorized portrait from the family archive"
-                  width={1388}
-                  height={1838}
-                  priority
-                  style={{ width: "100%", height: "auto", maxHeight: "clamp(340px,52vh,560px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
-                />
-              </div>
+            <div style={{ overflow: "hidden", boxShadow: "0 16px 64px rgba(0,0,0,0.5)" }}>
+              <Image
+                src="/images/portrait-mary-color-gold-lapels.png"
+                alt="Mary Pavlatou — Colorized portrait from the family archive"
+                width={1388}
+                height={1838}
+                priority
+                style={{ width: "100%", height: "auto", maxHeight: "clamp(340px,52vh,560px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
+              />
             </div>
           </div>
 
@@ -125,22 +119,22 @@ export default function LegacyPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
             {[
               {
-                src: "/images/book-portrait-dedication.png",
+                src: "/images/mary-young-portrait.jpg",
                 alt: "Mary Pavlatou — Colorized portrait, smiling, black jacket and gold collar",
                 caption: "From the family archive",
               },
               {
-                src: "/images/book-portrait-veil-hat.png",
+                src: "/images/mary-veil-hat.jpg",
                 alt: "Mary Pavlatou — Portrait with veil hat and pearl necklace",
                 caption: "Blue outfit · Pearl necklace",
               },
               {
-                src: "/images/book-portrait-blue-gown-runway.png",
+                src: "/images/mary-runway-blue.jpg",
                 alt: "Mary Pavlatou — Blue ball gown on runway, colorized",
                 caption: "Live runway · Blue ball gown",
               },
               {
-                src: "/images/book-portrait-diamond-earrings.png",
+                src: "/images/mary-glamour-portrait.jpg",
                 alt: "Mary Pavlatou — Colorized portrait with diamond earrings",
                 caption: "Diamond earrings · Family archive",
               },
@@ -272,7 +266,7 @@ export default function LegacyPage() {
                 greek: "χάρη · Grace",
                 title: "She Carried Grace",
                 body: "She carried grace not as performance but as nature. Every room she entered remembered her. Every garment she wore came alive.",
-                image: "/images/book-portrait-veil-hat.png",
+                image: "/images/mary-veil-hat.jpg",
                 imageAlt: "Mary Pavlatou — Portrait in veil hat",
               },
               {
@@ -569,13 +563,13 @@ export default function LegacyPage() {
                 href: "/story",
                 label: "Her Life",
                 text: "The story of grace, discipline, and love.",
-                image: "/images/book-portrait-veil-hat.png",
+                image: "/images/mary-veil-hat.jpg",
               },
               {
                 href: "/fashion",
                 label: "Fashion World",
                 text: "The great fashion houses of Athens and beyond.",
-                image: "/images/book-portrait-blue-gown-runway.png",
+                image: "/images/mary-runway-blue.jpg",
               },
               {
                 href: "/archive",

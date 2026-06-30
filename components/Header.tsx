@@ -74,15 +74,15 @@ export default function Header() {
                 href={link.href}
                 className="font-display"
                 style={{
-                  color: isActive ? "#8A6A2F" : "#A79D8B",
+                  color: isActive ? "#6A5A30" : "#5A4A30",
                   fontSize: "9px", letterSpacing: "0.28em", textTransform: "uppercase",
                   textDecoration: "none", fontWeight: isActive ? 700 : 600,
                   borderBottom: isActive ? "1.5px solid #B9974D" : "1.5px solid transparent",
                   paddingBottom: "2px",
                   transition: "color 0.2s ease, border-color 0.2s ease",
                 }}
-                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "#8A6A2F"; }}
-                onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "#A79D8B"; }}
+                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "#6A5A30"; }}
+                onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "#5A4A30"; }}
               >
                 {link.label}
               </Link>
@@ -128,7 +128,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="font-display"
                 style={{
-                  color: isActive ? "#8A6A2F" : "#A79D8B",
+                  color: isActive ? "#6A5A30" : "#5A4A30",
                   fontSize: "10px", letterSpacing: "0.26em", textTransform: "uppercase",
                   textDecoration: "none", fontWeight: isActive ? 700 : 600,
                   padding: "14px 0",

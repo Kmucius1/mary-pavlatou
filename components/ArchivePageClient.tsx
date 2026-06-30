@@ -239,19 +239,19 @@ export default function ArchivePageClient() {
   const navCards = [
     {
       href: "/story",
-      image: "/images/book-portrait-veil-hat.png",
+      image: "/images/mary-veil-hat.jpg",
       label: "HER LIFE",
       text: "The story of grace, discipline, and love.",
     },
     {
       href: "/fashion",
-      image: "/images/book-portrait-blue-gown-runway.png",
+      image: "/images/mary-runway-blue.jpg",
       label: "FASHION WORLD",
       text: "The world she inspired on and beyond the runway.",
     },
     {
       href: "/legacy",
-      image: "/images/book-portrait-dedication.png",
+      image: "/images/mary-young-portrait.jpg",
       label: "LEGACY",
       text: "Her influence, her values, her timeless legacy.",
     },
@@ -284,7 +284,7 @@ export default function ArchivePageClient() {
             top: 0,
             width: "40%",
             height: "100%",
-            backgroundImage: "url(/images/gen-angel-marble.png)",
+            backgroundImage: "url(/images/archive-page1.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center top",
             opacity: 0.07,
@@ -450,7 +450,7 @@ export default function ArchivePageClient() {
           >
             <div style={{ position: "relative", aspectRatio: "9/16" }}>
               <Image
-                src="/images/book-portrait-diamond-earrings.png"
+                src="/images/mary-glamour-portrait.jpg"
                 alt="Mary Pavlatou — portrait with diamond earrings"
                 fill
                 priority
@@ -615,7 +615,7 @@ export default function ArchivePageClient() {
                 id: "portraits",
                 label: "Portraits",
                 subtitle: "Photographs & formal studies",
-                image: "/images/book-portrait-dedication.png",
+                image: "/images/mary-young-portrait.jpg",
                 imgAlt: "Mary Pavlatou — Colorized portrait from the family archive",
                 isOval: true,
               },
@@ -631,7 +631,7 @@ export default function ArchivePageClient() {
                 id: "fashion-shows",
                 label: "Fashion Shows",
                 subtitle: "Runway & presentations",
-                image: "/images/book-portrait-blue-gown-runway.png",
+                image: "/images/mary-runway-blue.jpg",
                 imgAlt: "Mary Pavlatou — blue gown runway portrait",
                 isOval: false,
               },
@@ -647,7 +647,7 @@ export default function ArchivePageClient() {
                 id: "family-memory",
                 label: "Family Memory",
                 subtitle: "Personal & intimate",
-                image: "/images/book-portrait-veil-hat.png",
+                image: "/images/mary-veil-hat.jpg",
                 imgAlt: "Mary Pavlatou — veil hat portrait",
                 isOval: false,
               },
@@ -1472,7 +1472,7 @@ export default function ArchivePageClient() {
                 },
                 {
                   step: "Restored Page",
-                  image: "/images/book-portrait-diamond-earrings.png",
+                  image: "/images/mary-glamour-portrait.jpg",
                   alt: "Final restored archive page — diamond earrings portrait",
                 },
               ].map((step, i, arr) => (

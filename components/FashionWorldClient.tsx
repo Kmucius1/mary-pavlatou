@@ -136,7 +136,7 @@ const featureCards = [
     body: "Her signature runway music was the theme from The Third Man — cinematic, timeless, and unforgettable. As she walked, the room fell silent.",
     cta: { label: "Enter the Archive", href: "/archive" },
     images: [
-      { src: "/images/book-portrait-blue-gown-runway.png", alt: "Mary Pavlatou in blue ball gown on live runway — colorized archival photograph", w: 1388, h: 1838, rot: 0 },
+      { src: "/images/mary-runway-blue.jpg", alt: "Mary Pavlatou in blue ball gown on live runway — colorized archival photograph", w: 1388, h: 1838, rot: 0 },
     ],
   },
   {
@@ -144,7 +144,7 @@ const featureCards = [
     body: "At the Patricia Vance School of Fashion in Chicago, Mary trained as the first Greek to earn international certification. For her, the mannequin was not an instrument — she was an artist.",
     cta: { label: "About Her Training", href: "/story#chicago" },
     images: [
-      { src: "/images/book-portrait-veil-hat.png", alt: "Mary Pavlatou — Portrait with veil hat, from the family archive", w: 1388, h: 1838, rot: -3 },
+      { src: "/images/mary-veil-hat.jpg", alt: "Mary Pavlatou — Portrait with veil hat, from the family archive", w: 1388, h: 1838, rot: -3 },
       { src: "/images/book-clipping-evening-gown.png", alt: "Mary Pavlatou modeling an evening gown in the American style", w: 1388, h: 1838, rot: 4 },
     ],
   },
@@ -165,7 +165,7 @@ export default function FashionWorldClient() {
         {/* Left watermark — atelier */}
         <div aria-hidden="true" style={{
           position: "absolute", left: "-40px", top: 0, bottom: 0, width: "300px",
-          opacity: 0.07, backgroundImage: "url('/images/gen-couture-atelier.png')",
+          opacity: 0.07, backgroundImage: "url('/images/mary-runway-white.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
           maskImage: "linear-gradient(to right, black, transparent)",
           WebkitMaskImage: "linear-gradient(to right, black, transparent)",
@@ -174,7 +174,7 @@ export default function FashionWorldClient() {
         {/* Right watermark — vanity/tower */}
         <div aria-hidden="true" style={{
           position: "absolute", right: "-20px", top: 0, bottom: 0, width: "260px",
-          opacity: 0.07, backgroundImage: "url('/images/hf-vanity.jpg')",
+          opacity: 0.07, backgroundImage: "url('/images/mary-social-event.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
           maskImage: "linear-gradient(to left, black, transparent)",
           WebkitMaskImage: "linear-gradient(to left, black, transparent)",
@@ -219,37 +219,16 @@ export default function FashionWorldClient() {
             </Link>
           </div>
 
-          {/* Center: framed portrait */}
+          {/* Center: portrait */}
           <div className="animate-fade-in delay-2 max-lg:order-first" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
-            <div style={{
-              padding: "12px",
-              background: "linear-gradient(135deg, #D8C882 0%, #8B7030 25%, #F5E8A0 50%, #8B7030 75%, #D8C882 100%)",
-              boxShadow: "0 6px 40px rgba(139,112,48,0.2), inset 0 0 0 1px rgba(255,255,255,0.25)",
-              position: "relative",
-            }}>
-              {(["tl","tr","bl","br"] as const).map((c) => (
-                <div key={c} aria-hidden="true" style={{
-                  position: "absolute",
-                  top: c.startsWith("t") ? "4px" : undefined,
-                  bottom: c.startsWith("b") ? "4px" : undefined,
-                  left: c.endsWith("l") ? "4px" : undefined,
-                  right: c.endsWith("r") ? "4px" : undefined,
-                  width: "18px", height: "18px",
-                  borderTop: c.startsWith("t") ? "1.5px solid rgba(255,255,255,0.5)" : "none",
-                  borderBottom: c.startsWith("b") ? "1.5px solid rgba(255,255,255,0.5)" : "none",
-                  borderLeft: c.endsWith("l") ? "1.5px solid rgba(255,255,255,0.5)" : "none",
-                  borderRight: c.endsWith("r") ? "1.5px solid rgba(255,255,255,0.5)" : "none",
-                }} />
-              ))}
-              <div style={{ background: "#EDE8D8", overflow: "hidden", maxWidth: "320px" }}>
-                <Image
-                  src="/images/book-portrait-blue-gown-runway.png"
-                  alt="Mary Pavlatou — Live runway presentation in blue ball gown, colorized"
-                  width={1388} height={1838}
-                  priority
-                  style={{ width: "100%", height: "auto", maxHeight: "clamp(300px,46vh,500px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
-                />
-              </div>
+            <div style={{ overflow: "hidden", maxWidth: "320px", boxShadow: "0 6px 40px rgba(139,112,48,0.18)" }}>
+              <Image
+                src="/images/mary-runway-blue.jpg"
+                alt="Mary Pavlatou — Live runway presentation in blue ball gown, colorized"
+                width={1388} height={1838}
+                priority
+                style={{ width: "100%", height: "auto", maxHeight: "clamp(300px,46vh,500px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
+              />
             </div>
             <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", letterSpacing: "0.04em" }}>
               Mary Pavlatou · Fashion Presentation · Athens

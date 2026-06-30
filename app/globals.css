@@ -336,8 +336,8 @@ body {
 .max-reading  { max-width: 680px; }
 .max-wide     { max-width: 1200px; margin-left: auto; margin-right: auto; }
 .gold-rule    { height: 1px; background: linear-gradient(90deg, transparent, #C5A84A, transparent); }
-.font-display { font-family: var(--font-display); font-weight: 600; }
-.font-serif   { font-family: var(--font-serif); }
+.font-display { font-family: var(--font-display); font-weight: 700; }
+.font-serif   { font-family: var(--font-serif); font-weight: 500; }
 
 /* ── Readability boost: lift very dim gold text ── */
 [style*="rgba(245,208,80,0.1"],

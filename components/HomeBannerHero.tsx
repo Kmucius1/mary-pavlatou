@@ -64,7 +64,7 @@ export default function HomeBannerHero() {
           aria-hidden="true"
           style={{
             position: "absolute", left: 0, top: 0, bottom: 0, width: "35%",
-            backgroundImage: "url('/images/gen-angel-marble.png')",
+            backgroundImage: "url('/images/mary-veil-hat.jpg')",
             backgroundSize: "cover", backgroundPosition: "center top",
             opacity: 0.07,
             maskImage: "linear-gradient(to right, black 20%, transparent 100%)",

@@ -169,7 +169,7 @@ export default function HomeFeatureStrip() {
               <p
                 className="font-serif"
                 style={{
-                  color: "#6E665A",
+                  color: "#3D3328",
                   fontSize: "clamp(12px,1.1vw,13.5px)",
                   lineHeight: 1.65,
                 }}

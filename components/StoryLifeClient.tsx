@@ -28,7 +28,7 @@ const chapters: Chapter[] = [
     imageLeft: false,
     images: [
       { src: "/images/book-clipping-etam-miss-mary.png", alt: "Miss Mary Pavlatou — ETAM press clipping, Apogevmatini newspaper", w: 1388, h: 1838, rot: -3 },
-      { src: "/images/book-portrait-dedication.png", alt: "Mary Pavlatou — Colorized portrait from the family archive dedication page", w: 1388, h: 1838, rot: 4, dx: 60, dy: 30 },
+      { src: "/images/mary-young-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait from the family archive dedication page", w: 1388, h: 1838, rot: 4, dx: 60, dy: 30 },
     ],
   },
   {
@@ -40,7 +40,7 @@ const chapters: Chapter[] = [
     cta: { label: "Explore Her Heritage", href: "/archive" },
     imageLeft: true,
     images: [
-      { src: "/images/book-portrait-veil-hat.png", alt: "Mary Pavlatou — Portrait with veil hat and pearl necklace, from the family archive", w: 1388, h: 1838 },
+      { src: "/images/mary-veil-hat.jpg", alt: "Mary Pavlatou — Portrait with veil hat and pearl necklace, from the family archive", w: 1388, h: 1838 },
     ],
     extras: "quality-cards",
   },
@@ -54,7 +54,7 @@ const chapters: Chapter[] = [
     imageLeft: false,
     images: [
       { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival newspaper clipping", w: 1388, h: 1838, rot: -2 },
-      { src: "/images/book-portrait-dedication.png", alt: "Mary Pavlatou — Colorized portrait, family archive", w: 1388, h: 1838, rot: 3, dx: 55, dy: 40 },
+      { src: "/images/mary-young-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait, family archive", w: 1388, h: 1838, rot: 3, dx: 55, dy: 40 },
     ],
   },
   {
@@ -66,7 +66,7 @@ const chapters: Chapter[] = [
     cta: { label: "Her Archive", href: "/archive" },
     imageLeft: true,
     images: [
-      { src: "/images/book-portrait-veil-hat.png", alt: "Mary Pavlatou — Portrait with veil hat, from the family archive", w: 1388, h: 1838 },
+      { src: "/images/mary-veil-hat.jpg", alt: "Mary Pavlatou — Portrait with veil hat, from the family archive", w: 1388, h: 1838 },
     ],
   },
   {
@@ -90,7 +90,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
     images: [
-      { src: "/images/book-portrait-blue-gown-runway.png", alt: "Mary Pavlatou — Blue ball gown on runway, colorized archival photograph", w: 1388, h: 1838 },
+      { src: "/images/mary-runway-blue.jpg", alt: "Mary Pavlatou — Blue ball gown on runway, colorized archival photograph", w: 1388, h: 1838 },
     ],
   },
   {
@@ -115,7 +115,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
     images: [
-      { src: "/images/book-portrait-blue-gown-runway.png", alt: "Mary Pavlatou — Blue ball gown on runway, colorized", w: 1388, h: 1838 },
+      { src: "/images/mary-runway-blue.jpg", alt: "Mary Pavlatou — Blue ball gown on runway, colorized", w: 1388, h: 1838 },
     ],
   },
   {
@@ -139,7 +139,7 @@ const chapters: Chapter[] = [
     cta: { label: "Legacy", href: "/legacy" },
     imageLeft: true,
     images: [
-      { src: "/images/book-portrait-diamond-earrings.png", alt: "Mary Pavlatou — Colorized portrait with diamond earrings, from the family archive", w: 1388, h: 1838 },
+      { src: "/images/mary-glamour-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait with diamond earrings, from the family archive", w: 1388, h: 1838 },
     ],
   },
   {
@@ -151,7 +151,7 @@ const chapters: Chapter[] = [
     cta: { label: "Enter the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-portrait-diamond-earrings.png", alt: "Mary Pavlatou — Colorized portrait with diamond earrings", w: 1388, h: 1838, rot: -2 },
+      { src: "/images/mary-glamour-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait with diamond earrings", w: 1388, h: 1838, rot: -2 },
       { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival clipping", w: 1388, h: 1838, rot: 3, dx: 55, dy: 50 },
     ],
   },
@@ -267,7 +267,7 @@ export default function StoryLifeClient() {
       }}>
         <div aria-hidden="true" style={{
           position: "absolute", left: "-60px", top: 0, bottom: 0, width: "360px",
-          opacity: 0.07, backgroundImage: "url('/images/gen-angel-marble.png')",
+          opacity: 0.07, backgroundImage: "url('/images/archive-page1.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
           maskImage: "linear-gradient(to right, black 0%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to right, black 0%, transparent 100%)",
@@ -315,7 +315,7 @@ export default function StoryLifeClient() {
               ))}
               <div style={{ background: "#EDE8D8", overflow: "hidden", maxWidth: "320px" }}>
                 <Image
-                  src="/images/book-portrait-dedication.png"
+                  src="/images/mary-young-portrait.jpg"
                   alt="Mary Pavlatou — Colorized portrait from the family archive dedication page"
                   width={1388}
                   height={1838}

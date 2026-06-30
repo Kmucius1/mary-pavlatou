@@ -11,8 +11,8 @@ export default function TempleSection() {
       }}
     >
       <Image
-        src="/images/hf-temple.jpg"
-        alt="Ancient Greek temple at dusk"
+        src="/images/mary-glamour-portrait.jpg"
+        alt="Mary Pavlatou — Glamour portrait, colorized from the family archive"
         fill
         sizes="100vw"
         style={{ objectFit: "cover", objectPosition: "center" }}

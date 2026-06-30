@@ -6,8 +6,8 @@ export default function AtelierDivider() {
   return (
     <section style={{ position: "relative", height: "clamp(340px, 50vw, 580px)", overflow: "hidden" }}>
       <Image
-        src="/images/hf-atelier.jpg"
-        alt="1950s Parisian haute couture fashion house"
+        src="/images/mary-runway-white.jpg"
+        alt="Mary Pavlatou — Colorized runway presentation in white gown"
         fill
         sizes="100vw"
         style={{ objectFit: "cover", objectPosition: "center 30%" }}

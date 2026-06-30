@@ -28,7 +28,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "Read Her Story",
     ctaHref: "/story",
     images: [
-      { src: "/images/book-portrait-dedication.png", alt: "Mary Pavlatou — Colorized portrait, family archive", mode: "portrait", caption: "From the family archive" },
+      { src: "/images/mary-young-portrait.jpg", alt: "Mary Pavlatou — Colorized young portrait, family archive", mode: "portrait", caption: "From the family archive" },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "World of Fashion",
     ctaHref: "/fashion",
     images: [
-      { src: "/images/book-portrait-veil-hat.png", alt: "Mary Pavlatou — Portrait with veil hat, from the family archive", mode: "portrait", caption: "Mary Pavlatou · Preserved from the family archive" },
+      { src: "/images/mary-veil-hat.jpg", alt: "Mary Pavlatou — Colorized close-up portrait with veil hat and pearl necklace", mode: "portrait", caption: "Mary Pavlatou · Preserved from the family archive" },
     ],
   },
   {
@@ -67,7 +67,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "Explore This Chapter",
     ctaHref: "/fashion",
     images: [
-      { src: "/images/book-portrait-blue-gown-runway.png", alt: "Mary Pavlatou — Blue ball gown on runway, colorized archival photograph", mode: "full-body", caption: "Mary Pavlatou · Live runway presentation · Colorized by Mary James" },
+      { src: "/images/mary-runway-blue.jpg", alt: "Mary Pavlatou — Blue ball gown on runway, colorized archival photograph", mode: "full-body", caption: "Mary Pavlatou · Live runway presentation · Colorized by Mary James" },
     ],
   },
   {
@@ -80,7 +80,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "Enter the Archive",
     ctaHref: "/archive",
     images: [
-      { src: "/images/gen-greek-legacy.png", alt: "A serene Greek memorial — marble colonnade at golden dusk", mode: "portrait", caption: "In her eternal memory" },
+      { src: "/images/mary-glamour-portrait.jpg", alt: "Mary Pavlatou — Glamour portrait, colorized from the family archive", mode: "portrait", caption: "In her eternal memory" },
     ],
   },
 ];
