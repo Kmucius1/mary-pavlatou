@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,7 +27,7 @@ const chapters: Chapter[] = [
     cta: { label: "View Archive Sources", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-etam-miss-mary.png", alt: "Miss Mary Pavlatou — ETAM press clipping, Apogevmatini newspaper", w: 1388, h: 1838, rot: -3, dx: 0, dy: 0 },
+      { src: "/images/book-clipping-etam-miss-mary.png", alt: "Miss Mary Pavlatou — ETAM press clipping, Apogevmatini newspaper", w: 1388, h: 1838, rot: -3 },
       { src: "/images/book-portrait-dedication.png", alt: "Mary Pavlatou — Colorized portrait from the family archive dedication page", w: 1388, h: 1838, rot: 4, dx: 60, dy: 30 },
     ],
   },
@@ -53,7 +53,7 @@ const chapters: Chapter[] = [
     cta: { label: "View the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival newspaper clipping", w: 1388, h: 1838, rot: -2, dx: 0, dy: 10 },
+      { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival newspaper clipping", w: 1388, h: 1838, rot: -2 },
       { src: "/images/book-portrait-dedication.png", alt: "Mary Pavlatou — Colorized portrait, family archive", w: 1388, h: 1838, rot: 3, dx: 55, dy: 40 },
     ],
   },
@@ -102,7 +102,7 @@ const chapters: Chapter[] = [
     cta: { label: "View Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-mohair-coat.png", alt: "Mary Pavlatou presenting an elegant mohair coat — press clipping", w: 1388, h: 1838, rot: 2, dx: 0, dy: 0 },
+      { src: "/images/book-clipping-mohair-coat.png", alt: "Mary Pavlatou presenting an elegant mohair coat — press clipping", w: 1388, h: 1838, rot: 2 },
       { src: "/images/book-clipping-hat-mary.png", alt: "Μανεκέν Μαίρη Παυλάτου — Rose Valois hat model at Archontaki-Kallergi salon", w: 1388, h: 1838, rot: -3, dx: 50, dy: 45 },
     ],
   },
@@ -151,13 +151,13 @@ const chapters: Chapter[] = [
     cta: { label: "Enter the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-portrait-diamond-earrings.png", alt: "Mary Pavlatou — Colorized portrait with diamond earrings", w: 1388, h: 1838, rot: -2, dx: 0, dy: 0 },
+      { src: "/images/book-portrait-diamond-earrings.png", alt: "Mary Pavlatou — Colorized portrait with diamond earrings", w: 1388, h: 1838, rot: -2 },
       { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival clipping", w: 1388, h: 1838, rot: 3, dx: 55, dy: 50 },
     ],
   },
 ];
 
-// ─── Ornamental divider ─────────────────────────────────────────────────────
+// ─── Helpers ────────────────────────────────────────────────────────────────
 
 function OrnamentDivider() {
   return (
@@ -171,25 +171,21 @@ function OrnamentDivider() {
   );
 }
 
-// ─── Image collage ──────────────────────────────────────────────────────────
-
 function PhotoFrame({ img, maxH, style }: {
   img: Chapter["images"][number];
   maxH: string;
   style?: React.CSSProperties;
 }) {
   return (
-    <div
-      style={{
-        border: "6px solid #F0EBD9",
-        outline: "1px solid #C5A84A",
-        boxShadow: "0 4px 20px rgba(139,112,48,0.16)",
-        background: "#EDE8D8",
-        transform: `rotate(${img.rot ?? 0}deg)`,
-        display: "inline-block",
-        ...style,
-      }}
-    >
+    <div style={{
+      border: "6px solid #F0EBD9",
+      outline: "1px solid #C5A84A",
+      boxShadow: "0 4px 20px rgba(139,112,48,0.16)",
+      background: "#EDE8D8",
+      transform: `rotate(${img.rot ?? 0}deg)`,
+      display: "inline-block",
+      ...style,
+    }}>
       <Image
         src={img.src}
         alt={img.alt}
@@ -214,91 +210,51 @@ function ChapterCollage({ images }: { images: Chapter["images"] }) {
   if (images.length === 1) {
     return (
       <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
-        <PhotoFrame img={images[0]} maxH="280px" style={{ maxWidth: "180px" }} />
+        <PhotoFrame img={images[0]} maxH="300px" style={{ maxWidth: "200px" }} />
       </div>
     );
   }
-
-  // Two-image stacked collage — fully contained, no absolute overflow
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        // padding creates room for the front photo to overlap without escaping the column
-        paddingBottom: "36px",
-        paddingRight: "28px",
-      }}
-    >
-      {/* Back photo */}
-      <PhotoFrame
-        img={images[0]}
-        maxH="200px"
-        style={{ width: "120px", position: "relative", zIndex: 1 }}
-      />
-      {/* Front photo — anchored bottom-right of the container */}
-      <div
-        style={{
-          position: "absolute",
-          right: 0,
-          bottom: 0,
-          zIndex: 2,
-        }}
-      >
-        <PhotoFrame img={images[1]} maxH="180px" style={{ width: "110px" }} />
+    <div style={{ position: "relative", width: "100%", paddingBottom: "36px", paddingRight: "28px" }}>
+      <PhotoFrame img={images[0]} maxH="220px" style={{ width: "130px", position: "relative", zIndex: 1 }} />
+      <div style={{ position: "absolute", right: 0, bottom: 0, zIndex: 2 }}>
+        <PhotoFrame img={images[1]} maxH="195px" style={{ width: "120px" }} />
       </div>
     </div>
   );
 }
 
-// ─── Quality cards (Chapter II) ─────────────────────────────────────────────
-
 const qualityCards = [
-  {
-    label: "Heritage",
-    text: "Greek by blood and by heart",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M10 2L12.5 7H18L13.5 10.5L15 16L10 13L5 16L6.5 10.5L2 7H7.5Z" stroke="#8B7030" strokeWidth="1.2" fill="none" />
-      </svg>
-    ),
-  },
-  {
-    label: "Faith",
-    text: "Guided by values and tradition",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <line x1="10" y1="2" x2="10" y2="18" stroke="#8B7030" strokeWidth="1.3" />
-        <line x1="4" y1="7" x2="16" y2="7" stroke="#8B7030" strokeWidth="1.3" />
-      </svg>
-    ),
-  },
-  {
-    label: "Family",
-    text: "The heart of her world",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <ellipse cx="10" cy="6" rx="3.5" ry="4.5" stroke="#8B7030" strokeWidth="1.2" />
-        <path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#8B7030" strokeWidth="1.2" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    label: "Grace",
-    text: "A way of life, not just beauty",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M10 3C10 3 6 7 6 11C6 13.2 7.8 15 10 15C12.2 15 14 13.2 14 11C14 7 10 3 10 3Z" stroke="#8B7030" strokeWidth="1.2" fill="none" />
-        <line x1="10" y1="15" x2="10" y2="18" stroke="#8B7030" strokeWidth="1.2" />
-        <line x1="7" y1="17" x2="13" y2="17" stroke="#8B7030" strokeWidth="1.2" />
-      </svg>
-    ),
-  },
+  { label: "Heritage", text: "Greek by blood and by heart", icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2L12.5 7H18L13.5 10.5L15 16L10 13L5 16L6.5 10.5L2 7H7.5Z" stroke="#8B7030" strokeWidth="1.2" fill="none" /></svg> },
+  { label: "Faith", text: "Guided by values and tradition", icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="18" stroke="#8B7030" strokeWidth="1.3" /><line x1="4" y1="7" x2="16" y2="7" stroke="#8B7030" strokeWidth="1.3" /></svg> },
+  { label: "Family", text: "The heart of her world", icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><ellipse cx="10" cy="6" rx="3.5" ry="4.5" stroke="#8B7030" strokeWidth="1.2" /><path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#8B7030" strokeWidth="1.2" strokeLinecap="round" /></svg> },
+  { label: "Grace", text: "A way of life, not just beauty", icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3C10 3 6 7 6 11C6 13.2 7.8 15 10 15C12.2 15 14 13.2 14 11C14 7 10 3 10 3Z" stroke="#8B7030" strokeWidth="1.2" fill="none" /><line x1="10" y1="15" x2="10" y2="18" stroke="#8B7030" strokeWidth="1.2" /><line x1="7" y1="17" x2="13" y2="17" stroke="#8B7030" strokeWidth="1.2" /></svg> },
 ];
 
-// ─── Chapter section ────────────────────────────────────────────────────────
+// ─── Main ───────────────────────────────────────────────────────────────────
 
-function ChapterSection({ chapter }: { chapter: Chapter }) {
+export default function StoryLifeClient() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const transitioning = useRef(false);
+
+  function goTo(i: number) {
+    if (i === activeIdx || transitioning.current) return;
+    transitioning.current = true;
+    setVisible(false);
+    setTimeout(() => {
+      setActiveIdx(i);
+      setVisible(true);
+      transitioning.current = false;
+    }, 240);
+  }
+
+  function prev() { goTo((activeIdx - 1 + chapters.length) % chapters.length); }
+  function next() { goTo((activeIdx + 1) % chapters.length); }
+
+  const chapter = chapters[activeIdx];
+  const isImageLeft = chapter.imageLeft;
+
   const textBlock = (
     <div style={{ flex: "1 1 0", minWidth: 0 }}>
       <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "12px" }}>
@@ -307,7 +263,7 @@ function ChapterSection({ chapter }: { chapter: Chapter }) {
       <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15, marginBottom: "6px" }}>
         {chapter.title}
       </h2>
-      <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(16px,1.6vw,20px)", marginBottom: "0" }}>
+      <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(16px,1.6vw,20px)", marginBottom: 0 }}>
         {chapter.greek}
       </p>
       <OrnamentDivider />
@@ -350,83 +306,22 @@ function ChapterSection({ chapter }: { chapter: Chapter }) {
   );
 
   const imageBlock = (
-    <div style={{ flexShrink: 0, minWidth: 0, overflow: "hidden" }}>
+    <div style={{ flexShrink: 0, minWidth: 0, overflow: "visible" }}>
       <ChapterCollage images={chapter.images} />
     </div>
   );
 
   return (
-    <section
-      id={chapter.id}
-      style={{
-        padding: "clamp(52px,7vh,80px) clamp(32px,4vw,56px)",
-        borderBottom: "1px solid #E0D8C8",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: chapter.imageLeft
-            ? "clamp(160px,20vw,240px) 1fr"
-            : "1fr clamp(160px,20vw,240px)",
-          gap: "clamp(32px,4vw,56px)",
-          alignItems: "flex-start",
-        }}
-        className="max-md:!block"
-      >
-        {chapter.imageLeft ? (
-          <>{imageBlock}{textBlock}</>
-        ) : (
-          <>{textBlock}{imageBlock}</>
-        )}
-      </div>
-    </section>
-  );
-}
-
-// ─── Main component ─────────────────────────────────────────────────────────
-
-export default function StoryLifeClient() {
-  const [activeId, setActiveId] = useState("names");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveId(entry.target.id);
-        });
-      },
-      { threshold: 0.25, rootMargin: "-80px 0px -55% 0px" }
-    );
-    chapters.forEach((ch) => {
-      const el = document.getElementById(ch.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  function scrollTo(id: string) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  return (
     <main style={{ backgroundColor: "#F0EBD9", overflowX: "hidden" }}>
 
       {/* ── Hero ── */}
-      <section
-        style={{
-          background: "linear-gradient(135deg, #F5F1E6 0%, #F0EBD9 50%, #EDE8D8 100%)",
-          padding: "clamp(60px,8vh,100px) clamp(32px,6vw,88px)",
-          borderBottom: "1px solid #D0C4A0",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Faint column watermark */}
+      <section style={{
+        background: "linear-gradient(135deg, #F5F1E6 0%, #F0EBD9 50%, #EDE8D8 100%)",
+        padding: "clamp(60px,8vh,100px) clamp(32px,6vw,88px)",
+        borderBottom: "1px solid #D0C4A0",
+        position: "relative",
+        overflow: "hidden",
+      }}>
         <div aria-hidden="true" style={{
           position: "absolute", left: "-60px", top: 0, bottom: 0, width: "360px",
           opacity: 0.07, backgroundImage: "url('/images/gen-angel-marble.png')",
@@ -438,11 +333,9 @@ export default function StoryLifeClient() {
 
         <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", display: "grid", gridTemplateColumns: "2fr 2.5fr 1.5fr", gap: "clamp(28px,4vw,56px)", alignItems: "center" }} className="max-lg:grid-cols-1">
 
-          {/* Left: title + description */}
+          {/* Left: title */}
           <div className="animate-fade-in">
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "9px", letterSpacing: "0.46em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px" }}>
-              Her Life
-            </p>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "9px", letterSpacing: "0.46em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px" }}>Her Life</p>
             <h1 className="font-display" style={{ color: "#8B7030", fontSize: "clamp(28px,4.5vw,58px)", letterSpacing: "0.14em", fontWeight: 700, lineHeight: 1.05, marginBottom: "10px" }}>
               Η Ζωη της Μαριας
             </h1>
@@ -455,7 +348,7 @@ export default function StoryLifeClient() {
             </p>
           </div>
 
-          {/* Center: framed portrait */}
+          {/* Center: portrait */}
           <div className="animate-fade-in delay-2 max-lg:order-first" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
             <div style={{
               padding: "12px",
@@ -463,7 +356,6 @@ export default function StoryLifeClient() {
               boxShadow: "0 6px 40px rgba(139,112,48,0.22), inset 0 0 0 1px rgba(255,255,255,0.28)",
               position: "relative",
             }}>
-              {/* Art deco corner accents */}
               {(["tl","tr","bl","br"] as const).map((c) => (
                 <div key={c} aria-hidden="true" style={{
                   position: "absolute",
@@ -512,110 +404,136 @@ export default function StoryLifeClient() {
       {/* ── Greek key strip ── */}
       <div aria-hidden="true" style={{ height: "10px", background: "repeating-linear-gradient(90deg, rgba(139,112,48,0.35) 0px, rgba(139,112,48,0.35) 2px, transparent 2px, transparent 7px)", borderBottom: "1px solid #D0C4A0" }} />
 
-      {/* ── Mobile chapter scroll (outside the flex layout to avoid width conflict) ── */}
-      <div className="lg:hidden" style={{ background: "#EDE8D8", borderBottom: "1px solid #D0C4A0", padding: "12px clamp(20px,5vw,40px)", overflowX: "auto", display: "flex", gap: "0", width: "100%" }}>
-        {chapters.map((ch) => {
-          const isActive = activeId === ch.id;
+      {/* ── Roman numeral chapter strip ── */}
+      <div style={{ background: "#EDE8D8", borderBottom: "1px solid #D0C4A0", padding: "0 clamp(20px,5vw,48px)", overflowX: "auto", display: "flex", gap: 0, width: "100%" }}>
+        {chapters.map((ch, i) => {
+          const isActive = activeIdx === i;
           return (
-            <button key={ch.id} onClick={() => scrollTo(ch.id)} className="font-display" style={{
-              background: "none", border: "none", cursor: "pointer", padding: "6px 14px",
-              color: isActive ? "#8B7030" : "#A09080", fontSize: "8px",
-              letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: isActive ? 700 : 500,
-              whiteSpace: "nowrap", borderBottom: isActive ? "2px solid #8B7030" : "2px solid transparent",
-              transition: "all 0.2s ease",
-            }}>
+            <button
+              key={ch.id}
+              onClick={() => goTo(i)}
+              className="font-display"
+              style={{
+                background: "none", border: "none", cursor: "pointer",
+                padding: "14px 16px",
+                color: isActive ? "#8B7030" : "#A09080",
+                fontSize: "8px", letterSpacing: "0.18em", textTransform: "uppercase",
+                fontWeight: isActive ? 700 : 500,
+                whiteSpace: "nowrap",
+                borderBottom: isActive ? "2px solid #8B7030" : "2px solid transparent",
+                transition: "all 0.2s ease",
+              }}
+            >
               {ch.roman}
             </button>
           );
         })}
       </div>
 
-      {/* ── Two-column: sidebar + chapters ── */}
-      <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "flex-start" }}>
+      {/* ── Single chapter view ── */}
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "clamp(48px,6vh,80px) clamp(28px,5vw,64px)" }}>
 
-        {/* Sticky sidebar */}
-        <aside
-          style={{
-            width: "240px",
-            flexShrink: 0,
-            position: "sticky",
-            top: "68px",
-            maxHeight: "calc(100vh - 68px)",
-            overflowY: "auto",
-            borderRight: "1px solid #E0D8C8",
-            padding: "32px 0 40px",
-          }}
-          className="hidden lg:block"
-        >
-          <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, padding: "0 24px 16px", borderBottom: "1px solid #E0D8C8", marginBottom: "8px" }}>
-            Chapters
+        {/* Fade-in chapter card */}
+        <div style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(10px)",
+          transition: "opacity 0.24s ease, transform 0.24s ease",
+        }}>
+          <div
+            style={{
+              background: "linear-gradient(145deg, #F8F4EA 0%, #EFE5CC 100%)",
+              border: "1px solid #D8C48E",
+              borderRadius: "6px",
+              boxShadow: "0 4px 32px rgba(139,106,47,0.10), 0 1px 4px rgba(139,106,47,0.08)",
+              padding: "clamp(32px,4vw,56px)",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: isImageLeft
+                  ? "clamp(180px,22vw,260px) 1fr"
+                  : "1fr clamp(180px,22vw,260px)",
+                gap: "clamp(32px,4vw,60px)",
+                alignItems: "flex-start",
+              }}
+              className="max-md:!block"
+            >
+              {isImageLeft ? <>{imageBlock}{textBlock}</> : <>{textBlock}{imageBlock}</>}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Prev / Next nav ── */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "clamp(28px,3vh,40px)" }}>
+
+          {/* Prev */}
+          <button
+            onClick={prev}
+            aria-label="Previous chapter"
+            style={{
+              display: "flex", alignItems: "center", gap: "12px",
+              background: "none", border: "none", cursor: "pointer",
+              color: "#8B7030", padding: "8px 0",
+              opacity: activeIdx === 0 ? 0.35 : 1,
+              transition: "opacity 0.2s ease",
+            }}
+            disabled={activeIdx === 0}
+          >
+            <div style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid #B9974D", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <svg width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                <path d="M13 4H1M5 1L1 4L5 7" stroke="currentColor" strokeWidth="1.2" />
+              </svg>
+            </div>
+            <span className="font-display" style={{ fontSize: "8px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }} aria-hidden="true">
+              {activeIdx > 0 ? chapters[activeIdx - 1].title : ""}
+            </span>
+          </button>
+
+          {/* Counter */}
+          <p className="font-display" style={{ color: "#A09080", fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+            {chapter.roman} <span style={{ color: "#D8C48E", margin: "0 6px" }}>·</span> {activeIdx + 1} of {chapters.length}
           </p>
 
-          {chapters.map((ch) => {
-            const isActive = activeId === ch.id;
-            return (
-              <button
-                key={ch.id}
-                onClick={() => scrollTo(ch.id)}
-                style={{
-                  width: "100%", background: isActive ? "#8B7030" : "transparent",
-                  border: "none", cursor: "pointer", textAlign: "left",
-                  padding: "10px 24px", display: "flex", alignItems: "center", gap: "12px",
-                  transition: "background 0.2s ease",
-                }}
-              >
-                <div style={{
-                  width: "24px", height: "24px", borderRadius: "50%", flexShrink: 0,
-                  background: isActive ? "rgba(255,255,255,0.2)" : "transparent",
-                  border: `1px solid ${isActive ? "rgba(255,255,255,0.4)" : "#C5A84A"}`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "8px", fontFamily: "var(--font-cinzel)", fontWeight: 700,
-                  color: isActive ? "#F5F1E6" : "#8B7030",
-                  letterSpacing: "0.05em",
-                }}>
-                  {ch.roman}
-                </div>
-                <span className="font-display" style={{
-                  color: isActive ? "#F5F1E6" : "#4A3C2A",
-                  fontSize: "10px", letterSpacing: "0.06em", fontWeight: isActive ? 700 : 500,
-                  lineHeight: 1.35, transition: "color 0.2s ease",
-                }}>
-                  {ch.title}
-                </span>
-              </button>
-            );
-          })}
-
-          {/* Archive card */}
-          <div style={{ margin: "20px 16px 0", border: "1px solid #C5A84A", padding: "16px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <rect x="1" y="4" width="14" height="10" rx="1" stroke="#8B7030" strokeWidth="1.1" />
-                <path d="M1 4 Q8 2 15 4" stroke="#8B7030" strokeWidth="1.1" />
-                <line x1="4" y1="8" x2="12" y2="8" stroke="#8B7030" strokeWidth="0.9" opacity="0.7" />
-                <line x1="4" y1="10.5" x2="12" y2="10.5" stroke="#8B7030" strokeWidth="0.9" opacity="0.7" />
+          {/* Next */}
+          <button
+            onClick={next}
+            aria-label="Next chapter"
+            style={{
+              display: "flex", alignItems: "center", gap: "12px",
+              background: "none", border: "none", cursor: "pointer",
+              color: "#8B7030", padding: "8px 0",
+              opacity: activeIdx === chapters.length - 1 ? 0.35 : 1,
+              transition: "opacity 0.2s ease",
+            }}
+            disabled={activeIdx === chapters.length - 1}
+          >
+            <span className="font-display" style={{ fontSize: "8px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700, textAlign: "right" }} aria-hidden="true">
+              {activeIdx < chapters.length - 1 ? chapters[activeIdx + 1].title : ""}
+            </span>
+            <div style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid #B9974D", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <svg width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+                <path d="M1 4H13M9 1L13 4L9 7" stroke="currentColor" strokeWidth="1.2" />
               </svg>
-              <p className="font-display" style={{ color: "#8B7030", fontSize: "7px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700 }}>View Related Archive</p>
             </div>
-            <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "11px", lineHeight: 1.65, marginBottom: "12px" }}>
+          </button>
+        </div>
+
+        {/* Archive card */}
+        <div style={{ marginTop: "clamp(32px,4vh,48px)", border: "1px solid #C5A84A", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }} className="max-sm:flex-col max-sm:items-start">
+          <div>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "7px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700, marginBottom: "6px" }}>View Related Archive</p>
+            <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "13px", lineHeight: 1.65 }}>
               Explore the original clippings, articles, and notes that tell Mary&rsquo;s story.
             </p>
-            <Link href="/archive" className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.26em", textTransform: "uppercase", textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: "8px" }}>
-              Archive
-              <svg width="14" height="5" viewBox="0 0 14 5" fill="none" aria-hidden="true">
-                <path d="M0 2.5H12M9 1L12 2.5L9 4" stroke="currentColor" strokeWidth="1" />
-              </svg>
-            </Link>
           </div>
-        </aside>
-
-
-
-        {/* Chapter content */}
-        <div style={{ flex: 1, minWidth: 0 }}>
-          {chapters.map((ch) => (
-            <ChapterSection key={ch.id} chapter={ch} />
-          ))}
+          <Link href="/archive" className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.26em", textTransform: "uppercase", textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+            Archive
+            <svg width="14" height="5" viewBox="0 0 14 5" fill="none" aria-hidden="true">
+              <path d="M0 2.5H12M9 1L12 2.5L9 4" stroke="currentColor" strokeWidth="1" />
+            </svg>
+          </Link>
         </div>
       </div>
     </main>
