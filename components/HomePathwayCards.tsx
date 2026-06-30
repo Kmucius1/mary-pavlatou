@@ -27,17 +27,6 @@ const cards = [
     alt: "Greek couture atelier — Mediterranean fashion world",
   },
   {
-    href: "/gallery",
-    label: "Gallery",
-    copy: "Photographs, portraits, clippings, and moments captured in time.",
-    cta: "View the Gallery",
-    img: "/images/gen-greek-gallery.png",
-    imgW: 1536,
-    imgH: 2048,
-    imgPos: "center top",
-    alt: "Greek villa gallery — portrait room",
-  },
-  {
     href: "/archive",
     label: "The Archive",
     copy: "Original clippings, translations, notes, and the preserved book of her life.",

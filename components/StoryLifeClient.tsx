@@ -253,63 +253,6 @@ export default function StoryLifeClient() {
   function next() { goTo((activeIdx + 1) % chapters.length); }
 
   const chapter = chapters[activeIdx];
-  const isImageLeft = chapter.imageLeft;
-
-  const textBlock = (
-    <div style={{ flex: "1 1 0", minWidth: 0 }}>
-      <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "12px" }}>
-        Chapter {chapter.roman}
-      </p>
-      <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15, marginBottom: "6px" }}>
-        {chapter.title}
-      </h2>
-      <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(16px,1.6vw,20px)", marginBottom: 0 }}>
-        {chapter.greek}
-      </p>
-      <OrnamentDivider />
-      <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.35vw,17px)", lineHeight: 1.95, marginBottom: "24px", maxWidth: "480px" }}>
-        {chapter.body}
-      </p>
-
-      {chapter.extras === "quality-cards" && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "12px", marginBottom: "28px" }} className="max-sm:grid-cols-2">
-          {qualityCards.map((card) => (
-            <div key={card.label} style={{ textAlign: "center", padding: "14px 8px" }}>
-              <div style={{ marginBottom: "8px", display: "flex", justifyContent: "center" }}>{card.icon}</div>
-              <p className="font-display" style={{ color: "#1C1814", fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 700, marginBottom: "4px" }}>{card.label}</p>
-              <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "12px", lineHeight: 1.6 }}>{card.text}</p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <Link
-        href={chapter.cta.href}
-        className="font-display"
-        style={{
-          display: "inline-flex", alignItems: "center", gap: "12px",
-          color: "#8B7030", border: "1px solid #8B7030",
-          padding: "11px 22px",
-          fontSize: "8px", letterSpacing: "0.3em", textTransform: "uppercase",
-          fontWeight: 700, textDecoration: "none",
-          transition: "background 0.22s ease, color 0.22s ease",
-        }}
-        onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
-        onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#8B7030"; }}
-      >
-        {chapter.cta.label}
-        <svg width="18" height="6" viewBox="0 0 18 6" fill="none" aria-hidden="true">
-          <path d="M0 3H15.5M12 1L15.5 3L12 5" stroke="currentColor" strokeWidth="1" />
-        </svg>
-      </Link>
-    </div>
-  );
-
-  const imageBlock = (
-    <div style={{ flexShrink: 0, minWidth: 0, overflow: "visible" }}>
-      <ChapterCollage images={chapter.images} />
-    </div>
-  );
 
   return (
     <main style={{ backgroundColor: "#F0EBD9", overflowX: "hidden" }}>
@@ -439,28 +382,69 @@ export default function StoryLifeClient() {
           transform: visible ? "translateY(0)" : "translateY(10px)",
           transition: "opacity 0.24s ease, transform 0.24s ease",
         }}>
-          <div
-            style={{
-              background: "linear-gradient(145deg, #F8F4EA 0%, #EFE5CC 100%)",
-              border: "1px solid #D8C48E",
-              borderRadius: "6px",
-              boxShadow: "0 4px 32px rgba(139,106,47,0.10), 0 1px 4px rgba(139,106,47,0.08)",
-              padding: "clamp(32px,4vw,56px)",
-              overflow: "hidden",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: isImageLeft
-                  ? "clamp(180px,22vw,260px) 1fr"
-                  : "1fr clamp(180px,22vw,260px)",
-                gap: "clamp(32px,4vw,60px)",
-                alignItems: "flex-start",
-              }}
-              className="max-md:!block"
-            >
-              {isImageLeft ? <>{imageBlock}{textBlock}</> : <>{textBlock}{imageBlock}</>}
+          <div style={{
+            background: "linear-gradient(145deg, #F8F4EA 0%, #EFE5CC 100%)",
+            border: "1px solid #D8C48E",
+            borderRadius: "6px",
+            boxShadow: "0 4px 32px rgba(139,106,47,0.10), 0 1px 4px rgba(139,106,47,0.08)",
+            padding: "clamp(32px,4vw,56px)",
+            overflow: "hidden",
+            display: "flex",
+            gap: "clamp(32px,4vw,60px)",
+            alignItems: "flex-start",
+          }}>
+            {/* Text — always left, always wide */}
+            <div style={{ flex: "1 1 0", minWidth: 0 }}>
+              <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "12px" }}>
+                Chapter {chapter.roman}
+              </p>
+              <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15, marginBottom: "6px" }}>
+                {chapter.title}
+              </h2>
+              <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(16px,1.6vw,20px)", marginBottom: 0 }}>
+                {chapter.greek}
+              </p>
+              <OrnamentDivider />
+              <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.35vw,17px)", lineHeight: 1.95, marginBottom: "24px" }}>
+                {chapter.body}
+              </p>
+
+              {chapter.extras === "quality-cards" && (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "12px", marginBottom: "28px" }} className="max-sm:grid-cols-2">
+                  {qualityCards.map((card) => (
+                    <div key={card.label} style={{ textAlign: "center", padding: "14px 8px" }}>
+                      <div style={{ marginBottom: "8px", display: "flex", justifyContent: "center" }}>{card.icon}</div>
+                      <p className="font-display" style={{ color: "#1C1814", fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 700, marginBottom: "4px" }}>{card.label}</p>
+                      <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "12px", lineHeight: 1.6 }}>{card.text}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <Link
+                href={chapter.cta.href}
+                className="font-display"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "12px",
+                  color: "#8B7030", border: "1px solid #8B7030",
+                  padding: "11px 22px",
+                  fontSize: "8px", letterSpacing: "0.3em", textTransform: "uppercase",
+                  fontWeight: 700, textDecoration: "none",
+                  transition: "background 0.22s ease, color 0.22s ease",
+                }}
+                onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
+                onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#8B7030"; }}
+              >
+                {chapter.cta.label}
+                <svg width="18" height="6" viewBox="0 0 18 6" fill="none" aria-hidden="true">
+                  <path d="M0 3H15.5M12 1L15.5 3L12 5" stroke="currentColor" strokeWidth="1" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Image — always right, fixed width, contained */}
+            <div style={{ flexShrink: 0, width: "clamp(160px,18vw,220px)", overflow: "hidden" }}>
+              <ChapterCollage images={chapter.images} />
             </div>
           </div>
         </div>
