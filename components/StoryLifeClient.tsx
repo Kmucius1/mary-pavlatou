@@ -54,7 +54,7 @@ const chapters: Chapter[] = [
     imageLeft: false,
     images: [
       { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival newspaper clipping", w: 1388, h: 1838, rot: -2 },
-      { src: "/images/mary-young-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait, family archive", w: 1388, h: 1838, rot: 3, dx: 55, dy: 40 },
+      { src: "/images/Screenshot 2026-06-29 at 6.34.48 PM.png", alt: "Mary Pavlatou — Colorized portrait with pearl necklace and flower hat, family archive", w: 960, h: 1200, rot: 3, dx: 55, dy: 40 },
     ],
   },
   {
@@ -66,7 +66,7 @@ const chapters: Chapter[] = [
     cta: { label: "Her Archive", href: "/archive" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-veil-hat.jpg", alt: "Mary Pavlatou — Portrait with veil hat, from the family archive", w: 1388, h: 1838 },
+      { src: "/images/mary-white-gown.jpg", alt: "Mary Pavlatou — Full-length colorized portrait in white tiered gown, family archive", w: 800, h: 1388 },
     ],
   },
   {
@@ -115,7 +115,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-runway-blue.jpg", alt: "Mary Pavlatou — Blue ball gown on runway, colorized", w: 1388, h: 1838 },
+      { src: "/images/Screenshot 2026-06-29 at 6.33.23 PM.png", alt: "Mary Pavlatou — Colorized glamour portrait with rhinestone earrings, family archive", w: 960, h: 1200 },
     ],
   },
   {
@@ -151,8 +151,8 @@ const chapters: Chapter[] = [
     cta: { label: "Enter the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-glamour-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait with diamond earrings", w: 1388, h: 1838, rot: -2 },
-      { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival clipping", w: 1388, h: 1838, rot: 3, dx: 55, dy: 50 },
+      { src: "/images/portrait-mary-color-gold-lapels.png", alt: "Mary Pavlatou — Colorized portrait with gold lapels, family archive", w: 1388, h: 1838, rot: -2 },
+      { src: "/images/book-clipping-fur-coat.png", alt: "Mary Pavlatou presenting a fur coat — archival press clipping", w: 1388, h: 1838, rot: 3, dx: 55, dy: 50 },
     ],
   },
 ];
