@@ -259,143 +259,102 @@ export default function StoryLifeClient() {
 
       {/* ── Hero ── */}
       <section style={{
-        position: "relative",
-        minHeight: "clamp(520px,90vh,920px)",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        minHeight: "clamp(500px,85vh,860px)",
+        borderBottom: "1px solid #D0C4A0",
         overflow: "hidden",
-        backgroundColor: "#1C1814",
-      }}>
-        {/* Full-bleed background: runway white gown photo */}
-        <Image
-          src="/images/mary-runway-white.jpg"
-          alt="Mary Pavlatou — Colorized runway photograph in white embroidered gown, Athens"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "65% center" }}
-        />
+      }} className="max-lg:!grid-cols-1">
 
-        {/* Gradient: dense dark on left, opens up on right */}
+        {/* Left: warm cream text panel */}
         <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(20,16,12,0.97) 0%, rgba(20,16,12,0.94) 28%, rgba(20,16,12,0.72) 50%, rgba(20,16,12,0.22) 72%, rgba(20,16,12,0.04) 100%)",
-        }} />
-        {/* Top/bottom vignette */}
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, transparent 18%, transparent 78%, rgba(20,16,12,0.70) 100%)",
-          pointerEvents: "none",
-        }} />
-
-        {/* Decorative thin vertical gold rule left of photo */}
-        <div style={{
-          position: "absolute", top: "12%", bottom: "12%", left: "50%",
-          width: "1px",
-          background: "linear-gradient(to bottom, transparent, rgba(197,168,74,0.35) 30%, rgba(197,168,74,0.35) 70%, transparent)",
-          pointerEvents: "none",
-        }} className="hidden lg:block" />
-
-        {/* Content */}
-        <div style={{
-          position: "relative", zIndex: 10,
-          maxWidth: "1200px", margin: "0 auto",
-          padding: "clamp(72px,11vh,130px) clamp(32px,6vw,88px)",
+          background: "linear-gradient(160deg, #F5F1E6 0%, #EDE8D8 100%)",
           display: "flex", flexDirection: "column", justifyContent: "center",
-          minHeight: "clamp(520px,90vh,920px)",
+          padding: "clamp(56px,8vw,100px) clamp(36px,5vw,72px)",
+          position: "relative",
+          borderRight: "1px solid #D8C48E",
         }}>
-          <div style={{ maxWidth: "clamp(320px,46vw,560px)" }}>
+          {/* Subtle corner ornament top-left */}
+          <svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ position: "absolute", top: "28px", left: "28px", opacity: 0.4 }}>
+            <path d="M2 2 L2 18 M2 2 L18 2" stroke="#B9974D" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+          <svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ position: "absolute", bottom: "28px", right: "28px", opacity: 0.4 }}>
+            <path d="M38 38 L38 22 M38 38 L22 38" stroke="#B9974D" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
 
-            {/* Eyebrow */}
-            <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "32px" }}>
-              <div style={{ width: "28px", height: "1px", background: "#C5A84A" }} />
-              <p className="font-display" style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.52em", textTransform: "uppercase", fontWeight: 700 }}>
-                Her Life · Memorial Archive
-              </p>
-            </div>
+          {/* Eyebrow */}
+          <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.52em", textTransform: "uppercase", fontWeight: 700, marginBottom: "24px" }}>
+            Her Life · Η Ζωή της
+          </p>
 
-            {/* Title — two-line stacked */}
-            <h1 className="font-display" style={{
-              color: "#F5F0E8",
-              fontSize: "clamp(46px,7.5vw,96px)",
-              letterSpacing: "0.06em",
-              fontWeight: 700,
-              lineHeight: 0.95,
-              marginBottom: "4px",
-            }}>
-              Η Ζωή
-            </h1>
-            <h1 className="font-display" style={{
-              color: "#C5A84A",
-              fontSize: "clamp(46px,7.5vw,96px)",
-              letterSpacing: "0.06em",
-              fontWeight: 700,
-              lineHeight: 0.95,
-              marginBottom: "0",
-            }}>
-              της Μαρίας
-            </h1>
+          {/* Title */}
+          <h1 className="font-display" style={{
+            color: "#6A4F1E",
+            fontSize: "clamp(38px,5.5vw,72px)",
+            letterSpacing: "0.10em",
+            fontWeight: 700,
+            lineHeight: 1.05,
+            marginBottom: "24px",
+          }}>
+            Η Ζωή<br />της Μαρίας
+          </h1>
 
-            {/* Gold accent line */}
-            <div style={{
-              display: "flex", alignItems: "center", gap: "12px",
-              margin: "28px 0 30px",
-            }}>
-              <div style={{ width: "56px", height: "1px", background: "linear-gradient(to right, #C5A84A, transparent)" }} />
-              <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
-                <rect x="1" y="1" width="6" height="6" stroke="#C5A84A" strokeWidth="0.8" transform="rotate(45 4 4)" />
-              </svg>
-              <div style={{ width: "28px", height: "1px", background: "rgba(197,168,74,0.4)" }} />
-            </div>
+          {/* Divider */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "26px" }}>
+            <div style={{ width: "44px", height: "1px", background: "#B9974D" }} />
+            <svg width="7" height="7" viewBox="0 0 7 7" fill="none" aria-hidden="true">
+              <rect x="0.5" y="0.5" width="6" height="6" stroke="#B9974D" strokeWidth="0.8" transform="rotate(45 3.5 3.5)" />
+            </svg>
+            <div style={{ width: "20px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
+          </div>
 
-            {/* Body */}
-            <p className="font-serif" style={{
-              color: "rgba(245,240,232,0.86)",
-              fontSize: "clamp(16px,1.7vw,20px)",
-              lineHeight: 1.82,
-              fontWeight: 500,
-              marginBottom: "32px",
-            }}>
-              A life of grace, discipline, intelligence, and love — from a Greek heritage to the world&rsquo;s greatest fashion houses.
+          {/* Body */}
+          <p className="font-serif" style={{
+            color: "#2A2018",
+            fontSize: "clamp(16px,1.6vw,19px)",
+            lineHeight: 1.85,
+            fontWeight: 500,
+            marginBottom: "28px",
+          }}>
+            A life of grace, discipline, intelligence, and love — from a Greek heritage to the world&rsquo;s greatest fashion houses.
+          </p>
+
+          {/* Quote */}
+          <div style={{ borderLeft: "2px solid rgba(185,151,77,0.5)", paddingLeft: "20px", marginBottom: "36px" }}>
+            <p className="font-serif italic" style={{ color: "#5A4A30", fontSize: "clamp(13px,1.2vw,15px)", lineHeight: 1.9, marginBottom: "8px" }}>
+              &ldquo;My dream is to become one of the world&rsquo;s finest mannequins and, one day, to create a good family.&rdquo;
             </p>
+            <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.28em", textTransform: "uppercase" }}>— Mary Pavlatou</p>
+          </div>
 
-            {/* Pull quote */}
-            <div style={{
-              borderLeft: "2px solid rgba(197,168,74,0.55)",
-              paddingLeft: "22px",
-              marginBottom: "44px",
-            }}>
-              <p className="font-serif italic" style={{
-                color: "rgba(245,240,232,0.65)",
-                fontSize: "clamp(13px,1.25vw,15px)",
-                lineHeight: 1.9,
-                marginBottom: "10px",
-              }}>
-                &ldquo;My dream is to become one of the world&rsquo;s finest mannequins and, one day, to create a good family.&rdquo;
-              </p>
-              <p className="font-display" style={{ color: "rgba(197,168,74,0.75)", fontSize: "8px", letterSpacing: "0.30em", textTransform: "uppercase" }}>
-                — Mary Pavlatou
-              </p>
-            </div>
-
-            {/* Scroll indicator */}
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <p className="font-display" style={{ color: "rgba(245,240,232,0.38)", fontSize: "7.5px", letterSpacing: "0.42em", textTransform: "uppercase" }}>
-                Scroll to her story
-              </p>
-              <svg width="22" height="8" viewBox="0 0 22 8" fill="none" aria-hidden="true">
-                <path d="M0 4H20M16.5 1.5L20 4L16.5 6.5" stroke="rgba(197,168,74,0.4)" strokeWidth="0.9" />
-              </svg>
-            </div>
-
+          {/* Subtle scroll nudge */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <p className="font-display" style={{ color: "rgba(107,90,60,0.55)", fontSize: "7.5px", letterSpacing: "0.40em", textTransform: "uppercase" }}>
+              Scroll to her story
+            </p>
+            <svg width="20" height="7" viewBox="0 0 20 7" fill="none" aria-hidden="true">
+              <path d="M0 3.5H18M14.5 1L18 3.5L14.5 6" stroke="rgba(185,151,77,0.5)" strokeWidth="0.9" />
+            </svg>
           </div>
         </div>
 
-        {/* Bottom-right photo credit */}
-        <p className="font-serif italic" style={{
-          position: "absolute", bottom: "22px", right: "clamp(24px,4vw,52px)", zIndex: 10,
-          color: "rgba(245,240,232,0.35)", fontSize: "10px", letterSpacing: "0.03em",
-        }}>
-          Mary Pavlatou · Athens · Colorized from the family archive
-        </p>
+        {/* Right: atmospheric ballroom image */}
+        <div style={{ position: "relative", minHeight: "clamp(380px,60vh,860px)" }}>
+          <Image
+            src="/images/story-hero-ballroom.png"
+            alt="Atmospheric 1950s Athenian ballroom — marble columns, candlelight, silk and couture"
+            fill
+            priority
+            sizes="50vw"
+            style={{ objectFit: "cover", objectPosition: "center center" }}
+          />
+          {/* Subtle left-edge fade to blend with the panel border */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to right, rgba(237,232,216,0.18) 0%, transparent 12%)",
+            pointerEvents: "none",
+          }} />
+        </div>
       </section>
 
       {/* ── Greek key strip ── */}
