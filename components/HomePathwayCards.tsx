@@ -37,6 +37,17 @@ const cards = [
     imgPos: "center center",
     alt: "Greek archive library — parchment and columns",
   },
+  {
+    href: "/legacy",
+    label: "Legacy",
+    copy: "The memory her sons kept alive, and the story returned to the light.",
+    cta: "View Her Legacy",
+    img: "/images/gen-greek-gallery.png",
+    imgW: 1536,
+    imgH: 2048,
+    imgPos: "center top",
+    alt: "Greek marble gallery — a lasting legacy",
+  },
 ];
 
 export default function HomePathwayCards() {
