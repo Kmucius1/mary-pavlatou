@@ -512,6 +512,24 @@ export default function StoryLifeClient() {
       {/* ── Greek key strip ── */}
       <div aria-hidden="true" style={{ height: "10px", background: "repeating-linear-gradient(90deg, rgba(139,112,48,0.35) 0px, rgba(139,112,48,0.35) 2px, transparent 2px, transparent 7px)", borderBottom: "1px solid #D0C4A0" }} />
 
+      {/* ── Mobile chapter scroll (outside the flex layout to avoid width conflict) ── */}
+      <div className="lg:hidden" style={{ background: "#EDE8D8", borderBottom: "1px solid #D0C4A0", padding: "12px clamp(20px,5vw,40px)", overflowX: "auto", display: "flex", gap: "0", width: "100%" }}>
+        {chapters.map((ch) => {
+          const isActive = activeId === ch.id;
+          return (
+            <button key={ch.id} onClick={() => scrollTo(ch.id)} className="font-display" style={{
+              background: "none", border: "none", cursor: "pointer", padding: "6px 14px",
+              color: isActive ? "#8B7030" : "#A09080", fontSize: "8px",
+              letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: isActive ? 700 : 500,
+              whiteSpace: "nowrap", borderBottom: isActive ? "2px solid #8B7030" : "2px solid transparent",
+              transition: "all 0.2s ease",
+            }}>
+              {ch.roman}
+            </button>
+          );
+        })}
+      </div>
+
       {/* ── Two-column: sidebar + chapters ── */}
       <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "flex-start" }}>
 
@@ -591,23 +609,7 @@ export default function StoryLifeClient() {
           </div>
         </aside>
 
-        {/* Mobile chapter scroll indicator */}
-        <div className="lg:hidden" style={{ background: "#EDE8D8", borderBottom: "1px solid #D0C4A0", padding: "12px clamp(20px,5vw,40px)", overflowX: "auto", display: "flex", gap: "0", flexShrink: 0, width: "100%" }}>
-          {chapters.map((ch) => {
-            const isActive = activeId === ch.id;
-            return (
-              <button key={ch.id} onClick={() => scrollTo(ch.id)} className="font-display" style={{
-                background: "none", border: "none", cursor: "pointer", padding: "6px 14px",
-                color: isActive ? "#8B7030" : "#A09080", fontSize: "8px",
-                letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: isActive ? 700 : 500,
-                whiteSpace: "nowrap", borderBottom: isActive ? "2px solid #8B7030" : "2px solid transparent",
-                transition: "all 0.2s ease",
-              }}>
-                {ch.roman}
-              </button>
-            );
-          })}
-        </div>
+
 
         {/* Chapter content */}
         <div style={{ flex: 1, minWidth: 0 }}>
