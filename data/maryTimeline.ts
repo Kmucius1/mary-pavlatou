@@ -54,7 +54,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "View Archive",
     ctaHref: "/archive",
     images: [
-      { src: "/images/book-clipping-etam-miss-mary.png", alt: "Miss Mary Pavlatou — ETAM press clipping, Apogevmatini newspaper", mode: "clipping", caption: "From the Apogevmatini · Original Greek press" },
+      { src: "/images/mary-runway-white.jpg", alt: "Mary Pavlatou — Colorized runway photograph in white embroidered gown, Athens salons", mode: "full-body", caption: "Mary Pavlatou · Athens · Colorized from the family archive" },
     ],
   },
   {
