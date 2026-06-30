@@ -80,7 +80,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "Enter the Archive",
     ctaHref: "/archive",
     images: [
-      { src: "/images/mary-glamour-portrait.jpg", alt: "Mary Pavlatou — Glamour portrait, from the family archive", mode: "portrait", caption: "From the family archive" },
+      { src: "/images/gen-greek-legacy.png", alt: "A serene Greek memorial — marble colonnade at golden dusk", mode: "portrait", caption: "In her eternal memory" },
     ],
   },
 ];
