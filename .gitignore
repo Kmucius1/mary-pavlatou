@@ -28,3 +28,9 @@ yarn-error.log*
 *.psd
 *.ai
 MikeCover SC.jpg
+
+# Raw PDF extraction artifacts (not served by the app)
+pdf-extract/
+
+# Screenshots (not part of the site)
+public/images/Screenshot*
