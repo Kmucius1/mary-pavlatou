@@ -6,7 +6,7 @@ function SectionTitle({ label }: { label: string }) {
       </svg>
       <h2
         className="font-display"
-        style={{ color: "#f5d050", fontSize: "27px", letterSpacing: "0.35em", textTransform: "uppercase", flexShrink: 0 }}
+        style={{ color: "#f5d050", fontSize: "12px", letterSpacing: "0.35em", textTransform: "uppercase", flexShrink: 0 }}
       >
         {label}
       </h2>
@@ -56,7 +56,7 @@ export default function StorySection() {
 
             <p
               className="font-serif"
-              style={{ color: "#d8d0bc", fontSize: "clamp(34px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
+              style={{ color: "#d8d0bc", fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
             >
               Mary Pavlatou was a trailblazing{" "}
               <em style={{ color: "#f8e060" }}>international celebrity fashion model</em>{" "}
@@ -71,7 +71,7 @@ export default function StorySection() {
 
             <p
               className="font-serif"
-              style={{ color: "#d8d0bc", fontSize: "clamp(34px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
+              style={{ color: "#d8d0bc", fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.85, marginBottom: "28px" }}
             >
               Her career carried her from{" "}
               <span style={{ color: "#f8e060" }}>
@@ -86,7 +86,7 @@ export default function StorySection() {
 
             <p
               className="font-serif"
-              style={{ color: "#d8d0bc", fontSize: "clamp(34px, 2vw, 20px)", lineHeight: 1.85 }}
+              style={{ color: "#d8d0bc", fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.85 }}
             >
               A Renaissance woman in every sense — she received awards in dance,
               music, art, writing, oratory, academia, and sports. She spoke
@@ -104,7 +104,7 @@ export default function StorySection() {
             >
               <p
                 className="font-serif italic"
-                style={{ color: "#f5d050", fontSize: "clamp(23px, 1.8vw, 18px)", lineHeight: 1.6 }}
+                style={{ color: "#f5d050", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.6 }}
               >
                 Her signature runway modeling music was the theme from the
                 motion picture{" "}
@@ -148,7 +148,7 @@ export default function StorySection() {
 
               <p
                 className="font-display"
-                style={{ color: "rgba(245,208,80,0.55)", fontSize: "24px", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "20px" }}
+                style={{ color: "rgba(245,208,80,0.55)", fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "20px" }}
               >
                 A Career Across Continents
               </p>
@@ -159,7 +159,7 @@ export default function StorySection() {
                     <div style={{ width: "6px", height: "6px", border: "1px solid #f5d050", transform: "rotate(45deg)", flexShrink: 0 }} />
                     <span
                       className="font-serif"
-                      style={{ color: "#e4dac8", fontSize: "clamp(21px, 2vw, 22px)", letterSpacing: "0.06em" }}
+                      style={{ color: "#e4dac8", fontSize: "clamp(13px, 2vw, 22px)", letterSpacing: "0.06em" }}
                     >
                       {city}
                     </span>
@@ -181,13 +181,13 @@ export default function StorySection() {
             >
               <p
                 className="font-display"
-                style={{ color: "#0a0a0a", fontSize: "24px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "12px" }}
+                style={{ color: "#0a0a0a", fontSize: "9px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "12px" }}
               >
                 A Historic First
               </p>
               <p
                 className="font-serif"
-                style={{ color: "#1a1208", fontSize: "clamp(23px, 1.8vw, 18px)", lineHeight: 1.6, fontWeight: 500 }}
+                style={{ color: "#1a1208", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.6, fontWeight: 500 }}
               >
                 She was the{" "}
                 <strong>First Greek Certified/Credentialed Professional Fashion Model</strong>,

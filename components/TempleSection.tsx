@@ -36,7 +36,7 @@ export default function TempleSection() {
           className="font-serif italic"
           style={{
             color: "rgba(245,240,228,0.9)",
-            fontSize: "clamp(34px, 2.2vw, 26px)",
+            fontSize: "clamp(16px, 2.2vw, 26px)",
             textAlign: "center",
             maxWidth: "600px",
             lineHeight: 1.7,
@@ -50,7 +50,7 @@ export default function TempleSection() {
           className="font-display"
           style={{
             color: "rgba(245,208,80,0.5)",
-            fontSize: "28px",
+            fontSize: "8px",
             letterSpacing: "0.4em",
             textTransform: "uppercase",
             marginTop: "14px",

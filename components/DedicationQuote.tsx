@@ -5,11 +5,11 @@ export default function DedicationQuote() {
     <section
       style={{
         position: "relative",
-        backgroundColor: "#08080a",
+        backgroundColor: "#EDE8D8",
       }}
     >
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #f5d050 30%, #f5d050 70%, transparent)", zIndex: 20 }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #f5d050 30%, #f5d050 70%, transparent)", zIndex: 20 }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #C5A84A 30%, #C5A84A 70%, transparent)", zIndex: 20 }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, #C5A84A 30%, #C5A84A 70%, transparent)", zIndex: 20 }} />
 
       <div
         style={{
@@ -26,7 +26,7 @@ export default function DedicationQuote() {
             alignItems: "center",
             justifyContent: "center",
             padding: "clamp(24px,4vw,48px)",
-            backgroundColor: "#08080a",
+            backgroundColor: "#EDE8D8",
           }}
         >
           <Image
@@ -51,22 +51,22 @@ export default function DedicationQuote() {
             flexDirection: "column",
             justifyContent: "center",
             padding: "clamp(36px, 5vw, 64px) clamp(24px, 5vw, 64px)",
-            backgroundColor: "#08080a",
+            backgroundColor: "#EDE8D8",
           }}
         >
           <div className="flex items-center gap-4 mb-6">
-            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to right, transparent, #f5d050)" }} />
+            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to right, transparent, #C5A84A)" }} />
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z" fill="#f5d050" opacity="0.8" />
+              <path d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z" fill="#8B7030" opacity="0.8" />
             </svg>
-            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to left, transparent, #f5d050)" }} />
+            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to left, transparent, #C5A84A)" }} />
           </div>
 
           <p
             className="font-display animate-fade-in"
             style={{
-              color: "rgba(245,208,80,0.55)",
-              fontSize: "24px",
+              color: "#8B7030",
+              fontSize: "9px",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
               marginBottom: "16px",
@@ -78,8 +78,8 @@ export default function DedicationQuote() {
           <blockquote
             className="font-serif italic animate-fade-in delay-2"
             style={{
-              color: "#f5d050",
-              fontSize: "clamp(34px, 2.2vw, 26px)",
+              color: "#8B7030",
+              fontSize: "clamp(16px, 2.2vw, 26px)",
               lineHeight: 1.6,
               margin: "0 0 16px",
               fontWeight: 400,
@@ -92,8 +92,8 @@ export default function DedicationQuote() {
           <p
             className="font-serif animate-fade-in delay-3"
             style={{
-              color: "#c0b89e",
-              fontSize: "clamp(21px, 1.5vw, 15px)",
+              color: "#4A3C2A",
+              fontSize: "clamp(13px, 1.5vw, 15px)",
               lineHeight: 1.8,
               marginBottom: "20px",
             }}
@@ -106,8 +106,8 @@ export default function DedicationQuote() {
           <p
             className="font-display animate-fade-in delay-4"
             style={{
-              color: "rgba(245,208,80,0.5)",
-              fontSize: "24px",
+              color: "#8B7030",
+              fontSize: "9px",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
             }}
@@ -116,11 +116,11 @@ export default function DedicationQuote() {
           </p>
 
           <div className="flex items-center gap-4 mt-6">
-            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to right, transparent, #f5d050)" }} />
+            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to right, transparent, #C5A84A)" }} />
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z" fill="#f5d050" opacity="0.8" />
+              <path d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z" fill="#8B7030" opacity="0.8" />
             </svg>
-            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to left, transparent, #f5d050)" }} />
+            <div style={{ flex: 1, maxWidth: "60px", height: "1px", background: "linear-gradient(to left, transparent, #C5A84A)" }} />
           </div>
         </div>
       </div>

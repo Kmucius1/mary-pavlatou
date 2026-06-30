@@ -103,7 +103,7 @@ export default function PreservedMemory() {
             </svg>
             <h2
               className="font-display"
-              style={{ color: "#6b5520", fontSize: "27px", letterSpacing: "0.35em", textTransform: "uppercase" }}
+              style={{ color: "#6b5520", fontSize: "12px", letterSpacing: "0.35em", textTransform: "uppercase" }}
             >
               Preserved in Memory
             </h2>
@@ -148,14 +148,14 @@ export default function PreservedMemory() {
 
               <h3
                 className="font-display"
-                style={{ color: "#6b5520", fontSize: "26px", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "14px" }}
+                style={{ color: "#6b5520", fontSize: "11px", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "14px" }}
               >
                 {note.heading}
               </h3>
 
               <p
                 className="font-serif"
-                style={{ color: "#2c1e0e", fontSize: "clamp(36px, 1.5vw, 16px)", lineHeight: 1.8 }}
+                style={{ color: "#2c1e0e", fontSize: "clamp(14px, 1.5vw, 16px)", lineHeight: 1.8 }}
               >
                 {note.body}
               </p>

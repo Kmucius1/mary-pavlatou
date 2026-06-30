@@ -51,7 +51,7 @@ export default function SafeImage({ src, alt, mode, width, height, caption, prio
         <figcaption
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "24px",
+            fontSize: "9px",
             letterSpacing: "0.35em",
             textTransform: "uppercase",
             color: "rgba(245,208,80,0.82)",

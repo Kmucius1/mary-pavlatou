@@ -82,7 +82,7 @@ export default function BookFeature() {
           {/* Label below */}
           <p
             className="font-display text-center mt-4"
-            style={{ color: "rgba(245,208,80,0.82)", fontSize: "24px", letterSpacing: "0.25em", textTransform: "uppercase" }}
+            style={{ color: "rgba(245,208,80,0.82)", fontSize: "9px", letterSpacing: "0.25em", textTransform: "uppercase" }}
           >
             The Memorial Archive — Print Edition
           </p>
@@ -92,14 +92,14 @@ export default function BookFeature() {
         <div className="animate-fade-up delay-2">
           <p
             className="font-display"
-            style={{ color: "rgba(245,208,80,0.55)", fontSize: "26px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "16px" }}
+            style={{ color: "rgba(245,208,80,0.55)", fontSize: "11px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "16px" }}
           >
             The Archive
           </p>
 
           <h2
             className="font-display"
-            style={{ color: "#f5d050", fontSize: "clamp(36px, 3.5vw, 40px)", letterSpacing: "0.05em", lineHeight: 1.2, marginBottom: "28px" }}
+            style={{ color: "#f5d050", fontSize: "clamp(14px, 3.5vw, 40px)", letterSpacing: "0.05em", lineHeight: 1.2, marginBottom: "28px" }}
           >
             Mary Pavlatou
             <br />
@@ -110,7 +110,7 @@ export default function BookFeature() {
 
           <p
             className="font-serif"
-            style={{ color: "#d0c8b4", fontSize: "clamp(23px, 1.8vw, 18px)", lineHeight: 1.8, marginBottom: "28px" }}
+            style={{ color: "#d0c8b4", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.8, marginBottom: "28px" }}
           >
             Through newspaper clippings, photographs, and historical notes, her
             life as an international celebrity fashion model — most notably for
@@ -119,7 +119,7 @@ export default function BookFeature() {
 
           <p
             className="font-serif"
-            style={{ color: "#d0c8b4", fontSize: "clamp(23px, 1.8vw, 18px)", lineHeight: 1.8, marginBottom: "36px" }}
+            style={{ color: "#d0c8b4", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.8, marginBottom: "36px" }}
           >
             Lovingly kept for decades by her three sons, each image has been
             carefully restored, translated, and researched for accuracy.
@@ -143,13 +143,13 @@ export default function BookFeature() {
               <div key={label}>
                 <span
                   className="font-display"
-                  style={{ color: "rgba(245,208,80,0.82)", fontSize: "24px", letterSpacing: "0.25em", textTransform: "uppercase" }}
+                  style={{ color: "rgba(245,208,80,0.82)", fontSize: "9px", letterSpacing: "0.25em", textTransform: "uppercase" }}
                   dangerouslySetInnerHTML={{ __html: label }}
                 />
                 <br />
                 <span
                   className="font-serif italic"
-                  style={{ color: "#f5d050", fontSize: "clamp(36px, 1.6vw, 17px)" }}
+                  style={{ color: "#f5d050", fontSize: "clamp(14px, 1.6vw, 17px)" }}
                   dangerouslySetInnerHTML={{ __html: value }}
                 />
               </div>
@@ -159,7 +159,7 @@ export default function BookFeature() {
           {/* Copyright */}
           <p
             className="font-display mt-8"
-            style={{ color: "rgba(245,208,80,0.68)", fontSize: "24px", letterSpacing: "0.2em" }}
+            style={{ color: "rgba(245,208,80,0.68)", fontSize: "9px", letterSpacing: "0.2em" }}
           >
             &copy; 2026 Pulos Brothers. All Rights Reserved.
           </p>

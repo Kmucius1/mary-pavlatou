@@ -22,13 +22,21 @@ export default function ScrollProgress() {
         position: "fixed",
         top: 0,
         left: 0,
-        width: `${progress}%`,
-        height: "2px",
-        background: "linear-gradient(to right, #b87c14, #f5d050, #f8e060)",
+        width: "100%",
+        height: "3px",
+        background: "#D0C4A0",
         zIndex: 9999,
-        transition: "width 0.1s linear",
         pointerEvents: "none",
       }}
-    />
+    >
+      <div
+        style={{
+          width: `${progress}%`,
+          height: "100%",
+          background: "linear-gradient(to right, #6B5420, #8B7030, #A8893A)",
+          transition: "width 0.1s linear",
+        }}
+      />
+    </div>
   );
 }

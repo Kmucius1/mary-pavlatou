@@ -5,8 +5,8 @@ import { useState } from "react";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Her Story", href: "/story" },
-  { label: "World of Fashion", href: "/fashion" },
+  { label: "Her Life", href: "/story" },
+  { label: "Fashion World", href: "/fashion" },
   { label: "Gallery", href: "/gallery" },
   { label: "Archive", href: "/archive" },
   { label: "Legacy", href: "/legacy" },
@@ -14,93 +14,133 @@ const navLinks = [
 
 function ColumnIcon() {
   return (
-    <svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-70">
-      <rect x="0" y="0" width="36" height="4" fill="#f5d050" />
-      <rect x="3" y="4" width="30" height="3" fill="#f5d050" />
-      <rect x="7" y="7" width="22" height="30" fill="#f5d050" opacity="0.6" />
-      {[9, 13, 17, 21, 25].map((x) => (
-        <rect key={x} x={x} y="7" width="1" height="30" fill="#0a0a0a" opacity="0.4" />
-      ))}
-      <rect x="3" y="37" width="30" height="3" fill="#f5d050" />
-      <rect x="0" y="40" width="36" height="4" fill="#f5d050" />
+    <svg width="32" height="40" viewBox="0 0 32 40" fill="none" aria-hidden="true">
+      <rect x="0" y="0" width="32" height="4" rx="1" fill="#B9974D" />
+      <rect x="3" y="4" width="26" height="3" fill="#B9974D" opacity="0.8" />
+      <rect x="7" y="7" width="18" height="26" fill="#D8C48E" opacity="0.5" />
+      {[9, 13, 17, 21].map((x) => <rect key={x} x={x} y="7" width="1" height="26" fill="#B9974D" opacity="0.25" />)}
+      <rect x="3" y="33" width="26" height="3" fill="#B9974D" opacity="0.8" />
+      <rect x="0" y="36" width="32" height="4" rx="1" fill="#B9974D" />
     </svg>
   );
 }
 
-function MPMonogram() {
-  return (
-    <div className="flex flex-col items-center gap-0.5">
-      <div className="text-2xl font-display font-semibold leading-none tracking-widest" style={{ color: "#f5d050" }}>
-        MP
-      </div>
-      <svg width="38" height="10" viewBox="0 0 38 10" fill="none">
-        <path d="M0,5 Q4,1 8,5 Q12,9 16,5 Q17.5,3.5 19,5 Q20.5,6.5 22,5 Q26,1 30,5 Q34,9 38,5" stroke="#f5d050" strokeWidth="1" fill="none" opacity="0.7" />
-      </svg>
-    </div>
-  );
-}
-
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="relative z-50" style={{ backgroundColor: "#0a0a0a", borderBottom: "1px solid #f5d050" }}>
-      <div style={{ height: "2px", background: "#f5d050", width: "100%" }} />
-      <div style={{ height: "10px", background: `repeating-linear-gradient(90deg, rgba(245,208,80,0.15) 0px, rgba(245,208,80,0.15) 4px, transparent 4px, transparent 8px)`, borderBottom: "1px solid rgba(245,208,80,0.68)" }} />
-
-      <nav className="flex items-center justify-between px-6 md:px-10 py-3">
-        <Link href="/" className="flex-shrink-0">
-          <MPMonogram />
+    <header
+      style={{
+        position: "sticky", top: 0, zIndex: 100,
+        background: "#F8F4EA",
+        borderBottom: "1px solid #D8C48E",
+        boxShadow: "0 1px 12px rgba(139,106,47,0.08)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1280px", margin: "0 auto",
+          padding: "0 clamp(20px,4vw,60px)",
+          height: "68px",
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          gap: "24px",
+        }}
+      >
+        {/* MP Monogram */}
+        <Link href="/" style={{ textDecoration: "none", flexShrink: 0 }} aria-label="Mary Pavlatou — Home">
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "1px" }}>
+            <span className="font-display" style={{ color: "#B9974D", fontSize: "22px", fontWeight: 700, letterSpacing: "0.18em", lineHeight: 1 }}>
+              MP
+            </span>
+            <svg width="36" height="6" viewBox="0 0 36 6" fill="none" aria-hidden="true">
+              <path d="M0,3 Q3,0.5 6,3 Q9,5.5 12,3 Q15,0.5 18,3 Q21,5.5 24,3 Q27,0.5 30,3 Q33,5.5 36,3" stroke="#B9974D" strokeWidth="0.9" fill="none" opacity="0.55" />
+            </svg>
+            <span className="font-display" style={{ color: "#A79D8B", fontSize: "5.5px", letterSpacing: "0.30em", textTransform: "uppercase", fontWeight: 600, lineHeight: 1.4 }}>
+              Mary Pavlatou
+            </span>
+            <span className="font-display" style={{ color: "#B8AE9C", fontSize: "5px", letterSpacing: "0.25em", textTransform: "uppercase", fontWeight: 600, lineHeight: 1.3 }}>
+              Memorial Archive
+            </span>
+          </div>
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-4 xl:gap-6">
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex" style={{ gap: "clamp(20px,3vw,40px)", alignItems: "center" }} aria-label="Main navigation">
           {navLinks.map((link) => {
-            const active = pathname === link.href;
+            const isActive = pathname === link.href;
             return (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className="font-display text-[9px] xl:text-[10px] tracking-[0.25em] uppercase transition-colors duration-200"
-                  style={{ color: active ? "#f8e060" : "#f5d050", borderBottom: active ? "1px solid rgba(228,200,117,0.5)" : "none", paddingBottom: active ? "2px" : undefined }}
-                >
-                  {link.label}
-                </Link>
-              </li>
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-display"
+                style={{
+                  color: isActive ? "#8A6A2F" : "#A79D8B",
+                  fontSize: "9px", letterSpacing: "0.28em", textTransform: "uppercase",
+                  textDecoration: "none", fontWeight: isActive ? 700 : 600,
+                  borderBottom: isActive ? "1.5px solid #B9974D" : "1.5px solid transparent",
+                  paddingBottom: "2px",
+                  transition: "color 0.2s ease, border-color 0.2s ease",
+                }}
+                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "#8A6A2F"; }}
+                onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "#A79D8B"; }}
+              >
+                {link.label}
+              </Link>
             );
           })}
-        </ul>
+        </nav>
 
-        <div className="hidden lg:block flex-shrink-0">
-          <ColumnIcon />
+        {/* Right: Column icon + mobile toggle */}
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div className="hidden lg:block"><ColumnIcon /></div>
+          <button
+            className="lg:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", color: "#8A6A2F" }}
+          >
+            <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+              {mobileOpen
+                ? <><path d="M1 1L21 15M21 1L1 15" stroke="currentColor" strokeWidth="1.5" /></>
+                : <><rect y="0" width="22" height="1.5" rx="1" fill="currentColor" /><rect y="7" width="22" height="1.5" rx="1" fill="currentColor" /><rect y="14" width="22" height="1.5" rx="1" fill="currentColor" /></>
+              }
+            </svg>
+          </button>
         </div>
+      </div>
 
-        <button className="lg:hidden flex flex-col gap-1.5 p-2" onClick={() => setOpen(!open)} aria-label="Toggle navigation">
-          {[0, 1, 2].map((i) => (
-            <span key={i} style={{ display: "block", width: "22px", height: "1.5px", background: "#f5d050" }} />
-          ))}
-        </button>
-      </nav>
-
-      <div style={{ height: "10px", background: `repeating-linear-gradient(90deg, rgba(245,208,80,0.15) 0px, rgba(245,208,80,0.15) 4px, transparent 4px, transparent 8px)`, borderTop: "1px solid rgba(245,208,80,0.68)" }} />
-
-      {open && (
-        <div className="lg:hidden" style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(245,208,80,0.68)" }}>
-          <ul className="flex flex-col items-center py-6 gap-5">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="font-display text-[11px] tracking-[0.25em] uppercase"
-                  style={{ color: pathname === link.href ? "#f8e060" : "#f5d050" }}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Mobile nav */}
+      {mobileOpen && (
+        <nav
+          style={{
+            background: "#F8F4EA", borderTop: "1px solid #E6D9BD",
+            padding: "16px clamp(20px,4vw,60px) 24px",
+            display: "flex", flexDirection: "column", gap: "0",
+          }}
+          aria-label="Mobile navigation"
+        >
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="font-display"
+                style={{
+                  color: isActive ? "#8A6A2F" : "#A79D8B",
+                  fontSize: "10px", letterSpacing: "0.26em", textTransform: "uppercase",
+                  textDecoration: "none", fontWeight: isActive ? 700 : 600,
+                  padding: "14px 0",
+                  borderBottom: "1px solid #E6D9BD",
+                }}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
       )}
     </header>
   );

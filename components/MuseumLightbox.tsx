@@ -104,7 +104,7 @@ function LightboxPanel({
         position: "fixed",
         inset: 0,
         zIndex: 9000,
-        backgroundColor: "rgba(5,5,5,0.96)",
+        backgroundColor: "rgba(240,235,217,0.94)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -123,8 +123,8 @@ function LightboxPanel({
           background: "none",
           border: "none",
           cursor: "pointer",
-          color: "#f5d050",
-          fontSize: "28px",
+          color: "#8B7030",
+          fontSize: "8px",
           lineHeight: 1,
           zIndex: 10,
           padding: "4px 8px",
@@ -147,15 +147,15 @@ function LightboxPanel({
             top: "50%",
             transform: "translateY(-50%)",
             background: "none",
-            border: "1px solid rgba(245,208,80,0.68)",
+            border: "1px solid rgba(197,168,74,0.68)",
             cursor: "pointer",
-            color: "#f5d050",
+            color: "#8B7030",
             width: "44px",
             height: "44px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "24px",
+            fontSize: "9px",
           }}
         >
           ‹
@@ -176,15 +176,15 @@ function LightboxPanel({
             top: "50%",
             transform: "translateY(-50%)",
             background: "none",
-            border: "1px solid rgba(245,208,80,0.68)",
+            border: "1px solid rgba(197,168,74,0.68)",
             cursor: "pointer",
-            color: "#f5d050",
+            color: "#8B7030",
             width: "44px",
             height: "44px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "24px",
+            fontSize: "9px",
           }}
         >
           ›
@@ -220,10 +220,10 @@ function LightboxPanel({
           <p
             style={{
               fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-              fontSize: "26px",
+              fontSize: "11px",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
-              color: "#f5d050",
+              color: "#8B7030",
               marginBottom: "8px",
             }}
           >
@@ -234,10 +234,10 @@ function LightboxPanel({
             <p
               style={{
                 fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-                fontSize: "24px",
+                fontSize: "9px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "rgba(245,208,80,0.82)",
+                color: "rgba(139,112,48,0.82)",
                 marginBottom: "12px",
               }}
             >
@@ -253,8 +253,8 @@ function LightboxPanel({
                 fontFamily:
                   "var(--font-cormorant, var(--font-serif, Georgia, serif))",
                 fontStyle: "italic",
-                fontSize: "26px",
-                color: "rgba(245,240,232,0.90)",
+                fontSize: "11px",
+                color: "#4A3C2A",
                 lineHeight: 1.7,
               }}
             >
@@ -266,10 +266,10 @@ function LightboxPanel({
             <p
               style={{
                 fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-                fontSize: "28px",
+                fontSize: "8px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "rgba(245,208,80,0.68)",
+                color: "rgba(139,112,48,0.68)",
                 marginTop: "14px",
               }}
             >
@@ -284,10 +284,10 @@ function LightboxPanel({
             aria-live="polite"
             style={{
               fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-              fontSize: "28px",
+              fontSize: "8px",
               letterSpacing: "0.3em",
               textTransform: "uppercase",
-              color: "rgba(245,208,80,0.62)",
+              color: "rgba(139,112,48,0.62)",
             }}
           >
             {currentIndex + 1} / {items.length}

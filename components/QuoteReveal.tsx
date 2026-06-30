@@ -40,7 +40,7 @@ export default function QuoteReveal({ quote, author, greek, size = "md", centere
       }}
     >
       {greek && (
-        <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", letterSpacing: "0.45em", textTransform: "uppercase", color: "rgba(245,208,80,0.78)", marginBottom: "16px" }}>
+        <p style={{ fontFamily: "var(--font-display)", fontSize: "9px", letterSpacing: "0.45em", textTransform: "uppercase", color: "#8B7030", marginBottom: "16px" }}>
           {greek}
         </p>
       )}
@@ -50,7 +50,7 @@ export default function QuoteReveal({ quote, author, greek, size = "md", centere
           fontStyle: "italic",
           fontSize,
           lineHeight: 1.65,
-          color: "#f5d050",
+          color: "#4A3C2A",
           margin: "0 0 16px",
           fontWeight: 400,
         }}
@@ -59,7 +59,7 @@ export default function QuoteReveal({ quote, author, greek, size = "md", centere
       </blockquote>
       {author && (
         <figcaption
-          style={{ fontFamily: "var(--font-display)", fontSize: "24px", letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(245,208,80,0.82)" }}
+          style={{ fontFamily: "var(--font-display)", fontSize: "9px", letterSpacing: "0.35em", textTransform: "uppercase", color: "#8B7030" }}
         >
           {author}
         </figcaption>

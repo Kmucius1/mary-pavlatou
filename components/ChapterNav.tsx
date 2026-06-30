@@ -66,8 +66,8 @@ export default function ChapterNav({ chapters }: { chapters: Chapter[] }) {
               <span
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "24px",
-                  color: "#f5d050",
+                  fontSize: "9px",
+                  color: "#8B7030",
                   letterSpacing: "0.1em",
                   width: "24px",
                   flexShrink: 0,
@@ -79,8 +79,8 @@ export default function ChapterNav({ chapters }: { chapters: Chapter[] }) {
               <span
                 style={{
                   fontFamily: "var(--font-serif)",
-                  fontSize: "26px",
-                  color: active === id ? "#f5d050" : "rgba(245,208,80,0.6)",
+                  fontSize: "11px",
+                  color: active === id ? "#8B7030" : "rgba(139,112,48,0.6)",
                   lineHeight: 1.4,
                 }}
               >

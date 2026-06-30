@@ -54,7 +54,7 @@ export default function LegacySection() {
         <div style={{ marginBottom: "clamp(56px, 8vw, 96px)" }}>
           <p
             className="font-display"
-            style={{ color: "rgba(245,208,80,0.82)", fontSize: "24px", letterSpacing: "0.45em", textTransform: "uppercase", marginBottom: "18px" }}
+            style={{ color: "rgba(245,208,80,0.82)", fontSize: "9px", letterSpacing: "0.45em", textTransform: "uppercase", marginBottom: "18px" }}
           >
             A Life of Distinction
           </p>
@@ -67,7 +67,7 @@ export default function LegacySection() {
             <div key={i} className="animate-fade-up" style={{ animationDelay: `${i * 0.08}s` }}>
               <p
                 className="font-display"
-                style={{ color: "rgba(245,208,80,0.52)", fontSize: "clamp(36px, 5vw, 60px)", lineHeight: 1, marginBottom: "20px", letterSpacing: "0.05em" }}
+                style={{ color: "rgba(245,208,80,0.52)", fontSize: "clamp(14px, 5vw, 60px)", lineHeight: 1, marginBottom: "20px", letterSpacing: "0.05em" }}
               >
                 {p.roman}
               </p>
@@ -80,7 +80,7 @@ export default function LegacySection() {
               </h3>
               <p
                 className="font-serif"
-                style={{ color: "rgba(205,196,178,0.8)", fontSize: "clamp(36px, 1.5vw, 17px)", lineHeight: 1.85 }}
+                style={{ color: "rgba(205,196,178,0.8)", fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: 1.85 }}
               >
                 {p.body}
               </p>

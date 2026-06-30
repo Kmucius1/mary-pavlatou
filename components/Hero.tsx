@@ -27,7 +27,7 @@ export default function Hero() {
           className="font-display animate-fade-in"
           style={{
             color: "rgba(245,208,80,0.5)",
-            fontSize: "24px",
+            fontSize: "9px",
             letterSpacing: "0.45em",
             textTransform: "uppercase",
             marginBottom: "20px",
@@ -39,7 +39,7 @@ export default function Hero() {
         <h1
           className="font-display animate-fade-up"
           style={{
-            fontSize: "clamp(36px, 2.8vw, 38px)",
+            fontSize: "clamp(14px, 2.8vw, 38px)",
             letterSpacing: "0.22em",
             lineHeight: 1.15,
             color: "#f5d050",
@@ -56,7 +56,7 @@ export default function Hero() {
           className="font-serif italic animate-fade-up delay-2"
           style={{
             color: "rgba(228,216,196,0.7)",
-            fontSize: "clamp(21px, 1.4vw, 16px)",
+            fontSize: "clamp(13px, 1.4vw, 16px)",
             lineHeight: 1.75,
             maxWidth: "300px",
             marginBottom: "32px",

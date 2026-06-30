@@ -1,564 +1,633 @@
-import type { Metadata } from "next";
-import SafeImage from "@/components/SafeImage";
-import GreekDivider from "@/components/GreekDivider";
-import QuoteReveal from "@/components/QuoteReveal";
-
-export const metadata: Metadata = {
-  title: "Legacy — Mary Pavlatou Memorial Archive",
-  description:
-    "The eternal legacy of Mary Pavlatou — Greek icon, mother, artist, and woman of rare grace. May her memory be eternal. Αιωνία η μνήμη της.",
-};
-
-const pad: React.CSSProperties = {
-  padding: "clamp(72px,10vh,120px) clamp(32px,7vw,100px)",
-};
+"use client";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function LegacyPage() {
   return (
-    <div style={{ backgroundColor: "#0a0a0a" }}>
+    <div style={{ backgroundColor: "#F0EBD9" }}>
 
-      {/* ───────────────────────────────────────────────
-          SECTION 1 · Page Header
-      ─────────────────────────────────────────────── */}
-      <header
-        className="animate-fade-in"
-        style={{
-          ...pad,
-          paddingBottom: "clamp(52px,7vh,88px)",
-          textAlign: "center",
-          borderBottom: "1px solid rgba(245,208,80,0.84)",
-        }}
-      >
-        <p
-          className="font-display"
-          style={{
-            color: "rgba(245,208,80,0.78)",
-            fontSize: "24px",
-            letterSpacing: "0.55em",
-            textTransform: "uppercase",
-            marginBottom: "22px",
-          }}
-        >
-          Mary Pavlatou
-        </p>
-
-        <h1
-          className="font-display"
-          style={{
-            color: "#f5d050",
-            fontSize: "clamp(60px,8vw,104px)",
-            fontWeight: 400,
-            letterSpacing: "0.22em",
-            lineHeight: 0.95,
-            marginBottom: "24px",
-          }}
-        >
-          Legacy
-        </h1>
-
-        <p
-          className="font-display"
-          style={{
-            color: "rgba(245,208,80,0.5)",
-            fontSize: "clamp(21px,1.8vw,20px)",
-            fontWeight: 400,
-            letterSpacing: "0.28em",
-            marginBottom: "40px",
-          }}
-        >
-          Αιωνία η Μνήμη
-        </p>
-
-        <div
-          style={{
-            height: "1px",
-            maxWidth: "280px",
-            margin: "0 auto",
-            background:
-              "linear-gradient(90deg, transparent, #f5d050 30%, #f5d050 70%, transparent)",
-          }}
-        />
-      </header>
-
-      {/* ───────────────────────────────────────────────
-          SECTION 2 · God's Special Angel
-      ─────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════
+          HERO — Full-width with portrait collage
+      ═══════════════════════════════════════════════ */}
       <section
         style={{
-          ...pad,
-          backgroundColor: "#08080a",
-          textAlign: "center",
-          borderBottom: "1px solid rgba(245,208,80,0.70)",
+          background: "linear-gradient(160deg, #1C1814 0%, #2A2318 40%, #3A2E1E 100%)",
+          position: "relative",
+          overflow: "hidden",
+          padding: "clamp(64px,9vh,112px) clamp(32px,6vw,88px)",
+          borderBottom: "2px solid #C5A84A",
         }}
       >
-        <QuoteReveal
-          quote="This book is dedicated to our mother, the one we call God's Special Angel."
-          greek="Η Μνήμη της Μαρίας"
-          size="lg"
-          centered
+        {/* Subtle pattern overlay */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.06,
+            backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
+          }}
         />
 
-        <p
-          className="font-serif"
-          style={{
-            color: "rgba(245,240,232,0.88)",
-            fontSize: "clamp(34px,2vw,23px)",
-            fontStyle: "italic",
-            lineHeight: 1.8,
-            maxWidth: "560px",
-            margin: "0 auto 18px",
-          }}
-        >
-          She is the closest thing that will ever be to Heaven on earth.
-        </p>
+        <div style={{ maxWidth: "1240px", margin: "0 auto", position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "clamp(24px,4vw,48px)", alignItems: "center" }}>
 
-        <p
-          className="font-display"
-          style={{
-            color: "rgba(245,208,80,0.78)",
-            fontSize: "24px",
-            letterSpacing: "0.42em",
-            textTransform: "uppercase",
-            marginBottom: "clamp(52px,8vh,88px)",
-          }}
-        >
-          — The Pulos Brothers
-        </p>
+          {/* Left: Dedication text */}
+          <div style={{ gridColumn: "1 / 2" }}>
+            <p
+              className="font-display"
+              style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.55em", textTransform: "uppercase", marginBottom: "20px", fontWeight: 600 }}
+            >
+              Η Μνήμη της Μαρίας
+            </p>
+            <h1
+              className="font-display"
+              style={{ color: "#F5F1E6", fontSize: "clamp(36px,5vw,72px)", letterSpacing: "0.14em", fontWeight: 400, lineHeight: 1.1, marginBottom: "20px" }}
+            >
+              Legacy
+            </h1>
+            <div style={{ width: "48px", height: "1px", background: "#C5A84A", marginBottom: "24px", opacity: 0.7 }} />
+            <p
+              className="font-serif italic"
+              style={{ color: "rgba(245,241,230,0.75)", fontSize: "clamp(15px,1.5vw,19px)", lineHeight: 1.85, marginBottom: "28px" }}
+            >
+              &ldquo;This book is dedicated to our mother,<br />the one we call God&rsquo;s Special Angel.&rdquo;
+            </p>
+            <p
+              className="font-display"
+              style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.4em", textTransform: "uppercase" }}
+            >
+              — The Pulos Brothers
+            </p>
+          </div>
 
-        <div style={{ maxWidth: "560px", margin: "0 auto" }}>
-          <SafeImage
-            src="/images/endsheet-portrait.jpg"
-            alt="Mary Pavlatou — Archive Endsheet Portrait"
-            mode="landscape"
-            width={666}
-            height={405}
-            caption="Archive · Preserved by Her Sons"
-          />
+          {/* Center: Main portrait */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div style={{
+              padding: "3px",
+              background: "linear-gradient(135deg, #E8D690 0%, #B9974D 30%, #F5E8C0 50%, #B9974D 70%, #E8D690 100%)",
+              boxShadow: "0 16px 64px rgba(0,0,0,0.5)",
+            }}>
+              <div style={{ padding: "8px", background: "#1C1814" }}>
+                <Image
+                  src="/images/book-portrait-black-outfit.png"
+                  alt="Mary Pavlatou — Colorized portrait from the family archive"
+                  width={1388}
+                  height={1838}
+                  priority
+                  style={{ width: "100%", height: "auto", maxHeight: "clamp(340px,52vh,560px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Greek words */}
+          <div style={{ gridColumn: "3 / 4" }}>
+            {[
+              { greek: "χάρη", english: "Grace" },
+              { greek: "ψυχή", english: "Soul" },
+              { greek: "κίνηση", english: "Movement" },
+              { greek: "αγάπη", english: "Love" },
+              { greek: "μνήμη", english: "Memory" },
+            ].map(({ greek, english }, i) => (
+              <div key={greek} style={{ paddingBottom: "16px", marginBottom: "16px", borderBottom: i < 4 ? "1px solid rgba(197,168,74,0.2)" : "none", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <p className="font-serif italic" style={{ color: "#C5A84A", fontSize: "clamp(16px,2vw,24px)" }}>{greek}</p>
+                <p className="font-display" style={{ color: "rgba(245,241,230,0.5)", fontSize: "8px", letterSpacing: "0.36em", textTransform: "uppercase" }}>{english}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ───────────────────────────────────────────────
-          SECTION 3 · The Mother They Remembered
-      ─────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════
+          SECTION 2 — Portrait Gallery from the Book
+      ═══════════════════════════════════════════════ */}
       <section
         style={{
-          ...pad,
-          backgroundColor: "#0a0a0a",
-          borderBottom: "1px solid rgba(245,208,80,0.30)",
+          background: "#F5F1E6",
+          borderBottom: "1px solid #D0C4A0",
+          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
         }}
       >
-        <div
-          style={{
-            maxWidth: "1100px",
-            margin: "0 auto",
-            display: "flex",
-            flexWrap: "wrap" as const,
-            gap: "clamp(40px,6vw,80px)",
-            alignItems: "center",
-          }}
-        >
-          {/* Text column */}
-          <div style={{ flex: "1 1 300px", maxWidth: "580px" }}>
-            <p
-              className="font-display"
-              style={{
-                color: "rgba(245,208,80,0.74)",
-                fontSize: "24px",
-                letterSpacing: "0.48em",
-                textTransform: "uppercase",
-                marginBottom: "20px",
-              }}
-            >
+        <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px" }}>
+              Preserved Portraits
+            </p>
+            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
+              She Lived in Every Photograph
+            </h2>
+            <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(14px,1.5vw,18px)", marginBottom: "0" }}>
+              Κάθε Φωτογραφία Μια Ζωή
+            </p>
+            <div style={{ width: "60px", height: "1px", background: "#C5A84A", margin: "20px auto 0", opacity: 0.7 }} />
+          </div>
+
+          {/* Portrait grid — 4 columns */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
+            {[
+              {
+                src: "/images/book-portrait-dedication.png",
+                alt: "Mary Pavlatou — Colorized portrait, smiling, black jacket and gold collar",
+                caption: "From the family archive",
+              },
+              {
+                src: "/images/book-portrait-veil-hat.png",
+                alt: "Mary Pavlatou — Portrait with veil hat and pearl necklace",
+                caption: "Blue outfit · Pearl necklace",
+              },
+              {
+                src: "/images/book-portrait-blue-gown-runway.png",
+                alt: "Mary Pavlatou — Blue ball gown on runway, colorized",
+                caption: "Live runway · Blue ball gown",
+              },
+              {
+                src: "/images/book-portrait-diamond-earrings.png",
+                alt: "Mary Pavlatou — Colorized portrait with diamond earrings",
+                caption: "Diamond earrings · Family archive",
+              },
+            ].map(({ src, alt, caption }) => (
+              <div key={src} style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{
+                  border: "1px solid #D0C4A0",
+                  background: "#EDE8D8",
+                  overflow: "hidden",
+                  position: "relative",
+                  boxShadow: "0 4px 20px rgba(139,112,48,0.12)",
+                }}>
+                  <Image
+                    src={src}
+                    alt={alt}
+                    width={1388}
+                    height={1838}
+                    style={{ width: "100%", height: "auto", maxHeight: "clamp(280px,40vh,440px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
+                    loading="lazy"
+                  />
+                </div>
+                <div style={{ padding: "10px 14px", background: "#F0EBD9", border: "1px solid #D0C4A0", borderTop: "none" }}>
+                  <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", lineHeight: 1.5 }}>{caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          SECTION 3 — The Mother They Remembered
+      ═══════════════════════════════════════════════ */}
+      <section
+        style={{
+          background: "#F0EBD9",
+          borderBottom: "1px solid #D0C4A0",
+          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
+        }}
+      >
+        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(48px,7vw,96px)", alignItems: "center" }}>
+
+          {/* Left: image clipping */}
+          <div style={{ position: "relative" }}>
+            <div style={{
+              border: "1px solid #C5A84A",
+              background: "#F5F1E6",
+              padding: "3px",
+              boxShadow: "0 8px 32px rgba(139,112,48,0.18)",
+              transform: "rotate(-1.5deg)",
+            }}>
+              <Image
+                src="/images/book-clipping-etam-garden.png"
+                alt="Mary Pavlatou at the ETAM garden — archival newspaper clipping"
+                width={1388}
+                height={1838}
+                style={{ width: "100%", height: "auto", maxHeight: "460px", objectFit: "contain", objectPosition: "top", display: "block" }}
+                loading="lazy"
+              />
+            </div>
+            <div style={{
+              position: "absolute",
+              bottom: "-16px",
+              right: "-12px",
+              background: "#F5F1E6",
+              border: "1px solid #C5A84A",
+              padding: "8px 16px",
+              transform: "rotate(1.5deg)",
+              boxShadow: "0 4px 12px rgba(139,112,48,0.12)",
+            }}>
+              <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "11px" }}>Apogevmatini · Athens</p>
+            </div>
+          </div>
+
+          {/* Right: text */}
+          <div>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px" }}>
               In Their Memory
             </p>
-
-            <h2
-              className="font-display"
-              style={{
-                color: "#f5d050",
-                fontSize: "clamp(34px,2.8vw,34px)",
-                fontWeight: 400,
-                letterSpacing: "0.14em",
-                lineHeight: 1.25,
-                marginBottom: "28px",
-              }}
-            >
+            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(20px,2.5vw,32px)", letterSpacing: "0.1em", fontWeight: 400, lineHeight: 1.2, marginBottom: "20px" }}>
               The Mother They Remembered
             </h2>
-
-            <p
-              className="font-serif"
-              style={{
-                color: "rgba(245,240,232,0.92)",
-                fontSize: "clamp(23px,1.4vw,18px)",
-                lineHeight: 1.95,
-              }}
-            >
-              To her sons, Mary was not only an icon — she was love itself. They
-              preserved her photographs, clippings, and memories for decades,
-              carried with a devotion that no archive can fully measure. What
-              exists in these pages is not only a record of a fashion career. It
-              is a family&rsquo;s refusal to let grace be forgotten.
+            <div style={{ width: "48px", height: "1px", background: "#C5A84A", marginBottom: "24px", opacity: 0.7 }} />
+            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.4vw,17px)", lineHeight: 1.95, marginBottom: "20px" }}>
+              To her sons, Mary was not only an icon — she was love itself. They preserved
+              her photographs, clippings, and memories for decades, carried with a devotion
+              that no archive can fully measure.
             </p>
+            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.4vw,17px)", lineHeight: 1.95, marginBottom: "32px" }}>
+              What exists in these pages is not only a record of a fashion career. It is a
+              family&rsquo;s refusal to let grace be forgotten. Αιωνία η μνήμη της.
+            </p>
+            <div style={{ padding: "20px", background: "rgba(197,168,74,0.08)", border: "1px solid rgba(197,168,74,0.3)" }}>
+              <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(14px,1.5vw,18px)", lineHeight: 1.8, marginBottom: "8px" }}>
+                &ldquo;She is the closest thing that will ever be to Heaven on earth.&rdquo;
+              </p>
+              <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.36em", textTransform: "uppercase" }}>
+                — The Pulos Brothers
+              </p>
+            </div>
           </div>
-
-          {/* Decorative image column */}
-          <div
-            style={{
-              flex: "0 0 auto",
-              width: "clamp(100px,12vw,180px)",
-              opacity: 0.45,
-            }}
-          >
-            <SafeImage
-              src="/images/hf-columns.jpg"
-              alt="Decorative architectural columns"
-              mode="decorative"
-              width={300}
-              height={500}
-            />
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div
-          style={{
-            maxWidth: "1100px",
-            margin: "clamp(52px,7vh,88px) auto 0",
-          }}
-        >
-          <GreekDivider />
         </div>
       </section>
 
-      {/* ───────────────────────────────────────────────
-          SECTION 4 · The Light She Left (parchment)
-      ─────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════
+          SECTION 4 — The Light She Left (3 qualities)
+      ═══════════════════════════════════════════════ */}
       <section
-        className="parchment-bg"
         style={{
-          ...pad,
-          backgroundColor: "#ede8d8",
+          background: "#EDE8D8",
+          borderBottom: "1px solid #D0C4A0",
+          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
         }}
       >
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
 
-          {/* Heading */}
-          <div style={{ textAlign: "center", marginBottom: "clamp(52px,8vh,88px)" }}>
-            <h2
-              className="font-display"
-              style={{
-                color: "#b87c14",
-                fontSize: "clamp(36px,3vw,40px)",
-                fontWeight: 400,
-                letterSpacing: "0.16em",
-                lineHeight: 1.2,
-                marginBottom: "12px",
-              }}
-            >
+          <div style={{ textAlign: "center", marginBottom: "clamp(48px,7vh,72px)" }}>
+            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
               The Light She Left
             </h2>
-            <p
-              className="font-display"
-              style={{
-                color: "#4a3c14",
-                fontSize: "clamp(10px,1.1vw,13px)",
-                letterSpacing: "0.38em",
-                textTransform: "uppercase",
-              }}
-            >
+            <p className="font-display italic" style={{ color: "#8B7030", fontSize: "clamp(10px,1.1vw,13px)", letterSpacing: "0.38em" }}>
               Το Φως που Άφησε
             </p>
           </div>
 
-          {/* 3-column qualities */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "clamp(32px,5vw,64px)",
-              marginBottom: "clamp(60px,9vh,100px)",
-            }}
-          >
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px,4vw,48px)" }} className="max-lg:grid-cols-1">
             {[
               {
                 greek: "χάρη · Grace",
-                body: "She carried grace not as performance but as nature. Every room she entered remembered her.",
+                title: "She Carried Grace",
+                body: "She carried grace not as performance but as nature. Every room she entered remembered her. Every garment she wore came alive.",
+                image: "/images/book-portrait-veil-hat.png",
+                imageAlt: "Mary Pavlatou — Portrait in veil hat",
               },
               {
                 greek: "ψυχή · Soul",
-                body: "Behind the photographs was an interior life of extraordinary depth. Dance, music, art, languages, degrees — Mary was a woman in full.",
+                title: "She Had Soul",
+                body: "Behind the photographs was an interior life of extraordinary depth. Dance, music, art, languages — Mary was a woman in full. The camera always knew.",
+                image: "/images/book-clipping-hat-mary.png",
+                imageAlt: "Mary Pavlatou — Close portrait in hat from Archontaki-Kallergi",
               },
               {
                 greek: "κίνηση · Movement",
-                body: "She understood that fashion was not clothing. It was movement, message, and presence. She gave it all three.",
+                title: "She Understood Movement",
+                body: "She understood that fashion was not clothing. It was movement, message, and presence. She gave it all three — on every runway, in every επίδειξις.",
+                image: "/images/book-clipping-mary-celebrated.png",
+                imageAlt: "Mary Pavlatou — Celebrated fashion model clipping",
               },
-            ].map(({ greek, body }) => (
-              <div key={greek} style={{ textAlign: "center" }}>
-                <div
-                  style={{
-                    width: "36px",
-                    height: "1px",
-                    background: "#b87c14",
-                    opacity: 0.55,
-                    margin: "0 auto 22px",
-                  }}
+            ].map(({ greek, title, body, image, imageAlt }) => (
+              <div
+                key={greek}
+                style={{
+                  background: "#F5F1E6",
+                  border: "1px solid #D0C4A0",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 20px rgba(139,112,48,0.08)",
+                }}
+              >
+                {/* Image */}
+                <div style={{ position: "relative", background: "#EDE8D8", overflow: "hidden" }}>
+                  <Image
+                    src={image}
+                    alt={imageAlt}
+                    width={1388}
+                    height={1838}
+                    style={{ width: "100%", height: "200px", objectFit: "contain", objectPosition: "top center", display: "block" }}
+                    loading="lazy"
+                  />
+                </div>
+                {/* Text */}
+                <div style={{ padding: "24px" }}>
+                  <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "10px" }}>
+                    {greek}
+                  </p>
+                  <h3 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(14px,1.5vw,18px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2, marginBottom: "12px" }}>
+                    {title}
+                  </h3>
+                  <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.9 }}>
+                    {body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          SECTION 5 — Press Clippings from the Archive
+      ═══════════════════════════════════════════════ */}
+      <section
+        style={{
+          background: "#F0EBD9",
+          borderBottom: "1px solid #D0C4A0",
+          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
+        }}
+      >
+        <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "14px" }}>
+              From the Archive
+            </p>
+            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(20px,2.5vw,34px)", letterSpacing: "0.12em", fontWeight: 400, marginBottom: "8px" }}>
+              Her Story in the Press
+            </h2>
+            <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "clamp(13px,1.4vw,16px)" }}>
+              Original newspaper clippings from the family archive
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(16px,2vw,28px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
+            {[
+              { src: "/images/book-clipping-mohair-coat.png", caption: "Η δις Παυλάτου σας παρουσιάζει αυτό το κομψό παλτό" },
+              { src: "/images/book-clipping-evening-gown.png", caption: "Ωραία και με Λίγα Χρήματα · Evening gown in the American style" },
+              { src: "/images/book-clipping-summer-show.png", caption: "Επίδειξις Καλοκαιρινών Μοντέλλων · King George Hotel" },
+            ].map(({ src, caption }) => (
+              <div key={src} style={{ border: "1px solid #D0C4A0", background: "#F5F1E6", overflow: "hidden", boxShadow: "0 4px 16px rgba(139,112,48,0.10)" }}>
+                <Image
+                  src={src}
+                  alt={caption}
+                  width={1388}
+                  height={1838}
+                  style={{ width: "100%", height: "auto", maxHeight: "320px", objectFit: "contain", objectPosition: "top", display: "block" }}
+                  loading="lazy"
                 />
-                <p
-                  className="font-display"
-                  style={{
-                    color: "#b87c14",
-                    fontSize: "clamp(12px,1.3vw,15px)",
-                    letterSpacing: "0.24em",
-                    fontWeight: 500,
-                    marginBottom: "16px",
-                  }}
-                >
-                  {greek}
-                </p>
-                <p
-                  className="font-serif"
-                  style={{
-                    color: "#2a2215",
-                    fontSize: "clamp(36px,1.35vw,16px)",
-                    lineHeight: 1.9,
-                  }}
-                >
-                  {body}
-                </p>
+                <div style={{ padding: "12px 16px", borderTop: "1px solid #D0C4A0" }}>
+                  <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", lineHeight: 1.55 }}>{caption}</p>
+                </div>
               </div>
             ))}
           </div>
 
-          {/* After-columns note */}
-          <div
-            style={{
-              textAlign: "center",
-              maxWidth: "600px",
-              margin: "0 auto clamp(60px,9vh,96px)",
-              borderTop: "1px solid rgba(184,124,20,0.22)",
-              paddingTop: "clamp(36px,5vh,56px)",
-            }}
-          >
-            <p
-              className="font-serif"
+          <div style={{ textAlign: "center", marginTop: "40px" }}>
+            <Link
+              href="/archive"
+              className="font-display"
               style={{
-                color: "#1a1610",
-                fontSize: "clamp(23px,1.6vw,19px)",
-                lineHeight: 1.95,
-                fontStyle: "italic",
+                color: "#8B7030",
+                border: "1px solid #C5A84A",
+                padding: "12px 28px",
+                fontSize: "8px",
+                letterSpacing: "0.36em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                fontWeight: 700,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                transition: "background 0.22s ease",
               }}
             >
-              Her dream was to become one of the world&rsquo;s finest mannequins
-              and one day create a good family. She achieved both. Her sons are
-              her greatest legacy.
-            </p>
-          </div>
-
-          {/* Portrait */}
-          <div style={{ textAlign: "center" }}>
-            <SafeImage
-              src="/images/mary-portrait-framed.jpg"
-              alt="Mary Pavlatou — Framed Portrait"
-              mode="portrait"
-              width={900}
-              height={1200}
-              caption="Mary Pavlatou · Forever Remembered"
-              maxHeight="clamp(320px,55vh,640px)"
-            />
+              View the Full Archive
+              <svg width="16" height="5" viewBox="0 0 16 5" fill="none" aria-hidden="true">
+                <path d="M0 2.5H14M11 1L14 2.5L11 4" stroke="currentColor" strokeWidth="1" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ───────────────────────────────────────────────
-          SECTION 5 · What She Gave to Fashion
-      ─────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════
+          SECTION 6 — What She Gave to Fashion
+      ═══════════════════════════════════════════════ */}
       <section
         style={{
-          ...pad,
-          backgroundColor: "#07070c",
-          borderTop: "1px solid rgba(245,208,80,0.72)",
-          borderBottom: "1px solid rgba(245,208,80,0.72)",
+          background: "#F5F1E6",
+          borderBottom: "1px solid #D0C4A0",
+          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
         }}
       >
-        <div
-          style={{
-            maxWidth: "760px",
-            margin: "0 auto",
-            textAlign: "center",
-          }}
-        >
-          <p
-            className="font-display"
-            style={{
-              color: "rgba(245,208,80,0.74)",
-              fontSize: "24px",
-              letterSpacing: "0.48em",
-              textTransform: "uppercase",
-              marginBottom: "22px",
-            }}
-          >
+        <div style={{ maxWidth: "880px", margin: "0 auto", textAlign: "center" }}>
+          <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px" }}>
             Her Contribution
           </p>
-
-          <h2
-            className="font-display"
-            style={{
-              color: "#f5d050",
-              fontSize: "clamp(36px,3vw,40px)",
-              fontWeight: 400,
-              letterSpacing: "0.14em",
-              lineHeight: 1.2,
-              marginBottom: "40px",
-            }}
-          >
+          <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(20px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "32px" }}>
             What She Gave to Fashion
           </h2>
-
-          <p
-            className="font-serif"
-            style={{
-              color: "rgba(245,240,232,0.92)",
-              fontSize: "clamp(23px,1.45vw,18px)",
-              lineHeight: 2,
-            }}
-          >
-            Mary Pavlatou was the first Greek certified professional fashion
-            model. She trained at the Patricia Vance School of Fashion in
-            Chicago, and returned to Athens to become its best-known mannequin
-            — a distinction she earned not through beauty alone, but through
-            the rarest combination of discipline, intelligence, and presence.
-            She carried the great Parisian houses to Greek audiences. She stood
-            for something that fashion rarely acknowledges: that a mannequin is
-            not an instrument. She is an artist.
+          <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 2, marginBottom: "32px" }}>
+            Mary Pavlatou was the first Greek certified professional fashion mannequin.
+            She trained at the Patricia Vance School of Fashion in Chicago and returned
+            to Athens to become its best-known μανεκέν — a distinction earned not through
+            beauty alone, but through the rarest combination of discipline, intelligence,
+            and presence. She carried Greece to the world.
           </p>
-
-          <QuoteReveal
-            quote="She did not simply wear fashion. She interpreted it."
-            author="— Family Archive"
-            size="md"
-            centered
-          />
+          <div style={{
+            padding: "32px",
+            background: "rgba(197,168,74,0.07)",
+            border: "1px solid rgba(197,168,74,0.3)",
+            marginBottom: "40px",
+          }}>
+            <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(16px,2vw,24px)", lineHeight: 1.75, marginBottom: "12px" }}>
+              &ldquo;She did not simply wear fashion. She interpreted it.&rdquo;
+            </p>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.36em", textTransform: "uppercase" }}>
+              — Family Archive
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ───────────────────────────────────────────────
-          SECTION 6 · Eternal Memory (closing)
-      ─────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════
+          SECTION 7 — Αιωνία η Μνήμη (Closing)
+      ═══════════════════════════════════════════════ */}
       <section
         style={{
-          ...pad,
-          backgroundColor: "#08080a",
+          background: "linear-gradient(160deg, #1C1814 0%, #2A2318 60%, #1C1814 100%)",
+          padding: "clamp(72px,10vh,120px) clamp(32px,6vw,88px)",
           textAlign: "center",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+        {/* Gold pattern */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.04,
+            backgroundImage: "repeating-linear-gradient(45deg, rgba(197,168,74,0.8) 0px, rgba(197,168,74,0.8) 1px, transparent 1px, transparent 30px)",
+          }}
+        />
 
-          {/* Star divider */}
-          <div style={{ marginBottom: "clamp(52px,8vh,88px)" }}>
-            <GreekDivider variant="star" />
+        <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative" }}>
+
+          {/* Gold ornament */}
+          <div style={{ marginBottom: "32px" }}>
+            <svg width="60" height="20" viewBox="0 0 60 20" fill="none" aria-hidden="true">
+              <line x1="0" y1="10" x2="22" y2="10" stroke="#C5A84A" strokeWidth="1" opacity="0.5" />
+              <path d="M30 2C30 2 26 10 22 10C26 10 30 18 30 18C30 18 34 10 38 10C34 10 30 2 30 2Z" fill="#C5A84A" opacity="0.8" />
+              <line x1="38" y1="10" x2="60" y2="10" stroke="#C5A84A" strokeWidth="1" opacity="0.5" />
+            </svg>
           </div>
 
-          {/* Greek heading */}
           <h2
-            className="font-display"
+            className="font-display italic"
             style={{
-              color: "#f5d050",
-              fontSize: "clamp(36px,4.5vw,60px)",
+              color: "#C5A84A",
+              fontSize: "clamp(28px,5vw,68px)",
               fontWeight: 400,
-              letterSpacing: "0.2em",
+              letterSpacing: "0.18em",
               lineHeight: 1.15,
-              marginBottom: "16px",
+              marginBottom: "14px",
             }}
           >
             Αιωνία η Μνήμη της
           </h2>
 
-          {/* English translation */}
           <p
             className="font-display"
             style={{
-              color: "rgba(245,208,80,0.80)",
-              fontSize: "clamp(10px,1.2vw,14px)",
-              letterSpacing: "0.38em",
+              color: "rgba(197,168,74,0.6)",
+              fontSize: "9px",
+              letterSpacing: "0.45em",
               textTransform: "uppercase",
-              marginBottom: "clamp(52px,8vh,88px)",
+              marginBottom: "48px",
             }}
           >
             May her memory be eternal.
           </p>
 
-          {/* Body */}
           <p
-            className="font-serif"
+            className="font-serif italic"
             style={{
-              color: "rgba(245,240,232,0.90)",
-              fontSize: "clamp(23px,1.5vw,18px)",
-              lineHeight: 2,
-              maxWidth: "680px",
-              margin: "0 auto clamp(60px,9vh,96px)",
+              color: "rgba(245,241,230,0.8)",
+              fontSize: "clamp(16px,2vw,22px)",
+              lineHeight: 1.85,
+              maxWidth: "620px",
+              margin: "0 auto 48px",
             }}
           >
-            The Pulos Brothers have kept her alive in every photograph, every
-            clipping, every article saved from the decades. Mary James has
-            restored and honored that collection into something lasting. And
-            now, through this archive, the world may know what they always
-            knew: that Mary Pavlatou was a woman of rare and extraordinary
-            grace.
+            The Pulos Brothers kept her alive in every photograph, every clipping,
+            every article saved across the decades. Mary James restored and honored
+            that collection into something lasting. Now, through this archive, the world
+            may know what they always knew.
           </p>
 
-          {/* Glamour portrait */}
-          <div style={{ marginBottom: "clamp(60px,9vh,96px)" }}>
-            <SafeImage
-              src="/images/mary-glamour-portrait.jpg"
-              alt="Mary Pavlatou — Glamour Portrait"
-              mode="portrait"
-              width={900}
-              height={1660}
-              caption="Mary Pavlatou — μνήμη · 1950s"
-              maxHeight="clamp(380px,65vh,760px)"
-              priority
-            />
-          </div>
-
-          {/* Final italic line */}
           <p
-            className="font-serif"
+            className="font-serif italic"
             style={{
-              color: "#f5d050",
-              fontSize: "clamp(23px,2.8vw,34px)",
-              fontStyle: "italic",
-              lineHeight: 1.7,
-              maxWidth: "680px",
-              margin: "0 auto clamp(44px,7vh,72px)",
+              color: "#C5A84A",
+              fontSize: "clamp(18px,2.5vw,30px)",
+              lineHeight: 1.65,
+              marginBottom: "56px",
             }}
           >
-            God&rsquo;s Special Angel. God&rsquo;s Sweetest Miracle.{" "}
-            Αιωνία η μνήμη της.
+            God&rsquo;s Special Angel. God&rsquo;s Sweetest Miracle.
           </p>
-
-          {/* Minimal divider before credits */}
-          <div style={{ marginBottom: "clamp(36px,5vh,56px)" }}>
-            <GreekDivider variant="minimal" />
-          </div>
 
           {/* Credits */}
-          <p
-            className="font-display"
-            style={{
-              color: "rgba(245,208,80,0.65)",
-              fontSize: "24px",
-              letterSpacing: "0.35em",
-              textTransform: "uppercase",
-              lineHeight: 2.2,
-            }}
-          >
-            Photo &amp; article compilation: The Pulos Brothers
-            <br />
-            Photo restoration, article restoration &amp; book design: Mary James
-          </p>
+          <div style={{ borderTop: "1px solid rgba(197,168,74,0.25)", paddingTop: "36px" }}>
+            <p
+              className="font-display"
+              style={{
+                color: "rgba(197,168,74,0.55)",
+                fontSize: "8px",
+                letterSpacing: "0.35em",
+                textTransform: "uppercase",
+                lineHeight: 2.4,
+              }}
+            >
+              Photo &amp; article compilation: The Pulos Brothers
+              <br />
+              Photo restoration, article restoration &amp; book design: Mary James
+            </p>
+          </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════
+          SECTION 8 — Continue the Journey
+      ═══════════════════════════════════════════════ */}
+      <section
+        style={{
+          background: "#F0EBD9",
+          borderTop: "1px solid #D0C4A0",
+          padding: "clamp(56px,7vh,80px) clamp(32px,6vw,88px)",
+        }}
+      >
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", textAlign: "center", marginBottom: "40px" }}>
+            Continue the Journey
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }} className="max-lg:grid-cols-1">
+            {[
+              {
+                href: "/story",
+                label: "Her Life",
+                text: "The story of grace, discipline, and love.",
+                image: "/images/book-portrait-veil-hat.png",
+              },
+              {
+                href: "/fashion",
+                label: "Fashion World",
+                text: "The great fashion houses of Athens and beyond.",
+                image: "/images/book-portrait-blue-gown-runway.png",
+              },
+              {
+                href: "/archive",
+                label: "The Archive",
+                text: "Original press clippings and photographs.",
+                image: "/images/book-clipping-etam-miss-mary.png",
+              },
+            ].map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                style={{
+                  display: "block",
+                  background: "#F5F1E6",
+                  border: "1px solid #D0C4A0",
+                  textDecoration: "none",
+                  transition: "transform 0.2s, border-color 0.2s",
+                  overflow: "hidden",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#C5A84A";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#D0C4A0";
+                }}
+              >
+                <div style={{ position: "relative", background: "#EDE8D8", overflow: "hidden" }}>
+                  <Image
+                    src={card.image}
+                    alt={card.label}
+                    width={1388}
+                    height={1838}
+                    style={{ width: "100%", height: "220px", objectFit: "contain", objectPosition: "top center", display: "block" }}
+                    loading="lazy"
+                  />
+                </div>
+                <div style={{ padding: "18px 20px 22px" }}>
+                  <p className="font-display" style={{ color: "#1C1814", fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700, marginBottom: "6px" }}>
+                    {card.label}
+                  </p>
+                  <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "14px", lineHeight: 1.65 }}>
+                    {card.text}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

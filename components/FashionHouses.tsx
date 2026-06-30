@@ -27,13 +27,13 @@ export default function FashionHouses() {
         <div className="text-center mb-14 animate-fade-in">
           <p
             className="font-display"
-            style={{ color: "rgba(245,208,80,0.5)", fontSize: "26px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "10px" }}
+            style={{ color: "rgba(245,208,80,0.5)", fontSize: "11px", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "10px" }}
           >
             The Houses She Graced
           </p>
           <h2
             className="font-display"
-            style={{ color: "#f5d050", fontSize: "clamp(21px, 1.8vw, 17px)", letterSpacing: "0.3em", textTransform: "uppercase" }}
+            style={{ color: "#f5d050", fontSize: "clamp(13px, 1.8vw, 17px)", letterSpacing: "0.3em", textTransform: "uppercase" }}
           >
             Fashion Houses
           </h2>
@@ -61,7 +61,7 @@ export default function FashionHouses() {
                   className="font-serif"
                   style={{
                     color: house.name === "Christian Dior" ? "#f8e060" : "#ddd4bc",
-                    fontSize: "clamp(34px, 3vw, 30px)",
+                    fontSize: "clamp(16px, 3vw, 30px)",
                     letterSpacing: "0.06em",
                     fontWeight: 400,
                   }}
@@ -74,7 +74,7 @@ export default function FashionHouses() {
                     className="font-display"
                     style={{
                       color: "#f5d050",
-                      fontSize: "24px",
+                      fontSize: "9px",
                       letterSpacing: "0.2em",
                       textTransform: "uppercase",
                       padding: "4px 12px",

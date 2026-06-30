@@ -98,38 +98,15 @@ const photos: (LightboxItem & { category: string })[] = [
     height: 1200,
   },
   {
-    src: "/images/mary-event-framed.jpg",
-    alt: "Mary Pavlatou — Framed Event Portrait",
-    title: "A Framed Memory",
-    caption: "A preserved and framed photograph from the archive — a formal portrait from the height of Mary's career.",
-    date: "Athens, 1950s",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
-    mode: "portrait",
-    category: "Events",
-    width: 900,
-    height: 1200,
-  },
-  {
-    src: "/images/cover-hires.jpg",
-    alt: "Mary Pavlatou — Memorial Book Cover",
-    title: "The Memorial Book",
-    caption: "The cover of the official memorial book — compiled by The Pulos Brothers and designed by Mary James. A family's devotion made permanent.",
-    credit: "Photo & Article Compilation: The Pulos Brothers · Book Design & Restoration: Mary James",
-    mode: "portrait",
-    category: "Book Archive",
-    width: 900,
-    height: 1200,
-  },
-  {
-    src: "/images/pages-full.jpg",
-    alt: "Mary Pavlatou Memorial Book — Interior Pages",
+    src: "/images/pdf-pages/page-01.png",
+    alt: "Mary Pavlatou Memorial Book — Interior Page",
     title: "Archive — Interior Pages",
     caption: "The interior pages of the preserved memorial book — photographs, articles, and memories compiled with care.",
     credit: "Preserved by The Pulos Brothers · Restored by Mary James",
-    mode: "landscape",
+    mode: "portrait",
     category: "Book Archive",
-    width: 1200,
-    height: 800,
+    width: 1388,
+    height: 1838,
   },
   {
     src: "/images/endsheet-portrait.jpg",
@@ -141,17 +118,6 @@ const photos: (LightboxItem & { category: string })[] = [
     category: "Book Archive",
     width: 666,
     height: 405,
-  },
-  {
-    src: "/images/mary-dustjacket.jpg",
-    alt: "Mary Pavlatou — Memorial Book Dust Jacket",
-    title: "The Dust Jacket",
-    caption: "The dust jacket of the memorial book — designed by Mary James to honor a life of rare beauty and grace.",
-    credit: "Design by Mary James",
-    mode: "portrait",
-    category: "Book Archive",
-    width: 900,
-    height: 1200,
   },
 ];
 
@@ -170,17 +136,17 @@ function PhotoCard({
     <div
       onClick={() => onOpen(filteredIndex)}
       style={{
-        border: "1px solid rgba(245,208,80,0.62)",
+        border: "1px solid #D0C4A0",
         cursor: "pointer",
         position: "relative",
-        backgroundColor: "#09080a",
+        backgroundColor: "#F5F1E6",
         transition: "border-color 0.2s ease",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(245,208,80,0.55)";
+        (e.currentTarget as HTMLDivElement).style.borderColor = "#C5A84A";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(245,208,80,0.62)";
+        (e.currentTarget as HTMLDivElement).style.borderColor = "#D0C4A0";
       }}
     >
       {/* Catalog number — top left */}
@@ -191,10 +157,10 @@ function PhotoCard({
           top: "10px",
           left: "12px",
           zIndex: 2,
-          fontSize: "24px",
+          fontSize: "9px",
           letterSpacing: "0.2em",
-          color: "rgba(245,208,80,0.5)",
-          backgroundColor: "rgba(9,8,10,0.75)",
+          color: "#8B7030",
+          backgroundColor: "rgba(240,235,217,0.88)",
           padding: "2px 5px",
           lineHeight: 1,
         }}
@@ -210,7 +176,7 @@ function PhotoCard({
           width={photo.width}
           height={photo.height}
           priority={catalogNumber <= 4}
-          sizes="(max-width: 640px) 90vw, 45vw"
+          sizes="(max-width: 640px) 90vw, 30vw"
           style={{
             width: "100%",
             height: "auto",
@@ -225,8 +191,8 @@ function PhotoCard({
         <p
           className="font-display"
           style={{
-            color: "#f5d050",
-            fontSize: "26px",
+            color: "#1C1814",
+            fontSize: "11px",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
             marginBottom: "5px",
@@ -238,8 +204,8 @@ function PhotoCard({
         <p
           className="font-display"
           style={{
-            color: "rgba(245,208,80,0.72)",
-            fontSize: "28px",
+            color: "#7A6E5E",
+            fontSize: "8px",
             letterSpacing: "0.25em",
             textTransform: "uppercase",
           }}
@@ -259,14 +225,18 @@ export default function ArchiveGallery() {
     ? photos
     : photos.filter((p) => p.category === activeCategory);
 
-  // Split into two editorial columns
+  // Split into three editorial columns
   const col1 = filteredPhotos
     .map((photo, i) => ({ photo, filteredIndex: i }))
-    .filter((_, i) => i % 2 === 0);
+    .filter((_, i) => i % 3 === 0);
 
   const col2 = filteredPhotos
     .map((photo, i) => ({ photo, filteredIndex: i }))
-    .filter((_, i) => i % 2 === 1);
+    .filter((_, i) => i % 3 === 1);
+
+  const col3 = filteredPhotos
+    .map((photo, i) => ({ photo, filteredIndex: i }))
+    .filter((_, i) => i % 3 === 2);
 
   const handleOpen = (filteredIndex: number) => {
     open(filteredPhotos, filteredIndex);
@@ -279,13 +249,16 @@ export default function ArchiveGallery() {
   return (
     <section
       style={{
-        backgroundColor: "#09080a",
+        backgroundColor: "#F0EBD9",
         padding: "clamp(40px, 6vh, 72px) clamp(20px, 5vw, 64px) clamp(64px, 10vh, 100px)",
       }}
     >
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 480px) {
           .gallery-wall-grid { flex-direction: column !important; }
+        }
+        @media (min-width: 481px) and (max-width: 768px) {
+          .gallery-wall-grid .col3 { display: none !important; }
         }
       `}</style>
 
@@ -307,14 +280,14 @@ export default function ArchiveGallery() {
               onClick={() => setActiveCategory(cat)}
               className="font-display"
               style={{
-                fontSize: "28px",
+                fontSize: "8px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 padding: "7px 16px",
                 cursor: "pointer",
-                border: "1px solid rgba(245,208,80,0.82)",
-                backgroundColor: isActive ? "#f5d050" : "transparent",
-                color: isActive ? "#09080a" : "rgba(245,208,80,0.7)",
+                border: "1px solid #C5A84A",
+                backgroundColor: isActive ? "#8B7030" : "transparent",
+                color: isActive ? "#F5F1E6" : "#8B7030",
                 transition: "all 0.18s ease",
                 fontWeight: isActive ? 600 : 400,
               }}
@@ -330,8 +303,8 @@ export default function ArchiveGallery() {
         <p
           className="font-serif italic"
           style={{
-            color: "rgba(245,208,80,0.68)",
-            fontSize: "24px",
+            color: "#7A6E5E",
+            fontSize: "9px",
             textAlign: "center",
             padding: "64px 0",
           }}
@@ -340,20 +313,20 @@ export default function ArchiveGallery() {
         </p>
       )}
 
-      {/* Two-column editorial wall */}
+      {/* Three-column editorial wall */}
       {filteredPhotos.length > 0 && (
         <div
           className="gallery-wall-grid"
           style={{
             display: "flex",
-            gap: "24px",
+            gap: "20px",
             alignItems: "flex-start",
             maxWidth: "1100px",
             margin: "0 auto",
           }}
         >
-          {/* Column 1 — even indices */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
+          {/* Column 1 */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "20px" }}>
             {col1.map(({ photo, filteredIndex }) => (
               <PhotoCard
                 key={photo.src}
@@ -365,9 +338,22 @@ export default function ArchiveGallery() {
             ))}
           </div>
 
-          {/* Column 2 — odd indices */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
+          {/* Column 2 */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "20px" }}>
             {col2.map(({ photo, filteredIndex }) => (
+              <PhotoCard
+                key={photo.src}
+                photo={photo}
+                catalogNumber={getCatalogNumber(photo)}
+                filteredIndex={filteredIndex}
+                onOpen={handleOpen}
+              />
+            ))}
+          </div>
+
+          {/* Column 3 */}
+          <div className="col3" style={{ flex: 1, display: "flex", flexDirection: "column", gap: "20px" }}>
+            {col3.map(({ photo, filteredIndex }) => (
               <PhotoCard
                 key={photo.src}
                 photo={photo}
@@ -386,8 +372,8 @@ export default function ArchiveGallery() {
         <p
           className="font-serif italic"
           style={{
-            color: "rgba(245,208,80,0.62)",
-            fontSize: "27px",
+            color: "#7A6E5E",
+            fontSize: "12px",
             textAlign: "center",
             marginTop: "24px",
           }}

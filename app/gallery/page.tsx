@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <div style={{ backgroundColor: "#09080a" }}>
+    <div style={{ backgroundColor: "#F0EBD9" }}>
 
       {/* Page header */}
       <div
@@ -21,8 +21,8 @@ export default function GalleryPage() {
         <p
           className="font-display"
           style={{
-            color: "rgba(245,208,80,0.82)",
-            fontSize: "24px",
+            color: "#8B7030",
+            fontSize: "9px",
             letterSpacing: "0.5em",
             textTransform: "uppercase",
             marginBottom: "18px",
@@ -35,8 +35,8 @@ export default function GalleryPage() {
         <h1
           className="font-display"
           style={{
-            color: "#f5d050",
-            fontSize: "clamp(36px, 5vw, 58px)",
+            color: "#1C1814",
+            fontSize: "clamp(14px, 5vw, 58px)",
             letterSpacing: "0.18em",
             fontWeight: 400,
             marginBottom: "14px",
@@ -49,8 +49,8 @@ export default function GalleryPage() {
         <p
           className="font-serif italic"
           style={{
-            color: "rgba(245,208,80,0.78)",
-            fontSize: "clamp(21px, 1.6vw, 17px)",
+            color: "#8B7030",
+            fontSize: "clamp(13px, 1.6vw, 17px)",
             letterSpacing: "0.08em",
             marginBottom: "22px",
           }}
@@ -63,7 +63,7 @@ export default function GalleryPage() {
           style={{
             width: "48px",
             height: "1px",
-            background: "rgba(245,208,80,0.82)",
+            background: "#C5A84A",
             margin: "0 auto 22px",
           }}
         />
@@ -72,7 +72,7 @@ export default function GalleryPage() {
         <p
           className="font-serif italic"
           style={{
-            color: "rgba(205,196,178,0.75)",
+            color: "#7A6E5E",
             fontSize: "clamp(12px, 1.3vw, 14px)",
             lineHeight: 1.7,
           }}

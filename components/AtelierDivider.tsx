@@ -28,7 +28,7 @@ export default function AtelierDivider() {
       }}>
         <p
           className="font-display"
-          style={{ color: "rgba(245,208,80,0.6)", fontSize: "24px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
+          style={{ color: "rgba(245,208,80,0.6)", fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
         >
           The Houses She Graced
         </p>
@@ -63,7 +63,7 @@ export default function AtelierDivider() {
                 {city}
               </span>
               {i < cities.length - 1 && (
-                <span style={{ color: "rgba(245,208,80,0.68)", fontSize: "26px" }}>·</span>
+                <span style={{ color: "rgba(245,208,80,0.68)", fontSize: "11px" }}>·</span>
               )}
             </span>
           ))}

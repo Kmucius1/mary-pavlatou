@@ -71,14 +71,14 @@ export default function MemorialHighlights() {
         <div style={{ marginBottom: "clamp(56px, 8vw, 96px)" }}>
           <p
             className="font-display"
-            style={{ color: "rgba(245,208,80,0.82)", fontSize: "24px", letterSpacing: "0.45em", textTransform: "uppercase", marginBottom: "18px" }}
+            style={{ color: "rgba(245,208,80,0.82)", fontSize: "9px", letterSpacing: "0.45em", textTransform: "uppercase", marginBottom: "18px" }}
           >
             Memorial Highlights
           </p>
           <div style={{ width: "40px", height: "1px", background: "rgba(245,208,80,0.5)", marginBottom: "24px" }} />
           <p
             className="font-serif italic"
-            style={{ color: "rgba(228,216,196,0.5)", fontSize: "clamp(23px, 1.7vw, 18px)", maxWidth: "540px", lineHeight: 1.8 }}
+            style={{ color: "rgba(228,216,196,0.5)", fontSize: "clamp(15px, 1.7vw, 18px)", maxWidth: "540px", lineHeight: 1.8 }}
           >
             From the newspaper clippings, interviews, and historical records preserved in her archive.
           </p>
@@ -98,20 +98,20 @@ export default function MemorialHighlights() {
               <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
                 <span
                   className="font-display"
-                  style={{ color: "rgba(245,208,80,0.55)", fontSize: "clamp(34px, 3.5vw, 40px)", lineHeight: 1, flexShrink: 0, marginTop: "-4px" }}
+                  style={{ color: "rgba(245,208,80,0.55)", fontSize: "clamp(16px, 3.5vw, 40px)", lineHeight: 1, flexShrink: 0, marginTop: "-4px" }}
                 >
                   {h.number}
                 </span>
                 <div>
                   <h3
                     className="font-display"
-                    style={{ color: "#f5d050", fontSize: "26px", letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: "12px" }}
+                    style={{ color: "#f5d050", fontSize: "11px", letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: "12px" }}
                   >
                     {h.heading}
                   </h3>
                   <p
                     className="font-serif"
-                    style={{ color: "rgba(205,196,178,0.8)", fontSize: "clamp(36px, 1.5vw, 16px)", lineHeight: 1.85 }}
+                    style={{ color: "rgba(205,196,178,0.8)", fontSize: "clamp(14px, 1.5vw, 16px)", lineHeight: 1.85 }}
                   >
                     {h.body}
                   </p>
@@ -125,7 +125,7 @@ export default function MemorialHighlights() {
         <div style={{ borderTop: "1px solid rgba(245,208,80,0.55)", paddingTop: "clamp(56px, 7vw, 80px)" }}>
           <p
             className="font-display"
-            style={{ color: "rgba(245,208,80,0.82)", fontSize: "24px", letterSpacing: "0.45em", textTransform: "uppercase", marginBottom: "48px" }}
+            style={{ color: "rgba(245,208,80,0.82)", fontSize: "9px", letterSpacing: "0.45em", textTransform: "uppercase", marginBottom: "48px" }}
           >
             In Her Words &amp; In the Press
           </p>
@@ -147,13 +147,13 @@ export default function MemorialHighlights() {
                 <div>
                   <p
                     className="font-serif italic"
-                    style={{ color: "#e4dac8", fontSize: "clamp(34px, 2vw, 21px)", lineHeight: 1.75, marginBottom: "14px" }}
+                    style={{ color: "#e4dac8", fontSize: "clamp(16px, 2vw, 21px)", lineHeight: 1.75, marginBottom: "14px" }}
                   >
                     {q.text}
                   </p>
                   <p
                     className="font-display"
-                    style={{ color: "rgba(245,208,80,0.5)", fontSize: "24px", letterSpacing: "0.3em", textTransform: "uppercase" }}
+                    style={{ color: "rgba(245,208,80,0.5)", fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase" }}
                   >
                     {q.source}
                   </p>

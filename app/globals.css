@@ -14,6 +14,19 @@
 
   --font-display: var(--font-cinzel), "Cinzel", "Trajan Pro", Georgia, serif;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+
+  --mary-ivory: #F8F4EA;
+  --mary-cream: #EFE5CC;
+  --mary-parchment: #E6D9BD;
+  --mary-marble: #F2F0E8;
+  --mary-silk: #DED3BF;
+  --mary-stone: #B8AE9C;
+  --mary-taupe: #A79D8B;
+  --mary-soft-gold: #D8C48E;
+  --mary-antique-gold: #B9974D;
+  --mary-deep-gold: #8A6A2F;
+  --mary-warm-shadow: #6E665A;
+  --mary-deep-text: #2F2A22;
 }
 
 /* ── Animations ── */
@@ -72,8 +85,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0a0a0a;
-  color: #f5f0e8;
+  background-color: #F0EBD9;
+  color: #1C1814;
   font-family: var(--font-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,11 +94,11 @@ body {
 
 /* ── Marble background ── */
 .marble-bg {
-  background-color: #0d0d0d;
+  background-color: #F0EBD9;
   background-image:
-    radial-gradient(ellipse at 12% 30%, rgba(45,38,32,0.6) 0%, transparent 48%),
-    radial-gradient(ellipse at 85% 72%, rgba(38,32,26,0.5) 0%, transparent 45%),
-    radial-gradient(ellipse at 55% 90%, rgba(28,24,20,0.3) 0%, transparent 55%);
+    radial-gradient(ellipse at 12% 30%, rgba(210,200,178,0.6) 0%, transparent 48%),
+    radial-gradient(ellipse at 85% 72%, rgba(200,190,165,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 55% 90%, rgba(190,180,155,0.3) 0%, transparent 55%);
 }
 
 /* ── Parchment background ── */
@@ -165,8 +178,8 @@ body {
 
 /* ── Image placeholder ── */
 .img-placeholder {
-  background: linear-gradient(180deg, #1a1a18 0%, #0d0d0c 100%);
-  border: 1px solid rgba(245,208,80,0.52);
+  background: linear-gradient(180deg, #EDE8D8 0%, #E6DFC8 100%);
+  border: 1px solid #C5A84A;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,8 +191,8 @@ body {
   font-size: 15px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #f5d050;
-  border: 1px solid #f5d050;
+  color: #8B7030;
+  border: 1px solid #8B7030;
   padding: 14px 32px;
   display: inline-flex;
   align-items: center;
@@ -189,8 +202,8 @@ body {
   background: transparent;
 }
 .cta-btn:hover {
-  background: #f5d050;
-  color: #0a0a0a;
+  background: #8B7030;
+  color: #F5F1E6;
 }
 
 /* ── Section gold divider ── */
@@ -236,8 +249,8 @@ body {
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { background: #f5d050; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #F0EBD9; }
+::-webkit-scrollbar-thumb { background: #C5A84A; border-radius: 2px; }
 
 /* ── Additional Animations ── */
 @keyframes drawLine {
@@ -298,7 +311,7 @@ body {
   font-size: 14px;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: rgba(245, 208, 80, 0.45);
+  color: #8B7030;
 }
 
 /* ── Reduced motion ── */
@@ -322,11 +335,22 @@ body {
 .section-pad-sm { padding: clamp(40px, 6vh, 80px) clamp(28px, 6vw, 100px); }
 .max-reading  { max-width: 680px; }
 .max-wide     { max-width: 1200px; margin-left: auto; margin-right: auto; }
-.gold-rule    { height: 1px; background: linear-gradient(90deg, transparent, #f5d050 25%, #f5d050 75%, transparent); }
+.gold-rule    { height: 1px; background: linear-gradient(90deg, transparent, #C5A84A, transparent); }
 .font-display { font-family: var(--font-display); font-weight: 600; }
 .font-serif   { font-family: var(--font-serif); }
 
 /* ── Readability boost: lift very dim gold text ── */
 [style*="rgba(245,208,80,0.1"],
 [style*="rgba(245,208,80,0.2"] {
+}
+
+/* ── Mary Pavlatou light theme ── */
+.homepage-light {
+  background-color: #F8F4EA;
+  color: #2F2A22;
+}
+
+@keyframes drawGoldLine {
+  from { width: 0; }
+  to { width: 48px; }
 }

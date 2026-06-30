@@ -10,7 +10,7 @@ interface FashionHouseCardProps {
 
 export default function FashionHouseCard({ name, city, note, type }: FashionHouseCardProps) {
   const [expanded, setExpanded] = useState(false);
-  const borderColor = type === "paris" ? "#f5d050" : "rgba(245,208,80,0.78)";
+  const borderColor = type === "paris" ? "#C5A84A" : "rgba(197,168,74,0.78)";
 
   return (
     <div
@@ -23,7 +23,7 @@ export default function FashionHouseCard({ name, city, note, type }: FashionHous
         border: `1px solid ${borderColor}`,
         padding: "20px 24px",
         cursor: "pointer",
-        backgroundColor: expanded ? "rgba(245,208,80,0.06)" : "transparent",
+        backgroundColor: expanded ? "rgba(139,112,48,0.06)" : "transparent",
         transition: "background 0.3s ease, border-color 0.3s ease",
       }}
     >
@@ -32,10 +32,10 @@ export default function FashionHouseCard({ name, city, note, type }: FashionHous
           <p
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "26px",
+              fontSize: "11px",
               letterSpacing: "0.3em",
               textTransform: "uppercase",
-              color: "#f5d050",
+              color: "#8B7030",
               marginBottom: "4px",
             }}
           >
@@ -44,16 +44,16 @@ export default function FashionHouseCard({ name, city, note, type }: FashionHous
           <p
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "28px",
+              fontSize: "8px",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
-              color: "rgba(245,208,80,0.78)",
+              color: "rgba(139,112,48,0.78)",
             }}
           >
             {city}
           </p>
         </div>
-        <span style={{ color: "rgba(245,208,80,0.5)", fontSize: "28px", lineHeight: 1 }}>
+        <span style={{ color: "rgba(139,112,48,0.6)", fontSize: "8px", lineHeight: 1 }}>
           {expanded ? "−" : "+"}
         </span>
       </div>
@@ -61,11 +61,11 @@ export default function FashionHouseCard({ name, city, note, type }: FashionHous
         <p
           style={{
             fontFamily: "var(--font-serif)",
-            fontSize: "24px",
-            color: "rgba(245,240,232,0.7)",
+            fontSize: "9px",
+            color: "#7A6E5E",
             lineHeight: 1.75,
             marginTop: "14px",
-            borderTop: "1px solid rgba(245,208,80,0.15)",
+            borderTop: "1px solid #D0C4A0",
             paddingTop: "14px",
           }}
         >
