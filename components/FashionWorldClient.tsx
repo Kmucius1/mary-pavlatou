@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useCallback } from "react";
 
 // ─── Ornamental divider ─────────────────────────────────────────────────────
 function OrnamentDivider({ centered }: { centered?: boolean }) {
@@ -152,8 +153,85 @@ const featureCards = [
 
 // ─── Main component ─────────────────────────────────────────────────────────
 export default function FashionWorldClient() {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption: string } | null>(null);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") closeLightbox(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightbox, closeLightbox]);
+
   return (
     <main style={{ backgroundColor: "#F0EBD9" }}>
+
+      {/* ── Lightbox ── */}
+      {lightbox && (
+        <div
+          onClick={closeLightbox}
+          style={{
+            position: "fixed", inset: 0, zIndex: 1000,
+            background: "rgba(12,10,8,0.92)",
+            display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center",
+            padding: "clamp(20px,4vw,60px)",
+            cursor: "zoom-out",
+          }}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            aria-label="Close"
+            style={{
+              position: "absolute", top: "20px", right: "24px",
+              background: "none", border: "1px solid rgba(197,168,74,0.5)",
+              color: "#C5A84A", fontSize: "18px", lineHeight: 1,
+              width: "36px", height: "36px", cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}
+          >
+            ✕
+          </button>
+
+          {/* Image — stops click propagation so clicking the image doesn't close */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: "min(90vw, 860px)",
+              maxHeight: "80vh",
+              overflow: "auto",
+              border: "1px solid rgba(197,168,74,0.35)",
+              boxShadow: "0 8px 64px rgba(0,0,0,0.6)",
+              cursor: "default",
+            }}
+          >
+            <Image
+              src={lightbox.src}
+              alt={lightbox.alt}
+              width={1388}
+              height={1838}
+              style={{ width: "100%", height: "auto", display: "block" }}
+              priority
+            />
+          </div>
+
+          <p className="font-serif italic" style={{
+            color: "rgba(245,235,210,0.6)", fontSize: "12px",
+            marginTop: "16px", textAlign: "center", maxWidth: "600px",
+          }}>
+            {lightbox.caption}
+          </p>
+          <p className="font-display" style={{
+            color: "rgba(197,168,74,0.45)", fontSize: "8px",
+            letterSpacing: "0.35em", textTransform: "uppercase",
+            marginTop: "10px",
+          }}>
+            Click anywhere to close · Esc to close
+          </p>
+        </div>
+      )}
 
       {/* ── Hero ── */}
       <section style={{
@@ -316,14 +394,22 @@ export default function FashionWorldClient() {
                     {house.city}
                   </p>
                 </div>
-                {/* Image frame */}
-                <div style={{
-                  width: "100%", border: "1px solid #C5A84A",
-                  background: "#EDE8D8",
-                  overflow: "hidden",
-                  aspectRatio: "3/4",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
+                {/* Image frame — clickable to open lightbox */}
+                <button
+                  onClick={() => setLightbox({ src: house.image, alt: `Mary Pavlatou — ${house.name}`, caption: house.caption })}
+                  aria-label={`View full article: ${house.name}`}
+                  style={{
+                    width: "100%", border: "1px solid #C5A84A",
+                    background: "#EDE8D8",
+                    overflow: "hidden",
+                    aspectRatio: "3/4",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    cursor: "zoom-in", padding: 0,
+                    transition: "border-color 0.2s ease, box-shadow 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#8B7030"; el.style.boxShadow = "0 4px 20px rgba(139,112,48,0.25)"; }}
+                  onMouseLeave={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#C5A84A"; el.style.boxShadow = "none"; }}
+                >
                   <Image
                     src={house.image}
                     alt={`Mary Pavlatou — ${house.name}`}
@@ -332,7 +418,7 @@ export default function FashionWorldClient() {
                     style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
                     loading="lazy"
                   />
-                </div>
+                </button>
                 {/* Caption */}
                 <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", lineHeight: 1.55, textAlign: "center", marginTop: "10px", padding: "0 4px" }}>
                   {house.caption}
