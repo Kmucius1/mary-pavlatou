@@ -136,7 +136,7 @@ const featureCards = [
     body: "Her signature runway music was the theme from The Third Man — cinematic, timeless, and unforgettable. As she walked, the room fell silent.",
     cta: { label: "Enter the Archive", href: "/archive" },
     images: [
-      { src: "/images/Screenshot 2026-06-29 at 6.34.33 PM.png", alt: "Mary Pavlatou in black velvet gown — archival press photograph", w: 600, h: 1100, rot: 0 },
+      { src: "/images/mary-black-velvet-runway.png", alt: "Mary Pavlatou in black velvet gown — archival press photograph", w: 600, h: 1100, rot: 0 },
     ],
   },
   {
