@@ -54,7 +54,7 @@ const chapters: Chapter[] = [
     imageLeft: false,
     images: [
       { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival newspaper clipping", w: 1388, h: 1838, rot: -2 },
-      { src: "/images/Screenshot 2026-06-29 at 6.34.48 PM.png", alt: "Mary Pavlatou — Colorized portrait with pearl necklace and flower hat, family archive", w: 960, h: 1200, rot: 3, dx: 55, dy: 40 },
+      { src: "/images/mary-pearl-necklace-portrait.png", alt: "Mary Pavlatou — Colorized portrait with pearl necklace and flower hat, family archive", w: 960, h: 1200, rot: 3, dx: 55, dy: 40 },
     ],
   },
   {
@@ -115,7 +115,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
     images: [
-      { src: "/images/Screenshot 2026-06-29 at 6.33.23 PM.png", alt: "Mary Pavlatou — Colorized glamour portrait with rhinestone earrings, family archive", w: 960, h: 1200 },
+      { src: "/images/mary-rhinestone-glamour.png", alt: "Mary Pavlatou — Colorized glamour portrait with rhinestone earrings, family archive", w: 960, h: 1200 },
     ],
   },
   {
