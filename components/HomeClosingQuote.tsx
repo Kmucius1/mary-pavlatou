@@ -100,8 +100,8 @@ export default function HomeClosingQuote() {
             <p
               className="font-display"
               style={{
-                color: "#8A6A2F",
-                fontSize: "7.5px",
+                color: "#6A4F1E",
+                fontSize: "10.5px",
                 letterSpacing: "0.34em",
                 textTransform: "uppercase",
                 fontWeight: 700,
@@ -113,8 +113,8 @@ export default function HomeClosingQuote() {
             <p
               className="font-display"
               style={{
-                color: "#8A6A2F",
-                fontSize: "7.5px",
+                color: "#6A4F1E",
+                fontSize: "10.5px",
                 letterSpacing: "0.34em",
                 textTransform: "uppercase",
                 fontWeight: 700,

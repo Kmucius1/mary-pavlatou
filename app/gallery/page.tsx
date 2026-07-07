@@ -22,11 +22,12 @@ export default function GalleryPage() {
         <p
           className="font-display"
           style={{
-            color: "#8B7030",
-            fontSize: "9px",
+            color: "#6A4F1E",
+            fontSize: "12px",
             letterSpacing: "0.5em",
             textTransform: "uppercase",
             marginBottom: "18px",
+            fontWeight: 700,
           }}
         >
           Mary Pavlatou
@@ -36,7 +37,7 @@ export default function GalleryPage() {
         <h1
           className="font-display"
           style={{
-            color: "#1C1814",
+            color: "#6A4F1E",
             fontSize: "clamp(14px, 5vw, 58px)",
             letterSpacing: "0.18em",
             fontWeight: 400,

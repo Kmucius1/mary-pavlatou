@@ -255,109 +255,109 @@ export default function StoryLifeClient() {
   return (
     <main style={{ backgroundColor: "#F0EBD9", overflowX: "hidden" }}>
 
-      {/* ── Hero ── */}
+      {/* ── Hero: full banner section (rebuilt from the "World of Fashion" design) ── */}
       <section style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        minHeight: "clamp(500px,85vh,860px)",
+        position: "relative",
+        background: "linear-gradient(135deg, #F4EDDA 0%, #ECE4CE 55%, #F1E9D4 100%)",
         borderBottom: "1px solid #D0C4A0",
         overflow: "hidden",
-      }} className="max-lg:!grid-cols-1">
+        padding: "clamp(40px,6vh,84px) clamp(24px,5vw,72px)",
+      }}>
+        {/* Decorative double frame */}
+        <div aria-hidden="true" style={{ position: "absolute", inset: "14px", border: "1px solid rgba(185,151,77,0.45)", pointerEvents: "none" }} />
+        <div aria-hidden="true" style={{ position: "absolute", inset: "19px", border: "1px solid rgba(185,151,77,0.22)", pointerEvents: "none" }} />
 
-        {/* Left: warm cream text panel */}
-        <div style={{
-          background: "linear-gradient(160deg, #F5F1E6 0%, #EDE8D8 100%)",
-          display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "clamp(56px,8vw,100px) clamp(36px,5vw,72px)",
-          position: "relative",
-          borderRight: "1px solid #D8C48E",
-        }}>
-          {/* Subtle corner ornament top-left */}
-          <svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ position: "absolute", top: "28px", left: "28px", opacity: 0.4 }}>
-            <path d="M2 2 L2 18 M2 2 L18 2" stroke="#B9974D" strokeWidth="1.2" strokeLinecap="round" />
+        {/* Ghosted side portraits */}
+        <div aria-hidden="true" style={{
+          position: "absolute", left: 0, top: 0, bottom: 0, width: "16%",
+          backgroundImage: "url('/images/mary-runway-white.jpg')", backgroundSize: "cover", backgroundPosition: "center",
+          opacity: 0.1, maskImage: "linear-gradient(to right, black, transparent)", WebkitMaskImage: "linear-gradient(to right, black, transparent)",
+          pointerEvents: "none",
+        }} />
+        <div aria-hidden="true" style={{
+          position: "absolute", right: 0, top: 0, bottom: 0, width: "16%",
+          backgroundImage: "url('/images/mary-glamour-portrait.jpg')", backgroundSize: "cover", backgroundPosition: "center",
+          opacity: 0.1, maskImage: "linear-gradient(to left, black, transparent)", WebkitMaskImage: "linear-gradient(to left, black, transparent)",
+          pointerEvents: "none",
+        }} />
+
+        {/* Top-center column motif with rules */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", maxWidth: "1120px", margin: "0 auto clamp(14px,3vh,34px)", position: "relative" }}>
+          <div style={{ flex: 1, height: "1px", background: "linear-gradient(to right, transparent, #C5A84A)" }} />
+          <svg width="34" height="42" viewBox="0 0 32 40" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+            <rect x="0" y="0" width="32" height="4" rx="1" fill="#B9974D" />
+            <rect x="3" y="4" width="26" height="3" fill="#B9974D" opacity="0.8" />
+            <rect x="7" y="7" width="18" height="26" fill="#D8C48E" opacity="0.5" />
+            {[9, 13, 17, 21].map((x) => <rect key={x} x={x} y="7" width="1" height="26" fill="#B9974D" opacity="0.3" />)}
+            <rect x="3" y="33" width="26" height="3" fill="#B9974D" opacity="0.8" />
+            <rect x="0" y="36" width="32" height="4" rx="1" fill="#B9974D" />
           </svg>
-          <svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ position: "absolute", bottom: "28px", right: "28px", opacity: 0.4 }}>
-            <path d="M38 38 L38 22 M38 38 L22 38" stroke="#B9974D" strokeWidth="1.2" strokeLinecap="round" />
-          </svg>
+          <div style={{ flex: 1, height: "1px", background: "linear-gradient(to left, transparent, #C5A84A)" }} />
+        </div>
 
-          {/* Eyebrow */}
-          <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.52em", textTransform: "uppercase", fontWeight: 700, marginBottom: "24px" }}>
-            Her Life · Η Ζωή της
-          </p>
-
-          {/* Title */}
-          <div style={{ marginBottom: "24px" }}>
+        {/* 3-column banner content */}
+        <div
+          className="max-lg:!grid-cols-1 max-lg:text-center"
+          style={{
+            maxWidth: "1200px", margin: "0 auto", position: "relative",
+            display: "grid", gridTemplateColumns: "1.25fr 1.3fr 1fr",
+            gap: "clamp(28px,4vw,60px)", alignItems: "center",
+          }}
+        >
+          {/* Left: title block */}
+          <div className="max-lg:order-2">
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.42em", textTransform: "uppercase", fontWeight: 700, marginBottom: "16px" }}>
+              The World of Fashion
+            </p>
             <BilingualHeading
               as="h1"
-              el={<>Η Ζωή<br />της Μαρίας</>}
-              en={<>The Life<br />of Mary</>}
+              el="Ο Κόσμος της Μόδας"
+              en={<>The World<br />of Fashion</>}
               className="font-display"
-              style={{
-                color: "#6A4F1E",
-                fontSize: "clamp(38px,5.5vw,72px)",
-                letterSpacing: "0.10em",
-                fontWeight: 700,
-                lineHeight: 1.05,
-              }}
-              subStyle={{ fontSize: "clamp(14px,1.4vw,18px)", marginTop: "12px", color: "#B9974D", opacity: 0.85, fontStyle: "italic" }}
+              style={{ color: "#6A4F1E", fontSize: "clamp(40px,5.4vw,80px)", letterSpacing: "0.02em", fontWeight: 700, lineHeight: 1.02 }}
+              subStyle={{ fontSize: "clamp(19px,1.9vw,26px)", marginTop: "16px", color: "#8A6A2F", fontWeight: 700, fontStyle: "italic", letterSpacing: "0.02em" }}
+            />
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "22px 0", justifyContent: "flex-start" }} className="max-lg:!justify-center">
+              <div style={{ width: "52px", height: "1px", background: "#B9974D" }} />
+              <svg width="7" height="7" viewBox="0 0 7 7" fill="none" aria-hidden="true">
+                <rect x="0.5" y="0.5" width="6" height="6" stroke="#B9974D" strokeWidth="0.8" transform="rotate(45 3.5 3.5)" />
+              </svg>
+              <div style={{ width: "24px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
+            </div>
+            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 1.85, fontWeight: 500, maxWidth: "340px" }} >
+              A celebration of timeless style, heritage, and the art of couture.
+            </p>
+          </div>
+
+          {/* Center: portrait */}
+          <div className="max-lg:order-1" style={{ display: "flex", justifyContent: "center" }}>
+            <Image
+              src="/images/mary-white-gown.jpg"
+              alt="Mary Pavlatou — full-length colorized portrait in a white tiered couture gown"
+              width={800}
+              height={1388}
+              priority
+              style={{ width: "auto", height: "auto", maxWidth: "100%", maxHeight: "clamp(360px,64vh,640px)", objectFit: "contain", display: "block", filter: "drop-shadow(0 10px 30px rgba(139,112,48,0.22))" }}
             />
           </div>
 
-          {/* Divider */}
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "26px" }}>
-            <div style={{ width: "44px", height: "1px", background: "#B9974D" }} />
-            <svg width="7" height="7" viewBox="0 0 7 7" fill="none" aria-hidden="true">
-              <rect x="0.5" y="0.5" width="6" height="6" stroke="#B9974D" strokeWidth="0.8" transform="rotate(45 3.5 3.5)" />
+          {/* Right: pull quote */}
+          <div className="max-lg:order-3">
+            <svg width="30" height="24" viewBox="0 0 28 22" fill="none" aria-hidden="true" style={{ marginBottom: "14px", opacity: 0.7 }} className="max-lg:mx-auto">
+              <path d="M0 22V12.5C0 6.5 3.5 2.5 10.5 0L12 2.5C9.4 3.5 7.7 5.5 7 8.5H12V22H0ZM16 22V12.5C16 6.5 19.5 2.5 26.5 0L28 2.5C25.4 3.5 23.7 5.5 23 8.5H28V22H16Z" fill="#8B7030" />
             </svg>
-            <div style={{ width: "20px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
-          </div>
-
-          {/* Body */}
-          <p className="font-serif" style={{
-            color: "#2A2018",
-            fontSize: "clamp(16px,1.6vw,19px)",
-            lineHeight: 1.85,
-            fontWeight: 500,
-            marginBottom: "28px",
-          }}>
-            A life of grace, discipline, intelligence, and love — from a Greek heritage to the world&rsquo;s greatest fashion houses.
-          </p>
-
-          {/* Quote */}
-          <div style={{ borderLeft: "2px solid rgba(185,151,77,0.5)", paddingLeft: "20px", marginBottom: "36px" }}>
-            <p className="font-serif italic" style={{ color: "#5A4A30", fontSize: "clamp(13px,1.2vw,15px)", lineHeight: 1.9, marginBottom: "8px" }}>
-              &ldquo;My dream is to become one of the world&rsquo;s finest mannequins and, one day, to create a good family.&rdquo;
+            <blockquote className="font-serif italic" style={{ color: "#2A2018", fontSize: "clamp(16px,1.6vw,20px)", lineHeight: 1.75, marginBottom: "18px" }}>
+              My dream is to become one of the world&rsquo;s finest mannequins and, one day, to create a good family.
+            </blockquote>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }} className="max-lg:justify-center">
+              <div style={{ width: "40px", height: "1px", background: "#B9974D" }} />
+              <div style={{ width: "16px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
+            </div>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.24em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.7 }}>
+              Mary Pavlatou<br />
+              <span style={{ color: "#8A6A2F", fontSize: "11px", letterSpacing: "0.2em" }}>Apogevmatini Interview</span>
             </p>
-            <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.28em", textTransform: "uppercase" }}>— Mary Pavlatou</p>
           </div>
-
-          {/* Subtle scroll nudge */}
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <p className="font-display" style={{ color: "rgba(107,90,60,0.55)", fontSize: "7.5px", letterSpacing: "0.40em", textTransform: "uppercase" }}>
-              Scroll to her story
-            </p>
-            <svg width="20" height="7" viewBox="0 0 20 7" fill="none" aria-hidden="true">
-              <path d="M0 3.5H18M14.5 1L18 3.5L14.5 6" stroke="rgba(185,151,77,0.5)" strokeWidth="0.9" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Right: atmospheric ballroom image */}
-        <div style={{ position: "relative", minHeight: "clamp(380px,60vh,860px)" }}>
-          <Image
-            src="/images/the life od maria page banner.png"
-            alt="Atmospheric 1950s Athenian ballroom — marble columns, candlelight, silk and couture"
-            fill
-            priority
-            sizes="50vw"
-            style={{ objectFit: "cover", objectPosition: "center center" }}
-          />
-          {/* Subtle left-edge fade to blend with the panel border */}
-          <div style={{
-            position: "absolute", inset: 0,
-            background: "linear-gradient(to right, rgba(237,232,216,0.18) 0%, transparent 12%)",
-            pointerEvents: "none",
-          }} />
         </div>
       </section>
 
@@ -373,10 +373,10 @@ export default function StoryLifeClient() {
           className="hidden lg:block"
           style={{ position: "sticky", top: "108px", flexShrink: 0, width: "150px", alignSelf: "flex-start" }}
         >
-          <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 700, marginBottom: "3px" }}>
+          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 700, marginBottom: "3px" }}>
             The Chapters
           </p>
-          <p className="font-serif italic" style={{ color: "#A0906E", fontSize: "11px", marginBottom: "18px" }}>
+          <p className="font-serif italic" style={{ color: "#6A4F1E", fontSize: "14px", marginBottom: "18px", fontWeight: 700 }}>
             Τα Κεφάλαια
           </p>
 
@@ -451,7 +451,7 @@ export default function StoryLifeClient() {
           }}>
             {/* Text — always left, always wide */}
             <div style={{ flex: "1 1 0", minWidth: 0 }}>
-              <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "12px" }}>
+              <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "12px" }}>
                 Chapter {chapter.roman}
               </p>
               <BilingualHeading
@@ -459,8 +459,8 @@ export default function StoryLifeClient() {
                 el={chapter.greek}
                 en={chapter.title}
                 className="font-display"
-                style={{ color: "#1C1814", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15 }}
-                subStyle={{ color: "#8B7030", fontSize: "clamp(15px,1.5vw,19px)", marginTop: "6px", fontStyle: "italic" }}
+                style={{ color: "#6A4F1E", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15 }}
+                subStyle={{ color: "#6A4F1E", fontSize: "clamp(18px,1.5vw,22px)", marginTop: "6px", fontStyle: "italic", fontWeight: 700 }}
               />
               <OrnamentDivider />
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.35vw,17px)", lineHeight: 1.95, marginBottom: "24px" }}>
@@ -484,14 +484,14 @@ export default function StoryLifeClient() {
                 className="font-display"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "12px",
-                  color: "#8B7030", border: "1px solid #8B7030",
+                  color: "#6A4F1E", border: "1px solid #8B7030",
                   padding: "11px 22px",
-                  fontSize: "8px", letterSpacing: "0.3em", textTransform: "uppercase",
+                  fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase",
                   fontWeight: 700, textDecoration: "none",
                   transition: "background 0.22s ease, color 0.22s ease",
                 }}
                 onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
-                onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#8B7030"; }}
+                onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#6A4F1E"; }}
               >
                 {chapter.cta.label}
                 <svg width="18" height="6" viewBox="0 0 18 6" fill="none" aria-hidden="true">
@@ -528,13 +528,13 @@ export default function StoryLifeClient() {
                 <path d="M13 4H1M5 1L1 4L5 7" stroke="currentColor" strokeWidth="1.2" />
               </svg>
             </div>
-            <span className="font-display" style={{ fontSize: "8px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }} aria-hidden="true">
+            <span className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }} aria-hidden="true">
               {activeIdx > 0 ? chapters[activeIdx - 1].title : ""}
             </span>
           </button>
 
           {/* Counter */}
-          <p className="font-display" style={{ color: "#A09080", fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }}>
             {chapter.roman} <span style={{ color: "#D8C48E", margin: "0 6px" }}>·</span> {activeIdx + 1} of {chapters.length}
           </p>
 
@@ -551,7 +551,7 @@ export default function StoryLifeClient() {
             }}
             disabled={activeIdx === chapters.length - 1}
           >
-            <span className="font-display" style={{ fontSize: "8px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700, textAlign: "right" }} aria-hidden="true">
+            <span className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700, textAlign: "right" }} aria-hidden="true">
               {activeIdx < chapters.length - 1 ? chapters[activeIdx + 1].title : ""}
             </span>
             <div style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid #B9974D", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -565,12 +565,12 @@ export default function StoryLifeClient() {
         {/* Archive card */}
         <div style={{ marginTop: "clamp(32px,4vh,48px)", border: "1px solid #C5A84A", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }} className="max-sm:flex-col max-sm:items-start">
           <div>
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "7px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700, marginBottom: "6px" }}>View Related Archive</p>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "10px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700, marginBottom: "6px" }}>View Related Archive</p>
             <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "13px", lineHeight: 1.65 }}>
               Explore the original clippings, articles, and notes that tell Mary&rsquo;s story.
             </p>
           </div>
-          <Link href="/archive" className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.26em", textTransform: "uppercase", textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+          <Link href="/archive" className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.26em", textTransform: "uppercase", textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
             Archive
             <svg width="14" height="5" viewBox="0 0 14 5" fill="none" aria-hidden="true">
               <path d="M0 2.5H12M9 1L12 2.5L9 4" stroke="currentColor" strokeWidth="1" />

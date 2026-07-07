@@ -79,8 +79,8 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-display"
           style={{
-            color: "#B9974D", fontSize: "8px", letterSpacing: "0.52em",
-            textTransform: "uppercase", fontWeight: 600, marginBottom: "18px",
+            color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.52em",
+            textTransform: "uppercase", fontWeight: 700, marginBottom: "18px",
             position: "relative",
           }}
         >
@@ -104,7 +104,7 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-display"
           style={{
-            color: "#2A2318",
+            color: "#6A4F1E",
             fontSize: "clamp(36px,4.8vw,76px)",
             letterSpacing: "0.13em",
             fontWeight: 700,
@@ -121,11 +121,11 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-display"
           style={{
-            color: "#8A6A2F",
-            fontSize: "clamp(9px,0.9vw,11px)",
+            color: "#6A4F1E",
+            fontSize: "clamp(12px,0.9vw,14px)",
             letterSpacing: "0.38em",
             textTransform: "uppercase",
-            fontWeight: 600,
+            fontWeight: 700,
             marginBottom: "26px",
             position: "relative",
           }}
@@ -236,8 +236,8 @@ export default function HomeBannerHero() {
           <p
             className="font-display"
             style={{
-              color: "#8A6A2F",
-              fontSize: "7.5px",
+              color: "#6A4F1E",
+              fontSize: "10.5px",
               letterSpacing: "0.30em",
               textTransform: "uppercase",
               fontWeight: 700,

@@ -267,13 +267,16 @@ export default function FashionWorldClient() {
 
           {/* Left: text */}
           <div className="animate-fade-in">
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px" }}>
+              The World of Fashion
+            </p>
             <div style={{ marginBottom: "10px" }}>
               <BilingualHeading
                 as="h1"
                 el="Ο Κοσμος της Μοδας"
                 en="The World of Fashion"
                 className="font-display"
-                style={{ color: "#8B7030", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05 }}
+                style={{ color: "#6A4F1E", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05 }}
               />
             </div>
             <OrnamentDivider />
@@ -284,14 +287,14 @@ export default function FashionWorldClient() {
               She modeled for the greatest fashion houses of her time and belonged to the international world of fashion.
             </p>
             <Link href="/story#chicago" className="font-display" style={{
-              color: "#8B7030", border: "1px solid #8B7030",
-              padding: "12px 24px", fontSize: "8px", letterSpacing: "0.3em",
+              color: "#6A4F1E", border: "1px solid #8B7030",
+              padding: "12px 24px", fontSize: "11px", letterSpacing: "0.3em",
               textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
               display: "inline-flex", alignItems: "center", gap: "12px",
               transition: "background 0.22s ease, color 0.22s ease",
             }}
               onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
-              onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#8B7030"; }}
+              onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#6A4F1E"; }}
             >
               Explore Her Journey
               <svg width="18" height="6" viewBox="0 0 18 6" fill="none" aria-hidden="true">
@@ -324,7 +327,7 @@ export default function FashionWorldClient() {
             <blockquote className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(13px,1.35vw,16px)", lineHeight: 1.9, marginBottom: "14px" }}>
               My dream is to become one of the world's finest mannequins and, one day, to create a good family.
             </blockquote>
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }}>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }}>
               — Mary Pavlatou · Apogevmatini Interview
             </p>
           </div>
@@ -346,7 +349,7 @@ export default function FashionWorldClient() {
         }} className="max-lg:grid-cols-1">
           {/* Left */}
           <div>
-            <h2 className="font-display" style={{ color: "#8B7030", fontSize: "clamp(18px,2.2vw,28px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.25, marginBottom: "16px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(18px,2.2vw,28px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.25, marginBottom: "16px" }}>
               The Golden Era of Haute Couture
             </h2>
             <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.9 }}>
@@ -358,7 +361,7 @@ export default function FashionWorldClient() {
             {stats.map((stat) => (
               <div key={stat.label} style={{ textAlign: "center" }}>
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: "12px" }}>{stat.icon}</div>
-                <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700, marginBottom: "8px" }}>
+                <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700, marginBottom: "8px" }}>
                   {stat.label}
                 </p>
                 <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "12px", lineHeight: 1.7 }}>
@@ -374,7 +377,7 @@ export default function FashionWorldClient() {
       <section style={{ padding: "clamp(48px,6vh,72px) clamp(28px,6vw,80px)", borderTop: "1px solid #E0D8C8" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "clamp(36px,5vh,56px)" }}>
-            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(20px,2.8vw,36px)", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "6px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,2.8vw,36px)", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "6px" }}>
               The Great Fashion Houses
             </h2>
             <OrnamentDivider centered />
@@ -393,7 +396,7 @@ export default function FashionWorldClient() {
                 {/* House name */}
                 <div style={{ textAlign: "center", marginBottom: "10px", minHeight: "48px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                   <p style={{ ...house.nameStyle, color: "#1C1814", marginBottom: "2px" }}>{house.name}</p>
-                  <p className="font-display" style={{ color: "#8B7030", fontSize: "7px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 600 }}>
+                  <p className="font-display" style={{ color: "#6A4F1E", fontSize: "10px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 700 }}>
                     {house.city}
                   </p>
                 </div>
@@ -489,14 +492,14 @@ export default function FashionWorldClient() {
               <div style={{ marginTop: "auto" }}>
                 <Link href={card.cta.href} className="font-display" style={{
                   display: "inline-flex", alignItems: "center", gap: "10px",
-                  color: "#8B7030", border: "1px solid #8B7030",
-                  padding: "10px 20px", fontSize: "7px",
+                  color: "#6A4F1E", border: "1px solid #8B7030",
+                  padding: "10px 20px", fontSize: "10px",
                   letterSpacing: "0.3em", textTransform: "uppercase",
                   fontWeight: 700, textDecoration: "none",
                   transition: "background 0.22s ease, color 0.22s ease",
                 }}
                   onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
-                  onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#8B7030"; }}
+                  onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#6A4F1E"; }}
                 >
                   {card.cta.label}
                   <svg width="16" height="5" viewBox="0 0 16 5" fill="none" aria-hidden="true">

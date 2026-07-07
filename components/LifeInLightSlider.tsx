@@ -43,14 +43,14 @@ export default function LifeInLightSlider() {
 
         {/* Section header (mobile) */}
         <div className="lg:hidden" style={{ marginBottom: "32px", textAlign: "center" }}>
-          <p className="font-display" style={{ color: "#B9974D", fontSize: "9px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>Her Story in Time</p>
-          <h2 className="font-display" style={{ color: "#2F2A22", fontSize: "clamp(26px,5vw,40px)", letterSpacing: "0.14em", fontWeight: 700 }}>A Life in Light</h2>
+          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "10px", fontWeight: 700 }}>Her Story in Time</p>
+          <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(26px,5vw,40px)", letterSpacing: "0.14em", fontWeight: 700 }}>A Life in Light</h2>
           <BilingualHeading
             as="p"
             el="Η Ζωή της Μαρίας"
             en="The Life of Mary"
             className="font-serif italic"
-            style={{ color: "#8A6A2F", fontSize: "clamp(15px,1.8vw,20px)", marginTop: "6px" }}
+            style={{ color: "#6A4F1E", fontSize: "clamp(15px,1.8vw,20px)", marginTop: "6px" }}
             subStyle={{ fontSize: "0.62em" }}
           />
         </div>
@@ -60,8 +60,8 @@ export default function LifeInLightSlider() {
 
           {/* LEFT: Chapter nav */}
           <div className="hidden lg:flex" style={{ flexDirection: "column" }}>
-            <p className="font-display" style={{ color: "#B9974D", fontSize: "9px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>Her Story in Time</p>
-            <h2 className="font-display" style={{ color: "#2F2A22", fontSize: "clamp(22px,2.8vw,34px)", letterSpacing: "0.13em", fontWeight: 700, lineHeight: 1.15, marginBottom: "8px" }}>A Life in Light</h2>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "10px", fontWeight: 700 }}>Her Story in Time</p>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,2.8vw,34px)", letterSpacing: "0.13em", fontWeight: 700, lineHeight: 1.15, marginBottom: "8px" }}>A Life in Light</h2>
             <div style={{ marginBottom: "40px" }}>
               <BilingualHeading
                 as="p"
@@ -108,14 +108,14 @@ export default function LifeInLightSlider() {
                     {/* Text */}
                     <div style={{ paddingTop: "4px", flex: 1 }}>
                       <p className="font-display" style={{
-                        color: isActive ? "#2F2A22" : "#A79D8B",
-                        fontSize: "11px", fontWeight: isActive ? 700 : 600,
+                        color: isActive ? "#2F2A22" : "#6A4F1E",
+                        fontSize: "14px", fontWeight: 700,
                         letterSpacing: "0.08em", marginBottom: "2px",
                         transition: "color 0.25s ease",
                       }}>
                         {sl.title}
                       </p>
-                      <p className="font-serif" style={{ color: "#B8AE9C", fontSize: "10px", fontStyle: "italic" }}>
+                      <p className="font-serif" style={{ color: "#6A4F1E", fontSize: "13px", fontStyle: "italic", fontWeight: 700 }}>
                         {sl.dateLabel}
                       </p>
                     </div>
@@ -180,7 +180,7 @@ export default function LifeInLightSlider() {
             >
               {/* Card text */}
               <div>
-                <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "6px", fontWeight: 700 }}>
+                <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "6px", fontWeight: 700 }}>
                   Chapter {slide.roman}
                 </p>
                 <div style={{ marginBottom: "8px" }}>
@@ -189,11 +189,11 @@ export default function LifeInLightSlider() {
                     el={slide.greekPhrase}
                     en={slide.title}
                     className="font-display"
-                    style={{ color: "#2F2A22", fontSize: "clamp(20px,2.4vw,30px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2 }}
-                    subStyle={{ color: "#8A6A2F", fontSize: "clamp(13px,1.3vw,16px)", marginTop: "6px", fontStyle: "italic" }}
+                    style={{ color: "#6A4F1E", fontSize: "clamp(20px,2.4vw,30px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2 }}
+                    subStyle={{ color: "#6A4F1E", fontSize: "clamp(16px,1.3vw,19px)", marginTop: "6px", fontStyle: "italic", fontWeight: 700 }}
                   />
                 </div>
-                <p className="font-display" style={{ color: "#B9974D", fontSize: "9px", letterSpacing: "0.22em", marginBottom: "20px", fontWeight: 600 }}>
+                <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.22em", marginBottom: "20px", fontWeight: 700 }}>
                   {slide.dateLabel}
                 </p>
                 <div style={{ width: "28px", height: "1px", background: "#B9974D", marginBottom: "18px", opacity: 0.7 }} />
@@ -247,7 +247,7 @@ export default function LifeInLightSlider() {
                   />
                 </div>
                 {img.caption && (
-                  <p className="font-serif italic" style={{ color: "#A79D8B", fontSize: "10px", textAlign: "center", maxWidth: "180px", lineHeight: 1.5 }}>
+                  <p className="font-serif italic" style={{ color: "#6A4F1E", fontSize: "13px", textAlign: "center", maxWidth: "180px", lineHeight: 1.5, fontWeight: 700 }}>
                     {img.caption}
                   </p>
                 )}

@@ -3,7 +3,7 @@ function MPMonogramLarge() {
     <div className="flex flex-col items-center gap-1">
       <div
         className="font-display font-semibold leading-none tracking-widest"
-        style={{ color: "#8B7030", fontSize: "8px" }}
+        style={{ color: "#6A4F1E", fontSize: "11px", fontWeight: 700 }}
       >
         MP
       </div>
@@ -58,8 +58,8 @@ export default function Footer() {
 
         {/* Site title */}
         <p
-          className="font-display tracking-[0.3em] text-[10px] uppercase text-center"
-          style={{ color: "#8B7030", opacity: 0.9 }}
+          className="font-display tracking-[0.3em] text-[13px] uppercase text-center"
+          style={{ color: "#6A4F1E", opacity: 0.9, fontWeight: 700 }}
         >
           Mary Pavlatou — An Official Memorial Archive
         </p>

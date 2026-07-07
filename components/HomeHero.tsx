@@ -84,12 +84,12 @@ export default function HomeHero() {
           <p
             className="font-display"
             style={{
-              color: "#B9974D",
-              fontSize: "8px",
+              color: "#6A4F1E",
+              fontSize: "11px",
               letterSpacing: "0.55em",
               textTransform: "uppercase",
               marginBottom: "20px",
-              fontWeight: 600,
+              fontWeight: 700,
             }}
           >
             An Official Memorial Archive
@@ -117,7 +117,7 @@ export default function HomeHero() {
           <h1
             className="font-display"
             style={{
-              color: "#2A2318",
+              color: "#6A4F1E",
               fontSize: "clamp(42px,7vw,96px)",
               letterSpacing: "0.18em",
               fontWeight: 700,
@@ -136,7 +136,7 @@ export default function HomeHero() {
               en="The Memory of Mary"
               className="font-serif italic"
               style={{
-                color: "#8A6A2F",
+                color: "#6A4F1E",
                 fontSize: "clamp(18px,2.4vw,30px)",
                 letterSpacing: "0.04em",
               }}
@@ -340,7 +340,7 @@ export default function HomeHero() {
                 padding: "8px",
               }}
             >
-              <p className="font-display" style={{ color: "#F8F4EA", fontSize: "5.5px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.5 }}>
+              <p className="font-display" style={{ color: "#F8F4EA", fontSize: "8.5px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.5 }}>
                 FIRST<br />GREEK<br />CERTIFIED<br />MANNEQUIN
               </p>
             </div>
@@ -357,10 +357,10 @@ export default function HomeHero() {
               width: "100%",
             }}
           >
-            <p className="font-serif italic" style={{ color: "#8A6A2F", fontSize: "12px", letterSpacing: "0.04em", marginBottom: "2px" }}>
+            <p className="font-serif italic" style={{ color: "#6A4F1E", fontSize: "15px", letterSpacing: "0.04em", marginBottom: "2px", fontWeight: 700 }}>
               Mary Pavlatou
             </p>
-            <p className="font-display" style={{ color: "#A79D8B", fontSize: "7px", letterSpacing: "0.32em", textTransform: "uppercase" }}>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "10px", letterSpacing: "0.32em", textTransform: "uppercase", fontWeight: 700 }}>
               Preserved from the family archive
             </p>
           </div>
@@ -445,7 +445,7 @@ export default function HomeHero() {
             >
               {stat.icon}
               <div>
-                <p className="font-display" style={{ color: "#8B7030", fontSize: "7.5px", letterSpacing: "0.28em", textTransform: "uppercase", fontWeight: 700, marginBottom: "4px" }}>
+                <p className="font-display" style={{ color: "#6A4F1E", fontSize: "10.5px", letterSpacing: "0.28em", textTransform: "uppercase", fontWeight: 700, marginBottom: "4px" }}>
                   {stat.label}
                 </p>
                 <p className="font-serif" style={{ color: "#6E665A", fontSize: "11px", lineHeight: 1.6 }}>

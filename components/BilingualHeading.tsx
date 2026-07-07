@@ -34,12 +34,12 @@ export default function BilingualHeading({
     display: "block",
     fontFamily: "var(--font-serif)",
     fontStyle: "italic",
-    color: "#8A6A2F",
-    opacity: 0.72,
+    color: "#6A4F1E",
+    opacity: 1,
     letterSpacing: "0.04em",
-    fontWeight: 500,
+    fontWeight: 700,
     marginTop: "0.35em",
-    fontSize: "0.5em",
+    fontSize: "0.58em",
     lineHeight: 1.35,
   };
 

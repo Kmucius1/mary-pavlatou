@@ -99,8 +99,8 @@ export default function HomeFeatureStrip() {
           <h2
             className="font-display"
             style={{
-              color: "#8A6A2F",
-              fontSize: "clamp(9px,1vw,11px)",
+              color: "#6A4F1E",
+              fontSize: "clamp(12px,1vw,14px)",
               letterSpacing: "0.40em",
               textTransform: "uppercase",
               fontWeight: 700,
@@ -156,8 +156,8 @@ export default function HomeFeatureStrip() {
               <p
                 className="font-display"
                 style={{
-                  color: "#B9974D",
-                  fontSize: "8.5px",
+                  color: "#6A4F1E",
+                  fontSize: "11.5px",
                   letterSpacing: "0.28em",
                   textTransform: "uppercase",
                   fontWeight: 700,

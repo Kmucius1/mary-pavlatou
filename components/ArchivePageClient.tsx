@@ -32,10 +32,11 @@ const sectionLabel = (n: string, text: string) => (
   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
     <span
       style={{
-        fontSize: 9,
+        fontSize: 12,
         letterSpacing: "0.44em",
         textTransform: "uppercase",
-        color: C.accent,
+        color: "#6A4F1E",
+        fontWeight: 700,
         fontFamily: "var(--font-cinzel)",
       }}
     >
@@ -300,10 +301,11 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-cinzel)",
-              fontSize: 10,
+              fontSize: 13,
               letterSpacing: "0.5em",
               textTransform: "uppercase",
-              color: C.accent,
+              color: "#6A4F1E",
+              fontWeight: 700,
               marginBottom: 20,
               fontVariant: "small-caps",
             }}
@@ -320,7 +322,7 @@ export default function ArchivePageClient() {
               style={{
                 fontFamily: "var(--font-cinzel)",
                 fontSize: "clamp(42px, 5vw, 68px)",
-                color: C.accent,
+                color: "#6A4F1E",
                 lineHeight: 1.1,
                 letterSpacing: "0.06em",
               }}
@@ -392,9 +394,10 @@ export default function ArchivePageClient() {
                 display: "inline-block",
                 padding: "13px 28px",
                 background: "transparent",
-                color: C.accent,
+                color: "#6A4F1E",
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 10,
+                fontSize: 13,
+                fontWeight: 700,
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 textDecoration: "none",
@@ -419,10 +422,11 @@ export default function ArchivePageClient() {
                 <p
                   style={{
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 9,
+                    fontSize: 12,
+                    fontWeight: 700,
                     letterSpacing: "0.3em",
                     textTransform: "uppercase",
-                    color: C.accent,
+                    color: "#6A4F1E",
                   }}
                 >
                   {plaque}
@@ -536,9 +540,10 @@ export default function ArchivePageClient() {
               en="She Lives Through the Ages"
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 9,
+                fontSize: 12,
+                fontWeight: 700,
                 letterSpacing: "0.25em",
-                color: C.accent,
+                color: "#6A4F1E",
                 textTransform: "uppercase",
                 display: "flex",
                 alignItems: "center",
@@ -768,9 +773,10 @@ export default function ArchivePageClient() {
               borderRadius: 24,
               border: `1px solid ${C.accent}`,
               background: !showFullBook ? C.accent : "transparent",
-              color: !showFullBook ? C.fillText : C.accent,
+              color: !showFullBook ? C.fillText : "#6A4F1E",
               fontFamily: "var(--font-cinzel)",
-              fontSize: 9,
+              fontSize: 12,
+              fontWeight: 700,
               letterSpacing: "0.3em",
               textTransform: "uppercase",
               cursor: "pointer",
@@ -786,9 +792,10 @@ export default function ArchivePageClient() {
               borderRadius: 24,
               border: `1px solid ${C.accent}`,
               background: showFullBook ? C.accent : "transparent",
-              color: showFullBook ? C.fillText : C.accent,
+              color: showFullBook ? C.fillText : "#6A4F1E",
               fontFamily: "var(--font-cinzel)",
-              fontSize: 9,
+              fontSize: 12,
+              fontWeight: 700,
               letterSpacing: "0.3em",
               textTransform: "uppercase",
               cursor: "pointer",
@@ -1081,9 +1088,10 @@ export default function ArchivePageClient() {
                     padding: "6px 12px",
                     border: `1px solid ${C.accent}`,
                     background: "transparent",
-                    color: C.accent,
+                    color: "#6A4F1E",
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 9,
+                    fontSize: 12,
+                    fontWeight: 700,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
                     cursor: "pointer",
@@ -1157,9 +1165,10 @@ export default function ArchivePageClient() {
                     borderRadius: 24,
                     border: `1px solid ${C.accent}`,
                     background: isActive ? C.accent : "transparent",
-                    color: isActive ? C.fillText : C.accent,
+                    color: isActive ? C.fillText : "#6A4F1E",
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 9,
+                    fontSize: 12,
+                    fontWeight: 700,
                     letterSpacing: "0.3em",
                     textTransform: "uppercase",
                     cursor: "pointer",
@@ -1231,10 +1240,11 @@ export default function ArchivePageClient() {
                     <p
                       style={{
                         fontFamily: "var(--font-cinzel)",
-                        fontSize: 9,
+                        fontSize: 12,
+                        fontWeight: 700,
                         letterSpacing: "0.4em",
                         textTransform: "uppercase",
-                        color: C.accent,
+                        color: "#6A4F1E",
                       }}
                     >
                       {card.label}
@@ -1304,9 +1314,10 @@ export default function ArchivePageClient() {
                         padding: "8px 16px",
                         background: "transparent",
                         border: `1px solid ${C.accent}`,
-                        color: C.accent,
+                        color: "#6A4F1E",
                         fontFamily: "var(--font-cinzel)",
-                        fontSize: 9,
+                        fontSize: 12,
+                        fontWeight: 700,
                         letterSpacing: "0.3em",
                         textTransform: "uppercase",
                         cursor: "pointer",
@@ -1568,9 +1579,10 @@ export default function ArchivePageClient() {
               <p
                 style={{
                   fontFamily: "var(--font-cinzel)",
-                  fontSize: 9,
+                  fontSize: 12,
+                  fontWeight: 700,
                   letterSpacing: "0.35em",
-                  color: C.accent,
+                  color: "#6A4F1E",
                   textTransform: "uppercase",
                 }}
               >
@@ -1606,10 +1618,11 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 10,
+                fontSize: 13,
+                fontWeight: 700,
                 letterSpacing: "0.35em",
                 textTransform: "uppercase",
-                color: C.accent,
+                color: "#6A4F1E",
                 marginBottom: 8,
               }}
             >
@@ -1672,10 +1685,11 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-cinzel)",
-              fontSize: 10,
+              fontSize: 13,
+              fontWeight: 700,
               letterSpacing: "0.5em",
               textTransform: "uppercase",
-              color: C.accent,
+              color: "#6A4F1E",
               textAlign: "center",
               marginBottom: 48,
             }}
@@ -1788,10 +1802,11 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-cinzel)",
-              fontSize: 11,
+              fontSize: 14,
+              fontWeight: 700,
               letterSpacing: "0.4em",
               textTransform: "uppercase",
-              color: C.accent,
+              color: "#6A4F1E",
             }}
           >
             A Family Archive. A Cherished Legacy. A Memory That Lives On.

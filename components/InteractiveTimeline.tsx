@@ -172,7 +172,7 @@ export default function InteractiveTimeline() {
       <div style={{ textAlign: "center", padding: "0 clamp(24px,5vw,64px)", marginBottom: "clamp(40px,5vh,64px)" }}>
         <p
           className="font-display"
-          style={{ color: "rgba(245,208,80,0.72)", fontSize: "10px", letterSpacing: "0.48em", textTransform: "uppercase", marginBottom: "14px" }}
+          style={{ color: "rgba(245,208,80,0.72)", fontSize: "13px", letterSpacing: "0.48em", textTransform: "uppercase", marginBottom: "14px", fontWeight: 700 }}
         >
           Her Story in Time
         </p>
@@ -239,11 +239,12 @@ export default function InteractiveTimeline() {
                 className="font-display"
                 style={{
                   color: isActive ? "rgba(245,208,80,0.82)" : "rgba(245,208,80,0.28)",
-                  fontSize: "7px",
+                  fontSize: "10px",
                   letterSpacing: "0.24em",
                   textTransform: "uppercase",
                   whiteSpace: "nowrap",
                   transition: "color 0.25s ease",
+                  fontWeight: 700,
                 }}
               >
                 {sl.era}
@@ -329,7 +330,7 @@ export default function InteractiveTimeline() {
 
           <p
             className="font-display"
-            style={{ color: "rgba(245,208,80,0.72)", fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "14px", fontWeight: 600 }}
+            style={{ color: "rgba(245,208,80,0.72)", fontSize: "12px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "14px", fontWeight: 700 }}
           >
             {s.era}
           </p>

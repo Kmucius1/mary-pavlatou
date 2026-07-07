@@ -40,7 +40,7 @@ export default function LegacyPage() {
                 el="Η Μνήμη της Μαρίας"
                 en="The Memory of Mary"
                 className="font-display"
-                style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.55em", textTransform: "uppercase", fontWeight: 600 }}
+                style={{ color: "#C5A84A", fontSize: "11px", letterSpacing: "0.55em", textTransform: "uppercase", fontWeight: 700 }}
               />
             </div>
             <h1
@@ -58,7 +58,7 @@ export default function LegacyPage() {
             </p>
             <p
               className="font-display"
-              style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.4em", textTransform: "uppercase" }}
+              style={{ color: "#C5A84A", fontSize: "11px", letterSpacing: "0.4em", textTransform: "uppercase", fontWeight: 700 }}
             >
               — The Pulos Brothers
             </p>
@@ -112,10 +112,10 @@ export default function LegacyPage() {
         <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px" }}>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px", fontWeight: 700 }}>
               Preserved Portraits
             </p>
-            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
               She Lived in Every Photograph
             </h2>
             <div style={{ marginBottom: "0" }}>
@@ -215,16 +215,16 @@ export default function LegacyPage() {
               transform: "rotate(1.5deg)",
               boxShadow: "0 4px 12px rgba(139,112,48,0.12)",
             }}>
-              <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "11px" }}>Apogevmatini · Athens</p>
+              <p className="font-serif italic" style={{ color: "#6A4F1E", fontSize: "14px", fontWeight: 700 }}>Apogevmatini · Athens</p>
             </div>
           </div>
 
           {/* Right: text */}
           <div>
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px" }}>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px", fontWeight: 700 }}>
               In Their Memory
             </p>
-            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(20px,2.5vw,32px)", letterSpacing: "0.1em", fontWeight: 400, lineHeight: 1.2, marginBottom: "20px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,2.5vw,32px)", letterSpacing: "0.1em", fontWeight: 400, lineHeight: 1.2, marginBottom: "20px" }}>
               The Mother They Remembered
             </h2>
             <div style={{ width: "48px", height: "1px", background: "#C5A84A", marginBottom: "24px", opacity: 0.7 }} />
@@ -241,7 +241,7 @@ export default function LegacyPage() {
               <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(14px,1.5vw,18px)", lineHeight: 1.8, marginBottom: "8px" }}>
                 &ldquo;She is the closest thing that will ever be to Heaven on earth.&rdquo;
               </p>
-              <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.36em", textTransform: "uppercase" }}>
+              <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700 }}>
                 — The Pulos Brothers
               </p>
             </div>
@@ -262,7 +262,7 @@ export default function LegacyPage() {
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: "clamp(48px,7vh,72px)" }}>
-            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
               The Light She Left
             </h2>
             <BilingualHeading
@@ -270,7 +270,7 @@ export default function LegacyPage() {
               el="Το Φως που Άφησε"
               en="The Light She Left"
               className="font-display italic"
-              style={{ color: "#8B7030", fontSize: "clamp(10px,1.1vw,13px)", letterSpacing: "0.38em" }}
+              style={{ color: "#6A4F1E", fontSize: "clamp(13px,1.1vw,16px)", letterSpacing: "0.38em", fontWeight: 700 }}
             />
           </div>
 
@@ -350,10 +350,10 @@ export default function LegacyPage() {
         <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "14px" }}>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "14px", fontWeight: 700 }}>
               From the Archive
             </p>
-            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(20px,2.5vw,34px)", letterSpacing: "0.12em", fontWeight: 400, marginBottom: "8px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,2.5vw,34px)", letterSpacing: "0.12em", fontWeight: 400, marginBottom: "8px" }}>
               Her Story in the Press
             </h2>
             <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "clamp(13px,1.4vw,16px)" }}>
@@ -375,10 +375,10 @@ export default function LegacyPage() {
               href="/archive"
               className="font-display"
               style={{
-                color: "#8B7030",
+                color: "#6A4F1E",
                 border: "1px solid #C5A84A",
                 padding: "12px 28px",
-                fontSize: "8px",
+                fontSize: "11px",
                 letterSpacing: "0.36em",
                 textTransform: "uppercase",
                 textDecoration: "none",
@@ -409,10 +409,10 @@ export default function LegacyPage() {
         }}
       >
         <div style={{ maxWidth: "880px", margin: "0 auto", textAlign: "center" }}>
-          <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px" }}>
+          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px", fontWeight: 700 }}>
             Her Contribution
           </p>
-          <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(20px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "32px" }}>
+          <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "32px" }}>
             What She Gave to Fashion
           </h2>
           <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 2, marginBottom: "32px" }}>
@@ -431,7 +431,7 @@ export default function LegacyPage() {
             <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(16px,2vw,24px)", lineHeight: 1.75, marginBottom: "12px" }}>
               &ldquo;She did not simply wear fashion. She interpreted it.&rdquo;
             </p>
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.36em", textTransform: "uppercase" }}>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700 }}>
               — Family Archive
             </p>
           </div>
@@ -563,7 +563,7 @@ export default function LegacyPage() {
         }}
       >
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.5em", textTransform: "uppercase", textAlign: "center", marginBottom: "40px" }}>
+          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", textAlign: "center", marginBottom: "40px", fontWeight: 700 }}>
             Continue the Journey
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }} className="max-lg:grid-cols-1">
