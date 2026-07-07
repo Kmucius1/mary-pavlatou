@@ -41,7 +41,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "World of Fashion",
     ctaHref: "/fashion",
     images: [
-      { src: "/images/book-portrait-veil-hat.png", alt: "Mary Pavlatou — Colorized close-up portrait with veil hat and pearl necklace", mode: "portrait", caption: "Mary Pavlatou · Preserved from the family archive" },
+      { src: "/images/mary-archive-veil-hat-cropped.png", alt: "Mary Pavlatou — Colorized close-up portrait with veil hat and pearl necklace", mode: "portrait", caption: "Mary Pavlatou · Preserved from the family archive" },
     ],
   },
   {
@@ -80,7 +80,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "Enter the Archive",
     ctaHref: "/archive",
     images: [
-      { src: "/images/book-portrait-blue-gown-runway.png", alt: "Mary Pavlatou — Blue ball gown on runway, colorized archival photograph", mode: "full-body", caption: "In her eternal memory" },
+      { src: "/images/mary-archive-blue-gown-cropped.png", alt: "Mary Pavlatou — Blue ball gown on runway, colorized archival photograph", mode: "full-body", caption: "In her eternal memory" },
     ],
   },
 ];

@@ -57,7 +57,7 @@ export default function LegacyPage() {
         {/* Full-bleed background portrait */}
         <div aria-hidden="true" style={{ position: "absolute", inset: 0 }}>
           <Image
-            src="/images/book-portrait-dedication.png"
+            src="/images/mary-archive-dedication-cropped.png"
             alt=""
             fill
             priority

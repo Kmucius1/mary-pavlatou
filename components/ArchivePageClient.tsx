@@ -506,7 +506,7 @@ export default function ArchivePageClient() {
                 id: "portraits",
                 label: "Portraits",
                 subtitle: "Photographs & formal studies",
-                image: "/images/book-portrait-diamond-earrings.png",
+                image: "/images/mary-archive-diamond-earrings-cropped.png",
                 imgAlt: "Mary Pavlatou — Colorized glamour portrait with diamond earrings, family archive",
                 isOval: true,
               },
