@@ -27,8 +27,8 @@ const houses = [
     nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(16px,1.8vw,22px)", letterSpacing: "0.22em", fontWeight: 700 },
     city: "Grande Bretagne · Athens",
     caption: "Επιδείξεις μόδας at the Grande Bretagne — the most celebrated fashion salons of Athens.",
-    image: "/images/mary-archive-colorized-fireplace-gown.png",
-    imageW: 1388, imageH: 1838,
+    image: "/images/mary-archive-etam-miss-mary-clip.png",
+    imageW: 375, imageH: 904,
   },
   {
     name: "Halifa",
