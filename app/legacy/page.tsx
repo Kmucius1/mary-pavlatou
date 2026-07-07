@@ -19,8 +19,8 @@ const standardValues = [
   {
     title: "Intelligence",
     text: "She understood fashion as language, not decoration.",
-    image: "/images/book-portrait-black-outfit.png",
-    imageAlt: "Mary Pavlatou — portrait in black outfit, family archive",
+    image: "/images/mary-archive-hat-model-clip.png",
+    imageAlt: "Fashion-Home press clipping — hat model, Archontaki-Kallergi, family archive",
   },
   {
     title: "Devotion",
