@@ -37,3 +37,4 @@ public/images/Screenshot*
 
 # Large book page scans — kept locally and uploaded via Vercel CLI, not git
 public/images/pdf-pages/
+.env*
