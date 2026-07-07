@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage, type Lang } from "@/lib/language";
+import TranslateIcon from "@/components/TranslateIcon";
 
 /**
  * ΕΛ | EN pill. Flips whether Greek or English reads as the primary (large)
@@ -27,6 +28,18 @@ export default function LanguageToggle({ compact = false }: { compact?: boolean 
         background: "#F3ECDA",
       }}
     >
+      <span
+        aria-hidden="true"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          color: "#8B7030",
+          paddingLeft: compact ? "8px" : "10px",
+          paddingRight: compact ? "3px" : "4px",
+        }}
+      >
+        <TranslateIcon size={compact ? 16 : 18} />
+      </span>
       {options.map(({ code, label }) => {
         const active = primary === code;
         return (
