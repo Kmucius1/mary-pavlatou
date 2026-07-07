@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { timelineSlides } from "@/data/maryTimeline";
+import TranslateIcon from "@/components/TranslateIcon";
 
 export default function LifeInLightSlider() {
   const [active, setActive] = useState(0);
@@ -166,8 +167,9 @@ export default function LifeInLightSlider() {
                 <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "6px", fontWeight: 700 }}>
                   Chapter {slide.roman}
                 </p>
-                <p className="font-serif italic" style={{ color: "#8A6A2F", fontSize: "clamp(14px,1.4vw,17px)", marginBottom: "14px" }}>
+                <p className="font-serif italic" style={{ color: "#8A6A2F", fontSize: "clamp(14px,1.4vw,17px)", marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
                   {slide.greekPhrase}
+                  <TranslateIcon />
                 </p>
                 <h3 className="font-display" style={{ color: "#2F2A22", fontSize: "clamp(20px,2.4vw,30px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2, marginBottom: "8px" }}>
                   {slide.title}

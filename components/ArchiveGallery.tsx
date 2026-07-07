@@ -8,8 +8,8 @@ const CATEGORIES = ["All", "Portraits", "Runway", "Hats & Veils", "Events", "Boo
 
 const photos: (LightboxItem & { category: string })[] = [
   {
-    src: "/images/mary-glamour-portrait.jpg",
-    alt: "Mary Pavlatou — Glamour Portrait",
+    src: "/images/mary-archive-colorized-powderblue-gown.png",
+    alt: "Mary Pavlatou — Colorized Portrait, Powder-Blue Gown",
     title: "Glamour Portrait",
     caption: "A studio portrait that became one of the defining images of Mary's career. Her warmth, composure, and unmistakable presence made her stand apart from every other model of her era.",
     date: "Athens, 1950s",
@@ -21,8 +21,8 @@ const photos: (LightboxItem & { category: string })[] = [
     height: 1660,
   },
   {
-    src: "/images/mary-young-portrait.jpg",
-    alt: "Mary Pavlatou — Early Portrait",
+    src: "/images/mary-archive-black-dress-gloves.png",
+    alt: "Mary Pavlatou — Early Editorial Portrait, Black Dress and Gloves",
     title: "Early Portrait — The Young Model",
     caption: "An early portrait from the beginning of Mary's career. Her poise is already complete — the posture, the ease, the command of the frame.",
     date: "Early Career",
@@ -34,8 +34,8 @@ const photos: (LightboxItem & { category: string })[] = [
     height: 1660,
   },
   {
-    src: "/images/mary-white-gown.jpg",
-    alt: "Mary Pavlatou — White Evening Gown",
+    src: "/images/mary-archive-floral-hat-dress.png",
+    alt: "Mary Pavlatou — Floral Hat and Patterned Dress",
     title: "White Evening Gown",
     caption: "Mary presents an evening gown at one of Athens's celebrated fashion showings. The architectural grace of the white silk, and the quiet authority of her stance, reflect the rare discipline she brought to every presentation.",
     date: "Athens, 1950s",
@@ -47,8 +47,8 @@ const photos: (LightboxItem & { category: string })[] = [
     height: 1660,
   },
   {
-    src: "/images/mary-runway-blue.jpg",
-    alt: "Mary Pavlatou — Blue Ball Gown on Runway",
+    src: "/images/mary-archive-fur-coat-muff.png",
+    alt: "Mary Pavlatou — Fur Coat and Muff",
     title: "The Blue Ball Gown",
     caption: "On the runway in a sweeping blue ball gown. Mary's presence transformed garments into something alive. Every step, every turn, carried intention and control.",
     date: "Athens, 1950s",
@@ -60,8 +60,8 @@ const photos: (LightboxItem & { category: string })[] = [
     height: 1660,
   },
   {
-    src: "/images/mary-runway-white.jpg",
-    alt: "Mary Pavlatou — White Embroidered Dress on Runway",
+    src: "/images/mary-archive-polkadot-strawhat.png",
+    alt: "Mary Pavlatou — Polka-Dot Dress and Straw Hat on Runway",
     title: "White Embroidered Runway Dress",
     caption: "A white embroidered runway dress, presented with the precision and elegance Mary was known for.",
     date: "Athens, 1950s",
@@ -72,7 +72,7 @@ const photos: (LightboxItem & { category: string })[] = [
     height: 1660,
   },
   {
-    src: "/images/mary-veil-hat.jpg",
+    src: "/images/mary-archive-summer-models.png",
     alt: "Mary Pavlatou — House of Archontaki-Kallergi Hat Collection",
     title: "Hat Collection — Archontaki-Kallergi",
     caption: "From the House of Archontaki-Kallergi's celebrated hat collection. The delicate veil, the downward gaze, and the quiet intimacy of the image make this one of the archive's most beloved portraits.",
@@ -85,19 +85,6 @@ const photos: (LightboxItem & { category: string })[] = [
     height: 1660,
   },
   {
-    src: "/images/mary-social-event.jpg",
-    alt: "Mary Pavlatou — Athens Social Circuit",
-    title: "Athens Social Circuit",
-    caption: "Mary within the Athens social world — the circuit of events, gatherings, and cultural life she moved through with the same grace she brought to the runway.",
-    date: "Athens, 1950s",
-    location: "Athens",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
-    mode: "portrait",
-    category: "Events",
-    width: 900,
-    height: 1200,
-  },
-  {
     src: "/images/pdf-pages/page-01.png",
     alt: "Mary Pavlatou Memorial Book — Interior Page",
     title: "Archive — Interior Pages",
@@ -107,17 +94,6 @@ const photos: (LightboxItem & { category: string })[] = [
     category: "Book Archive",
     width: 1388,
     height: 1838,
-  },
-  {
-    src: "/images/endsheet-portrait.jpg",
-    alt: "Mary Pavlatou — Book Endsheet Portrait",
-    title: "Archive Endsheet Portrait",
-    caption: "A portrait from the book's endsheet — one of the most intimate images in the archive collection.",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
-    mode: "landscape",
-    category: "Book Archive",
-    width: 666,
-    height: 405,
   },
 ];
 
@@ -249,10 +225,24 @@ export default function ArchiveGallery() {
   return (
     <section
       style={{
+        position: "relative",
+        overflow: "hidden",
         backgroundColor: "#F0EBD9",
         padding: "clamp(40px, 6vh, 72px) clamp(20px, 5vw, 64px) clamp(64px, 10vh, 100px)",
       }}
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url('/images/gen-greek-her-life.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.05,
+          pointerEvents: "none",
+        }}
+      />
       <style>{`
         @media (max-width: 480px) {
           .gallery-wall-grid { flex-direction: column !important; }

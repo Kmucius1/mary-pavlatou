@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import TranslateIcon from "@/components/TranslateIcon";
 
 export default function LegacyPage() {
   return (
@@ -33,9 +34,10 @@ export default function LegacyPage() {
           <div style={{ gridColumn: "1 / 2" }}>
             <p
               className="font-display"
-              style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.55em", textTransform: "uppercase", marginBottom: "20px", fontWeight: 600 }}
+              style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.55em", textTransform: "uppercase", marginBottom: "20px", fontWeight: 600, display: "flex", alignItems: "center", gap: "8px" }}
             >
               Η Μνήμη της Μαρίας
+              <TranslateIcon size={11} />
             </p>
             <h1
               className="font-display"
@@ -62,8 +64,8 @@ export default function LegacyPage() {
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <div style={{ overflow: "hidden", boxShadow: "0 16px 64px rgba(0,0,0,0.5)" }}>
               <Image
-                src="/images/portrait-mary-color-gold-lapels.png"
-                alt="Mary Pavlatou — Colorized portrait from the family archive"
+                src="/images/book-portrait-dedication.png"
+                alt="Mary Pavlatou — Colorized portrait from the family archive dedication page"
                 width={1388}
                 height={1838}
                 priority
@@ -82,7 +84,10 @@ export default function LegacyPage() {
               { greek: "μνήμη", english: "Memory" },
             ].map(({ greek, english }, i) => (
               <div key={greek} style={{ paddingBottom: "16px", marginBottom: "16px", borderBottom: i < 4 ? "1px solid rgba(197,168,74,0.2)" : "none", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <p className="font-serif italic" style={{ color: "#C5A84A", fontSize: "clamp(16px,2vw,24px)" }}>{greek}</p>
+                <p className="font-serif italic" style={{ color: "#C5A84A", fontSize: "clamp(16px,2vw,24px)", display: "flex", alignItems: "center", gap: "8px" }}>
+                  {greek}
+                  <TranslateIcon />
+                </p>
                 <p className="font-display" style={{ color: "rgba(245,241,230,0.5)", fontSize: "8px", letterSpacing: "0.36em", textTransform: "uppercase" }}>{english}</p>
               </div>
             ))}
@@ -109,34 +114,30 @@ export default function LegacyPage() {
             <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
               She Lived in Every Photograph
             </h2>
-            <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(14px,1.5vw,18px)", marginBottom: "0" }}>
+            <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(14px,1.5vw,18px)", marginBottom: "0", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
               Κάθε Φωτογραφία Μια Ζωή
+              <TranslateIcon />
             </p>
             <div style={{ width: "60px", height: "1px", background: "#C5A84A", margin: "20px auto 0", opacity: 0.7 }} />
           </div>
 
           {/* Portrait grid — 4 columns */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
             {[
               {
-                src: "/images/mary-young-portrait.jpg",
-                alt: "Mary Pavlatou — Colorized portrait, smiling, black jacket and gold collar",
+                src: "/images/mary-archive-dark-dress-blurry.png",
+                alt: "Mary Pavlatou — Afternoon dress in black, from the family archive",
                 caption: "From the family archive",
               },
               {
-                src: "/images/mary-veil-hat.jpg",
-                alt: "Mary Pavlatou — Portrait with veil hat and pearl necklace",
-                caption: "Blue outfit · Pearl necklace",
+                src: "/images/mary-archive-skirt-suit-cap.png",
+                alt: "Mary Pavlatou — Dark skirt suit and pillbox cap",
+                caption: "Skirt suit · Pillbox cap",
               },
               {
-                src: "/images/mary-runway-blue.jpg",
-                alt: "Mary Pavlatou — Blue ball gown on runway, colorized",
-                caption: "Live runway · Blue ball gown",
-              },
-              {
-                src: "/images/mary-glamour-portrait.jpg",
-                alt: "Mary Pavlatou — Colorized portrait with diamond earrings",
-                caption: "Diamond earrings · Family archive",
+                src: "/images/mary-archive-balmain-pink-named.png",
+                alt: "Mary Pavlatou — Pink embroidered Balmain gown, colorized",
+                caption: "Balmain gown · Pink embroidery",
               },
             ].map(({ src, alt, caption }) => (
               <div key={src} style={{ display: "flex", flexDirection: "column" }}>
@@ -187,8 +188,8 @@ export default function LegacyPage() {
               transform: "rotate(-1.5deg)",
             }}>
               <Image
-                src="/images/book-clipping-etam-garden.png"
-                alt="Mary Pavlatou at the ETAM garden — archival newspaper clipping"
+                src="/images/mary-archive-garden-car-named.png"
+                alt="Mary Pavlatou and Thetida Grafa at the garden — archival newspaper clipping"
                 width={1388}
                 height={1838}
                 style={{ width: "100%", height: "auto", maxHeight: "460px", objectFit: "contain", objectPosition: "top", display: "block" }}
@@ -255,8 +256,9 @@ export default function LegacyPage() {
             <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
               The Light She Left
             </h2>
-            <p className="font-display italic" style={{ color: "#8B7030", fontSize: "clamp(10px,1.1vw,13px)", letterSpacing: "0.38em" }}>
+            <p className="font-display italic" style={{ color: "#8B7030", fontSize: "clamp(10px,1.1vw,13px)", letterSpacing: "0.38em", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
               Το Φως που Άφησε
+              <TranslateIcon size={11} />
             </p>
           </div>
 
@@ -266,22 +268,22 @@ export default function LegacyPage() {
                 greek: "χάρη · Grace",
                 title: "She Carried Grace",
                 body: "She carried grace not as performance but as nature. Every room she entered remembered her. Every garment she wore came alive.",
-                image: "/images/mary-veil-hat.jpg",
-                imageAlt: "Mary Pavlatou — Portrait in veil hat",
+                image: "/images/mary-archive-colorized-social-group.png",
+                imageAlt: "Mary Pavlatou — Colorized social gathering, family archive",
               },
               {
                 greek: "ψυχή · Soul",
                 title: "She Had Soul",
                 body: "Behind the photographs was an interior life of extraordinary depth. Dance, music, art, languages — Mary was a woman in full. The camera always knew.",
-                image: "/images/book-clipping-hat-mary.png",
-                imageAlt: "Mary Pavlatou — Close portrait in hat from Archontaki-Kallergi",
+                image: "/images/book-portrait-black-outfit.png",
+                imageAlt: "Mary Pavlatou — Portrait in black outfit, family archive",
               },
               {
                 greek: "κίνηση · Movement",
                 title: "She Understood Movement",
                 body: "She understood that fashion was not clothing. It was movement, message, and presence. She gave it all three — on every runway, in every επίδειξις.",
-                image: "/images/book-clipping-mary-celebrated.png",
-                imageAlt: "Mary Pavlatou — Celebrated fashion model clipping",
+                image: "/images/gen-couture-atelier.png",
+                imageAlt: "Decorative couture atelier motif",
               },
             ].map(({ greek, title, body, image, imageAlt }) => (
               <div
@@ -306,8 +308,9 @@ export default function LegacyPage() {
                 </div>
                 {/* Text */}
                 <div style={{ padding: "24px" }}>
-                  <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "10px" }}>
+                  <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "10px", display: "flex", alignItems: "center", gap: "6px" }}>
                     {greek}
+                    <TranslateIcon size={10} />
                   </p>
                   <h3 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(14px,1.5vw,18px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2, marginBottom: "12px" }}>
                     {title}
@@ -346,26 +349,13 @@ export default function LegacyPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(16px,2vw,28px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
-            {[
-              { src: "/images/book-clipping-mohair-coat.png", caption: "Η δις Παυλάτου σας παρουσιάζει αυτό το κομψό παλτό" },
-              { src: "/images/book-clipping-evening-gown.png", caption: "Ωραία και με Λίγα Χρήματα · Evening gown in the American style" },
-              { src: "/images/book-clipping-summer-show.png", caption: "Επίδειξις Καλοκαιρινών Μοντέλλων · King George Hotel" },
-            ].map(({ src, caption }) => (
-              <div key={src} style={{ border: "1px solid #D0C4A0", background: "#F5F1E6", overflow: "hidden", boxShadow: "0 4px 16px rgba(139,112,48,0.10)" }}>
-                <Image
-                  src={src}
-                  alt={caption}
-                  width={1388}
-                  height={1838}
-                  style={{ width: "100%", height: "auto", maxHeight: "320px", objectFit: "contain", objectPosition: "top", display: "block" }}
-                  loading="lazy"
-                />
-                <div style={{ padding: "12px 16px", borderTop: "1px solid #D0C4A0" }}>
-                  <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", lineHeight: 1.55 }}>{caption}</p>
-                </div>
-              </div>
-            ))}
+          <div style={{ position: "relative", height: "220px", border: "1px solid #D0C4A0", overflow: "hidden", boxShadow: "0 4px 16px rgba(139,112,48,0.10)" }}>
+            <Image
+              src="/images/gen-greek-archive.png"
+              alt="Decorative archive motif"
+              fill
+              style={{ objectFit: "cover" }}
+            />
           </div>
 
           <div style={{ textAlign: "center", marginTop: "40px" }}>
@@ -490,9 +480,14 @@ export default function LegacyPage() {
               letterSpacing: "0.45em",
               textTransform: "uppercase",
               marginBottom: "48px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
             }}
           >
             May her memory be eternal.
+            <TranslateIcon size={11} />
           </p>
 
           <p
@@ -563,19 +558,19 @@ export default function LegacyPage() {
                 href: "/story",
                 label: "Her Life",
                 text: "The story of grace, discipline, and love.",
-                image: "/images/mary-veil-hat.jpg",
+                image: "/images/gen-acropolis-dawn.png",
               },
               {
                 href: "/fashion",
                 label: "Fashion World",
                 text: "The great fashion houses of Athens and beyond.",
-                image: "/images/mary-runway-blue.jpg",
+                image: "/images/gen-greek-fashion-world.png",
               },
               {
                 href: "/archive",
                 label: "The Archive",
                 text: "Original press clippings and photographs.",
-                image: "/images/book-clipping-etam-miss-mary.png",
+                image: "/images/gen-greek-gallery.png",
               },
             ].map((card) => (
               <Link

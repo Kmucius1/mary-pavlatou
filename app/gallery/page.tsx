@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ArchiveGallery from "@/components/ArchiveGallery";
+import TranslateIcon from "@/components/TranslateIcon";
 
 export const metadata: Metadata = {
   title: "The Gallery — Mary Pavlatou Memorial Archive",
@@ -53,9 +54,14 @@ export default function GalleryPage() {
             fontSize: "clamp(13px, 1.6vw, 17px)",
             letterSpacing: "0.08em",
             marginBottom: "22px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
           }}
         >
           Φωτογραφικό Αρχείο
+          <TranslateIcon />
         </p>
 
         {/* Rule */}

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import TranslateIcon from "@/components/TranslateIcon";
 
 /* ─────────────────────────────────────────────
    COLOUR TOKENS
@@ -239,19 +240,19 @@ export default function ArchivePageClient() {
   const navCards = [
     {
       href: "/story",
-      image: "/images/mary-veil-hat.jpg",
+      image: "/images/hf-atelier.jpg",
       label: "HER LIFE",
       text: "The story of grace, discipline, and love.",
     },
     {
       href: "/fashion",
-      image: "/images/mary-runway-blue.jpg",
+      image: "/images/hf-vanity.jpg",
       label: "FASHION WORLD",
       text: "The world she inspired on and beyond the runway.",
     },
     {
       href: "/legacy",
-      image: "/images/mary-young-portrait.jpg",
+      image: "/images/hf-temple.jpg",
       label: "LEGACY",
       text: "Her influence, her values, her timeless legacy.",
     },
@@ -284,7 +285,7 @@ export default function ArchivePageClient() {
             top: 0,
             width: "40%",
             height: "100%",
-            backgroundImage: "url(/images/archive-page1.jpg)",
+            backgroundImage: "url(/images/gen-archive-books.png)",
             backgroundSize: "cover",
             backgroundPosition: "center top",
             opacity: 0.07,
@@ -304,9 +305,13 @@ export default function ArchivePageClient() {
               color: C.accent,
               marginBottom: 20,
               fontVariant: "small-caps",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
             The Archive
+            <TranslateIcon size={11} />
           </p>
 
           {/* Greek heading */}
@@ -450,8 +455,8 @@ export default function ArchivePageClient() {
           >
             <div style={{ position: "relative", aspectRatio: "9/16" }}>
               <Image
-                src="/images/mary-glamour-portrait.jpg"
-                alt="Mary Pavlatou — portrait with diamond earrings"
+                src="/images/mary-archive-colorized-navy-veiled-hat.png"
+                alt="Mary Pavlatou — colorized portrait, navy dress with netted veil hat"
                 fill
                 priority
                 sizes="(max-width: 768px) 80vw, 400px"
@@ -476,8 +481,8 @@ export default function ArchivePageClient() {
           >
             <div style={{ position: "relative", aspectRatio: "3/4" }}>
               <Image
-                src="/images/book-clipping-mary-celebrated.png"
-                alt="Mary Pavlatou — celebrated fashion model clipping"
+                src="/images/mary-archive-mallidou-collection-named.png"
+                alt="Newspaper clipping — Miss Pavlatou modeling a Mallidou collection piece"
                 fill
                 sizes="(max-width: 768px) 40vw, 250px"
                 style={{ objectFit: "contain" }}
@@ -501,35 +506,11 @@ export default function ArchivePageClient() {
           >
             <div style={{ position: "relative", aspectRatio: "3/4" }}>
               <Image
-                src="/images/book-clipping-mohair-coat.png"
-                alt="Mary Pavlatou — mohair coat clipping"
+                src="/images/mary-archive-two-models-named.png"
+                alt="Newspaper clipping naming Mary Pavlatou among two models at the Tsitsopoulos salon"
                 fill
                 sizes="(max-width: 768px) 35vw, 200px"
                 style={{ objectFit: "contain" }}
-              />
-            </div>
-          </div>
-
-          {/* Small bottom-right collage image */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              right: 0,
-              width: "36%",
-              border: `1px solid ${C.borderMuted}`,
-              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-              background: C.card,
-              zIndex: 3,
-            }}
-          >
-            <div style={{ position: "relative", aspectRatio: "4/3" }}>
-              <Image
-                src="/images/book-clipping-etam-garden.png"
-                alt="Mary Pavlatou at the ETAM garden"
-                fill
-                sizes="(max-width: 768px) 33vw, 200px"
-                style={{ objectFit: "contain", objectPosition: "top" }}
               />
             </div>
           </div>
@@ -557,9 +538,14 @@ export default function ArchivePageClient() {
                 letterSpacing: "0.25em",
                 color: C.accent,
                 textTransform: "uppercase",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "6px",
               }}
             >
               Ζει Εις Αιώνας
+              <TranslateIcon size={10} />
             </p>
             <p
               style={{
@@ -583,13 +569,27 @@ export default function ArchivePageClient() {
       <section
         id="collection-index"
         style={{
+          position: "relative",
+          overflow: "hidden",
           background: C.cardAlt,
           borderTop: `1px solid ${C.borderMuted}`,
           borderBottom: `1px solid ${C.borderMuted}`,
           padding: "72px 32px",
         }}
       >
-        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url('/images/gen-greek-legacy.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.05,
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{ maxWidth: 1240, margin: "0 auto", position: "relative" }}>
           {sectionLabel("1", "Collection Index")}
           <p
             style={{
@@ -606,7 +606,7 @@ export default function ArchivePageClient() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(6, 1fr)",
+              gridTemplateColumns: "repeat(5, 1fr)",
               gap: 16,
             }}
           >
@@ -615,48 +615,40 @@ export default function ArchivePageClient() {
                 id: "portraits",
                 label: "Portraits",
                 subtitle: "Photographs & formal studies",
-                image: "/images/mary-young-portrait.jpg",
-                imgAlt: "Mary Pavlatou — Colorized portrait from the family archive",
+                image: "/images/book-portrait-diamond-earrings.png",
+                imgAlt: "Mary Pavlatou — Colorized glamour portrait with diamond earrings, family archive",
                 isOval: true,
               },
               {
                 id: "clippings",
                 label: "Newspaper Clippings",
                 subtitle: "Press & media coverage",
-                image: "/images/book-clipping-etam-miss-mary.png",
-                imgAlt: "Mary Pavlatou newspaper clipping — ETAM",
+                image: "/images/book-clipping-etam-pajamas.png",
+                imgAlt: "Mary Pavlatou newspaper clipping — ETAM pajama exhibition",
                 isOval: false,
               },
               {
                 id: "fashion-shows",
                 label: "Fashion Shows",
                 subtitle: "Runway & presentations",
-                image: "/images/mary-runway-blue.jpg",
-                imgAlt: "Mary Pavlatou — blue gown runway portrait",
+                image: "/images/mary-archive-colorized-chandelier-gown.png",
+                imgAlt: "Mary Pavlatou — colorized runway portrait under chandeliers",
                 isOval: false,
               },
               {
                 id: "career-records",
                 label: "Career Records",
                 subtitle: "Documentation & history",
-                image: "/images/book-clipping-summer-show.png",
-                imgAlt: "Summer fashion show — career documentation",
+                image: "/images/mary-archive-feathered-hat-named.png",
+                imgAlt: "Newspaper clipping — Mary Pavlatou, feathered hat, career documentation",
                 isOval: false,
               },
               {
                 id: "family-memory",
                 label: "Family Memory",
                 subtitle: "Personal & intimate",
-                image: "/images/mary-veil-hat.jpg",
-                imgAlt: "Mary Pavlatou — veil hat portrait",
-                isOval: false,
-              },
-              {
-                id: "restoration",
-                label: "Restoration Work",
-                subtitle: "Mary James · Restoration & Book Design",
-                image: "/images/book-clipping-hat-mary.png",
-                imgAlt: "Mary Pavlatou — hat clipping",
+                image: "/images/mary-archive-bridal-veil.png",
+                imgAlt: "Mary Pavlatou — bridal veil portrait, family archive",
                 isOval: false,
               },
             ].map((cat) => (
@@ -1319,9 +1311,13 @@ export default function ArchivePageClient() {
                         letterSpacing: "0.3em",
                         textTransform: "uppercase",
                         cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
                       }}
                     >
                       {isExpanded ? "CLOSE" : card.cta}
+                      {!isExpanded && card.cta === "READ FULL TRANSLATION" && <TranslateIcon size={11} />}
                     </button>
                   </div>
                 </div>
@@ -1457,23 +1453,23 @@ export default function ArchivePageClient() {
               {[
                 {
                   step: "Original Material",
-                  image: "/images/book-clipping-etam-miss-mary.png",
-                  alt: "Original archive material — ETAM Miss Mary clipping",
+                  image: "/images/gen-athens-street.png",
+                  alt: "Original archive material — Athens street, period atmosphere",
                 },
                 {
                   step: "Conservation",
-                  image: "/images/book-clipping-hat-mary.png",
-                  alt: "Conservation and restoration process",
+                  image: "/images/gen-restoration-workspace.png",
+                  alt: "Conservation and restoration workspace",
                 },
                 {
                   step: "Digital Restoration",
-                  image: "/images/book-clipping-mary-celebrated.png",
-                  alt: "Digital restoration — Mary celebrated clipping",
+                  image: "/images/gen-laurel-wreath.png",
+                  alt: "Digital restoration — decorative laurel motif",
                 },
                 {
                   step: "Restored Page",
-                  image: "/images/mary-glamour-portrait.jpg",
-                  alt: "Final restored archive page — diamond earrings portrait",
+                  image: "/images/gen-runway-stage.png",
+                  alt: "Final restored archive page — decorative runway motif",
                 },
               ].map((step, i, arr) => (
                 <div key={step.step}>

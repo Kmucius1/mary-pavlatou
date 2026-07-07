@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
+import TranslateIcon from "@/components/TranslateIcon";
 
 // ─── Ornamental divider ─────────────────────────────────────────────────────
 function OrnamentDivider({ centered }: { centered?: boolean }) {
@@ -25,7 +26,7 @@ const houses = [
     nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(16px,1.8vw,22px)", letterSpacing: "0.22em", fontWeight: 700 },
     city: "Grande Bretagne · Athens",
     caption: "Επιδείξεις μόδας at the Grande Bretagne — the most celebrated fashion salons of Athens.",
-    image: "/images/book-clipping-etam-miss-mary.png",
+    image: "/images/mary-archive-colorized-fireplace-gown.png",
     imageW: 1388, imageH: 1838,
   },
   {
@@ -41,7 +42,7 @@ const houses = [
     nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(11px,1.2vw,14px)", letterSpacing: "0.18em", fontWeight: 700 },
     city: "King George Hotel · Athens",
     caption: "Καλοκαιρινά μοντέλλα — summer and spring collections at the King George Hotel.",
-    image: "/images/book-clipping-summer-show.png",
+    image: "/images/mary-archive-street-coat-named.png",
     imageW: 1388, imageH: 1838,
   },
   {
@@ -49,7 +50,7 @@ const houses = [
     nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(12px,1.3vw,16px)", fontWeight: 600 },
     city: "Μόδα Καπέλα · Athens",
     caption: "Μανεκέν Μαίρη Παυλάτου — presenting Rose Valois hat models at the Archontaki-Kallergi salon.",
-    image: "/images/book-clipping-hat-mary.png",
+    image: "/images/mary-archive-hat-portraits-named.png",
     imageW: 1388, imageH: 1838,
   },
   {
@@ -65,7 +66,7 @@ const houses = [
     nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(9px,1vw,12px)", letterSpacing: "0.18em", fontWeight: 700 },
     city: "Athens · International",
     caption: "\"A celebrated fashion model\" — featured by Stantzos and Filioskos houses in national press.",
-    image: "/images/book-clipping-mary-celebrated.png",
+    image: "/images/mary-archive-mohair-coat-named.png",
     imageW: 1388, imageH: 1838,
   },
 ];
@@ -128,8 +129,7 @@ const featureCards = [
     body: "Mary presented collections at Athens' most prestigious venues — the Grande Bretagne and the King George Hotel — for the great fashion houses of postwar Greece.",
     cta: { label: "View Archive Clippings", href: "/archive" },
     images: [
-      { src: "/images/book-clipping-mallidou-spring.png", alt: "Spring fashion show clipping — Eleni Mallidou house", w: 1388, h: 1838, rot: -4 },
-      { src: "/images/book-clipping-etam-pajamas.png", alt: "ETAM pajama exhibition clipping — Grande Bretagne", w: 1388, h: 1838, rot: 3 },
+      { src: "/images/mary-archive-inset-evening-gown-named.png", alt: "Newspaper clipping naming Miss Pavlatou — inset evening gown photograph", w: 1388, h: 1838, rot: -4 },
     ],
   },
   {
@@ -137,7 +137,7 @@ const featureCards = [
     body: "Her signature runway music was the theme from The Third Man — cinematic, timeless, and unforgettable. As she walked, the room fell silent.",
     cta: { label: "Enter the Archive", href: "/archive" },
     images: [
-      { src: "/images/mary-black-velvet-runway.png", alt: "Mary Pavlatou in black velvet gown — archival press photograph", w: 600, h: 1100, rot: 0 },
+      { src: "/images/mary-archive-black-velvet-clipping.png", alt: "Mary Pavlatou in black velvet gown — archival press photograph", w: 600, h: 1100, rot: 0 },
     ],
   },
   {
@@ -145,8 +145,7 @@ const featureCards = [
     body: "At the Patricia Vance School of Fashion in Chicago, Mary trained as the first Greek to earn international certification. For her, the mannequin was not an instrument — she was an artist.",
     cta: { label: "About Her Training", href: "/story#chicago" },
     images: [
-      { src: "/images/mary-veil-hat.jpg", alt: "Mary Pavlatou — Portrait with veil hat, from the family archive", w: 1388, h: 1838, rot: -3 },
-      { src: "/images/book-clipping-evening-gown.png", alt: "Mary Pavlatou modeling an evening gown in the American style", w: 1388, h: 1838, rot: 4 },
+      { src: "/images/mary-archive-floral-sundress.png", alt: "Mary Pavlatou — Full-body photograph in floral-print sundress, from the family archive", w: 1388, h: 1838, rot: -3 },
     ],
   },
 ];
@@ -243,7 +242,7 @@ export default function FashionWorldClient() {
         {/* Left watermark — atelier */}
         <div aria-hidden="true" style={{
           position: "absolute", left: "-40px", top: 0, bottom: 0, width: "300px",
-          opacity: 0.07, backgroundImage: "url('/images/mary-runway-white.jpg')",
+          opacity: 0.07, backgroundImage: "url('/images/hf-columns.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
           maskImage: "linear-gradient(to right, black, transparent)",
           WebkitMaskImage: "linear-gradient(to right, black, transparent)",
@@ -252,7 +251,7 @@ export default function FashionWorldClient() {
         {/* Right watermark — vanity/tower */}
         <div aria-hidden="true" style={{
           position: "absolute", right: "-20px", top: 0, bottom: 0, width: "260px",
-          opacity: 0.07, backgroundImage: "url('/images/mary-social-event.jpg')",
+          opacity: 0.07, backgroundImage: "url('/images/hf-marble.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
           maskImage: "linear-gradient(to left, black, transparent)",
           WebkitMaskImage: "linear-gradient(to left, black, transparent)",
@@ -267,8 +266,9 @@ export default function FashionWorldClient() {
 
           {/* Left: text */}
           <div className="animate-fade-in">
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "9px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px" }}>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "9px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
               The World of Fashion
+              <TranslateIcon size={11} />
             </p>
             <h1 className="font-display" style={{ color: "#8B7030", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05, marginBottom: "10px" }}>
               Ο Κοσμος της Μοδας
@@ -301,8 +301,8 @@ export default function FashionWorldClient() {
           <div className="animate-fade-in delay-2 max-lg:order-first" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
             <div style={{ overflow: "hidden", maxWidth: "320px", boxShadow: "0 6px 40px rgba(139,112,48,0.18)" }}>
               <Image
-                src="/images/mary-runway-blue.jpg"
-                alt="Mary Pavlatou — Live runway presentation in blue ball gown, colorized"
+                src="/images/mary-archive-polkadot-named.png"
+                alt="Newspaper clipping naming Mary Pavlatou — polka-dot dress modeled for the Malliris fashion review"
                 width={1388} height={1838}
                 priority
                 style={{ width: "100%", height: "auto", maxHeight: "clamp(300px,46vh,500px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
@@ -524,9 +524,10 @@ export default function FashionWorldClient() {
 
           <blockquote className="font-serif italic" style={{
             color: "#1C1814", fontSize: "clamp(15px,1.8vw,22px)",
-            lineHeight: 1.75, flex: 1,
+            lineHeight: 1.75, flex: 1, display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap",
           }}>
-            &ldquo;Η δις Παυλάτου σας παρουσιάζει αυτό το κομψό παλτό — Miss Pavlatou presents this elegant coat.&rdquo;
+            <span>&ldquo;Η δις Παυλάτου σας παρουσιάζει αυτό το κομψό παλτό — Miss Pavlatou presents this elegant coat.&rdquo;</span>
+            <TranslateIcon />
           </blockquote>
 
           {/* Right laurel (mirrored) */}

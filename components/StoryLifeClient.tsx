@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import TranslateIcon from "@/components/TranslateIcon";
 
 // ─── Chapter data ───────────────────────────────────────────────────────────
 
@@ -27,8 +28,7 @@ const chapters: Chapter[] = [
     cta: { label: "View Archive Sources", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-etam-miss-mary.png", alt: "Miss Mary Pavlatou — ETAM press clipping, Apogevmatini newspaper", w: 1388, h: 1838, rot: -3 },
-      { src: "/images/mary-young-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait from the family archive dedication page", w: 1388, h: 1838, rot: 4, dx: 60, dy: 30 },
+      { src: "/images/mary-archive-sundress-hat.png", alt: "Mary Pavlatou — Full-body newspaper photograph in white sundress and wide-brimmed hat, family archive", w: 1388, h: 1838, rot: -3 },
     ],
   },
   {
@@ -40,7 +40,7 @@ const chapters: Chapter[] = [
     cta: { label: "Explore Her Heritage", href: "/archive" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-veil-hat.jpg", alt: "Mary Pavlatou — Portrait with veil hat and pearl necklace, from the family archive", w: 1388, h: 1838 },
+      { src: "/images/mary-archive-colorized-veiled-hat.png", alt: "Mary Pavlatou — Colorized close-up portrait with veiled hat and pearl choker, from the family archive", w: 1388, h: 1838 },
     ],
     extras: "quality-cards",
   },
@@ -53,8 +53,7 @@ const chapters: Chapter[] = [
     cta: { label: "View the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-etam-garden.png", alt: "Mary Pavlatou at ETAM garden — archival newspaper clipping", w: 1388, h: 1838, rot: -2 },
-      { src: "/images/mary-pearl-necklace-portrait.png", alt: "Mary Pavlatou — Colorized portrait with pearl necklace and flower hat, family archive", w: 960, h: 1200, rot: 3, dx: 55, dy: 40 },
+      { src: "/images/mary-archive-beaded-gown.png", alt: "Mary Pavlatou — Full-body photograph in draped, beaded evening gown with train, family archive", w: 1388, h: 1838, rot: -2 },
     ],
   },
   {
@@ -66,7 +65,7 @@ const chapters: Chapter[] = [
     cta: { label: "Her Archive", href: "/archive" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-white-gown.jpg", alt: "Mary Pavlatou — Full-length colorized portrait in white tiered gown, family archive", w: 800, h: 1388 },
+      { src: "/images/mary-archive-floral-gown-tiara.png", alt: "Mary Pavlatou — Full-body photograph in ornate floral-embroidered gown with tiara headpiece, family archive", w: 800, h: 1388 },
     ],
   },
   {
@@ -78,7 +77,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-mary-celebrated.png", alt: "Mary Pavlatou — A celebrated fashion model, press clipping", w: 1388, h: 1838, rot: -1 },
+      { src: "/images/mary-archive-colorized-bow-portrait.png", alt: "Mary Pavlatou — Colorized close-up portrait with bow headband, family archive", w: 1388, h: 1838, rot: -1 },
     ],
   },
   {
@@ -90,7 +89,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-runway-blue.jpg", alt: "Mary Pavlatou — Blue ball gown on runway, colorized archival photograph", w: 1388, h: 1838 },
+      { src: "/images/mary-archive-fishnet-gown-named.png", alt: "Newspaper feature — \"How I Became the First Greek Certified Mannequin,\" Mary Pavlatou demonstrating an outfit in a fishnet-pattern gown", w: 1388, h: 1838 },
     ],
   },
   {
@@ -102,8 +101,7 @@ const chapters: Chapter[] = [
     cta: { label: "View Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-mohair-coat.png", alt: "Mary Pavlatou presenting an elegant mohair coat — press clipping", w: 1388, h: 1838, rot: 2 },
-      { src: "/images/book-clipping-hat-mary.png", alt: "Μανεκέν Μαίρη Παυλάτου — Rose Valois hat model at Archontaki-Kallergi salon", w: 1388, h: 1838, rot: -3, dx: 50, dy: 45 },
+      { src: "/images/mary-archive-hat-mirror.png", alt: "Newspaper clipping — hat feature with Mary Pavlatou at the mirror, Archontaki-Kallergi salon", w: 1388, h: 1838, rot: 2 },
     ],
   },
   {
@@ -115,7 +113,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-rhinestone-glamour.png", alt: "Mary Pavlatou — Colorized glamour portrait with rhinestone earrings, family archive", w: 960, h: 1200 },
+      { src: "/images/mary-archive-colorized-dramatic-portrait.png", alt: "Mary Pavlatou — Colorized dramatic close-up portrait with diamond earring, family archive", w: 960, h: 1200 },
     ],
   },
   {
@@ -127,7 +125,7 @@ const chapters: Chapter[] = [
     cta: { label: "Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/book-clipping-evening-gown.png", alt: "Mary Pavlatou modeling a magnificent evening gown in the American style", w: 1388, h: 1838 },
+      { src: "/images/mary-archive-ballgown-gloves.png", alt: "Mary Pavlatou — Full-body photograph in voluminous evening ball gown with long gloves", w: 1388, h: 1838 },
     ],
   },
   {
@@ -139,7 +137,7 @@ const chapters: Chapter[] = [
     cta: { label: "Legacy", href: "/legacy" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-glamour-portrait.jpg", alt: "Mary Pavlatou — Colorized portrait with diamond earrings, from the family archive", w: 1388, h: 1838 },
+      { src: "/images/mary-archive-colorized-twirl-ballgown.png", alt: "Mary Pavlatou — Colorized photograph twirling in a white floral-bodice ballgown, from the family archive", w: 1388, h: 1838 },
     ],
   },
   {
@@ -151,8 +149,7 @@ const chapters: Chapter[] = [
     cta: { label: "Enter the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/portrait-mary-color-gold-lapels.png", alt: "Mary Pavlatou — Colorized portrait with gold lapels, family archive", w: 1388, h: 1838, rot: -2 },
-      { src: "/images/book-clipping-fur-coat.png", alt: "Mary Pavlatou presenting a fur coat — archival press clipping", w: 1388, h: 1838, rot: 3, dx: 55, dy: 50 },
+      { src: "/images/mary-archive-strapless-cocktail-named.png", alt: "Newspaper feature referencing \"the style of Mary Pavlatou\" — strapless patterned cocktail dress, family archive", w: 1388, h: 1838, rot: -2 },
     ],
   },
 ];
@@ -283,8 +280,9 @@ export default function StoryLifeClient() {
           </svg>
 
           {/* Eyebrow */}
-          <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.52em", textTransform: "uppercase", fontWeight: 700, marginBottom: "24px" }}>
+          <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.52em", textTransform: "uppercase", fontWeight: 700, marginBottom: "24px", display: "flex", alignItems: "center", gap: "8px" }}>
             Her Life · Η Ζωή της
+            <TranslateIcon size={11} />
           </p>
 
           {/* Title */}
@@ -341,8 +339,8 @@ export default function StoryLifeClient() {
         {/* Right: atmospheric ballroom image */}
         <div style={{ position: "relative", minHeight: "clamp(380px,60vh,860px)" }}>
           <Image
-            src="/images/story-hero-ballroom.png"
-            alt="Atmospheric 1950s Athenian ballroom — marble columns, candlelight, silk and couture"
+            src="/images/the life od maria page banner.png"
+            alt="The Life of Maria — commemorative page banner"
             fill
             priority
             sizes="50vw"
@@ -414,8 +412,9 @@ export default function StoryLifeClient() {
               <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15, marginBottom: "6px" }}>
                 {chapter.title}
               </h2>
-              <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(16px,1.6vw,20px)", marginBottom: 0 }}>
+              <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(16px,1.6vw,20px)", marginBottom: 0, display: "flex", alignItems: "center", gap: "8px" }}>
                 {chapter.greek}
+                <TranslateIcon />
               </p>
               <OrnamentDivider />
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.35vw,17px)", lineHeight: 1.95, marginBottom: "24px" }}>

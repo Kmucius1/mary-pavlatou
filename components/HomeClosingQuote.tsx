@@ -29,11 +29,25 @@ export default function HomeClosingQuote() {
   return (
     <section
       style={{
+        position: "relative",
+        overflow: "hidden",
         background: "linear-gradient(135deg, #EFE5CC 0%, #F2F0E8 50%, #EFE5CC 100%)",
         borderTop: "1px solid #D8C48E",
         padding: "clamp(44px,6vh,72px) clamp(32px,6vw,80px)",
       }}
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url('/images/story-hero-ballroom.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.06,
+          pointerEvents: "none",
+        }}
+      />
       <div
         style={{
           maxWidth: "1100px",
