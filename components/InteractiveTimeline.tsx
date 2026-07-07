@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BilingualHeading from "@/components/BilingualHeading";
 
 const slides = [
   {
@@ -175,18 +176,15 @@ export default function InteractiveTimeline() {
         >
           Her Story in Time
         </p>
-        <h2
+        <BilingualHeading
+          as="h2"
+          el="Η Ζωή της Μαρίας"
+          en="A Life in Light"
           className="font-display"
           style={{ color: "#f5d050", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.14em", fontWeight: 700, marginBottom: "10px" }}
-        >
-          A Life in Light
-        </h2>
-        <p
-          className="font-serif italic"
-          style={{ color: "rgba(245,208,80,0.6)", fontSize: "clamp(14px,1.6vw,18px)", marginBottom: "0" }}
-        >
-          Η Ζωή της Μαρίας
-        </p>
+          subClassName="font-serif italic"
+          subStyle={{ color: "rgba(245,208,80,0.6)", fontSize: "clamp(14px,1.6vw,18px)", marginBottom: "0" }}
+        />
       </div>
 
       {/* ── Chapter strip navigation ── */}
@@ -336,19 +334,15 @@ export default function InteractiveTimeline() {
             {s.era}
           </p>
 
-          <h3
+          <BilingualHeading
+            as="h3"
+            el={s.greek}
+            en={s.title}
             className="font-display"
             style={{ color: "#f5d050", fontSize: "clamp(20px,2.8vw,36px)", letterSpacing: "0.1em", fontWeight: 700, lineHeight: 1.2, marginBottom: "10px" }}
-          >
-            {s.title}
-          </h3>
-
-          <p
-            className="font-serif italic"
-            style={{ color: "rgba(245,208,80,0.6)", fontSize: "clamp(14px,1.4vw,18px)", marginBottom: "22px" }}
-          >
-            {s.greek}
-          </p>
+            subClassName="font-serif italic"
+            subStyle={{ color: "rgba(245,208,80,0.6)", fontSize: "clamp(14px,1.4vw,18px)", marginBottom: "22px" }}
+          />
 
           <div style={{ width: "32px", height: "2px", background: "#f5d050", marginBottom: "22px", opacity: 0.7 }} />
 

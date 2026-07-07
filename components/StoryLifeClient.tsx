@@ -2,7 +2,8 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import TranslateIcon from "@/components/TranslateIcon";
+import BilingualHeading from "@/components/BilingualHeading";
+import GreekTerm from "@/components/GreekTerm";
 
 // ─── Chapter data ───────────────────────────────────────────────────────────
 
@@ -280,22 +281,27 @@ export default function StoryLifeClient() {
           </svg>
 
           {/* Eyebrow */}
-          <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.52em", textTransform: "uppercase", fontWeight: 700, marginBottom: "24px", display: "flex", alignItems: "center", gap: "8px" }}>
+          <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.52em", textTransform: "uppercase", fontWeight: 700, marginBottom: "24px" }}>
             Her Life · Η Ζωή της
-            <TranslateIcon size={11} />
           </p>
 
           {/* Title */}
-          <h1 className="font-display" style={{
-            color: "#6A4F1E",
-            fontSize: "clamp(38px,5.5vw,72px)",
-            letterSpacing: "0.10em",
-            fontWeight: 700,
-            lineHeight: 1.05,
-            marginBottom: "24px",
-          }}>
-            Η Ζωή<br />της Μαρίας
-          </h1>
+          <div style={{ marginBottom: "24px" }}>
+            <BilingualHeading
+              as="h1"
+              el={<>Η Ζωή<br />της Μαρίας</>}
+              en={<>The Life<br />of Mary</>}
+              className="font-display"
+              style={{
+                color: "#6A4F1E",
+                fontSize: "clamp(38px,5.5vw,72px)",
+                letterSpacing: "0.10em",
+                fontWeight: 700,
+                lineHeight: 1.05,
+              }}
+              subStyle={{ fontSize: "clamp(14px,1.4vw,18px)", marginTop: "12px", color: "#B9974D", opacity: 0.85, fontStyle: "italic" }}
+            />
+          </div>
 
           {/* Divider */}
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "26px" }}>
@@ -340,7 +346,7 @@ export default function StoryLifeClient() {
         <div style={{ position: "relative", minHeight: "clamp(380px,60vh,860px)" }}>
           <Image
             src="/images/the life od maria page banner.png"
-            alt="The Life of Maria — commemorative page banner"
+            alt="Atmospheric 1950s Athenian ballroom — marble columns, candlelight, silk and couture"
             fill
             priority
             sizes="50vw"
@@ -358,34 +364,73 @@ export default function StoryLifeClient() {
       {/* ── Greek key strip ── */}
       <div aria-hidden="true" style={{ height: "10px", background: "repeating-linear-gradient(90deg, rgba(139,112,48,0.35) 0px, rgba(139,112,48,0.35) 2px, transparent 2px, transparent 7px)", borderBottom: "1px solid #D0C4A0" }} />
 
-      {/* ── Roman numeral chapter strip ── */}
-      <div style={{ background: "#EDE8D8", borderBottom: "1px solid #D0C4A0", padding: "0 clamp(20px,5vw,48px)", overflowX: "auto", display: "flex", gap: 0, width: "100%" }}>
-        {chapters.map((ch, i) => {
-          const isActive = activeIdx === i;
-          return (
-            <button
-              key={ch.id}
-              onClick={() => goTo(i)}
-              className="font-display"
-              style={{
-                background: "none", border: "none", cursor: "pointer",
-                padding: "14px 16px",
-                color: isActive ? "#8B7030" : "#A09080",
-                fontSize: "8px", letterSpacing: "0.18em", textTransform: "uppercase",
-                fontWeight: isActive ? 700 : 500,
-                whiteSpace: "nowrap",
-                borderBottom: isActive ? "2px solid #8B7030" : "2px solid transparent",
-                transition: "all 0.2s ease",
-              }}
-            >
-              {ch.roman}
-            </button>
-          );
-        })}
-      </div>
+      {/* ── Single chapter view (with vertical chapter rail) ── */}
+      <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "clamp(48px,6vh,80px) clamp(28px,5vw,64px)", display: "flex", gap: "clamp(28px,4vw,56px)", alignItems: "flex-start" }}>
 
-      {/* ── Single chapter view ── */}
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "clamp(48px,6vh,80px) clamp(28px,5vw,64px)" }}>
+        {/* ── Vertical chapter timeline rail (left) ── */}
+        <nav
+          aria-label="Chapter navigation — jump to a chapter"
+          className="hidden lg:block"
+          style={{ position: "sticky", top: "108px", flexShrink: 0, width: "150px", alignSelf: "flex-start" }}
+        >
+          <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 700, marginBottom: "3px" }}>
+            The Chapters
+          </p>
+          <p className="font-serif italic" style={{ color: "#A0906E", fontSize: "11px", marginBottom: "18px" }}>
+            Τα Κεφάλαια
+          </p>
+
+          <div style={{ position: "relative" }}>
+            {/* vertical connecting line */}
+            <div aria-hidden="true" style={{ position: "absolute", left: "6px", top: "12px", bottom: "12px", width: "1px", background: "linear-gradient(to bottom, transparent, #C5A84A 10%, #C5A84A 90%, transparent)" }} />
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "2px" }}>
+              {chapters.map((ch, i) => {
+                const isActive = activeIdx === i;
+                return (
+                  <li key={ch.id}>
+                    <button
+                      onClick={() => goTo(i)}
+                      className="font-display"
+                      aria-current={isActive ? "true" : undefined}
+                      aria-label={`Chapter ${ch.roman} — ${ch.title}`}
+                      style={{
+                        display: "flex", alignItems: "center", gap: "14px",
+                        background: "none", border: "none", cursor: "pointer",
+                        padding: "7px 0", width: "100%", textAlign: "left",
+                      }}
+                    >
+                      {/* timeline dot */}
+                      <span style={{ width: "13px", display: "flex", justifyContent: "center", flexShrink: 0 }}>
+                        <span style={{
+                          width: isActive ? "11px" : "7px",
+                          height: isActive ? "11px" : "7px",
+                          borderRadius: "50%",
+                          background: isActive ? "#8B7030" : "#F0EBD9",
+                          border: `1.5px solid ${isActive ? "#8B7030" : "#C5A84A"}`,
+                          boxShadow: isActive ? "0 0 0 3px rgba(139,112,48,0.15)" : "none",
+                          transition: "all 0.2s ease",
+                        }} />
+                      </span>
+                      {/* roman numeral */}
+                      <span style={{
+                        fontSize: isActive ? "16px" : "13px",
+                        letterSpacing: "0.12em",
+                        color: isActive ? "#6A4F1E" : "#A0906E",
+                        fontWeight: isActive ? 700 : 500,
+                        transition: "all 0.2s ease",
+                      }}>
+                        {ch.roman}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </nav>
+
+        {/* ── Chapter content column ── */}
+        <div style={{ flex: "1 1 0", minWidth: 0 }}>
 
         {/* Fade-in chapter card */}
         <div style={{
@@ -409,13 +454,14 @@ export default function StoryLifeClient() {
               <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "12px" }}>
                 Chapter {chapter.roman}
               </p>
-              <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15, marginBottom: "6px" }}>
-                {chapter.title}
-              </h2>
-              <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(16px,1.6vw,20px)", marginBottom: 0, display: "flex", alignItems: "center", gap: "8px" }}>
-                {chapter.greek}
-                <TranslateIcon />
-              </p>
+              <BilingualHeading
+                as="h2"
+                el={chapter.greek}
+                en={chapter.title}
+                className="font-display"
+                style={{ color: "#1C1814", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15 }}
+                subStyle={{ color: "#8B7030", fontSize: "clamp(15px,1.5vw,19px)", marginTop: "6px", fontStyle: "italic" }}
+              />
               <OrnamentDivider />
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.35vw,17px)", lineHeight: 1.95, marginBottom: "24px" }}>
                 {chapter.body}
@@ -530,6 +576,7 @@ export default function StoryLifeClient() {
               <path d="M0 2.5H12M9 1L12 2.5L9 4" stroke="currentColor" strokeWidth="1" />
             </svg>
           </Link>
+        </div>
         </div>
       </div>
     </main>

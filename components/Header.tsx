@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import LanguageToggle from "@/components/LanguageToggle";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -90,8 +91,9 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Right: Column icon + mobile toggle */}
+        {/* Right: Language toggle + Column icon + mobile toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div className="hidden lg:block"><LanguageToggle /></div>
           <div className="hidden lg:block"><ColumnIcon /></div>
           <button
             className="lg:hidden"
@@ -139,6 +141,9 @@ export default function Header() {
               </Link>
             );
           })}
+          <div style={{ paddingTop: "16px" }}>
+            <LanguageToggle />
+          </div>
         </nav>
       )}
     </header>

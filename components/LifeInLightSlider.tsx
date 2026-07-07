@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { timelineSlides } from "@/data/maryTimeline";
-import TranslateIcon from "@/components/TranslateIcon";
+import BilingualHeading from "@/components/BilingualHeading";
 
 export default function LifeInLightSlider() {
   const [active, setActive] = useState(0);
@@ -45,7 +45,14 @@ export default function LifeInLightSlider() {
         <div className="lg:hidden" style={{ marginBottom: "32px", textAlign: "center" }}>
           <p className="font-display" style={{ color: "#B9974D", fontSize: "9px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>Her Story in Time</p>
           <h2 className="font-display" style={{ color: "#2F2A22", fontSize: "clamp(26px,5vw,40px)", letterSpacing: "0.14em", fontWeight: 700 }}>A Life in Light</h2>
-          <p className="font-serif italic" style={{ color: "#8A6A2F", fontSize: "clamp(15px,1.8vw,20px)", marginTop: "6px" }}>Η Ζωή της Μαρίας</p>
+          <BilingualHeading
+            as="p"
+            el="Η Ζωή της Μαρίας"
+            en="The Life of Mary"
+            className="font-serif italic"
+            style={{ color: "#8A6A2F", fontSize: "clamp(15px,1.8vw,20px)", marginTop: "6px" }}
+            subStyle={{ fontSize: "0.62em" }}
+          />
         </div>
 
         {/* Desktop two-column layout */}
@@ -55,7 +62,16 @@ export default function LifeInLightSlider() {
           <div className="hidden lg:flex" style={{ flexDirection: "column" }}>
             <p className="font-display" style={{ color: "#B9974D", fontSize: "9px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>Her Story in Time</p>
             <h2 className="font-display" style={{ color: "#2F2A22", fontSize: "clamp(22px,2.8vw,34px)", letterSpacing: "0.13em", fontWeight: 700, lineHeight: 1.15, marginBottom: "8px" }}>A Life in Light</h2>
-            <p className="font-serif italic" style={{ color: "#8A6A2F", fontSize: "clamp(15px,1.5vw,19px)", marginBottom: "40px" }}>Η Ζωή της Μαρίας</p>
+            <div style={{ marginBottom: "40px" }}>
+              <BilingualHeading
+                as="p"
+                el="Η Ζωή της Μαρίας"
+                en="The Life of Mary"
+                className="font-serif italic"
+                style={{ color: "#8A6A2F", fontSize: "clamp(15px,1.5vw,19px)" }}
+                subStyle={{ fontSize: "0.62em" }}
+              />
+            </div>
 
             {/* Chapter items */}
             <div style={{ position: "relative" }}>
@@ -167,13 +183,16 @@ export default function LifeInLightSlider() {
                 <p className="font-display" style={{ color: "#B9974D", fontSize: "8px", letterSpacing: "0.44em", textTransform: "uppercase", marginBottom: "6px", fontWeight: 700 }}>
                   Chapter {slide.roman}
                 </p>
-                <p className="font-serif italic" style={{ color: "#8A6A2F", fontSize: "clamp(14px,1.4vw,17px)", marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
-                  {slide.greekPhrase}
-                  <TranslateIcon />
-                </p>
-                <h3 className="font-display" style={{ color: "#2F2A22", fontSize: "clamp(20px,2.4vw,30px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2, marginBottom: "8px" }}>
-                  {slide.title}
-                </h3>
+                <div style={{ marginBottom: "8px" }}>
+                  <BilingualHeading
+                    as="h3"
+                    el={slide.greekPhrase}
+                    en={slide.title}
+                    className="font-display"
+                    style={{ color: "#2F2A22", fontSize: "clamp(20px,2.4vw,30px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2 }}
+                    subStyle={{ color: "#8A6A2F", fontSize: "clamp(13px,1.3vw,16px)", marginTop: "6px", fontStyle: "italic" }}
+                  />
+                </div>
                 <p className="font-display" style={{ color: "#B9974D", fontSize: "9px", letterSpacing: "0.22em", marginBottom: "20px", fontWeight: 600 }}>
                   {slide.dateLabel}
                 </p>

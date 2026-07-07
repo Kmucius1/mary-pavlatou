@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import TranslateIcon from "@/components/TranslateIcon";
+import BilingualHeading from "@/components/BilingualHeading";
 
 // ─── Ornamental divider ─────────────────────────────────────────────────────
 function OrnamentDivider({ centered }: { centered?: boolean }) {
@@ -266,13 +267,15 @@ export default function FashionWorldClient() {
 
           {/* Left: text */}
           <div className="animate-fade-in">
-            <p className="font-display" style={{ color: "#8B7030", fontSize: "9px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
-              The World of Fashion
-              <TranslateIcon size={11} />
-            </p>
-            <h1 className="font-display" style={{ color: "#8B7030", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05, marginBottom: "10px" }}>
-              Ο Κοσμος της Μοδας
-            </h1>
+            <div style={{ marginBottom: "10px" }}>
+              <BilingualHeading
+                as="h1"
+                el="Ο Κοσμος της Μοδας"
+                en="The World of Fashion"
+                className="font-display"
+                style={{ color: "#8B7030", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05 }}
+              />
+            </div>
             <OrnamentDivider />
             <p className="font-serif" style={{ color: "#1C1814", fontSize: "clamp(14px,1.45vw,17px)", lineHeight: 1.9, marginBottom: "12px" }}>
               Mary Pavlatou moved with grace through the golden era of haute couture — a world of artistry, discipline, beauty, and timeless elegance.

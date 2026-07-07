@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import BilingualHeading from "@/components/BilingualHeading";
 
 export default function HomeHero() {
   const lineRef = useRef<HTMLDivElement>(null);
@@ -128,17 +129,19 @@ export default function HomeHero() {
           </h1>
 
           {/* Greek subtitle */}
-          <p
-            className="font-serif italic"
-            style={{
-              color: "#8A6A2F",
-              fontSize: "clamp(18px,2.4vw,30px)",
-              marginBottom: "24px",
-              letterSpacing: "0.04em",
-            }}
-          >
-            Η Μνήμη της Μαρίας
-          </p>
+          <div style={{ marginBottom: "24px" }}>
+            <BilingualHeading
+              as="p"
+              el="Η Μνήμη της Μαρίας"
+              en="The Memory of Mary"
+              className="font-serif italic"
+              style={{
+                color: "#8A6A2F",
+                fontSize: "clamp(18px,2.4vw,30px)",
+                letterSpacing: "0.04em",
+              }}
+            />
+          </div>
 
           {/* Ornament divider */}
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "26px" }}>

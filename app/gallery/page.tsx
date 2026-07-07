@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ArchiveGallery from "@/components/ArchiveGallery";
-import TranslateIcon from "@/components/TranslateIcon";
+import BilingualHeading from "@/components/BilingualHeading";
 
 export const metadata: Metadata = {
   title: "The Gallery — Mary Pavlatou Memorial Archive",
@@ -47,22 +47,19 @@ export default function GalleryPage() {
         </h1>
 
         {/* Greek subtitle */}
-        <p
-          className="font-serif italic"
-          style={{
-            color: "#8B7030",
-            fontSize: "clamp(13px, 1.6vw, 17px)",
-            letterSpacing: "0.08em",
-            marginBottom: "22px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          }}
-        >
-          Φωτογραφικό Αρχείο
-          <TranslateIcon />
-        </p>
+        <div style={{ marginBottom: "22px" }}>
+          <BilingualHeading
+            as="p"
+            el="Φωτογραφικό Αρχείο"
+            en="Photographic Archive"
+            className="font-serif italic"
+            style={{
+              color: "#8B7030",
+              fontSize: "clamp(13px, 1.6vw, 17px)",
+              letterSpacing: "0.08em",
+            }}
+          />
+        </div>
 
         {/* Rule */}
         <div
