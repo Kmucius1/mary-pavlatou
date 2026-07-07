@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BilingualHeading from "@/components/BilingualHeading";
 
 /* ─────────────────────────────────────────────
    COLOUR TOKENS
@@ -310,18 +311,20 @@ export default function ArchivePageClient() {
           </p>
 
           {/* Greek heading */}
-          <h1
-            style={{
-              fontFamily: "var(--font-cinzel)",
-              fontSize: "clamp(42px, 5vw, 68px)",
-              color: C.accent,
-              lineHeight: 1.1,
-              marginBottom: 16,
-              letterSpacing: "0.06em",
-            }}
-          >
-            Η Μνήμη
-          </h1>
+          <div style={{ marginBottom: 16 }}>
+            <BilingualHeading
+              as="h1"
+              el="Η Μνήμη"
+              en="The Memory"
+              style={{
+                fontFamily: "var(--font-cinzel)",
+                fontSize: "clamp(42px, 5vw, 68px)",
+                color: C.accent,
+                lineHeight: 1.1,
+                letterSpacing: "0.06em",
+              }}
+            />
+          </div>
 
           {/* Italic tagline */}
           <p
@@ -550,7 +553,10 @@ export default function ArchivePageClient() {
               boxShadow: "0 4px 12px rgba(139,112,48,0.10)",
             }}
           >
-            <p
+            <BilingualHeading
+              as="p"
+              el="Ζει Εις Αιώνας"
+              en="She Lives Through the Ages"
               style={{
                 fontFamily: "var(--font-cinzel)",
                 fontSize: 9,
@@ -558,9 +564,7 @@ export default function ArchivePageClient() {
                 color: C.accent,
                 textTransform: "uppercase",
               }}
-            >
-              Ζει Εις Αιώνας
-            </p>
+            />
             <p
               style={{
                 fontFamily: "var(--font-cinzel)",

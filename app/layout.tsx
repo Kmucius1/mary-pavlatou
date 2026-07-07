@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import { LanguageProvider } from "@/lib/language";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -43,10 +44,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cinzel.variable} ${cormorant.variable}`}>
       <body className="antialiased">
-        <Header />
-        {children}
-        <Footer />
-        <ScrollProgress />
+        <LanguageProvider>
+          <Header />
+          {children}
+          <Footer />
+          <ScrollProgress />
+        </LanguageProvider>
       </body>
     </html>
   );

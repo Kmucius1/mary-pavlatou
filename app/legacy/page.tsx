@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import BilingualHeading from "@/components/BilingualHeading";
+import GreekTerm from "@/components/GreekTerm";
 
 export default function LegacyPage() {
   return (
@@ -31,12 +33,15 @@ export default function LegacyPage() {
 
           {/* Left: Dedication text */}
           <div style={{ gridColumn: "1 / 2" }}>
-            <p
-              className="font-display"
-              style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.55em", textTransform: "uppercase", marginBottom: "20px", fontWeight: 600 }}
-            >
-              Η Μνήμη της Μαρίας
-            </p>
+            <div style={{ marginBottom: "20px" }}>
+              <BilingualHeading
+                as="p"
+                el="Η Μνήμη της Μαρίας"
+                en="The Memory of Mary"
+                className="font-display"
+                style={{ color: "#C5A84A", fontSize: "8px", letterSpacing: "0.55em", textTransform: "uppercase", fontWeight: 600 }}
+              />
+            </div>
             <h1
               className="font-display"
               style={{ color: "#F5F1E6", fontSize: "clamp(36px,5vw,72px)", letterSpacing: "0.14em", fontWeight: 400, lineHeight: 1.1, marginBottom: "20px" }}
@@ -109,9 +114,15 @@ export default function LegacyPage() {
             <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
               She Lived in Every Photograph
             </h2>
-            <p className="font-serif italic" style={{ color: "#8B7030", fontSize: "clamp(14px,1.5vw,18px)", marginBottom: "0" }}>
-              Κάθε Φωτογραφία Μια Ζωή
-            </p>
+            <div style={{ marginBottom: "0" }}>
+              <BilingualHeading
+                as="p"
+                el="Κάθε Φωτογραφία Μια Ζωή"
+                en="Every Photograph, a Life"
+                className="font-serif italic"
+                style={{ color: "#8B7030", fontSize: "clamp(14px,1.5vw,18px)" }}
+              />
+            </div>
             <div style={{ width: "60px", height: "1px", background: "#C5A84A", margin: "20px auto 0", opacity: 0.7 }} />
           </div>
 
@@ -225,7 +236,7 @@ export default function LegacyPage() {
             </p>
             <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.4vw,17px)", lineHeight: 1.95, marginBottom: "32px" }}>
               What exists in these pages is not only a record of a fashion career. It is a
-              family&rsquo;s refusal to let grace be forgotten. Αιωνία η μνήμη της.
+              family&rsquo;s refusal to let grace be forgotten. <GreekTerm el="Αιωνία η μνήμη της" en="May her memory be eternal" />.
             </p>
             <div style={{ padding: "20px", background: "rgba(197,168,74,0.08)", border: "1px solid rgba(197,168,74,0.3)" }}>
               <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(14px,1.5vw,18px)", lineHeight: 1.8, marginBottom: "8px" }}>
@@ -255,9 +266,13 @@ export default function LegacyPage() {
             <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(22px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
               The Light She Left
             </h2>
-            <p className="font-display italic" style={{ color: "#8B7030", fontSize: "clamp(10px,1.1vw,13px)", letterSpacing: "0.38em" }}>
-              Το Φως που Άφησε
-            </p>
+            <BilingualHeading
+              as="p"
+              el="Το Φως που Άφησε"
+              en="The Light She Left"
+              className="font-display italic"
+              style={{ color: "#8B7030", fontSize: "clamp(10px,1.1vw,13px)", letterSpacing: "0.38em" }}
+            />
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px,4vw,48px)" }} className="max-lg:grid-cols-1">
@@ -416,7 +431,7 @@ export default function LegacyPage() {
           <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 2, marginBottom: "32px" }}>
             Mary Pavlatou was the first Greek certified professional fashion mannequin.
             She trained at the Patricia Vance School of Fashion in Chicago and returned
-            to Athens to become its best-known μανεκέν — a distinction earned not through
+            to Athens to become its best-known <GreekTerm el="μανεκέν" en="fashion model" /> — a distinction earned not through
             beauty alone, but through the rarest combination of discipline, intelligence,
             and presence. She carried Greece to the world.
           </p>
@@ -468,19 +483,21 @@ export default function LegacyPage() {
             </svg>
           </div>
 
-          <h2
-            className="font-display italic"
-            style={{
-              color: "#C5A84A",
-              fontSize: "clamp(28px,5vw,68px)",
-              fontWeight: 400,
-              letterSpacing: "0.18em",
-              lineHeight: 1.15,
-              marginBottom: "14px",
-            }}
-          >
-            Αιωνία η Μνήμη της
-          </h2>
+          <div style={{ marginBottom: "14px" }}>
+            <BilingualHeading
+              as="h2"
+              el="Αιωνία η Μνήμη της"
+              en="Eternal Is Her Memory"
+              className="font-display italic"
+              style={{
+                color: "#C5A84A",
+                fontSize: "clamp(28px,5vw,68px)",
+                fontWeight: 400,
+                letterSpacing: "0.18em",
+                lineHeight: 1.15,
+              }}
+            />
+          </div>
 
           <p
             className="font-display"
