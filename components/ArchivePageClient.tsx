@@ -714,7 +714,7 @@ export default function ArchivePageClient() {
                 marginBottom: 24,
               }}
             >
-              All 64 Pages — Click any page to open it
+              All 62 Pages — Click any page to open it
             </p>
             <div
               style={{
@@ -723,7 +723,7 @@ export default function ArchivePageClient() {
                 gap: 8,
               }}
             >
-              {Array.from({ length: 64 }, (_, i) => i + 1).map((n) => {
+              {Array.from({ length: 62 }, (_, i) => i + 1).map((n) => {
                 const src = `/images/pdf-pages/page-${String(n).padStart(2, "0")}.png`;
                 const isCurrentSpread = n === pdfPage || n === pdfPage + 1;
                 return (
@@ -831,7 +831,7 @@ export default function ArchivePageClient() {
                   overflow: "hidden",
                 }}
               >
-                {pdfPage + 1 <= 64 ? (
+                {pdfPage + 1 <= 62 ? (
                   <Image
                     src={`/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png`}
                     alt={`Book page ${pdfPage + 1}`}
@@ -894,9 +894,9 @@ export default function ArchivePageClient() {
 
               {/* Right nav arrow */}
               <button
-                onClick={() => setPdfPage((p) => Math.min(63, p + 2))}
+                onClick={() => setPdfPage((p) => Math.min(61, p + 2))}
                 aria-label="Next spread"
-                disabled={pdfPage >= 63}
+                disabled={pdfPage >= 61}
                 style={{
                   position: "absolute",
                   right: -20,
@@ -908,14 +908,14 @@ export default function ArchivePageClient() {
                   border: `1px solid ${C.border}`,
                   background: C.card,
                   color: C.accent,
-                  cursor: pdfPage >= 63 ? "not-allowed" : "pointer",
+                  cursor: pdfPage >= 61 ? "not-allowed" : "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   zIndex: 5,
                   fontFamily: "var(--font-cinzel)",
                   fontSize: 16,
-                  opacity: pdfPage >= 63 ? 0.4 : 1,
+                  opacity: pdfPage >= 61 ? 0.4 : 1,
                   transition: "opacity 0.2s",
                 }}
               >
@@ -945,7 +945,7 @@ export default function ArchivePageClient() {
                   color: C.muted,
                 }}
               >
-                {"Page " + pdfPage + (pdfPage + 1 <= 64 ? "–" + (pdfPage + 1) : "") + " of 64"}
+                {"Page " + pdfPage + (pdfPage + 1 <= 62 ? "–" + (pdfPage + 1) : "") + " of 62"}
               </span>
 
               {/* Toolbar actions */}
@@ -991,7 +991,7 @@ export default function ArchivePageClient() {
                 </button>
                 <button
                   onClick={() => setPdfPage(63)}
-                  disabled={pdfPage >= 63}
+                  disabled={pdfPage >= 61}
                   aria-label="Last spread"
                   style={{
                     padding: "6px 12px",
@@ -1001,8 +1001,8 @@ export default function ArchivePageClient() {
                     fontFamily: "var(--font-cinzel)",
                     fontSize: 11,
                     letterSpacing: "0.1em",
-                    cursor: pdfPage >= 63 ? "not-allowed" : "pointer",
-                    opacity: pdfPage >= 63 ? 0.4 : 1,
+                    cursor: pdfPage >= 61 ? "not-allowed" : "pointer",
+                    opacity: pdfPage >= 61 ? 0.4 : 1,
                   }}
                 >
                   »»
