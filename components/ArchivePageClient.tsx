@@ -1154,8 +1154,8 @@ export default function ArchivePageClient() {
                 },
                 {
                   step: "Restored Page",
-                  image: "/images/gen-runway-stage.png",
-                  alt: "Final restored archive page — decorative runway motif",
+                  image: "/images/book-clipping-mary-celebrated.png",
+                  alt: "Final restored archive page — celebrated fashion model press clipping",
                 },
               ].map((step, i, arr) => (
                 <div key={step.step}>

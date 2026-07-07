@@ -235,32 +235,21 @@ export default function FashionWorldClient() {
 
       {/* ── Hero ── */}
       <section style={{
-        background: "linear-gradient(160deg, #1C1814 0%, #2A2318 40%, #3A2E1E 100%)",
         padding: "clamp(60px,8vh,100px) clamp(32px,6vw,88px)",
         borderBottom: "2px solid #C5A84A",
         position: "relative", overflow: "hidden",
       }}>
-        {/* Subtle pattern overlay */}
+        {/* Full-bleed background — grand couture salon, Paris Autumn 1958 */}
         <div aria-hidden="true" style={{
-          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.06,
-          backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
-        }} />
-        {/* Left watermark — atelier */}
-        <div aria-hidden="true" style={{
-          position: "absolute", left: "-40px", top: 0, bottom: 0, width: "300px",
-          opacity: 0.10, backgroundImage: "url('/images/hf-columns.jpg')",
-          backgroundSize: "cover", backgroundPosition: "center",
-          maskImage: "linear-gradient(to right, black, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, black, transparent)",
+          position: "absolute", inset: 0,
+          backgroundImage: "url('/images/gen-runway-stage.png')",
+          backgroundSize: "cover", backgroundPosition: "center 35%",
           pointerEvents: "none",
         }} />
-        {/* Right watermark — vanity/tower */}
+        {/* Dark gradient overlay for text legibility */}
         <div aria-hidden="true" style={{
-          position: "absolute", right: "-20px", top: 0, bottom: 0, width: "260px",
-          opacity: 0.10, backgroundImage: "url('/images/hf-marble.jpg')",
-          backgroundSize: "cover", backgroundPosition: "center",
-          maskImage: "linear-gradient(to left, black, transparent)",
-          WebkitMaskImage: "linear-gradient(to left, black, transparent)",
+          position: "absolute", inset: 0,
+          background: "linear-gradient(160deg, rgba(20,16,12,0.94) 0%, rgba(28,22,16,0.88) 45%, rgba(20,16,12,0.80) 100%)",
           pointerEvents: "none",
         }} />
 
