@@ -1,98 +1,171 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import TranslateIcon from "@/components/TranslateIcon";
 import BilingualHeading from "@/components/BilingualHeading";
-import GreekTerm from "@/components/GreekTerm";
+
+const standardValues = [
+  {
+    title: "Discipline",
+    text: "She treated presence as something earned.",
+    image: "/images/mary-archive-skirt-suit-cap.png",
+    imageAlt: "Mary Pavlatou — dark skirt suit and pillbox cap, family archive",
+  },
+  {
+    title: "Grace",
+    text: "She carried beauty with restraint, strength, and purpose.",
+    image: "/images/mary-archive-balmain-pink-named.png",
+    imageAlt: "Mary Pavlatou — colorized portrait in an embroidered gown, family archive",
+  },
+  {
+    title: "Intelligence",
+    text: "She understood fashion as language, not decoration.",
+    image: "/images/book-portrait-black-outfit.png",
+    imageAlt: "Mary Pavlatou — portrait in black outfit, family archive",
+  },
+  {
+    title: "Devotion",
+    text: "Her memory survived because love protected it.",
+    image: "/images/mary-archive-garden-car-named.png",
+    imageAlt: "Mary Pavlatou and Thetida Grafa at the garden, family archive",
+  },
+];
+
+const fourLights = [
+  { roman: "I", title: "The Woman", sub: "Not an image. A presence." },
+  { roman: "II", title: "The Model", sub: "Not a figure in a gown. A trained interpreter of movement." },
+  { roman: "III", title: "The Mother", sub: "Not only remembered. Carried." },
+  { roman: "IV", title: "The Memory", sub: "Not stored away. Kept alive." },
+];
 
 export default function LegacyPage() {
   return (
     <div style={{ backgroundColor: "#F0EBD9" }}>
 
       {/* ═══════════════════════════════════════════════
-          HERO — Full-width with portrait collage
+          1. HERO — What She Left Behind
       ═══════════════════════════════════════════════ */}
       <section
         style={{
-          background: "linear-gradient(160deg, #1C1814 0%, #2A2318 40%, #3A2E1E 100%)",
           position: "relative",
           overflow: "hidden",
-          padding: "clamp(64px,9vh,112px) clamp(32px,6vw,88px)",
+          minHeight: "clamp(560px, 82vh, 780px)",
+          display: "flex",
+          alignItems: "center",
           borderBottom: "2px solid #C5A84A",
         }}
       >
-        {/* Subtle pattern overlay */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.06,
-            backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
-          }}
-        />
+        {/* Full-bleed background portrait */}
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0 }}>
+          <Image
+            src="/images/book-portrait-dedication.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "center 20%" }}
+          />
+        </div>
+        {/* Dark gradient overlay */}
+        <div aria-hidden="true" style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(100deg, rgba(18,15,11,0.96) 0%, rgba(18,15,11,0.88) 38%, rgba(18,15,11,0.55) 68%, rgba(18,15,11,0.35) 100%)",
+        }} />
 
-        <div style={{ maxWidth: "1240px", margin: "0 auto", position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "clamp(24px,4vw,48px)", alignItems: "center" }}>
-
-          {/* Left: Dedication text */}
-          <div style={{ gridColumn: "1 / 2" }}>
-            <div style={{ marginBottom: "20px" }}>
-              <BilingualHeading
-                as="p"
-                el="Η Μνήμη της Μαρίας"
-                en="The Memory of Mary"
-                className="font-display"
-                style={{ color: "#C5A84A", fontSize: "11px", letterSpacing: "0.55em", textTransform: "uppercase", fontWeight: 700 }}
-              />
-            </div>
-            <h1
-              className="font-display"
-              style={{ color: "#F5F1E6", fontSize: "clamp(36px,5vw,72px)", letterSpacing: "0.14em", fontWeight: 400, lineHeight: 1.1, marginBottom: "20px" }}
-            >
+        <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "clamp(64px,10vh,120px) clamp(32px,6vw,88px)", position: "relative", width: "100%" }}>
+          <div style={{ maxWidth: "620px" }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "12px", letterSpacing: "0.55em", textTransform: "uppercase", fontWeight: 700, marginBottom: "22px" }}>
               Legacy
+            </p>
+            <h1 className="font-display" style={{ color: "#F5F1E6", fontSize: "clamp(34px,5vw,66px)", letterSpacing: "0.06em", fontWeight: 400, lineHeight: 1.15, marginBottom: "28px" }}>
+              What She Left Behind
             </h1>
-            <div style={{ width: "48px", height: "1px", background: "#C5A84A", marginBottom: "24px", opacity: 0.7 }} />
-            <p
-              className="font-serif italic"
-              style={{ color: "rgba(245,241,230,0.75)", fontSize: "clamp(15px,1.5vw,19px)", lineHeight: 1.85, marginBottom: "28px" }}
-            >
-              &ldquo;This book is dedicated to our mother,<br />the one we call God&rsquo;s Special Angel.&rdquo;
+            <div style={{ width: "56px", height: "1px", background: "#C5A84A", marginBottom: "28px", opacity: 0.8 }} />
+            <p className="font-serif" style={{ color: "rgba(245,241,230,0.82)", fontSize: "clamp(15px,1.5vw,19px)", lineHeight: 1.95, marginBottom: "40px" }}>
+              Mary Pavlatou&rsquo;s legacy is not measured only by photographs, clippings, gowns, or stages.
+              It lives in the standard she carried, the grace she demanded of herself, and the love her
+              family refused to let fade.
             </p>
-            <p
-              className="font-display"
-              style={{ color: "#C5A84A", fontSize: "11px", letterSpacing: "0.4em", textTransform: "uppercase", fontWeight: 700 }}
-            >
-              — The Pulos Brothers
-            </p>
-          </div>
-
-          {/* Center: Main portrait */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <div style={{ overflow: "hidden", boxShadow: "0 16px 64px rgba(0,0,0,0.5)" }}>
-              <Image
-                src="/images/book-portrait-dedication.png"
-                alt="Mary Pavlatou — Colorized portrait from the family archive dedication page"
-                width={1388}
-                height={1838}
-                priority
-                style={{ width: "100%", height: "auto", maxHeight: "clamp(340px,52vh,560px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
-              />
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+              <a
+                href="#the-standard"
+                className="font-display"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "12px",
+                  background: "#C5A84A", color: "#1C1814",
+                  padding: "14px 28px", fontSize: "11px", letterSpacing: "0.3em",
+                  textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
+                }}
+              >
+                Enter Her Legacy
+                <svg width="16" height="5" viewBox="0 0 16 5" fill="none" aria-hidden="true">
+                  <path d="M0 2.5H14M11 1L14 2.5L11 4" stroke="currentColor" strokeWidth="1" />
+                </svg>
+              </a>
+              <Link
+                href="/archive"
+                className="font-display"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "12px",
+                  background: "transparent", color: "#D8C48E",
+                  padding: "14px 28px", fontSize: "11px", letterSpacing: "0.3em",
+                  textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
+                  border: "1px solid #C5A84A",
+                }}
+              >
+                Visit the Archive
+              </Link>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Right: Greek words */}
-          <div style={{ gridColumn: "3 / 4" }}>
-            {[
-              { greek: "χάρη", english: "Grace" },
-              { greek: "ψυχή", english: "Soul" },
-              { greek: "κίνηση", english: "Movement" },
-              { greek: "αγάπη", english: "Love" },
-              { greek: "μνήμη", english: "Memory" },
-            ].map(({ greek, english }, i) => (
-              <div key={greek} style={{ paddingBottom: "16px", marginBottom: "16px", borderBottom: i < 4 ? "1px solid rgba(197,168,74,0.2)" : "none", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <p className="font-serif italic" style={{ color: "#C5A84A", fontSize: "clamp(16px,2vw,24px)", display: "flex", alignItems: "center", gap: "8px" }}>
-                  {greek}
-                  <TranslateIcon />
-                </p>
-                <p className="font-display" style={{ color: "rgba(245,241,230,0.5)", fontSize: "8px", letterSpacing: "0.36em", textTransform: "uppercase" }}>{english}</p>
+      {/* ═══════════════════════════════════════════════
+          2. THE STANDARD
+      ═══════════════════════════════════════════════ */}
+      <section id="the-standard" style={{ background: "#F5F1E6", borderBottom: "1px solid #D0C4A0", padding: "clamp(72px,9vh,108px) clamp(32px,6vw,88px)" }}>
+        <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "clamp(48px,7vh,72px)" }}>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", fontWeight: 700, marginBottom: "16px" }}>
+              What She Carried
+            </p>
+            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(26px,3.4vw,44px)", letterSpacing: "0.1em", fontWeight: 400, lineHeight: 1.2 }}>
+              The Standard
+            </h2>
+            <div style={{ width: "60px", height: "1px", background: "#C5A84A", margin: "22px auto 0", opacity: 0.7 }} />
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
+            {standardValues.map((v) => (
+              <div
+                key={v.title}
+                style={{
+                  position: "relative",
+                  overflow: "hidden",
+                  minHeight: "clamp(340px,44vh,440px)",
+                  border: "1px solid #D0C4A0",
+                  display: "flex",
+                  alignItems: "flex-end",
+                }}
+              >
+                <Image
+                  src={v.image}
+                  alt={v.imageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 300px"
+                  style={{ objectFit: "cover", objectPosition: "top center" }}
+                />
+                <div aria-hidden="true" style={{
+                  position: "absolute", inset: 0,
+                  background: "linear-gradient(0deg, rgba(18,15,11,0.92) 0%, rgba(18,15,11,0.55) 45%, rgba(18,15,11,0.15) 75%)",
+                }} />
+                <div style={{ position: "relative", padding: "28px 22px", width: "100%" }}>
+                  <h3 className="font-display" style={{ color: "#C5A84A", fontSize: "clamp(18px,2vw,24px)", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "10px" }}>
+                    {v.title}
+                  </h3>
+                  <p className="font-serif italic" style={{ color: "rgba(245,241,230,0.9)", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.7 }}>
+                    {v.text}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -100,533 +173,217 @@ export default function LegacyPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 2 — Portrait Gallery from the Book
+          3. THE WORLD SHE MOVED THROUGH
       ═══════════════════════════════════════════════ */}
-      <section
-        style={{
-          background: "#F5F1E6",
-          borderBottom: "1px solid #D0C4A0",
-          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
-        }}
-      >
-        <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+      <section style={{ position: "relative", overflow: "hidden", padding: "clamp(80px,11vh,140px) clamp(32px,6vw,88px)", borderBottom: "1px solid #3A2E1E" }}>
+        {/* Layered atmosphere */}
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "#1C1814" }} />
+        <div aria-hidden="true" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "38%", opacity: 0.24 }}>
+          <Image src="/images/gen-couture-atelier.png" alt="" fill sizes="38vw" style={{ objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent, #1C1814)" }} />
+        </div>
+        <div aria-hidden="true" style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "38%", opacity: 0.20 }}>
+          <Image src="/images/gen-greek-fashion-world.png" alt="" fill sizes="38vw" style={{ objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to left, transparent, #1C1814)" }} />
+        </div>
+        <div aria-hidden="true" style={{
+          position: "absolute", left: "50%", top: 0, bottom: 0, width: "36%", transform: "translateX(-50%)",
+          opacity: 0.08, mixBlendMode: "overlay",
+        }}>
+          <Image src="/images/book-clipping-etam-garden.png" alt="" fill sizes="36vw" style={{ objectFit: "cover" }} />
+        </div>
 
-          <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px", fontWeight: 700 }}>
-              Preserved Portraits
-            </p>
-            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
-              She Lived in Every Photograph
+        <div style={{ maxWidth: "760px", margin: "0 auto", position: "relative", textAlign: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", marginBottom: "28px" }}>
+            <div style={{ width: "44px", height: "1px", background: "linear-gradient(to right, transparent, #C5A84A)" }} />
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+              <path d="M7 0.8C7 0.8 4 4 1 4C4 4 7 7.2 7 7.2C7 7.2 10 4 13 4C10 4 7 0.8 7 0.8Z" fill="#C5A84A" opacity="0.85" />
+            </svg>
+            <div style={{ width: "44px", height: "1px", background: "linear-gradient(to left, transparent, #C5A84A)" }} />
+          </div>
+          <p className="font-display" style={{ color: "#C5A84A", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", fontWeight: 700, marginBottom: "26px" }}>
+            The World She Moved Through
+          </p>
+          <p className="font-serif italic" style={{ color: "rgba(245,241,230,0.9)", fontSize: "clamp(18px,2.2vw,28px)", lineHeight: 1.75 }}>
+            She moved through a world of couture houses, grand hotels, private salons, press rooms,
+            family rooms, and quiet moments no camera could fully hold. Her life belonged to fashion,
+            but her legacy belongs to something deeper.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          4. A LEGACY IN FOUR LIGHTS
+      ═══════════════════════════════════════════════ */}
+      <section style={{ background: "#EDE8D8", borderBottom: "1px solid #D0C4A0", padding: "clamp(72px,9vh,108px) clamp(32px,6vw,88px)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "clamp(48px,7vh,72px)" }}>
+            <h2 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(24px,3.2vw,40px)", letterSpacing: "0.1em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
+              A Legacy in Four Lights
             </h2>
-            <div style={{ marginBottom: "0" }}>
-              <BilingualHeading
-                as="p"
-                el="Κάθε Φωτογραφία Μια Ζωή"
-                en="Every Photograph, a Life"
-                className="font-serif italic"
-                style={{ color: "#8B7030", fontSize: "clamp(14px,1.5vw,18px)" }}
-              />
-            </div>
             <div style={{ width: "60px", height: "1px", background: "#C5A84A", margin: "20px auto 0", opacity: 0.7 }} />
           </div>
 
-          {/* Portrait grid — 4 columns */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
-            {[
-              {
-                src: "/images/mary-archive-dark-dress-blurry.png",
-                alt: "Mary Pavlatou — Afternoon dress in black, from the family archive",
-                caption: "From the family archive",
-              },
-              {
-                src: "/images/mary-archive-skirt-suit-cap.png",
-                alt: "Mary Pavlatou — Dark skirt suit and pillbox cap",
-                caption: "Skirt suit · Pillbox cap",
-              },
-              {
-                src: "/images/mary-archive-balmain-pink-named.png",
-                alt: "Mary Pavlatou — Pink embroidered Balmain gown, colorized",
-                caption: "Balmain gown · Pink embroidery",
-              },
-            ].map(({ src, alt, caption }) => (
-              <div key={src} style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{
-                  border: "1px solid #D0C4A0",
-                  background: "#EDE8D8",
-                  overflow: "hidden",
-                  position: "relative",
-                  boxShadow: "0 4px 20px rgba(139,112,48,0.12)",
-                }}>
-                  <Image
-                    src={src}
-                    alt={alt}
-                    width={1388}
-                    height={1838}
-                    style={{ width: "100%", height: "auto", maxHeight: "clamp(280px,40vh,440px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
-                    loading="lazy"
-                  />
-                </div>
-                <div style={{ padding: "10px 14px", background: "#F0EBD9", border: "1px solid #D0C4A0", borderTop: "none" }}>
-                  <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", lineHeight: 1.5 }}>{caption}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          SECTION 3 — The Mother They Remembered
-      ═══════════════════════════════════════════════ */}
-      <section
-        style={{
-          background: "#F0EBD9",
-          borderBottom: "1px solid #D0C4A0",
-          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
-        }}
-      >
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(48px,7vw,96px)", alignItems: "center" }}>
-
-          {/* Left: image clipping */}
-          <div style={{ position: "relative" }}>
-            <div style={{
-              border: "1px solid #C5A84A",
-              background: "#F5F1E6",
-              padding: "3px",
-              boxShadow: "0 8px 32px rgba(139,112,48,0.18)",
-              transform: "rotate(-1.5deg)",
-            }}>
-              <Image
-                src="/images/mary-archive-garden-car-named.png"
-                alt="Mary Pavlatou and Thetida Grafa at the garden — archival newspaper clipping"
-                width={1388}
-                height={1838}
-                style={{ width: "100%", height: "auto", maxHeight: "460px", objectFit: "contain", objectPosition: "top", display: "block" }}
-                loading="lazy"
-              />
-            </div>
-            <div style={{
-              position: "absolute",
-              bottom: "-16px",
-              right: "-12px",
-              background: "#F5F1E6",
-              border: "1px solid #C5A84A",
-              padding: "8px 16px",
-              transform: "rotate(1.5deg)",
-              boxShadow: "0 4px 12px rgba(139,112,48,0.12)",
-            }}>
-              <p className="font-serif italic" style={{ color: "#6A4F1E", fontSize: "14px", fontWeight: 700 }}>Apogevmatini · Athens</p>
-            </div>
-          </div>
-
-          {/* Right: text */}
-          <div>
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px", fontWeight: 700 }}>
-              In Their Memory
-            </p>
-            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,2.5vw,32px)", letterSpacing: "0.1em", fontWeight: 400, lineHeight: 1.2, marginBottom: "20px" }}>
-              The Mother They Remembered
-            </h2>
-            <div style={{ width: "48px", height: "1px", background: "#C5A84A", marginBottom: "24px", opacity: 0.7 }} />
-            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.4vw,17px)", lineHeight: 1.95, marginBottom: "20px" }}>
-              To her sons, Mary was not only an icon — she was love itself. They preserved
-              her photographs, clippings, and memories for decades, carried with a devotion
-              that no archive can fully measure.
-            </p>
-            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.4vw,17px)", lineHeight: 1.95, marginBottom: "32px" }}>
-              What exists in these pages is not only a record of a fashion career. It is a
-              family&rsquo;s refusal to let grace be forgotten. <GreekTerm el="Αιωνία η μνήμη της" en="May her memory be eternal" />.
-            </p>
-            <div style={{ padding: "20px", background: "rgba(197,168,74,0.08)", border: "1px solid rgba(197,168,74,0.3)" }}>
-              <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(14px,1.5vw,18px)", lineHeight: 1.8, marginBottom: "8px" }}>
-                &ldquo;She is the closest thing that will ever be to Heaven on earth.&rdquo;
-              </p>
-              <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700 }}>
-                — The Pulos Brothers
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          SECTION 4 — The Light She Left (3 qualities)
-      ═══════════════════════════════════════════════ */}
-      <section
-        style={{
-          background: "#EDE8D8",
-          borderBottom: "1px solid #D0C4A0",
-          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
-        }}
-      >
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-
-          <div style={{ textAlign: "center", marginBottom: "clamp(48px,7vh,72px)" }}>
-            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "10px" }}>
-              The Light She Left
-            </h2>
-            <BilingualHeading
-              as="p"
-              el="Το Φως που Άφησε"
-              en="The Light She Left"
-              className="font-display italic"
-              style={{ color: "#6A4F1E", fontSize: "clamp(13px,1.1vw,16px)", letterSpacing: "0.38em", fontWeight: 700 }}
-            />
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px,4vw,48px)" }} className="max-lg:grid-cols-1">
-            {[
-              {
-                greek: "χάρη · Grace",
-                title: "She Carried Grace",
-                body: "She carried grace not as performance but as nature. Every room she entered remembered her. Every garment she wore came alive.",
-                image: "/images/mary-archive-colorized-social-group.png",
-                imageAlt: "Mary Pavlatou — Colorized social gathering, family archive",
-              },
-              {
-                greek: "ψυχή · Soul",
-                title: "She Had Soul",
-                body: "Behind the photographs was an interior life of extraordinary depth. Dance, music, art, languages — Mary was a woman in full. The camera always knew.",
-                image: "/images/book-portrait-black-outfit.png",
-                imageAlt: "Mary Pavlatou — Portrait in black outfit, family archive",
-              },
-              {
-                greek: "κίνηση · Movement",
-                title: "She Understood Movement",
-                body: "She understood that fashion was not clothing. It was movement, message, and presence. She gave it all three — on every runway, in every επίδειξις.",
-                image: "/images/gen-couture-atelier.png",
-                imageAlt: "Decorative couture atelier motif",
-              },
-            ].map(({ greek, title, body, image, imageAlt }) => (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1px", background: "#D0C4A0", border: "1px solid #D0C4A0" }} className="max-lg:grid-cols-2">
+            {fourLights.map((l) => (
               <div
-                key={greek}
+                key={l.roman}
                 style={{
                   background: "#F5F1E6",
-                  border: "1px solid #D0C4A0",
-                  overflow: "hidden",
-                  boxShadow: "0 4px 20px rgba(139,112,48,0.08)",
+                  padding: "clamp(32px,4vw,44px) clamp(20px,2.5vw,28px)",
+                  textAlign: "center",
+                  transition: "background 0.25s ease",
                 }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#1C1814"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "#F5F1E6"; }}
+                className="legacy-light-card"
               >
-                {/* Image */}
-                <div style={{ position: "relative", background: "#EDE8D8", overflow: "hidden" }}>
-                  <Image
-                    src={image}
-                    alt={imageAlt}
-                    width={1388}
-                    height={1838}
-                    style={{ width: "100%", height: "200px", objectFit: "contain", objectPosition: "top center", display: "block" }}
-                    loading="lazy"
-                  />
-                </div>
-                {/* Text */}
-                <div style={{ padding: "24px" }}>
-                  <p className="font-display" style={{ color: "#8B7030", fontSize: "8px", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "10px", display: "flex", alignItems: "center", gap: "6px" }}>
-                    {greek}
-                    <TranslateIcon size={10} />
-                  </p>
-                  <h3 className="font-display" style={{ color: "#1C1814", fontSize: "clamp(14px,1.5vw,18px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2, marginBottom: "12px" }}>
-                    {title}
-                  </h3>
-                  <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.9 }}>
-                    {body}
-                  </p>
-                </div>
+                <p className="font-display" style={{ color: "#B9974D", fontSize: "12px", letterSpacing: "0.3em", marginBottom: "18px" }}>
+                  {l.roman}
+                </p>
+                <h3 className="font-display legacy-light-title" style={{ color: "#6A4F1E", fontSize: "clamp(18px,2vw,24px)", letterSpacing: "0.08em", fontWeight: 700, marginBottom: "14px", transition: "color 0.25s ease" }}>
+                  {l.title}
+                </h3>
+                <p className="font-serif italic legacy-light-sub" style={{ color: "#7A6E5E", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.7, transition: "color 0.25s ease" }}>
+                  {l.sub}
+                </p>
               </div>
             ))}
           </div>
+          <style>{`
+            .legacy-light-card:hover .legacy-light-title { color: #C5A84A !important; }
+            .legacy-light-card:hover .legacy-light-sub { color: rgba(245,241,230,0.82) !important; }
+          `}</style>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 5 — Press Clippings from the Archive
+          5. WHAT ENDURES
       ═══════════════════════════════════════════════ */}
-      <section
-        style={{
-          background: "#F0EBD9",
-          borderBottom: "1px solid #D0C4A0",
-          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
-        }}
-      >
-        <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
-
-          <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "14px", fontWeight: 700 }}>
-              From the Archive
+      <section style={{ background: "#F0EBD9", borderBottom: "1px solid #D0C4A0", padding: "clamp(72px,9vh,108px) clamp(32px,6vw,88px)" }}>
+        <div style={{ maxWidth: "1140px", margin: "0 auto", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "clamp(48px,7vw,96px)", alignItems: "center" }} className="max-lg:grid-cols-1">
+          <div className="max-lg:order-2">
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", fontWeight: 700, marginBottom: "18px" }}>
+              What Endures
             </p>
-            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,2.5vw,34px)", letterSpacing: "0.12em", fontWeight: 400, marginBottom: "8px" }}>
-              Her Story in the Press
-            </h2>
-            <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "clamp(13px,1.4vw,16px)" }}>
-              Original newspaper clippings from the family archive
+            <div style={{ width: "48px", height: "1px", background: "#C5A84A", marginBottom: "26px", opacity: 0.7 }} />
+            <p className="font-serif" style={{ color: "#2A2018", fontSize: "clamp(17px,1.8vw,22px)", lineHeight: 1.95, fontStyle: "italic" }}>
+              What endures is not only the record of Mary&rsquo;s public life. It is the feeling she
+              left in the people who loved her. The way her sons protected every page. The way her
+              image still carries breath. The way grace, once real, never fully disappears.
             </p>
           </div>
-
-          <div style={{ position: "relative", height: "220px", border: "1px solid #D0C4A0", overflow: "hidden", boxShadow: "0 4px 16px rgba(139,112,48,0.10)" }}>
-            <Image
-              src="/images/gen-greek-archive.png"
-              alt="Decorative archive motif"
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: "40px" }}>
-            <Link
-              href="/archive"
-              className="font-display"
-              style={{
-                color: "#6A4F1E",
-                border: "1px solid #C5A84A",
-                padding: "12px 28px",
-                fontSize: "11px",
-                letterSpacing: "0.36em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-                fontWeight: 700,
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "12px",
-                transition: "background 0.22s ease",
-              }}
-            >
-              View the Full Archive
-              <svg width="16" height="5" viewBox="0 0 16 5" fill="none" aria-hidden="true">
-                <path d="M0 2.5H14M11 1L14 2.5L11 4" stroke="currentColor" strokeWidth="1" />
-              </svg>
-            </Link>
+          <div className="max-lg:order-1" style={{ position: "relative" }}>
+            <div style={{ border: "1px solid #C5A84A", boxShadow: "0 16px 56px rgba(28,24,20,0.25)", background: "#F5F1E6", padding: "10px" }}>
+              <div style={{ position: "relative", aspectRatio: "3/4" }}>
+                <Image
+                  src="/images/mary-archive-colorized-social-group.png"
+                  alt="Mary Pavlatou — colorized social gathering, family archive"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 500px"
+                  style={{ objectFit: "cover", objectPosition: "top center" }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 6 — What She Gave to Fashion
+          6. THE INHERITANCE
       ═══════════════════════════════════════════════ */}
-      <section
-        style={{
-          background: "#F5F1E6",
-          borderBottom: "1px solid #D0C4A0",
-          padding: "clamp(64px,8vh,96px) clamp(32px,6vw,88px)",
-        }}
-      >
-        <div style={{ maxWidth: "880px", margin: "0 auto", textAlign: "center" }}>
-          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: "16px", fontWeight: 700 }}>
-            Her Contribution
-          </p>
-          <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,3vw,38px)", letterSpacing: "0.12em", fontWeight: 400, lineHeight: 1.2, marginBottom: "32px" }}>
-            What She Gave to Fashion
-          </h2>
-          <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 2, marginBottom: "32px" }}>
-            Mary Pavlatou was the first Greek certified professional fashion mannequin.
-            She trained at the Patricia Vance School of Fashion in Chicago and returned
-            to Athens to become its best-known <GreekTerm el="μανεκέν" en="fashion model" /> — a distinction earned not through
-            beauty alone, but through the rarest combination of discipline, intelligence,
-            and presence. She carried Greece to the world.
-          </p>
+      <section style={{ background: "#EDE8D8", borderBottom: "1px solid #D0C4A0", padding: "clamp(72px,9vh,108px) clamp(32px,6vw,88px)" }}>
+        <div style={{ maxWidth: "820px", margin: "0 auto" }}>
           <div style={{
-            padding: "32px",
-            background: "rgba(197,168,74,0.07)",
-            border: "1px solid rgba(197,168,74,0.3)",
-            marginBottom: "40px",
+            border: "1px solid #C5A84A",
+            boxShadow: "0 0 0 6px #F0EBD9, 0 0 0 7px #C5A84A, 0 12px 40px rgba(139,112,48,0.15)",
+            background: "#F5F1E6",
+            padding: "clamp(48px,7vw,80px) clamp(32px,5vw,56px)",
+            textAlign: "center",
           }}>
-            <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(16px,2vw,24px)", lineHeight: 1.75, marginBottom: "12px" }}>
-              &ldquo;She did not simply wear fashion. She interpreted it.&rdquo;
+            <svg width="34" height="24" viewBox="0 0 34 24" fill="none" aria-hidden="true" style={{ margin: "0 auto 24px" }}>
+              <path d="M17 1L20 9H29L21.5 14.5L24.5 23L17 17.5L9.5 23L12.5 14.5L5 9H14Z" stroke="#B9974D" strokeWidth="1.1" fill="none" />
+            </svg>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", fontWeight: 700, marginBottom: "28px" }}>
+              The Inheritance
             </p>
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700 }}>
-              — Family Archive
+            <p className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(17px,1.9vw,22px)", lineHeight: 2, marginBottom: "28px" }}>
+              This legacy was not inherited as fame. It was inherited as responsibility.
+              To remember her with care. To protect what remained. To restore what time
+              tried to soften. To let future generations meet Mary not as a name from
+              the past, but as a woman whose light still reaches forward.
             </p>
+            <div style={{ width: "40px", height: "1px", background: "#C5A84A", margin: "0 auto", opacity: 0.7 }} />
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 7 — Αιωνία η Μνήμη (Closing)
+          7. CLOSING — Her Memory Is the Legacy
       ═══════════════════════════════════════════════ */}
-      <section
-        style={{
-          background: "linear-gradient(160deg, #1C1814 0%, #2A2318 60%, #1C1814 100%)",
-          padding: "clamp(72px,10vh,120px) clamp(32px,6vw,88px)",
-          textAlign: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Gold pattern */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.04,
-            backgroundImage: "repeating-linear-gradient(45deg, rgba(197,168,74,0.8) 0px, rgba(197,168,74,0.8) 1px, transparent 1px, transparent 30px)",
-          }}
-        />
+      <section style={{
+        position: "relative", overflow: "hidden",
+        background: "linear-gradient(160deg, #1C1814 0%, #2A2318 60%, #1C1814 100%)",
+        padding: "clamp(80px,11vh,132px) clamp(32px,6vw,88px)",
+        textAlign: "center",
+      }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, opacity: 0.05 }}>
+          <Image src="/images/gen-greek-archive.png" alt="" fill sizes="100vw" style={{ objectFit: "cover" }} />
+        </div>
+        <div aria-hidden="true" style={{
+          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.05,
+          backgroundImage: "repeating-linear-gradient(45deg, rgba(197,168,74,0.8) 0px, rgba(197,168,74,0.8) 1px, transparent 1px, transparent 30px)",
+        }} />
 
-        <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative" }}>
-
-          {/* Gold ornament */}
-          <div style={{ marginBottom: "32px" }}>
-            <svg width="60" height="20" viewBox="0 0 60 20" fill="none" aria-hidden="true">
+        <div style={{ maxWidth: "780px", margin: "0 auto", position: "relative" }}>
+          <div style={{ marginBottom: "28px" }}>
+            <svg width="60" height="20" viewBox="0 0 60 20" fill="none" aria-hidden="true" style={{ margin: "0 auto" }}>
               <line x1="0" y1="10" x2="22" y2="10" stroke="#C5A84A" strokeWidth="1" opacity="0.5" />
               <path d="M30 2C30 2 26 10 22 10C26 10 30 18 30 18C30 18 34 10 38 10C34 10 30 2 30 2Z" fill="#C5A84A" opacity="0.8" />
               <line x1="38" y1="10" x2="60" y2="10" stroke="#C5A84A" strokeWidth="1" opacity="0.5" />
             </svg>
           </div>
 
-          <div style={{ marginBottom: "14px" }}>
-            <BilingualHeading
-              as="h2"
-              el="Αιωνία η Μνήμη της"
-              en="Eternal Is Her Memory"
-              className="font-display italic"
-              style={{
-                color: "#C5A84A",
-                fontSize: "clamp(28px,5vw,68px)",
-                fontWeight: 400,
-                letterSpacing: "0.18em",
-                lineHeight: 1.15,
-              }}
-            />
-          </div>
-
-          <p
+          <BilingualHeading
+            as="h2"
+            el="Η Μνήμη Είναι η Κληρονομιά"
+            en="Her Memory Is the Legacy"
             className="font-display"
-            style={{
-              color: "rgba(197,168,74,0.6)",
-              fontSize: "9px",
-              letterSpacing: "0.45em",
-              textTransform: "uppercase",
-              marginBottom: "48px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-            }}
-          >
-            May her memory be eternal.
-            <TranslateIcon size={11} />
+            style={{ color: "#F5F1E6", fontSize: "clamp(28px,4.6vw,52px)", fontWeight: 400, letterSpacing: "0.08em", lineHeight: 1.2 }}
+            subStyle={{ color: "#C5A84A", fontSize: "clamp(13px,1.3vw,16px)", marginTop: "14px", fontStyle: "italic" }}
+          />
+
+          <p className="font-serif italic" style={{ color: "rgba(245,241,230,0.82)", fontSize: "clamp(16px,2vw,21px)", lineHeight: 1.9, maxWidth: "620px", margin: "36px auto 44px" }}>
+            Her memory is not behind us. It is carried forward in every restored image, every
+            preserved page, every story retold, and every heart that meets her again.
           </p>
 
-          <p
-            className="font-serif italic"
-            style={{
-              color: "rgba(245,241,230,0.8)",
-              fontSize: "clamp(16px,2vw,22px)",
-              lineHeight: 1.85,
-              maxWidth: "620px",
-              margin: "0 auto 48px",
-            }}
-          >
-            The Pulos Brothers kept her alive in every photograph, every clipping,
-            every article saved across the decades. Mary James restored and honored
-            that collection into something lasting. Now, through this archive, the world
-            may know what they always knew.
-          </p>
-
-          <p
-            className="font-serif italic"
-            style={{
-              color: "#C5A84A",
-              fontSize: "clamp(18px,2.5vw,30px)",
-              lineHeight: 1.65,
-              marginBottom: "56px",
-            }}
-          >
-            God&rsquo;s Special Angel. God&rsquo;s Sweetest Miracle.
-          </p>
-
-          {/* Credits */}
-          <div style={{ borderTop: "1px solid rgba(197,168,74,0.25)", paddingTop: "36px" }}>
-            <p
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center" }}>
+            <Link
+              href="/archive"
               className="font-display"
               style={{
-                color: "rgba(197,168,74,0.55)",
-                fontSize: "8px",
-                letterSpacing: "0.35em",
-                textTransform: "uppercase",
-                lineHeight: 2.4,
+                display: "inline-flex", alignItems: "center", gap: "12px",
+                background: "#C5A84A", color: "#1C1814",
+                padding: "14px 28px", fontSize: "11px", letterSpacing: "0.3em",
+                textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
               }}
             >
-              Photo &amp; article compilation: The Pulos Brothers
-              <br />
-              Photo restoration, article restoration &amp; book design: Mary James
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          SECTION 8 — Continue the Journey
-      ═══════════════════════════════════════════════ */}
-      <section
-        style={{
-          background: "#F0EBD9",
-          borderTop: "1px solid #D0C4A0",
-          padding: "clamp(56px,7vh,80px) clamp(32px,6vw,88px)",
-        }}
-      >
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.5em", textTransform: "uppercase", textAlign: "center", marginBottom: "40px", fontWeight: 700 }}>
-            Continue the Journey
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }} className="max-lg:grid-cols-1">
-            {[
-              {
-                href: "/story",
-                label: "Her Life",
-                text: "The story of grace, discipline, and love.",
-                image: "/images/gen-acropolis-dawn.png",
-              },
-              {
-                href: "/fashion",
-                label: "Fashion World",
-                text: "The great fashion houses of Athens and beyond.",
-                image: "/images/gen-greek-fashion-world.png",
-              },
-              {
-                href: "/archive",
-                label: "The Archive",
-                text: "Original press clippings and photographs.",
-                image: "/images/gen-greek-gallery.png",
-              },
-            ].map((card) => (
-              <Link
-                key={card.href}
-                href={card.href}
-                style={{
-                  display: "block",
-                  background: "#F5F1E6",
-                  border: "1px solid #D0C4A0",
-                  textDecoration: "none",
-                  transition: "transform 0.2s, border-color 0.2s",
-                  overflow: "hidden",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "#C5A84A";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "#D0C4A0";
-                }}
-              >
-                <div style={{ position: "relative", background: "#EDE8D8", overflow: "hidden" }}>
-                  <Image
-                    src={card.image}
-                    alt={card.label}
-                    width={1388}
-                    height={1838}
-                    style={{ width: "100%", height: "220px", objectFit: "contain", objectPosition: "top center", display: "block" }}
-                    loading="lazy"
-                  />
-                </div>
-                <div style={{ padding: "18px 20px 22px" }}>
-                  <p className="font-display" style={{ color: "#1C1814", fontSize: "9px", letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700, marginBottom: "6px" }}>
-                    {card.label}
-                  </p>
-                  <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "14px", lineHeight: 1.65 }}>
-                    {card.text}
-                  </p>
-                </div>
-              </Link>
-            ))}
+              Explore the Archive
+            </Link>
+            <Link
+              href="/story"
+              className="font-display"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "12px",
+                background: "transparent", color: "#D8C48E",
+                padding: "14px 28px", fontSize: "11px", letterSpacing: "0.3em",
+                textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
+                border: "1px solid #C5A84A",
+              }}
+            >
+              Read Her Story
+            </Link>
           </div>
         </div>
       </section>
