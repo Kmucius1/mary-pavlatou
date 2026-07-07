@@ -235,15 +235,20 @@ export default function FashionWorldClient() {
 
       {/* ── Hero ── */}
       <section style={{
-        background: "linear-gradient(135deg, #F5F1E6 0%, #F0EBD9 50%, #EDE8D8 100%)",
+        background: "linear-gradient(160deg, #1C1814 0%, #2A2318 40%, #3A2E1E 100%)",
         padding: "clamp(60px,8vh,100px) clamp(32px,6vw,88px)",
-        borderBottom: "1px solid #D0C4A0",
+        borderBottom: "2px solid #C5A84A",
         position: "relative", overflow: "hidden",
       }}>
+        {/* Subtle pattern overlay */}
+        <div aria-hidden="true" style={{
+          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.06,
+          backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
+        }} />
         {/* Left watermark — atelier */}
         <div aria-hidden="true" style={{
           position: "absolute", left: "-40px", top: 0, bottom: 0, width: "300px",
-          opacity: 0.07, backgroundImage: "url('/images/hf-columns.jpg')",
+          opacity: 0.10, backgroundImage: "url('/images/hf-columns.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
           maskImage: "linear-gradient(to right, black, transparent)",
           WebkitMaskImage: "linear-gradient(to right, black, transparent)",
@@ -252,7 +257,7 @@ export default function FashionWorldClient() {
         {/* Right watermark — vanity/tower */}
         <div aria-hidden="true" style={{
           position: "absolute", right: "-20px", top: 0, bottom: 0, width: "260px",
-          opacity: 0.07, backgroundImage: "url('/images/hf-marble.jpg')",
+          opacity: 0.10, backgroundImage: "url('/images/hf-marble.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
           maskImage: "linear-gradient(to left, black, transparent)",
           WebkitMaskImage: "linear-gradient(to left, black, transparent)",
@@ -267,7 +272,7 @@ export default function FashionWorldClient() {
 
           {/* Left: text */}
           <div className="animate-fade-in">
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px" }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "12px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px" }}>
               The World of Fashion
             </p>
             <div style={{ marginBottom: "10px" }}>
@@ -276,25 +281,25 @@ export default function FashionWorldClient() {
                 el="Ο Κοσμος της Μοδας"
                 en="The World of Fashion"
                 className="font-display"
-                style={{ color: "#6A4F1E", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05 }}
+                style={{ color: "#F5F1E6", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05 }}
               />
             </div>
             <OrnamentDivider />
-            <p className="font-serif" style={{ color: "#1C1814", fontSize: "clamp(14px,1.45vw,17px)", lineHeight: 1.9, marginBottom: "12px" }}>
+            <p className="font-serif" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(14px,1.45vw,17px)", lineHeight: 1.9, marginBottom: "12px" }}>
               Mary Pavlatou moved with grace through the golden era of haute couture — a world of artistry, discipline, beauty, and timeless elegance.
             </p>
-            <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.85, marginBottom: "32px" }}>
+            <p className="font-serif" style={{ color: "rgba(245,241,230,0.6)", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.85, marginBottom: "32px" }}>
               She modeled for the greatest fashion houses of her time and belonged to the international world of fashion.
             </p>
             <Link href="/story#chicago" className="font-display" style={{
-              color: "#6A4F1E", border: "1px solid #8B7030",
+              color: "#D8C48E", border: "1px solid #C5A84A",
               padding: "12px 24px", fontSize: "11px", letterSpacing: "0.3em",
               textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
               display: "inline-flex", alignItems: "center", gap: "12px",
               transition: "background 0.22s ease, color 0.22s ease",
             }}
-              onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
-              onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#6A4F1E"; }}
+              onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#C5A84A"; el.style.color = "#1C1814"; }}
+              onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "#D8C48E"; }}
             >
               Explore Her Journey
               <svg width="18" height="6" viewBox="0 0 18 6" fill="none" aria-hidden="true">
@@ -314,7 +319,7 @@ export default function FashionWorldClient() {
                 style={{ width: "100%", height: "auto", maxHeight: "clamp(300px,46vh,500px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
               />
             </div>
-            <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", letterSpacing: "0.04em" }}>
+            <p className="font-serif italic" style={{ color: "rgba(245,241,230,0.55)", fontSize: "11px", letterSpacing: "0.04em" }}>
               Mary Pavlatou · Fashion Presentation · Athens
             </p>
           </div>
@@ -322,12 +327,12 @@ export default function FashionWorldClient() {
           {/* Right: pull quote */}
           <div className="animate-fade-in delay-3 max-lg:hidden">
             <svg width="28" height="22" viewBox="0 0 28 22" fill="none" aria-hidden="true" style={{ marginBottom: "12px", opacity: 0.7 }}>
-              <path d="M0 22V12.5C0 6.5 3.5 2.5 10.5 0L12 2.5C9.4 3.5 7.7 5.5 7 8.5H12V22H0ZM16 22V12.5C16 6.5 19.5 2.5 26.5 0L28 2.5C25.4 3.5 23.7 5.5 23 8.5H28V22H16Z" fill="#8B7030" />
+              <path d="M0 22V12.5C0 6.5 3.5 2.5 10.5 0L12 2.5C9.4 3.5 7.7 5.5 7 8.5H12V22H0ZM16 22V12.5C16 6.5 19.5 2.5 26.5 0L28 2.5C25.4 3.5 23.7 5.5 23 8.5H28V22H16Z" fill="#C5A84A" />
             </svg>
-            <blockquote className="font-serif italic" style={{ color: "#1C1814", fontSize: "clamp(13px,1.35vw,16px)", lineHeight: 1.9, marginBottom: "14px" }}>
+            <blockquote className="font-serif italic" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(13px,1.35vw,16px)", lineHeight: 1.9, marginBottom: "14px" }}>
               My dream is to become one of the world's finest mannequins and, one day, to create a good family.
             </blockquote>
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "12px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }}>
               — Mary Pavlatou · Apogevmatini Interview
             </p>
           </div>

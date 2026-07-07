@@ -258,11 +258,16 @@ export default function StoryLifeClient() {
       {/* ── Hero: full banner section (rebuilt from the "World of Fashion" design) ── */}
       <section style={{
         position: "relative",
-        background: "linear-gradient(135deg, #F4EDDA 0%, #ECE4CE 55%, #F1E9D4 100%)",
-        borderBottom: "1px solid #D0C4A0",
+        background: "linear-gradient(160deg, #1C1814 0%, #2A2318 40%, #3A2E1E 100%)",
+        borderBottom: "2px solid #C5A84A",
         overflow: "hidden",
         padding: "clamp(40px,6vh,84px) clamp(24px,5vw,72px)",
       }}>
+        {/* Subtle pattern overlay */}
+        <div aria-hidden="true" style={{
+          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.06,
+          backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
+        }} />
         {/* Decorative double frame */}
         <div aria-hidden="true" style={{ position: "absolute", inset: "14px", border: "1px solid rgba(185,151,77,0.45)", pointerEvents: "none" }} />
         <div aria-hidden="true" style={{ position: "absolute", inset: "19px", border: "1px solid rgba(185,151,77,0.22)", pointerEvents: "none" }} />
@@ -306,7 +311,7 @@ export default function StoryLifeClient() {
         >
           {/* Left: title block */}
           <div className="max-lg:order-2">
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.42em", textTransform: "uppercase", fontWeight: 700, marginBottom: "16px" }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "13px", letterSpacing: "0.42em", textTransform: "uppercase", fontWeight: 700, marginBottom: "16px" }}>
               The World of Fashion
             </p>
             <BilingualHeading
@@ -314,8 +319,8 @@ export default function StoryLifeClient() {
               el="Ο Κόσμος της Μόδας"
               en={<>The World<br />of Fashion</>}
               className="font-display"
-              style={{ color: "#6A4F1E", fontSize: "clamp(40px,5.4vw,80px)", letterSpacing: "0.02em", fontWeight: 700, lineHeight: 1.02 }}
-              subStyle={{ fontSize: "clamp(19px,1.9vw,26px)", marginTop: "16px", color: "#8A6A2F", fontWeight: 700, fontStyle: "italic", letterSpacing: "0.02em" }}
+              style={{ color: "#F5F1E6", fontSize: "clamp(40px,5.4vw,80px)", letterSpacing: "0.02em", fontWeight: 700, lineHeight: 1.02 }}
+              subStyle={{ fontSize: "clamp(19px,1.9vw,26px)", marginTop: "16px", color: "#C5A84A", fontWeight: 700, fontStyle: "italic", letterSpacing: "0.02em" }}
             />
             <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "22px 0", justifyContent: "flex-start" }} className="max-lg:!justify-center">
               <div style={{ width: "52px", height: "1px", background: "#B9974D" }} />
@@ -324,7 +329,7 @@ export default function StoryLifeClient() {
               </svg>
               <div style={{ width: "24px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
             </div>
-            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 1.85, fontWeight: 500, maxWidth: "340px" }} >
+            <p className="font-serif" style={{ color: "rgba(245,241,230,0.75)", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 1.85, fontWeight: 500, maxWidth: "340px" }} >
               A celebration of timeless style, heritage, and the art of couture.
             </p>
           </div>
@@ -344,18 +349,18 @@ export default function StoryLifeClient() {
           {/* Right: pull quote */}
           <div className="max-lg:order-3">
             <svg width="30" height="24" viewBox="0 0 28 22" fill="none" aria-hidden="true" style={{ marginBottom: "14px", opacity: 0.7 }} className="max-lg:mx-auto">
-              <path d="M0 22V12.5C0 6.5 3.5 2.5 10.5 0L12 2.5C9.4 3.5 7.7 5.5 7 8.5H12V22H0ZM16 22V12.5C16 6.5 19.5 2.5 26.5 0L28 2.5C25.4 3.5 23.7 5.5 23 8.5H28V22H16Z" fill="#8B7030" />
+              <path d="M0 22V12.5C0 6.5 3.5 2.5 10.5 0L12 2.5C9.4 3.5 7.7 5.5 7 8.5H12V22H0ZM16 22V12.5C16 6.5 19.5 2.5 26.5 0L28 2.5C25.4 3.5 23.7 5.5 23 8.5H28V22H16Z" fill="#C5A84A" />
             </svg>
-            <blockquote className="font-serif italic" style={{ color: "#2A2018", fontSize: "clamp(16px,1.6vw,20px)", lineHeight: 1.75, marginBottom: "18px" }}>
+            <blockquote className="font-serif italic" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(16px,1.6vw,20px)", lineHeight: 1.75, marginBottom: "18px" }}>
               My dream is to become one of the world&rsquo;s finest mannequins and, one day, to create a good family.
             </blockquote>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }} className="max-lg:justify-center">
               <div style={{ width: "40px", height: "1px", background: "#B9974D" }} />
               <div style={{ width: "16px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
             </div>
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.24em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.7 }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "13px", letterSpacing: "0.24em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.7 }}>
               Mary Pavlatou<br />
-              <span style={{ color: "#8A6A2F", fontSize: "11px", letterSpacing: "0.2em" }}>Apogevmatini Interview</span>
+              <span style={{ color: "rgba(197,168,74,0.75)", fontSize: "11px", letterSpacing: "0.2em" }}>Apogevmatini Interview</span>
             </p>
           </div>
         </div>

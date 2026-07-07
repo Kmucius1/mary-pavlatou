@@ -142,16 +142,28 @@ export default function ArchivePageClient() {
       <section
         id="hero"
         style={{
-          maxWidth: 1240,
-          margin: "0 auto",
-          padding: "80px 32px 72px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 72,
-          alignItems: "center",
+          background: "linear-gradient(160deg, #1C1814 0%, #2A2318 40%, #3A2E1E 100%)",
+          borderBottom: "2px solid #C5A84A",
           position: "relative",
         }}
       >
+        {/* Subtle pattern overlay */}
+        <div aria-hidden="true" style={{
+          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.06,
+          backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
+        }} />
+        <div
+          style={{
+            maxWidth: 1240,
+            margin: "0 auto",
+            padding: "80px 32px 72px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 72,
+            alignItems: "center",
+            position: "relative",
+          }}
+        >
         {/* Watermark column */}
         <div
           aria-hidden="true"
@@ -164,7 +176,7 @@ export default function ArchivePageClient() {
             backgroundImage: "url(/images/gen-archive-books.png)",
             backgroundSize: "cover",
             backgroundPosition: "center top",
-            opacity: 0.07,
+            opacity: 0.10,
             pointerEvents: "none",
           }}
         />
@@ -178,7 +190,7 @@ export default function ArchivePageClient() {
               fontSize: 13,
               letterSpacing: "0.5em",
               textTransform: "uppercase",
-              color: "#6A4F1E",
+              color: "#C5A84A",
               fontWeight: 700,
               marginBottom: 20,
               fontVariant: "small-caps",
@@ -196,7 +208,7 @@ export default function ArchivePageClient() {
               style={{
                 fontFamily: "var(--font-cinzel)",
                 fontSize: "clamp(42px, 5vw, 68px)",
-                color: "#6A4F1E",
+                color: "#F5F1E6",
                 lineHeight: 1.1,
                 letterSpacing: "0.06em",
               }}
@@ -209,7 +221,7 @@ export default function ArchivePageClient() {
               fontFamily: "var(--font-serif)",
               fontSize: 22,
               fontStyle: "italic",
-              color: C.muted,
+              color: "#C5A84A",
               marginBottom: 28,
             }}
           >
@@ -232,7 +244,7 @@ export default function ArchivePageClient() {
               fontFamily: "var(--font-serif)",
               fontSize: 16,
               lineHeight: 1.9,
-              color: C.body,
+              color: "rgba(245,241,230,0.75)",
               maxWidth: 480,
               marginBottom: 36,
             }}
@@ -268,14 +280,14 @@ export default function ArchivePageClient() {
                 display: "inline-block",
                 padding: "13px 28px",
                 background: "transparent",
-                color: "#6A4F1E",
+                color: "#D8C48E",
                 fontFamily: "var(--font-cinzel)",
                 fontSize: 13,
                 fontWeight: 700,
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 textDecoration: "none",
-                border: `1px solid ${C.accent}`,
+                border: "1px solid #C5A84A",
               }}
             >
               View the Book
@@ -325,7 +337,7 @@ export default function ArchivePageClient() {
               width: "72%",
               margin: "0 auto",
               border: `3px solid ${C.accent}`,
-              boxShadow: `0 0 0 6px ${C.bg}, 0 0 0 8px ${C.borderMuted}, 0 12px 40px rgba(139,112,48,0.18)`,
+              boxShadow: "0 0 0 6px #2A2318, 0 0 0 8px #C5A84A, 0 12px 50px rgba(0,0,0,0.4)",
               background: C.card,
               zIndex: 3,
             }}
@@ -438,6 +450,7 @@ export default function ArchivePageClient() {
               She Lives in Eternity
             </p>
           </div>
+        </div>
         </div>
       </section>
 

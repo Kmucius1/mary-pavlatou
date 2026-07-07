@@ -36,7 +36,7 @@ export default function HomeBannerHero() {
       <div
         ref={heroRef}
         style={{
-          background: "linear-gradient(155deg, #F9F6EE 0%, #F4EFE3 55%, #EDE5CC 100%)",
+          background: "linear-gradient(160deg, #1C1814 0%, #2A2318 40%, #3A2E1E 100%)",
           position: "relative",
           padding: "clamp(48px,7vh,80px) clamp(36px,5vw,80px)",
           display: "flex",
@@ -46,6 +46,15 @@ export default function HomeBannerHero() {
         }}
         className="max-lg:order-2"
       >
+        {/* Subtle pattern overlay */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.06,
+            backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
+          }}
+        />
+
         {/* Greek key strip — top of left panel */}
         <div
           aria-hidden="true"
@@ -54,8 +63,8 @@ export default function HomeBannerHero() {
             top: 0, left: 0, right: 0,
             height: "8px",
             background:
-              "repeating-linear-gradient(90deg, rgba(185,151,77,0.55) 0px, rgba(185,151,77,0.55) 2px, transparent 2px, transparent 7px)",
-            borderBottom: "1px solid #D8C48E",
+              "repeating-linear-gradient(90deg, rgba(197,168,74,0.65) 0px, rgba(197,168,74,0.65) 2px, transparent 2px, transparent 7px)",
+            borderBottom: "1px solid #C5A84A",
           }}
         />
 
@@ -66,10 +75,9 @@ export default function HomeBannerHero() {
             position: "absolute", left: 0, top: 0, bottom: 0, width: "35%",
             backgroundImage: "url('/images/gen-angel-marble.png')",
             backgroundSize: "cover", backgroundPosition: "center top",
-            opacity: 0.07,
+            opacity: 0.10,
             maskImage: "linear-gradient(to right, black 20%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to right, black 20%, transparent 100%)",
-            filter: "grayscale(1) sepia(0.4)",
             pointerEvents: "none",
           }}
         />
@@ -79,7 +87,7 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-display"
           style={{
-            color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.52em",
+            color: "#C5A84A", fontSize: "11px", letterSpacing: "0.52em",
             textTransform: "uppercase", fontWeight: 700, marginBottom: "18px",
             position: "relative",
           }}
@@ -104,7 +112,7 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-display"
           style={{
-            color: "#6A4F1E",
+            color: "#F5F1E6",
             fontSize: "clamp(36px,4.8vw,76px)",
             letterSpacing: "0.13em",
             fontWeight: 700,
@@ -121,7 +129,7 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-display"
           style={{
-            color: "#6A4F1E",
+            color: "#C5A84A",
             fontSize: "clamp(12px,0.9vw,14px)",
             letterSpacing: "0.38em",
             textTransform: "uppercase",
@@ -138,7 +146,7 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-serif"
           style={{
-            color: "#4A3C2A",
+            color: "rgba(245,241,230,0.75)",
             fontSize: "clamp(14px,1.15vw,16px)",
             lineHeight: 1.95,
             maxWidth: "420px",
@@ -188,7 +196,7 @@ export default function HomeBannerHero() {
             href="/archive"
             className="font-display"
             style={{
-              backgroundColor: "transparent", color: "#8A6A2F",
+              backgroundColor: "transparent", color: "#D8C48E",
               padding: "12px 24px", borderRadius: "100px",
               border: "1.5px solid #B9974D",
               fontSize: "8px", letterSpacing: "0.30em", textTransform: "uppercase",
@@ -223,7 +231,7 @@ export default function HomeBannerHero() {
           <blockquote
             className="font-serif italic"
             style={{
-              color: "#6A5A40",
+              color: "rgba(245,241,230,0.75)",
               fontSize: "clamp(13px,1vw,15px)",
               lineHeight: 1.8,
               margin: 0,
@@ -236,7 +244,7 @@ export default function HomeBannerHero() {
           <p
             className="font-display"
             style={{
-              color: "#6A4F1E",
+              color: "#C5A84A",
               fontSize: "10.5px",
               letterSpacing: "0.30em",
               textTransform: "uppercase",
@@ -271,7 +279,7 @@ export default function HomeBannerHero() {
           aria-hidden="true"
           style={{
             position: "absolute", inset: 0,
-            background: "linear-gradient(to right, rgba(244,239,227,0.45) 0%, transparent 18%)",
+            background: "linear-gradient(to right, rgba(28,24,20,0.55) 0%, transparent 18%)",
             pointerEvents: "none",
           }}
         />
