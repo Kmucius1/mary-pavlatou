@@ -928,26 +928,13 @@ export default function ArchivePageClient() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
+                justifyContent: "flex-end",
                 padding: "16px 24px",
                 background: C.card,
                 border: `1px solid ${C.borderMuted}`,
                 borderTop: `1px solid ${C.borderMuted}`,
               }}
             >
-              {/* Page counter */}
-              <span
-                style={{
-                  fontFamily: "var(--font-cinzel)",
-                  fontSize: 9,
-                  letterSpacing: "0.3em",
-                  textTransform: "uppercase",
-                  color: C.muted,
-                }}
-              >
-                {"Page " + pdfPage + (pdfPage + 1 <= 62 ? "–" + (pdfPage + 1) : "") + " of 62"}
-              </span>
-
               {/* Toolbar actions */}
               <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                 <button
