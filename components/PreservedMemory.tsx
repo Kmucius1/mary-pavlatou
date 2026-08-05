@@ -4,7 +4,7 @@ const notes = [
     body: "Through photographs, newspaper clippings, and historical notes, her life and legacy have been carefully preserved for generations.",
   },
   {
-    heading: "Kept by Her Sons",
+    heading: "Kept by Her Three Sons",
     body: "Lovingly kept for decades by her three sons — each piece of the archive a testament to a mother whose life illuminated the world.",
   },
   {
@@ -12,8 +12,8 @@ const notes = [
     body: "Photo and article compilation by The Pulos Brothers. A labor of love assembled across a lifetime of memory.",
   },
   {
-    heading: "Mary James",
-    body: "Photo restoration, article restoration, and book design by Mary James — bringing each image back to its full, luminous life.",
+    heading: "Restored with Care",
+    body: "Photo restoration, article restoration, and book design completed with devotion — bringing each image back to its full, luminous life.",
   },
 ];
 

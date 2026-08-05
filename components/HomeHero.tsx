@@ -179,7 +179,7 @@ export default function HomeHero() {
               marginBottom: "36px",
             }}
           >
-            Preserved by her sons. Restored with love.<br />Shared so her memory may live on.
+            Preserved by her three sons. Restored with love.<br />Shared so her memory may live on.
           </p>
 
           {/* CTA Buttons */}

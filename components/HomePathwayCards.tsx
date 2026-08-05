@@ -40,7 +40,7 @@ const cards = [
   {
     href: "/legacy",
     label: "Legacy",
-    copy: "The memory her sons kept alive, and the story returned to the light.",
+    copy: "The memory her three sons kept alive, and the story returned to the light.",
     cta: "View Her Legacy",
     img: "/images/greek-coastal-olive-grove.png",
     imgW: 896,
@@ -148,9 +148,9 @@ export default function HomePathwayCards() {
                   className="font-display"
                   style={{
                     color: "#F8F4EA",
-                    fontSize: "clamp(16px,1.6vw,22px)",
+                    fontSize: "clamp(18px,1.84vw,25px)",
                     letterSpacing: "0.10em",
-                    fontWeight: 700,
+                    fontWeight: 900,
                     marginBottom: "12px",
                     lineHeight: 1.1,
                     textShadow: "0 1px 8px rgba(0,0,0,0.4)",
@@ -164,7 +164,7 @@ export default function HomePathwayCards() {
                   className="font-serif"
                   style={{
                     color: "rgba(248,244,234,0.80)",
-                    fontSize: "clamp(13px,1.1vw,14px)",
+                    fontSize: "clamp(15px,1.26vw,16px)",
                     lineHeight: 1.75,
                     marginBottom: "20px",
                   }}
@@ -180,10 +180,10 @@ export default function HomePathwayCards() {
                     alignItems: "center",
                     gap: "10px",
                     color: "#F8F4EA",
-                    fontSize: "7.5px",
+                    fontSize: "8.5px",
                     letterSpacing: "0.28em",
                     textTransform: "uppercase",
-                    fontWeight: 700,
+                    fontWeight: 900,
                     border: `1px solid ${isHovered ? "rgba(216,196,142,0.85)" : "rgba(216,196,142,0.55)"}`,
                     padding: "9px 18px",
                     background: isHovered ? "rgba(185,151,77,0.28)" : "rgba(185,151,77,0.10)",

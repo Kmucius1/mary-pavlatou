@@ -100,10 +100,10 @@ export default function HomeFeatureStrip() {
             className="font-display"
             style={{
               color: "#6A4F1E",
-              fontSize: "clamp(12px,1vw,14px)",
+              fontSize: "clamp(14px,1.15vw,16px)",
               letterSpacing: "0.40em",
               textTransform: "uppercase",
-              fontWeight: 700,
+              fontWeight: 900,
               textAlign: "center",
               whiteSpace: "nowrap",
             }}
@@ -157,10 +157,10 @@ export default function HomeFeatureStrip() {
                 className="font-display"
                 style={{
                   color: "#6A4F1E",
-                  fontSize: "11.5px",
+                  fontSize: "13px",
                   letterSpacing: "0.28em",
                   textTransform: "uppercase",
-                  fontWeight: 700,
+                  fontWeight: 900,
                 }}
               >
                 {item.title}
@@ -170,7 +170,7 @@ export default function HomeFeatureStrip() {
                 className="font-serif"
                 style={{
                   color: "#3D3328",
-                  fontSize: "clamp(12px,1.1vw,13.5px)",
+                  fontSize: "clamp(14px,1.26vw,15.5px)",
                   lineHeight: 1.65,
                 }}
               >

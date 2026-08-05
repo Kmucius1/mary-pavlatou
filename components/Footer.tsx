@@ -3,7 +3,7 @@ function MPMonogramLarge() {
     <div className="flex flex-col items-center gap-1">
       <div
         className="font-display font-semibold leading-none tracking-widest"
-        style={{ color: "#6A4F1E", fontSize: "11px", fontWeight: 700 }}
+        style={{ color: "#6A4F1E", fontSize: "13px", fontWeight: 900 }}
       >
         MP
       </div>
@@ -59,7 +59,7 @@ export default function Footer() {
         {/* Site title */}
         <p
           className="font-display tracking-[0.3em] text-[13px] uppercase text-center"
-          style={{ color: "#6A4F1E", opacity: 0.9, fontWeight: 700 }}
+          style={{ color: "#6A4F1E", opacity: 0.9, fontWeight: 900 }}
         >
           Mary Pavlatou — An Official Memorial Archive
         </p>
@@ -70,7 +70,7 @@ export default function Footer() {
             Photo and article compilation by The Pulos Brothers
           </p>
           <p className="font-serif italic text-[13px]" style={{ color: "#7A6E5E" }}>
-            Photo restoration, article restoration, and book design by Mary James
+            Photo restoration, article restoration, and book design completed with love, in her memory
           </p>
         </div>
 

@@ -4,7 +4,7 @@ import BilingualHeading from "@/components/BilingualHeading";
 
 export const metadata: Metadata = {
   title: "The Gallery — Mary Pavlatou Memorial Archive",
-  description: "The official photographic archive of Mary Pavlatou — portraits, runway, and archive materials from the 1950s, restored and preserved by The Pulos Brothers and Mary James.",
+  description: "The official photographic archive of Mary Pavlatou — portraits, runway, and archive materials from the 1950s, restored and preserved by The Pulos Brothers.",
 };
 
 export default function GalleryPage() {
@@ -94,7 +94,7 @@ export default function GalleryPage() {
             position: "relative",
           }}
         >
-          Photographs restored and preserved by The Pulos Brothers &amp; Mary James
+          Photographs restored and preserved by The Pulos Brothers
         </p>
       </div>
 

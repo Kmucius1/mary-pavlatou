@@ -47,7 +47,7 @@ export default function GreekTerm({ el, en }: { el: string; en: string }) {
             color: "#F5F1E6",
             fontFamily: "var(--font-serif)",
             fontStyle: "italic",
-            fontSize: "13px",
+            fontSize: "15px",
             lineHeight: 1.4,
             padding: "5px 11px",
             borderRadius: "5px",

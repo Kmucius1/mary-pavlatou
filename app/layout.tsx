@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import AmbientMusicControl from "@/components/AmbientMusicControl";
 import { LanguageProvider } from "@/lib/language";
 
 const cinzel = Cinzel({
@@ -36,6 +37,16 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Mary Pavlatou",
+  description:
+    "Mary Pavlatou — Greek fashion pioneer and internationally certified professional mannequin, remembered through this memorial archive.",
+  nationality: "Greek",
+  jobTitle: "Fashion Model",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -44,11 +55,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cinzel.variable} ${cormorant.variable}`}>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <LanguageProvider>
           <Header />
           {children}
           <Footer />
           <ScrollProgress />
+          <AmbientMusicControl />
         </LanguageProvider>
       </body>
     </html>

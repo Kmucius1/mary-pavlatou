@@ -14,7 +14,7 @@ const photos: (LightboxItem & { category: string })[] = [
     caption: "A studio portrait that became one of the defining images of Mary's career. Her warmth, composure, and unmistakable presence made her stand apart from every other model of her era.",
     date: "Athens, 1950s",
     location: "Athens",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
+    credit: "Preserved by The Pulos Brothers",
     mode: "portrait",
     category: "Portraits",
     width: 900,
@@ -27,7 +27,7 @@ const photos: (LightboxItem & { category: string })[] = [
     caption: "An early portrait from the beginning of Mary's career. Her poise is already complete — the posture, the ease, the command of the frame.",
     date: "Early Career",
     location: "Athens",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
+    credit: "Preserved by The Pulos Brothers",
     mode: "portrait",
     category: "Portraits",
     width: 900,
@@ -40,7 +40,7 @@ const photos: (LightboxItem & { category: string })[] = [
     caption: "Mary presents an evening gown at one of Athens's celebrated fashion showings. The architectural grace of the white silk, and the quiet authority of her stance, reflect the rare discipline she brought to every presentation.",
     date: "Athens, 1950s",
     fashionHouse: "Athens Fashion Exhibition",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
+    credit: "Preserved by The Pulos Brothers",
     mode: "full-body",
     category: "Runway",
     width: 900,
@@ -53,7 +53,7 @@ const photos: (LightboxItem & { category: string })[] = [
     caption: "On the runway in a sweeping blue ball gown. Mary's presence transformed garments into something alive. Every step, every turn, carried intention and control.",
     date: "Athens, 1950s",
     fashionHouse: "Athens Fashion Presentation",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
+    credit: "Preserved by The Pulos Brothers",
     mode: "full-body",
     category: "Runway",
     width: 900,
@@ -65,7 +65,7 @@ const photos: (LightboxItem & { category: string })[] = [
     title: "White Embroidered Runway Dress",
     caption: "A white embroidered runway dress, presented with the precision and elegance Mary was known for.",
     date: "Athens, 1950s",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
+    credit: "Preserved by The Pulos Brothers",
     mode: "full-body",
     category: "Runway",
     width: 900,
@@ -78,7 +78,7 @@ const photos: (LightboxItem & { category: string })[] = [
     caption: "From the House of Archontaki-Kallergi's celebrated hat collection. The delicate veil, the downward gaze, and the quiet intimacy of the image make this one of the archive's most beloved portraits.",
     fashionHouse: "House of Archontaki-Kallergi",
     date: "Athens, 1950s",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
+    credit: "Preserved by The Pulos Brothers",
     mode: "portrait",
     category: "Hats & Veils",
     width: 900,
@@ -89,7 +89,7 @@ const photos: (LightboxItem & { category: string })[] = [
     alt: "Mary Pavlatou Memorial Book — Interior Page",
     title: "Archive — Interior Pages",
     caption: "The interior pages of the preserved memorial book — photographs, articles, and memories compiled with care.",
-    credit: "Preserved by The Pulos Brothers · Restored by Mary James",
+    credit: "Preserved by The Pulos Brothers",
     mode: "portrait",
     category: "Book Archive",
     width: 1388,
@@ -133,7 +133,7 @@ function PhotoCard({
           top: "10px",
           left: "12px",
           zIndex: 2,
-          fontSize: "9px",
+          fontSize: "10px",
           letterSpacing: "0.2em",
           color: "#8B7030",
           backgroundColor: "rgba(240,235,217,0.88)",
@@ -168,7 +168,7 @@ function PhotoCard({
           className="font-display"
           style={{
             color: "#1C1814",
-            fontSize: "11px",
+            fontSize: "13px",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
             marginBottom: "5px",
@@ -181,7 +181,7 @@ function PhotoCard({
           className="font-display"
           style={{
             color: "#7A6E5E",
-            fontSize: "8px",
+            fontSize: "9px",
             letterSpacing: "0.25em",
             textTransform: "uppercase",
           }}
@@ -270,7 +270,7 @@ export default function ArchiveGallery() {
               onClick={() => setActiveCategory(cat)}
               className="font-display"
               style={{
-                fontSize: "8px",
+                fontSize: "9px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 padding: "7px 16px",
@@ -279,7 +279,7 @@ export default function ArchiveGallery() {
                 backgroundColor: isActive ? "#8B7030" : "transparent",
                 color: isActive ? "#F5F1E6" : "#8B7030",
                 transition: "all 0.18s ease",
-                fontWeight: isActive ? 600 : 400,
+                fontWeight: isActive ? 700 : 600,
               }}
             >
               {cat}
@@ -294,7 +294,7 @@ export default function ArchiveGallery() {
           className="font-serif italic"
           style={{
             color: "#7A6E5E",
-            fontSize: "9px",
+            fontSize: "10px",
             textAlign: "center",
             padding: "64px 0",
           }}
@@ -363,12 +363,12 @@ export default function ArchiveGallery() {
           className="font-serif italic"
           style={{
             color: "#7A6E5E",
-            fontSize: "12px",
+            fontSize: "14px",
             textAlign: "center",
             marginTop: "24px",
           }}
         >
-          Photo restoration, article restoration, and book design by Mary James.
+          Photo restoration, article restoration, and book design completed with love, in her memory.
         </p>
       </div>
 

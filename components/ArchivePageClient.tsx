@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BilingualHeading from "@/components/BilingualHeading";
+import HistoricalNotes from "@/components/HistoricalNotes";
 
 /* ─────────────────────────────────────────────
    COLOUR TOKENS
@@ -31,11 +32,11 @@ const sectionLabel = (n: string, text: string) => (
   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
     <span
       style={{
-        fontSize: 12,
+        fontSize: 14,
         letterSpacing: "0.44em",
         textTransform: "uppercase",
         color: "#6A4F1E",
-        fontWeight: 700,
+        fontWeight: 900,
         fontFamily: "var(--font-cinzel)",
       }}
     >
@@ -106,12 +107,203 @@ function GridIcon() {
   );
 }
 
+/**
+ * One page of the full-screen reader. At zoom 1 it fits the whole page in
+ * frame (fast, uses next/image). Above 1x it renders the page at its full
+ * source resolution inside a scrollable frame, so the visitor can pan
+ * around to read fine print instead of squinting at a shrunk page.
+ */
+function ZoomablePage({
+  src,
+  alt,
+  zoom,
+  onToggleZoom,
+}: {
+  src: string;
+  alt: string;
+  zoom: number;
+  onToggleZoom: () => void;
+}) {
+  if (zoom === 1) {
+    return (
+      <button
+        onClick={onToggleZoom}
+        aria-label={`${alt} — click to zoom in`}
+        style={{ position: "absolute", inset: 0, background: "none", border: "none", padding: 0, cursor: "zoom-in", width: "100%", height: "100%" }}
+      >
+        <Image src={src} alt={alt} fill sizes="90vw" style={{ objectFit: "contain", objectPosition: "center" }} priority />
+      </button>
+    );
+  }
+  return (
+    <div style={{ position: "absolute", inset: 0, overflow: "auto" }}>
+      <button
+        onClick={onToggleZoom}
+        aria-label={`${alt} — click to reset zoom`}
+        style={{ display: "block", width: `${zoom * 100}%`, margin: "0 auto", background: "none", border: "none", padding: 0, cursor: "zoom-out" }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} style={{ width: "100%", height: "auto", display: "block" }} />
+      </button>
+    </div>
+  );
+}
+
+// A single scanned page is 1388×1838px — a two-page spread is exactly
+// double that width. Sizing the spread to this aspect-ratio (instead of an
+// arbitrary box) lets each page fill its half edge-to-edge with no
+// letterboxing "mat" around it, and keeps the two pages meeting flush at
+// the spine like a real bound book.
+const PAGE_W = 1388;
+const PAGE_H = 1838;
+const SPREAD_ASPECT = `${PAGE_W * 2} / ${PAGE_H}`;
+
+/**
+ * One full two-page spread, sized so both pages fill their half of the
+ * frame exactly (no gaps, no cropping) and meet at a shaded gutter in the
+ * middle. `interactive` pages open the full-screen reader on click and
+ * carry the resting-on-a-table drop shadow; the flip overlay renders a
+ * static, non-interactive copy of the outgoing spread.
+ */
+function BookSpread({
+  page,
+  onOpenFullscreen,
+  interactive = true,
+}: {
+  page: number;
+  onOpenFullscreen?: () => void;
+  interactive?: boolean;
+}) {
+  const rightPage = page + 1;
+  const hasRight = rightPage <= 62;
+
+  const pageCell = (n: number, side: "left" | "right") => (
+    <div style={{ position: "relative", overflow: "hidden", background: C.bookPage }}>
+      {interactive ? (
+        <button
+          onClick={onOpenFullscreen}
+          aria-label={`Open page ${n} full screen`}
+          style={{ position: "absolute", inset: 0, background: "none", border: "none", padding: 0, cursor: "zoom-in", width: "100%", height: "100%" }}
+        >
+          <Image
+            src={`/images/pdf-pages/page-${String(n).padStart(2, "0")}.png`}
+            alt={`Book page ${n}`}
+            fill
+            sizes="(max-width: 1800px) 45vw, 900px"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            priority
+          />
+        </button>
+      ) : (
+        <Image
+          src={`/images/pdf-pages/page-${String(n).padStart(2, "0")}.png`}
+          alt=""
+          fill
+          sizes="900px"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      )}
+      {/* Gutter shadow — darkens toward the spine so the two pages read as one bound sheet */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", top: 0, bottom: 0,
+          [side === "left" ? "right" : "left"]: 0,
+          width: "9%",
+          background: side === "left"
+            ? "linear-gradient(to right, transparent, rgba(20,14,6,0.22))"
+            : "linear-gradient(to left, transparent, rgba(20,14,6,0.22))",
+          pointerEvents: "none",
+        }}
+      />
+    </div>
+  );
+
+  return (
+    <div
+      className="max-md:!grid-cols-1"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        width: "100%",
+        height: "100%",
+        background: C.bookPage,
+        boxShadow: interactive
+          ? "0 32px 70px rgba(20,14,6,0.45), 0 10px 24px rgba(20,14,6,0.28)"
+          : "none",
+      }}
+    >
+      {pageCell(page, "left")}
+      {hasRight ? (
+        pageCell(rightPage, "right")
+      ) : (
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", background: C.bookPage }}>
+          <p style={{ fontFamily: "var(--font-serif)", fontSize: 17, color: C.muted, fontStyle: "italic" }}>
+            End of Book
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ─────────────────────────────────────────────
    MAIN COMPONENT
 ───────────────────────────────────────────── */
 export default function ArchivePageClient() {
   const [pdfPage, setPdfPage] = useState(1);
   const [showFullBook, setShowFullBook] = useState(false);
+  const [fullscreenReader, setFullscreenReader] = useState(false);
+  const [zoom, setZoom] = useState(1);
+  const ZOOM_MIN = 1;
+  const ZOOM_MAX = 3;
+  const ZOOM_STEP = 0.5;
+
+  // Reading a new spread always starts back at fit-to-screen.
+  React.useEffect(() => { setZoom(1); }, [pdfPage]);
+
+  // ── Page-turn flip animation (inline book viewer) ──────────────────────
+  const FLIP_MS = 650;
+  const [flipFromPage, setFlipFromPage] = useState<number | null>(null);
+  const [flipDir, setFlipDir] = useState<"next" | "prev">("next");
+  const [flipActive, setFlipActive] = useState(false);
+
+  function turnPage(dir: "next" | "prev") {
+    if (flipFromPage !== null) return; // already mid-flip — ignore extra clicks
+    const newPage = dir === "next" ? Math.min(61, pdfPage + 2) : Math.max(1, pdfPage - 2);
+    if (newPage === pdfPage) return;
+    setFlipFromPage(pdfPage);
+    setFlipDir(dir);
+    setPdfPage(newPage);
+    setFlipActive(false);
+    // Double rAF: let the browser paint the overlay at rotateY(0) first,
+    // then flip the target angle so the CSS transition actually animates.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setFlipActive(true));
+    });
+    window.setTimeout(() => {
+      setFlipFromPage(null);
+      setFlipActive(false);
+    }, FLIP_MS + 40);
+  }
+
+  React.useEffect(() => {
+    if (!fullscreenReader) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setFullscreenReader(false);
+      if (e.key === "ArrowLeft") setPdfPage((p) => Math.max(1, p - 2));
+      if (e.key === "ArrowRight") setPdfPage((p) => Math.min(61, p + 2));
+      if (e.key === "+" || e.key === "=") setZoom((z) => Math.min(ZOOM_MAX, z + ZOOM_STEP));
+      if (e.key === "-" || e.key === "_") setZoom((z) => Math.max(ZOOM_MIN, z - ZOOM_STEP));
+      if (e.key === "0") setZoom(1);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [fullscreenReader]);
 
   const navCards = [
     {
@@ -153,6 +345,7 @@ export default function ArchivePageClient() {
           backgroundImage: "repeating-linear-gradient(90deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(197,168,74,0.5) 0px, rgba(197,168,74,0.5) 1px, transparent 1px, transparent 40px)",
         }} />
         <div
+          className="max-lg:!grid-cols-1"
           style={{
             maxWidth: 1240,
             margin: "0 auto",
@@ -187,11 +380,11 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-cinzel)",
-              fontSize: 13,
+              fontSize: 15,
               letterSpacing: "0.5em",
               textTransform: "uppercase",
               color: "#C5A84A",
-              fontWeight: 700,
+              fontWeight: 900,
               marginBottom: 20,
               fontVariant: "small-caps",
             }}
@@ -207,7 +400,7 @@ export default function ArchivePageClient() {
               en="The Memory"
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: "clamp(42px, 5vw, 68px)",
+                fontSize: "clamp(48px,5.75vw,78px)",
                 color: "#F5F1E6",
                 lineHeight: 1.1,
                 letterSpacing: "0.06em",
@@ -219,7 +412,7 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-serif)",
-              fontSize: 22,
+              fontSize: 25,
               fontStyle: "italic",
               color: "#C5A84A",
               marginBottom: 28,
@@ -242,7 +435,7 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-serif)",
-              fontSize: 16,
+              fontSize: 18,
               lineHeight: 1.9,
               color: "rgba(245,241,230,0.75)",
               maxWidth: 480,
@@ -251,7 +444,7 @@ export default function ArchivePageClient() {
           >
             A living archive dedicated to the life and legacy of Mary Pavlatou —
             international fashion model, Greek icon, and beloved mother. Every photograph,
-            clipping, and page has been gathered with devotion, preserved by her sons, and
+            clipping, and page has been gathered with devotion, preserved by her three sons, and
             restored for future generations.
           </p>
 
@@ -265,7 +458,7 @@ export default function ArchivePageClient() {
                 background: C.accent,
                 color: C.fillText,
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 10,
+                fontSize: 12,
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 textDecoration: "none",
@@ -282,8 +475,8 @@ export default function ArchivePageClient() {
                 background: "transparent",
                 color: "#D8C48E",
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 13,
-                fontWeight: 700,
+                fontSize: 15,
+                fontWeight: 900,
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 textDecoration: "none",
@@ -296,7 +489,7 @@ export default function ArchivePageClient() {
 
           {/* Credit plaques */}
           <div style={{ display: "flex", gap: 16 }}>
-            {["Preserved by Her Sons", "Restored by Mary James"].map((plaque) => (
+            {["Preserved by Her Three Sons", "Restored & Preserved with Love"].map((plaque) => (
               <div
                 key={plaque}
                 style={{
@@ -308,8 +501,8 @@ export default function ArchivePageClient() {
                 <p
                   style={{
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 12,
-                    fontWeight: 700,
+                    fontSize: 14,
+                    fontWeight: 900,
                     letterSpacing: "0.3em",
                     textTransform: "uppercase",
                     color: "#6A4F1E",
@@ -426,8 +619,8 @@ export default function ArchivePageClient() {
               en="She Lives Through the Ages"
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 12,
-                fontWeight: 700,
+                fontSize: 14,
+                fontWeight: 900,
                 letterSpacing: "0.25em",
                 color: "#6A4F1E",
                 textTransform: "uppercase",
@@ -440,7 +633,7 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 8,
+                fontSize: 9,
                 letterSpacing: "0.35em",
                 color: C.muted,
                 textTransform: "uppercase",
@@ -485,7 +678,7 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-serif)",
-              fontSize: 18,
+              fontSize: 21,
               fontStyle: "italic",
               color: C.muted,
               marginBottom: 48,
@@ -495,6 +688,7 @@ export default function ArchivePageClient() {
           </p>
 
           <div
+            className="max-lg:!grid-cols-3 max-sm:!grid-cols-2"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(5, 1fr)",
@@ -597,7 +791,7 @@ export default function ArchivePageClient() {
                 <p
                   style={{
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 9,
+                    fontSize: 10,
                     letterSpacing: "0.3em",
                     textTransform: "uppercase",
                     color: C.heading,
@@ -609,7 +803,7 @@ export default function ArchivePageClient() {
                 <p
                   style={{
                     fontFamily: "var(--font-serif)",
-                    fontSize: 12,
+                    fontSize: 14,
                     color: C.muted,
                     lineHeight: 1.5,
                     marginBottom: 12,
@@ -633,7 +827,7 @@ export default function ArchivePageClient() {
       <section
         id="archive-viewer"
         style={{
-          maxWidth: 1240,
+          maxWidth: 1800,
           margin: "0 auto",
           padding: "80px 32px",
         }}
@@ -642,7 +836,7 @@ export default function ArchivePageClient() {
         <p
           style={{
             fontFamily: "var(--font-serif)",
-            fontSize: 18,
+            fontSize: 21,
             fontStyle: "italic",
             color: C.muted,
             marginBottom: 40,
@@ -652,7 +846,28 @@ export default function ArchivePageClient() {
         </p>
 
         {/* View toggle */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 32, justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", gap: 10, marginBottom: 32, justifyContent: "flex-end", flexWrap: "wrap" }}>
+          <button
+            onClick={() => setFullscreenReader(true)}
+            style={{
+              padding: "8px 18px",
+              borderRadius: 24,
+              border: `1px solid ${C.accent}`,
+              background: C.accent,
+              color: C.fillText,
+              fontFamily: "var(--font-cinzel)",
+              fontSize: 14,
+              fontWeight: 900,
+              letterSpacing: "0.3em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+            }}
+          >
+            Read Full Screen
+          </button>
           <button
             onClick={() => setShowFullBook(false)}
             style={{
@@ -662,8 +877,8 @@ export default function ArchivePageClient() {
               background: !showFullBook ? C.accent : "transparent",
               color: !showFullBook ? C.fillText : "#6A4F1E",
               fontFamily: "var(--font-cinzel)",
-              fontSize: 12,
-              fontWeight: 700,
+              fontSize: 14,
+              fontWeight: 900,
               letterSpacing: "0.3em",
               textTransform: "uppercase",
               cursor: "pointer",
@@ -681,8 +896,8 @@ export default function ArchivePageClient() {
               background: showFullBook ? C.accent : "transparent",
               color: showFullBook ? C.fillText : "#6A4F1E",
               fontFamily: "var(--font-cinzel)",
-              fontSize: 12,
-              fontWeight: 700,
+              fontSize: 14,
+              fontWeight: 900,
               letterSpacing: "0.3em",
               textTransform: "uppercase",
               cursor: "pointer",
@@ -706,7 +921,7 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 9,
+                fontSize: 10,
                 letterSpacing: "0.35em",
                 textTransform: "uppercase",
                 color: C.muted,
@@ -717,6 +932,7 @@ export default function ArchivePageClient() {
               All 62 Pages — Click any page to open it
             </p>
             <div
+              className="max-lg:!grid-cols-6 max-sm:!grid-cols-4"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(8, 1fr)",
@@ -759,7 +975,7 @@ export default function ArchivePageClient() {
                         bottom: 2,
                         right: 4,
                         fontFamily: "var(--font-cinzel)",
-                        fontSize: 7,
+                        fontSize: 8,
                         color: C.muted,
                         lineHeight: 1,
                         background: "rgba(250,247,238,0.8)",
@@ -774,97 +990,49 @@ export default function ArchivePageClient() {
             </div>
           </div>
         ) : (
-          /* ── Two-page spread swiper ── */
+          /* ── Two-page spread, sized like a real open book ── */
           <div>
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
                 position: "relative",
-                border: `1px solid ${C.border}`,
-                boxShadow: "0 8px 40px rgba(139,112,48,0.12), 0 2px 8px rgba(0,0,0,0.08)",
-                minHeight: 560,
+                width: "100%",
+                maxWidth: 1800,
+                margin: "0 auto",
+                aspectRatio: SPREAD_ASPECT,
+                perspective: "2600px",
+                WebkitPerspective: "2600px",
               }}
             >
-              {/* Left page */}
-              <div
-                style={{
-                  background: C.bookPage,
-                  borderRight: `2px solid ${C.border}`,
-                  boxShadow: "inset -6px 0 12px rgba(0,0,0,0.06)",
-                  minHeight: 560,
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <Image
-                  src={`/images/pdf-pages/page-${String(pdfPage).padStart(2, "0")}.png`}
-                  alt={`Book page ${pdfPage}`}
-                  fill
-                  sizes="(max-width: 1240px) 45vw, 560px"
-                  style={{ objectFit: "contain", objectPosition: "center" }}
-                />
-              </div>
+              {/* Base layer — always the current spread */}
+              <BookSpread page={pdfPage} onOpenFullscreen={() => setFullscreenReader(true)} />
 
-              {/* Book spine shadow */}
-              <div
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  left: "50%",
-                  top: 0,
-                  bottom: 0,
-                  width: 4,
-                  background: `linear-gradient(90deg, rgba(139,112,48,0.25), transparent, rgba(139,112,48,0.10))`,
-                  transform: "translateX(-50%)",
-                  zIndex: 2,
-                }}
-              />
-
-              {/* Right page */}
-              <div
-                style={{
-                  background: C.bookPage,
-                  boxShadow: "inset 6px 0 12px rgba(0,0,0,0.04)",
-                  minHeight: 560,
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                {pdfPage + 1 <= 62 ? (
-                  <Image
-                    src={`/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png`}
-                    alt={`Book page ${pdfPage + 1}`}
-                    fill
-                    sizes="(max-width: 1240px) 45vw, 560px"
-                    style={{ objectFit: "contain", objectPosition: "center" }}
-                  />
-                ) : (
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: "var(--font-serif)",
-                        fontSize: 15,
-                        color: C.muted,
-                        fontStyle: "italic",
-                      }}
-                    >
-                      End of Book
-                    </p>
-                  </div>
-                )}
-              </div>
+              {/* Flip overlay — the outgoing spread, animating away to reveal the base layer beneath */}
+              {flipFromPage !== null && (
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 4,
+                    pointerEvents: "none",
+                    transformStyle: "preserve-3d",
+                    WebkitTransformStyle: "preserve-3d",
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transformOrigin: "center center",
+                    transform: flipActive
+                      ? `rotateY(${flipDir === "next" ? "-180deg" : "180deg"})`
+                      : "rotateY(0deg)",
+                    transition: `transform ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95)`,
+                  }}
+                >
+                  <BookSpread page={flipFromPage} interactive={false} />
+                </div>
+              )}
 
               {/* Left nav arrow */}
               <button
-                onClick={() => setPdfPage((p) => Math.max(1, p - 2))}
+                onClick={() => turnPage("prev")}
                 aria-label="Previous spread"
                 disabled={pdfPage <= 1}
                 style={{
@@ -884,7 +1052,7 @@ export default function ArchivePageClient() {
                   justifyContent: "center",
                   zIndex: 5,
                   fontFamily: "var(--font-cinzel)",
-                  fontSize: 16,
+                  fontSize: 18,
                   opacity: pdfPage <= 1 ? 0.4 : 1,
                   transition: "opacity 0.2s",
                 }}
@@ -894,7 +1062,7 @@ export default function ArchivePageClient() {
 
               {/* Right nav arrow */}
               <button
-                onClick={() => setPdfPage((p) => Math.min(61, p + 2))}
+                onClick={() => turnPage("next")}
                 aria-label="Next spread"
                 disabled={pdfPage >= 61}
                 style={{
@@ -914,7 +1082,7 @@ export default function ArchivePageClient() {
                   justifyContent: "center",
                   zIndex: 5,
                   fontFamily: "var(--font-cinzel)",
-                  fontSize: 16,
+                  fontSize: 18,
                   opacity: pdfPage >= 61 ? 0.4 : 1,
                   transition: "opacity 0.2s",
                 }}
@@ -947,7 +1115,7 @@ export default function ArchivePageClient() {
                     background: "transparent",
                     color: C.accent,
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 11,
+                    fontSize: 13,
                     letterSpacing: "0.1em",
                     cursor: pdfPage === 1 ? "not-allowed" : "pointer",
                     opacity: pdfPage === 1 ? 0.4 : 1,
@@ -964,8 +1132,8 @@ export default function ArchivePageClient() {
                     background: "transparent",
                     color: "#6A4F1E",
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 12,
-                    fontWeight: 700,
+                    fontSize: 14,
+                    fontWeight: 900,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
                     cursor: "pointer",
@@ -977,7 +1145,7 @@ export default function ArchivePageClient() {
                   <GridIcon /> All Pages
                 </button>
                 <button
-                  onClick={() => setPdfPage(63)}
+                  onClick={() => setPdfPage(61)}
                   disabled={pdfPage >= 61}
                   aria-label="Last spread"
                   style={{
@@ -986,7 +1154,7 @@ export default function ArchivePageClient() {
                     background: "transparent",
                     color: C.accent,
                     fontFamily: "var(--font-cinzel)",
-                    fontSize: 11,
+                    fontSize: 13,
                     letterSpacing: "0.1em",
                     cursor: pdfPage >= 61 ? "not-allowed" : "pointer",
                     opacity: pdfPage >= 61 ? 0.4 : 1,
@@ -999,6 +1167,217 @@ export default function ArchivePageClient() {
           </div>
         )}
       </section>
+
+      {/* ══════════════════════════════════════════
+          3A. FULL SCREEN READER — near-fullscreen book view
+      ══════════════════════════════════════════ */}
+      {fullscreenReader && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Full screen book reader"
+          onClick={() => setFullscreenReader(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 2000,
+            background: "rgba(10,8,6,0.96)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "clamp(12px,2vw,32px)",
+          }}
+        >
+          <button
+            onClick={() => setFullscreenReader(false)}
+            aria-label="Close full screen reader"
+            style={{
+              position: "absolute",
+              top: 20,
+              right: 24,
+              background: "none",
+              border: `1px solid ${C.border}`,
+              color: C.border,
+              width: 40,
+              height: 40,
+              borderRadius: "50%",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 21,
+              zIndex: 10,
+            }}
+          >
+            ×
+          </button>
+
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-md:!flex-col"
+            style={{
+              display: "flex",
+              width: "100%",
+              maxWidth: "1900px",
+              height: "min(90vh, 1500px)",
+              position: "relative",
+            }}
+          >
+            {/* Previous */}
+            <button
+              onClick={() => setPdfPage((p) => Math.max(1, p - 2))}
+              aria-label="Previous spread"
+              disabled={pdfPage <= 1}
+              style={{
+                position: "absolute",
+                left: -8,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: 52,
+                height: 52,
+                borderRadius: "50%",
+                border: `1px solid ${C.border}`,
+                background: "rgba(245,241,230,0.92)",
+                color: C.accent,
+                cursor: pdfPage <= 1 ? "not-allowed" : "pointer",
+                opacity: pdfPage <= 1 ? 0.35 : 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 25,
+                zIndex: 5,
+              }}
+            >
+              ‹
+            </button>
+
+            {/* Left page */}
+            <div style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
+              <ZoomablePage
+                src={`/images/pdf-pages/page-${String(pdfPage).padStart(2, "0")}.png`}
+                alt={`Book page ${pdfPage}`}
+                zoom={zoom}
+                onToggleZoom={() => setZoom((z) => (z === 1 ? 2 : 1))}
+              />
+            </div>
+
+            {/* Spine */}
+            <div
+              aria-hidden="true"
+              className="max-md:!hidden"
+              style={{ width: 4, background: `linear-gradient(90deg, rgba(139,112,48,0.35), transparent, rgba(139,112,48,0.15))` }}
+            />
+
+            {/* Right page */}
+            <div style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
+              {pdfPage + 1 <= 62 ? (
+                <ZoomablePage
+                  src={`/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png`}
+                  alt={`Book page ${pdfPage + 1}`}
+                  zoom={zoom}
+                  onToggleZoom={() => setZoom((z) => (z === 1 ? 2 : 1))}
+                />
+              ) : (
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+                  <p style={{ fontFamily: "var(--font-serif)", fontSize: 21, color: C.muted, fontStyle: "italic" }}>
+                    End of Book
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Next */}
+            <button
+              onClick={() => setPdfPage((p) => Math.min(61, p + 2))}
+              aria-label="Next spread"
+              disabled={pdfPage >= 61}
+              style={{
+                position: "absolute",
+                right: -8,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: 52,
+                height: 52,
+                borderRadius: "50%",
+                border: `1px solid ${C.border}`,
+                background: "rgba(245,241,230,0.92)",
+                color: C.accent,
+                cursor: pdfPage >= 61 ? "not-allowed" : "pointer",
+                opacity: pdfPage >= 61 ? 0.35 : 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 25,
+                zIndex: 5,
+              }}
+            >
+              ›
+            </button>
+          </div>
+
+          <div onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 20 }}>
+            <button
+              onClick={() => setZoom((z) => Math.max(ZOOM_MIN, z - ZOOM_STEP))}
+              disabled={zoom <= ZOOM_MIN}
+              aria-label="Zoom out"
+              style={{
+                width: 32, height: 32, borderRadius: "50%",
+                border: `1px solid ${C.border}`, background: "none", color: C.border,
+                cursor: zoom <= ZOOM_MIN ? "not-allowed" : "pointer", opacity: zoom <= ZOOM_MIN ? 0.35 : 1,
+                fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+            >
+              −
+            </button>
+            <button
+              onClick={() => setZoom(1)}
+              aria-label="Reset zoom to fit screen"
+              style={{
+                fontFamily: "var(--font-cinzel)", fontSize: 13, letterSpacing: "0.2em",
+                color: "rgba(245,241,230,0.75)", background: "none", border: "none", cursor: "pointer",
+                minWidth: 48,
+              }}
+            >
+              {Math.round(zoom * 100)}%
+            </button>
+            <button
+              onClick={() => setZoom((z) => Math.min(ZOOM_MAX, z + ZOOM_STEP))}
+              disabled={zoom >= ZOOM_MAX}
+              aria-label="Zoom in"
+              style={{
+                width: 32, height: 32, borderRadius: "50%",
+                border: `1px solid ${C.border}`, background: "none", color: C.border,
+                cursor: zoom >= ZOOM_MAX ? "not-allowed" : "pointer", opacity: zoom >= ZOOM_MAX ? 0.35 : 1,
+                fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+            >
+              +
+            </button>
+          </div>
+
+          <p
+            aria-live="polite"
+            style={{
+              fontFamily: "var(--font-cinzel)",
+              fontSize: 13,
+              letterSpacing: "0.3em",
+              textTransform: "uppercase",
+              color: "rgba(245,241,230,0.75)",
+              marginTop: 10,
+              textAlign: "center",
+            }}
+          >
+            Pages {pdfPage}–{Math.min(pdfPage + 1, 62)} of 62 · Click a page to zoom · ← → to turn pages · Esc to close
+          </p>
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════
+          3B. HISTORICAL NOTES — renders nothing until note
+          content is supplied (see data/historicalNotes.ts)
+      ══════════════════════════════════════════ */}
+      <HistoricalNotes />
 
       {/* ══════════════════════════════════════════
           4. PRESERVATION SECTION
@@ -1022,11 +1401,12 @@ export default function ArchivePageClient() {
           }}
         >
           <div style={{ flex: 1, height: 1, background: C.borderMuted }} />
-          {sectionLabel("4", "Preserved by Her Sons. Restored into Light.")}
+          {sectionLabel("4", "Preserved by Her Three Sons. Restored into Light.")}
           <div style={{ flex: 1, height: 1, background: C.borderMuted }} />
         </div>
 
         <div
+          className="max-lg:!grid-cols-1"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1.4fr 1fr",
@@ -1069,7 +1449,7 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 13,
+                fontSize: 15,
                 letterSpacing: "0.15em",
                 color: C.heading,
                 marginBottom: 8,
@@ -1080,7 +1460,7 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: 13,
+                fontSize: 15,
                 fontStyle: "italic",
                 color: C.accent,
                 marginBottom: 20,
@@ -1091,19 +1471,19 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: 15,
+                fontSize: 17,
                 lineHeight: 1.9,
                 color: C.body,
                 marginBottom: 24,
               }}
             >
-              With deep love and respect, her sons preserved every photograph, article, and
+              With deep love and respect, her three sons preserved every photograph, article, and
               page so that her story would never be forgotten.
             </p>
             <p
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: 13,
+                fontSize: 15,
                 fontStyle: "italic",
                 color: C.muted,
                 borderTop: `1px solid ${C.borderMuted}`,
@@ -1165,7 +1545,7 @@ export default function ArchivePageClient() {
                         alignItems: "center",
                         justifyContent: "center",
                         fontFamily: "var(--font-cinzel)",
-                        fontSize: 11,
+                        fontSize: 13,
                         color: C.accent,
                         background: C.bg,
                         flexShrink: 0,
@@ -1194,7 +1574,7 @@ export default function ArchivePageClient() {
                     <p
                       style={{
                         fontFamily: "var(--font-cinzel)",
-                        fontSize: 10,
+                        fontSize: 12,
                         letterSpacing: "0.25em",
                         textTransform: "uppercase",
                         color: C.heading,
@@ -1230,31 +1610,18 @@ export default function ArchivePageClient() {
               <p
                 style={{
                   fontFamily: "var(--font-serif)",
-                  fontSize: 16,
+                  fontSize: 18,
                   fontStyle: "italic",
                   lineHeight: 1.8,
                   color: C.body,
-                  marginBottom: 12,
                 }}
               >
                 &ldquo;Her elegance was her voice. This archive is her legacy.&rdquo;
               </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-cinzel)",
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: "0.35em",
-                  color: "#6A4F1E",
-                  textTransform: "uppercase",
-                }}
-              >
-                — Mary James
-              </p>
             </div>
           </div>
 
-          {/* RIGHT: Mary James */}
+          {/* RIGHT: The Restoration */}
           <div
             style={{
               background: C.card,
@@ -1281,20 +1648,20 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 13,
-                fontWeight: 700,
+                fontSize: 15,
+                fontWeight: 900,
                 letterSpacing: "0.35em",
                 textTransform: "uppercase",
                 color: "#6A4F1E",
                 marginBottom: 8,
               }}
             >
-              Restored by Mary James
+              The Restoration
             </p>
             <p
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: 13,
+                fontSize: 15,
                 fontStyle: "italic",
                 color: C.muted,
                 marginBottom: 20,
@@ -1305,29 +1672,13 @@ export default function ArchivePageClient() {
             <p
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: 15,
+                fontSize: 17,
                 lineHeight: 1.9,
                 color: C.body,
-                marginBottom: 28,
               }}
             >
               Every page was carefully restored, researched, translated, and designed with
               devotion — bringing the archive into the light for future generations.
-            </p>
-
-            {/* Stylized signature */}
-            <p
-              style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: 26,
-                fontStyle: "italic",
-                color: C.accent,
-                letterSpacing: "0.04em",
-                borderTop: `1px solid ${C.borderMuted}`,
-                paddingTop: 16,
-              }}
-            >
-              Mary James
             </p>
           </div>
         </div>
@@ -1348,8 +1699,8 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-cinzel)",
-              fontSize: 13,
-              fontWeight: 700,
+              fontSize: 15,
+              fontWeight: 900,
               letterSpacing: "0.5em",
               textTransform: "uppercase",
               color: "#6A4F1E",
@@ -1361,6 +1712,7 @@ export default function ArchivePageClient() {
           </p>
 
           <div
+            className="max-lg:!grid-cols-2 max-sm:!grid-cols-1"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -1411,7 +1763,7 @@ export default function ArchivePageClient() {
                   <p
                     style={{
                       fontFamily: "var(--font-cinzel)",
-                      fontSize: 10,
+                      fontSize: 12,
                       letterSpacing: "0.3em",
                       textTransform: "uppercase",
                       color: C.heading,
@@ -1423,7 +1775,7 @@ export default function ArchivePageClient() {
                   <p
                     style={{
                       fontFamily: "var(--font-serif)",
-                      fontSize: 15,
+                      fontSize: 17,
                       lineHeight: 1.7,
                       color: C.muted,
                       marginBottom: 16,
@@ -1465,8 +1817,8 @@ export default function ArchivePageClient() {
           <p
             style={{
               fontFamily: "var(--font-cinzel)",
-              fontSize: 14,
-              fontWeight: 700,
+              fontSize: 16,
+              fontWeight: 900,
               letterSpacing: "0.4em",
               textTransform: "uppercase",
               color: "#6A4F1E",
@@ -1479,7 +1831,7 @@ export default function ArchivePageClient() {
         <p
           style={{
             fontFamily: "var(--font-serif)",
-            fontSize: 13,
+            fontSize: 15,
             color: C.muted,
             letterSpacing: "0.1em",
           }}

@@ -124,7 +124,7 @@ function LightboxPanel({
           border: "none",
           cursor: "pointer",
           color: "#8B7030",
-          fontSize: "8px",
+          fontSize: "9px",
           lineHeight: 1,
           zIndex: 10,
           padding: "4px 8px",
@@ -155,7 +155,7 @@ function LightboxPanel({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "9px",
+            fontSize: "10px",
           }}
         >
           ‹
@@ -184,7 +184,7 @@ function LightboxPanel({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "9px",
+            fontSize: "10px",
           }}
         >
           ›
@@ -220,7 +220,7 @@ function LightboxPanel({
           <p
             style={{
               fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-              fontSize: "11px",
+              fontSize: "13px",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
               color: "#8B7030",
@@ -234,7 +234,7 @@ function LightboxPanel({
             <p
               style={{
                 fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-                fontSize: "9px",
+                fontSize: "10px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 color: "rgba(139,112,48,0.82)",
@@ -253,7 +253,7 @@ function LightboxPanel({
                 fontFamily:
                   "var(--font-cormorant, var(--font-serif, Georgia, serif))",
                 fontStyle: "italic",
-                fontSize: "11px",
+                fontSize: "13px",
                 color: "#4A3C2A",
                 lineHeight: 1.7,
               }}
@@ -266,7 +266,7 @@ function LightboxPanel({
             <p
               style={{
                 fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-                fontSize: "8px",
+                fontSize: "9px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 color: "rgba(139,112,48,0.68)",
@@ -284,7 +284,7 @@ function LightboxPanel({
             aria-live="polite"
             style={{
               fontFamily: "var(--font-cinzel, var(--font-display, serif))",
-              fontSize: "8px",
+              fontSize: "9px",
               letterSpacing: "0.3em",
               textTransform: "uppercase",
               color: "rgba(139,112,48,0.62)",

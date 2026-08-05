@@ -37,7 +37,7 @@ export default function BilingualHeading({
     color: "#6A4F1E",
     opacity: 1,
     letterSpacing: "0.04em",
-    fontWeight: 700,
+    fontWeight: 900,
     marginTop: "0.35em",
     fontSize: "0.58em",
     lineHeight: 1.35,

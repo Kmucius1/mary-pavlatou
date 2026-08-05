@@ -24,7 +24,7 @@ function OrnamentDivider({ centered }: { centered?: boolean }) {
 const houses = [
   {
     name: "ETAM",
-    nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(16px,1.8vw,22px)", letterSpacing: "0.22em", fontWeight: 700 },
+    nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(18px,2.07vw,25px)", letterSpacing: "0.22em", fontWeight: 900 },
     city: "Grande Bretagne · Athens",
     caption: "Επιδείξεις μόδας at the Grande Bretagne — the most celebrated fashion salons of Athens.",
     image: "/images/mary-archive-etam-miss-mary-clip.png",
@@ -32,7 +32,7 @@ const houses = [
   },
   {
     name: "Halifa",
-    nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(15px,1.7vw,22px)", fontWeight: 600 },
+    nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(17px,1.95vw,25px)", fontWeight: 700 },
     city: "Γουναρικά · Athens",
     caption: "Γουναρικά — the finest fur house in Athens. Ermine and mink at the Grande Bretagne.",
     image: "/images/book-clipping-fur-coat.png",
@@ -40,7 +40,7 @@ const houses = [
   },
   {
     name: "Tsitsopoulos",
-    nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(11px,1.2vw,14px)", letterSpacing: "0.18em", fontWeight: 700 },
+    nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(13px,1.38vw,16px)", letterSpacing: "0.18em", fontWeight: 900 },
     city: "King George Hotel · Athens",
     caption: "Καλοκαιρινά μοντέλλα — summer and spring collections at the King George Hotel.",
     image: "/images/mary-archive-street-coat-named.png",
@@ -48,7 +48,7 @@ const houses = [
   },
   {
     name: "Archontaki-Kallergi",
-    nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(12px,1.3vw,16px)", fontWeight: 600 },
+    nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(14px,1.49vw,18px)", fontWeight: 700 },
     city: "Μόδα Καπέλα · Athens",
     caption: "Μανεκέν Μαίρη Παυλάτου — presenting Rose Valois hat models at the Archontaki-Kallergi salon.",
     image: "/images/mary-archive-hat-portraits-named.png",
@@ -56,7 +56,7 @@ const houses = [
   },
   {
     name: "Eleni Mallidou",
-    nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(14px,1.5vw,18px)", fontWeight: 600 },
+    nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(16px,1.72vw,21px)", fontWeight: 700 },
     city: "Ανοιξιάτικη Επίδειξις",
     caption: "Η Ανοιξιάτικη Επίδειξις — the spring fashion show of the Mallidou house.",
     image: "/images/book-clipping-mallidou-spring.png",
@@ -64,7 +64,7 @@ const houses = [
   },
   {
     name: "Stantzos · Filioskos",
-    nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(9px,1vw,12px)", letterSpacing: "0.18em", fontWeight: 700 },
+    nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(10px,1.15vw,14px)", letterSpacing: "0.18em", fontWeight: 900 },
     city: "Athens · International",
     caption: "\"A celebrated fashion model\" — featured by Stantzos and Filioskos houses in national press.",
     image: "/images/mary-archive-mohair-coat-named.png",
@@ -187,7 +187,7 @@ export default function FashionWorldClient() {
             style={{
               position: "absolute", top: "20px", right: "24px",
               background: "none", border: "1px solid rgba(197,168,74,0.5)",
-              color: "#C5A84A", fontSize: "18px", lineHeight: 1,
+              color: "#C5A84A", fontSize: "21px", lineHeight: 1,
               width: "36px", height: "36px", cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "center",
             }}
@@ -218,13 +218,13 @@ export default function FashionWorldClient() {
           </div>
 
           <p className="font-serif italic" style={{
-            color: "rgba(245,235,210,0.6)", fontSize: "12px",
+            color: "rgba(245,235,210,0.6)", fontSize: "14px",
             marginTop: "16px", textAlign: "center", maxWidth: "600px",
           }}>
             {lightbox.caption}
           </p>
           <p className="font-display" style={{
-            color: "rgba(197,168,74,0.45)", fontSize: "8px",
+            color: "rgba(197,168,74,0.45)", fontSize: "9px",
             letterSpacing: "0.35em", textTransform: "uppercase",
             marginTop: "10px",
           }}>
@@ -257,11 +257,11 @@ export default function FashionWorldClient() {
           maxWidth: "1200px", margin: "0 auto", position: "relative",
           display: "grid", gridTemplateColumns: "2fr 2.5fr 1.5fr",
           gap: "clamp(24px,4vw,56px)", alignItems: "center",
-        }} className="max-lg:grid-cols-1">
+        }} className="max-lg:!grid-cols-1">
 
           {/* Left: text */}
           <div className="animate-fade-in">
-            <p className="font-display" style={{ color: "#C5A84A", fontSize: "12px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "14px" }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "14px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 900, marginBottom: "14px" }}>
               The World of Fashion
             </p>
             <div style={{ marginBottom: "10px" }}>
@@ -270,20 +270,20 @@ export default function FashionWorldClient() {
                 el="Ο Κοσμος της Μοδας"
                 en="The World of Fashion"
                 className="font-display"
-                style={{ color: "#F5F1E6", fontSize: "clamp(28px,4.5vw,56px)", letterSpacing: "0.12em", fontWeight: 700, lineHeight: 1.05 }}
+                style={{ color: "#F5F1E6", fontSize: "clamp(32px,5.17vw,64px)", letterSpacing: "0.12em", fontWeight: 900, lineHeight: 1.05 }}
               />
             </div>
             <OrnamentDivider />
-            <p className="font-serif" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(14px,1.45vw,17px)", lineHeight: 1.9, marginBottom: "12px" }}>
-              Mary Pavlatou moved with grace through the golden era of haute couture — a world of artistry, discipline, beauty, and timeless elegance.
+            <p className="font-serif" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(16px,1.67vw,20px)", lineHeight: 1.9, marginBottom: "12px" }}>
+              Mary Pavlatou moved with grace through the golden era of haute couture — a Greek fashion pioneer connected to the international world of couture, editorial fashion, and European cinema.
             </p>
-            <p className="font-serif" style={{ color: "rgba(245,241,230,0.6)", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.85, marginBottom: "32px" }}>
-              She modeled for the greatest fashion houses of her time and belonged to the international world of fashion.
+            <p className="font-serif" style={{ color: "rgba(245,241,230,0.6)", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85, marginBottom: "32px" }}>
+              A certified professional mannequin trained in Chicago and celebrated in Athens, she belonged to an international fashion world spanning Greece, the United States, and Europe.
             </p>
             <Link href="/story#chicago" className="font-display" style={{
               color: "#D8C48E", border: "1px solid #C5A84A",
-              padding: "12px 24px", fontSize: "11px", letterSpacing: "0.3em",
-              textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
+              padding: "12px 24px", fontSize: "13px", letterSpacing: "0.3em",
+              textTransform: "uppercase", fontWeight: 900, textDecoration: "none",
               display: "inline-flex", alignItems: "center", gap: "12px",
               transition: "background 0.22s ease, color 0.22s ease",
             }}
@@ -308,7 +308,7 @@ export default function FashionWorldClient() {
                 style={{ width: "100%", height: "auto", maxHeight: "clamp(300px,46vh,500px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
               />
             </div>
-            <p className="font-serif italic" style={{ color: "rgba(245,241,230,0.55)", fontSize: "11px", letterSpacing: "0.04em" }}>
+            <p className="font-serif italic" style={{ color: "rgba(245,241,230,0.55)", fontSize: "13px", letterSpacing: "0.04em" }}>
               Mary Pavlatou · Fashion Presentation · Athens
             </p>
           </div>
@@ -318,10 +318,10 @@ export default function FashionWorldClient() {
             <svg width="28" height="22" viewBox="0 0 28 22" fill="none" aria-hidden="true" style={{ marginBottom: "12px", opacity: 0.7 }}>
               <path d="M0 22V12.5C0 6.5 3.5 2.5 10.5 0L12 2.5C9.4 3.5 7.7 5.5 7 8.5H12V22H0ZM16 22V12.5C16 6.5 19.5 2.5 26.5 0L28 2.5C25.4 3.5 23.7 5.5 23 8.5H28V22H16Z" fill="#C5A84A" />
             </svg>
-            <blockquote className="font-serif italic" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(13px,1.35vw,16px)", lineHeight: 1.9, marginBottom: "14px" }}>
+            <blockquote className="font-serif italic" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(15px,1.55vw,18px)", lineHeight: 1.9, marginBottom: "14px" }}>
               My dream is to become one of the world's finest mannequins and, one day, to create a good family.
             </blockquote>
-            <p className="font-display" style={{ color: "#C5A84A", fontSize: "12px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "14px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 900 }}>
               — Mary Pavlatou · Apogevmatini Interview
             </p>
           </div>
@@ -340,25 +340,25 @@ export default function FashionWorldClient() {
           padding: "clamp(32px,4vw,52px)",
           display: "grid", gridTemplateColumns: "1fr 2fr",
           gap: "clamp(28px,4vw,56px)",
-        }} className="max-lg:grid-cols-1">
+        }} className="max-lg:!grid-cols-1">
           {/* Left */}
           <div>
-            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(18px,2.2vw,28px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.25, marginBottom: "16px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(21px,2.53vw,32px)", letterSpacing: "0.08em", fontWeight: 900, lineHeight: 1.25, marginBottom: "16px" }}>
               The Golden Era of Haute Couture
             </h2>
-            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.9 }}>
+            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.9 }}>
               The 1950s were a time of couture, craftsmanship, and cultural beauty. Mary Pavlatou stood among the world's finest mannequins, representing Greece with poise, intelligence, and unforgettable presence.
             </p>
           </div>
           {/* Right: 4 stats */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "clamp(16px,2vw,28px)" }} className="max-sm:grid-cols-2">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "clamp(16px,2vw,28px)" }} className="max-sm:!grid-cols-2">
             {stats.map((stat) => (
               <div key={stat.label} style={{ textAlign: "center" }}>
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: "12px" }}>{stat.icon}</div>
-                <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700, marginBottom: "8px" }}>
+                <p className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 900, marginBottom: "8px" }}>
                   {stat.label}
                 </p>
-                <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "12px", lineHeight: 1.7 }}>
+                <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "14px", lineHeight: 1.7 }}>
                   {stat.text}
                 </p>
               </div>
@@ -371,17 +371,17 @@ export default function FashionWorldClient() {
       <section style={{ padding: "clamp(48px,6vh,72px) clamp(28px,6vw,80px)", borderTop: "1px solid #E0D8C8" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "clamp(36px,5vh,56px)" }}>
-            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(20px,2.8vw,36px)", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "6px" }}>
+            <h2 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(23px,3.22vw,41px)", letterSpacing: "0.1em", fontWeight: 900, marginBottom: "6px" }}>
               The Great Fashion Houses
             </h2>
             <OrnamentDivider centered />
-            <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "clamp(13px,1.35vw,15px)" }}>
+            <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "clamp(15px,1.55vw,17px)" }}>
               Mary Pavlatou modeled for the most prestigious couture houses of the era.
             </p>
           </div>
 
           {/* 6-column house grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gap: "clamp(10px,1.5vw,18px)" }} className="max-lg:grid-cols-3 max-sm:grid-cols-2">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gap: "clamp(10px,1.5vw,18px)" }} className="max-lg:!grid-cols-3 max-sm:!grid-cols-2">
             {houses.map((house) => (
               <div key={house.name} style={{
                 display: "flex", flexDirection: "column", alignItems: "center",
@@ -390,7 +390,7 @@ export default function FashionWorldClient() {
                 {/* House name */}
                 <div style={{ textAlign: "center", marginBottom: "10px", minHeight: "48px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                   <p style={{ ...house.nameStyle, color: "#1C1814", marginBottom: "2px" }}>{house.name}</p>
-                  <p className="font-display" style={{ color: "#6A4F1E", fontSize: "10px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 700 }}>
+                  <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 900 }}>
                     {house.city}
                   </p>
                 </div>
@@ -420,7 +420,7 @@ export default function FashionWorldClient() {
                   />
                 </button>
                 {/* Caption */}
-                <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "11px", lineHeight: 1.55, textAlign: "center", marginTop: "10px", padding: "0 4px" }}>
+                <p className="font-serif italic" style={{ color: "#7A6E5E", fontSize: "13px", lineHeight: 1.55, textAlign: "center", marginTop: "10px", padding: "0 4px" }}>
                   {house.caption}
                 </p>
               </div>
@@ -431,7 +431,7 @@ export default function FashionWorldClient() {
 
       {/* ── Three feature cards ── */}
       <section style={{ padding: "clamp(48px,6vh,72px) clamp(28px,6vw,80px)", borderTop: "1px solid #E0D8C8" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:grid-cols-1">
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "clamp(16px,2vw,24px)" }} className="max-lg:!grid-cols-1">
           {featureCards.map((card) => (
             <div key={card.title} style={{
               background: "linear-gradient(145deg, #F5F1E6 0%, #EDE8D8 100%)",
@@ -439,11 +439,11 @@ export default function FashionWorldClient() {
               padding: "clamp(24px,3vw,36px)",
               display: "flex", flexDirection: "column",
             }}>
-              <h3 className="font-display" style={{ color: "#8B7030", fontSize: "clamp(14px,1.5vw,18px)", letterSpacing: "0.08em", fontWeight: 700, lineHeight: 1.2, marginBottom: "8px" }}>
+              <h3 className="font-display" style={{ color: "#8B7030", fontSize: "clamp(16px,1.72vw,21px)", letterSpacing: "0.08em", fontWeight: 900, lineHeight: 1.2, marginBottom: "8px" }}>
                 {card.title}
               </h3>
               <OrnamentDivider />
-              <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(13px,1.3vw,15px)", lineHeight: 1.85, marginBottom: "24px" }}>
+              <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85, marginBottom: "24px" }}>
                 {card.body}
               </p>
 
@@ -487,9 +487,9 @@ export default function FashionWorldClient() {
                 <Link href={card.cta.href} className="font-display" style={{
                   display: "inline-flex", alignItems: "center", gap: "10px",
                   color: "#6A4F1E", border: "1px solid #8B7030",
-                  padding: "10px 20px", fontSize: "10px",
+                  padding: "10px 20px", fontSize: "12px",
                   letterSpacing: "0.3em", textTransform: "uppercase",
-                  fontWeight: 700, textDecoration: "none",
+                  fontWeight: 900, textDecoration: "none",
                   transition: "background 0.22s ease, color 0.22s ease",
                 }}
                   onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
@@ -523,7 +523,7 @@ export default function FashionWorldClient() {
           </svg>
 
           <blockquote className="font-serif italic" style={{
-            color: "#1C1814", fontSize: "clamp(15px,1.8vw,22px)",
+            color: "#1C1814", fontSize: "clamp(17px,2.07vw,25px)",
             lineHeight: 1.75, flex: 1, display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap",
           }}>
             <span>&ldquo;Η δις Παυλάτου σας παρουσιάζει αυτό το κομψό παλτό — Miss Pavlatou presents this elegant coat.&rdquo;</span>

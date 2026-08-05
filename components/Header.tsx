@@ -50,16 +50,16 @@ export default function Header() {
         {/* MP Monogram */}
         <Link href="/" style={{ textDecoration: "none", flexShrink: 0 }} aria-label="Mary Pavlatou — Home">
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "1px" }}>
-            <span className="font-display" style={{ color: "#B9974D", fontSize: "22px", fontWeight: 700, letterSpacing: "0.18em", lineHeight: 1 }}>
+            <span className="font-display" style={{ color: "#B9974D", fontSize: "25px", fontWeight: 900, letterSpacing: "0.18em", lineHeight: 1 }}>
               MP
             </span>
             <svg width="36" height="6" viewBox="0 0 36 6" fill="none" aria-hidden="true">
               <path d="M0,3 Q3,0.5 6,3 Q9,5.5 12,3 Q15,0.5 18,3 Q21,5.5 24,3 Q27,0.5 30,3 Q33,5.5 36,3" stroke="#B9974D" strokeWidth="0.9" fill="none" opacity="0.55" />
             </svg>
-            <span className="font-display" style={{ color: "#A79D8B", fontSize: "5.5px", letterSpacing: "0.30em", textTransform: "uppercase", fontWeight: 600, lineHeight: 1.4 }}>
+            <span className="font-display" style={{ color: "#A79D8B", fontSize: "6.5px", letterSpacing: "0.30em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.4 }}>
               Mary Pavlatou
             </span>
-            <span className="font-display" style={{ color: "#B8AE9C", fontSize: "5px", letterSpacing: "0.25em", textTransform: "uppercase", fontWeight: 600, lineHeight: 1.3 }}>
+            <span className="font-display" style={{ color: "#B8AE9C", fontSize: "6px", letterSpacing: "0.25em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.3 }}>
               Memorial Archive
             </span>
           </div>
@@ -76,8 +76,8 @@ export default function Header() {
                 className="font-display"
                 style={{
                   color: isActive ? "#6A5A30" : "#5A4A30",
-                  fontSize: "9px", letterSpacing: "0.28em", textTransform: "uppercase",
-                  textDecoration: "none", fontWeight: isActive ? 700 : 600,
+                  fontSize: "10px", letterSpacing: "0.28em", textTransform: "uppercase",
+                  textDecoration: "none", fontWeight: isActive ? 900 : 900,
                   borderBottom: isActive ? "1.5px solid #B9974D" : "1.5px solid transparent",
                   paddingBottom: "2px",
                   transition: "color 0.2s ease, border-color 0.2s ease",
@@ -131,8 +131,8 @@ export default function Header() {
                 className="font-display"
                 style={{
                   color: isActive ? "#6A5A30" : "#5A4A30",
-                  fontSize: "10px", letterSpacing: "0.26em", textTransform: "uppercase",
-                  textDecoration: "none", fontWeight: isActive ? 700 : 600,
+                  fontSize: "12px", letterSpacing: "0.26em", textTransform: "uppercase",
+                  textDecoration: "none", fontWeight: isActive ? 900 : 900,
                   padding: "14px 0",
                   borderBottom: "1px solid #E6D9BD",
                 }}

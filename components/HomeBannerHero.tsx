@@ -87,8 +87,8 @@ export default function HomeBannerHero() {
           data-reveal
           className="font-display"
           style={{
-            color: "#C5A84A", fontSize: "11px", letterSpacing: "0.52em",
-            textTransform: "uppercase", fontWeight: 700, marginBottom: "18px",
+            color: "#C5A84A", fontSize: "13px", letterSpacing: "0.52em",
+            textTransform: "uppercase", fontWeight: 900, marginBottom: "18px",
             position: "relative",
           }}
         >
@@ -113,9 +113,9 @@ export default function HomeBannerHero() {
           className="font-display"
           style={{
             color: "#F5F1E6",
-            fontSize: "clamp(36px,4.8vw,76px)",
+            fontSize: "clamp(41px,5.52vw,87px)",
             letterSpacing: "0.13em",
-            fontWeight: 700,
+            fontWeight: 900,
             lineHeight: 1.02,
             marginBottom: "16px",
             position: "relative",
@@ -130,10 +130,10 @@ export default function HomeBannerHero() {
           className="font-display"
           style={{
             color: "#C5A84A",
-            fontSize: "clamp(12px,0.9vw,14px)",
+            fontSize: "clamp(14px,1.03vw,16px)",
             letterSpacing: "0.38em",
             textTransform: "uppercase",
-            fontWeight: 700,
+            fontWeight: 900,
             marginBottom: "26px",
             position: "relative",
           }}
@@ -147,15 +147,16 @@ export default function HomeBannerHero() {
           className="font-serif"
           style={{
             color: "rgba(245,241,230,0.75)",
-            fontSize: "clamp(14px,1.15vw,16px)",
+            fontSize: "clamp(16px,1.32vw,18px)",
             lineHeight: 1.95,
             maxWidth: "420px",
             marginBottom: "32px",
             position: "relative",
           }}
         >
-          An international fashion model, muse, and pioneer. Her story spans continents,
-          couture houses, and generations — preserved in love.
+          A Greek fashion pioneer and the nation&rsquo;s first certified professional mannequin,
+          whose international career carried her from Athens to New York and across Europe&rsquo;s
+          world of couture. Her story spans continents, couture houses, and generations — preserved in love.
         </p>
 
         {/* CTA buttons */}
@@ -169,8 +170,8 @@ export default function HomeBannerHero() {
             style={{
               backgroundColor: "#B9974D", color: "#F8F4EA",
               padding: "13px 26px", borderRadius: "100px",
-              fontSize: "8px", letterSpacing: "0.30em", textTransform: "uppercase",
-              textDecoration: "none", fontWeight: 700,
+              fontSize: "9px", letterSpacing: "0.30em", textTransform: "uppercase",
+              textDecoration: "none", fontWeight: 900,
               display: "inline-flex", alignItems: "center", gap: "10px",
               boxShadow: "0 2px 14px rgba(185,151,77,0.32)",
               transition: "background 0.22s ease, box-shadow 0.22s ease",
@@ -199,8 +200,8 @@ export default function HomeBannerHero() {
               backgroundColor: "transparent", color: "#D8C48E",
               padding: "12px 24px", borderRadius: "100px",
               border: "1.5px solid #B9974D",
-              fontSize: "8px", letterSpacing: "0.30em", textTransform: "uppercase",
-              textDecoration: "none", fontWeight: 700,
+              fontSize: "9px", letterSpacing: "0.30em", textTransform: "uppercase",
+              textDecoration: "none", fontWeight: 900,
               display: "inline-flex", alignItems: "center", gap: "10px",
               transition: "background 0.22s ease",
             }}
@@ -232,7 +233,7 @@ export default function HomeBannerHero() {
             className="font-serif italic"
             style={{
               color: "rgba(245,241,230,0.75)",
-              fontSize: "clamp(13px,1vw,15px)",
+              fontSize: "clamp(15px,1.15vw,17px)",
               lineHeight: 1.8,
               margin: 0,
               marginBottom: "10px",
@@ -245,10 +246,10 @@ export default function HomeBannerHero() {
             className="font-display"
             style={{
               color: "#C5A84A",
-              fontSize: "10.5px",
+              fontSize: "12px",
               letterSpacing: "0.30em",
               textTransform: "uppercase",
-              fontWeight: 700,
+              fontWeight: 900,
             }}
           >
             — Mary Pavlatou

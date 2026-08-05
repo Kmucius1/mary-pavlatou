@@ -25,7 +25,7 @@ const chapters: Chapter[] = [
     roman: "I",
     title: "The Names She Carried",
     greek: "Τα Ονόματα της",
-    body: "Mary Pavlatou was the name the world came to know — and the name her family carries with pride. Her sons dedicate their book of memories to her: the one they call God's Special Angel.",
+    body: "Mary Pavlatou was the name the world came to know — and the name her family carries with pride. Her three sons dedicate their book of memories to her: the one they call God's Special Angel.",
     cta: { label: "View Archive Sources", href: "/archive" },
     imageLeft: false,
     images: [
@@ -134,7 +134,7 @@ const chapters: Chapter[] = [
     roman: "X",
     title: "The Dream of Family",
     greek: "Το Όνειρο της Οικογένειας",
-    body: "\"My dream is to become one of the world's finest mannequins and, one day, to create a good family.\" She achieved both. Her sons are her greatest legacy — the guardians of her memory.",
+    body: "\"My dream is to become one of the world's finest mannequins and, one day, to create a good family.\" She achieved both. Her three sons are her greatest legacy — the guardians of her memory.",
     cta: { label: "Legacy", href: "/legacy" },
     imageLeft: true,
     images: [
@@ -146,7 +146,7 @@ const chapters: Chapter[] = [
     roman: "XI",
     title: "Eternal Memory",
     greek: "Αιωνία η Μνήμη",
-    body: "The Pulos Brothers kept her photographs, clippings, and memories safe for decades. Through their compilation and Mary James's restoration and book design, Mary's story was brought back into the light. Αιωνία η μνήμη της.",
+    body: "The Pulos Brothers kept her photographs, clippings, and memories safe for decades. Through their compilation, restoration, and book design, Mary's story was brought back into the light. Αιωνία η μνήμη της.",
     cta: { label: "Enter the Archive", href: "/archive" },
     imageLeft: false,
     images: [
@@ -311,7 +311,7 @@ export default function StoryLifeClient() {
         >
           {/* Left: title block */}
           <div className="max-lg:order-2">
-            <p className="font-display" style={{ color: "#C5A84A", fontSize: "13px", letterSpacing: "0.42em", textTransform: "uppercase", fontWeight: 700, marginBottom: "16px" }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "15px", letterSpacing: "0.42em", textTransform: "uppercase", fontWeight: 900, marginBottom: "16px" }}>
               The World of Fashion
             </p>
             <BilingualHeading
@@ -319,8 +319,8 @@ export default function StoryLifeClient() {
               el="Ο Κόσμος της Μόδας"
               en={<>The World<br />of Fashion</>}
               className="font-display"
-              style={{ color: "#F5F1E6", fontSize: "clamp(40px,5.4vw,80px)", letterSpacing: "0.02em", fontWeight: 700, lineHeight: 1.02 }}
-              subStyle={{ fontSize: "clamp(19px,1.9vw,26px)", marginTop: "16px", color: "#C5A84A", fontWeight: 700, fontStyle: "italic", letterSpacing: "0.02em" }}
+              style={{ color: "#F5F1E6", fontSize: "clamp(46px,6.21vw,92px)", letterSpacing: "0.02em", fontWeight: 900, lineHeight: 1.02 }}
+              subStyle={{ fontSize: "clamp(22px,2.18vw,30px)", marginTop: "16px", color: "#C5A84A", fontWeight: 900, fontStyle: "italic", letterSpacing: "0.02em" }}
             />
             <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "22px 0", justifyContent: "flex-start" }} className="max-lg:!justify-center">
               <div style={{ width: "52px", height: "1px", background: "#B9974D" }} />
@@ -329,8 +329,8 @@ export default function StoryLifeClient() {
               </svg>
               <div style={{ width: "24px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
             </div>
-            <p className="font-serif" style={{ color: "rgba(245,241,230,0.75)", fontSize: "clamp(15px,1.5vw,18px)", lineHeight: 1.85, fontWeight: 500, maxWidth: "340px" }} >
-              A celebration of timeless style, heritage, and the art of couture.
+            <p className="font-serif" style={{ color: "rgba(245,241,230,0.75)", fontSize: "clamp(17px,1.72vw,21px)", lineHeight: 1.85, fontWeight: 700, maxWidth: "340px" }} >
+              A Greek fashion pioneer and certified professional mannequin whose international career reached Athens, New York, and Europe — connecting fashion, cinema, culture, and family.
             </p>
           </div>
 
@@ -351,16 +351,16 @@ export default function StoryLifeClient() {
             <svg width="30" height="24" viewBox="0 0 28 22" fill="none" aria-hidden="true" style={{ marginBottom: "14px", opacity: 0.7 }} className="max-lg:mx-auto">
               <path d="M0 22V12.5C0 6.5 3.5 2.5 10.5 0L12 2.5C9.4 3.5 7.7 5.5 7 8.5H12V22H0ZM16 22V12.5C16 6.5 19.5 2.5 26.5 0L28 2.5C25.4 3.5 23.7 5.5 23 8.5H28V22H16Z" fill="#C5A84A" />
             </svg>
-            <blockquote className="font-serif italic" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(16px,1.6vw,20px)", lineHeight: 1.75, marginBottom: "18px" }}>
+            <blockquote className="font-serif italic" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(18px,1.84vw,23px)", lineHeight: 1.75, marginBottom: "18px" }}>
               My dream is to become one of the world&rsquo;s finest mannequins and, one day, to create a good family.
             </blockquote>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }} className="max-lg:justify-center">
               <div style={{ width: "40px", height: "1px", background: "#B9974D" }} />
               <div style={{ width: "16px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
             </div>
-            <p className="font-display" style={{ color: "#C5A84A", fontSize: "13px", letterSpacing: "0.24em", textTransform: "uppercase", fontWeight: 700, lineHeight: 1.7 }}>
+            <p className="font-display" style={{ color: "#C5A84A", fontSize: "15px", letterSpacing: "0.24em", textTransform: "uppercase", fontWeight: 900, lineHeight: 1.7 }}>
               Mary Pavlatou<br />
-              <span style={{ color: "rgba(197,168,74,0.75)", fontSize: "11px", letterSpacing: "0.2em" }}>Apogevmatini Interview</span>
+              <span style={{ color: "rgba(197,168,74,0.75)", fontSize: "13px", letterSpacing: "0.2em" }}>Apogevmatini Interview</span>
             </p>
           </div>
         </div>
@@ -368,6 +368,74 @@ export default function StoryLifeClient() {
 
       {/* ── Greek key strip ── */}
       <div aria-hidden="true" style={{ height: "10px", background: "repeating-linear-gradient(90deg, rgba(139,112,48,0.35) 0px, rgba(139,112,48,0.35) 2px, transparent 2px, transparent 7px)", borderBottom: "1px solid #D0C4A0" }} />
+
+      {/* ── A Renaissance Woman / The Modern Greek Woman / Athens' Best Mannequin ── */}
+      <section style={{ background: "#F5F1E6", borderBottom: "1px solid #D0C4A0", padding: "clamp(56px,7vh,88px) clamp(24px,5vw,72px)" }}>
+        <div style={{ maxWidth: "1160px", margin: "0 auto" }}>
+
+          {/* A Renaissance Woman */}
+          <div style={{ maxWidth: "760px", margin: "0 auto clamp(48px,6vh,72px)", textAlign: "center" }}>
+            <p className="font-display" style={{ color: "#8B7030", fontSize: "13px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 900, marginBottom: "10px" }}>
+              Beyond the Runway
+            </p>
+            <BilingualHeading
+              as="h2"
+              el="Γυναίκα της Αναγέννησης"
+              en="A Renaissance Woman"
+              className="font-display"
+              style={{ color: "#6A4F1E", fontSize: "clamp(28px,3.45vw,44px)", letterSpacing: "0.06em", fontWeight: 900, lineHeight: 1.2 }}
+              subStyle={{ color: "#6A4F1E", fontSize: "clamp(17px,1.61vw,22px)", marginTop: "8px", fontStyle: "italic", fontWeight: 900 }}
+            />
+            <OrnamentDivider />
+            <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(17px,1.72vw,21px)", lineHeight: 2, marginTop: "8px" }}>
+              Mary Pavlatou was more than a fashion model. She was a Renaissance woman whose life
+              connected fashion, culture, travel, family, and the changing identity of the modern
+              Greek woman. She pursued an international career during a time when women faced very
+              different social expectations and far fewer opportunities.
+            </p>
+          </div>
+
+          {/* The Modern Greek Woman + Athens' Best Mannequin */}
+          <div
+            style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "clamp(32px,4vw,56px)", alignItems: "start" }}
+            className="max-lg:!grid-cols-1"
+          >
+            {/* The Modern Greek Woman */}
+            <div>
+              <p className="font-display" style={{ color: "#8B7030", fontSize: "13px", letterSpacing: "0.4em", textTransform: "uppercase", fontWeight: 900, marginBottom: "10px" }}>
+                A Changing Greece
+              </p>
+              <h3 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(23px,2.76vw,32px)", letterSpacing: "0.05em", fontWeight: 900, lineHeight: 1.25, marginBottom: "6px" }}>
+                The Modern Greek Woman
+              </h3>
+              <OrnamentDivider />
+              <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(16px,1.55vw,18px)", lineHeight: 1.95 }}>
+                Mary&rsquo;s journey unfolded during a period when Greek women were entering a new
+                cultural era. International fashion, travel, cinema, and Western influences were
+                reshaping ideas of femininity, independence, and public life. Her career stood at
+                the meeting point between Greek heritage and a changing international world.
+              </p>
+            </div>
+
+            {/* Athens' Best Mannequin */}
+            <div style={{ background: "linear-gradient(145deg, #F8F4EA 0%, #EFE5CC 100%)", border: "1px solid #D8C48E", padding: "clamp(28px,3.5vw,40px)", textAlign: "center" }}>
+              <p className="font-display" style={{ color: "#8B7030", fontSize: "12px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 900, marginBottom: "10px" }}>
+                A Historic Title
+              </p>
+              <h3 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,2.53vw,30px)", letterSpacing: "0.06em", fontWeight: 900, marginBottom: "14px" }}>
+                Athens&rsquo; Best Mannequin
+              </h3>
+              <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85 }}>
+                In the archive, Mary Pavlatou is remembered as one of Athens&rsquo;s best-known and
+                most respected mannequins — recognized for her poise, discipline, and commanding
+                presence at the city&rsquo;s most celebrated fashion salons. In the period press,
+                &ldquo;mannequin&rdquo; was the professional term for a trained fashion model — a
+                credential Mary earned through rigorous formal study, not a casual title.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ── Single chapter view (with vertical chapter rail) ── */}
       <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "clamp(48px,6vh,80px) clamp(28px,5vw,64px)", display: "flex", gap: "clamp(28px,4vw,56px)", alignItems: "flex-start" }}>
@@ -378,10 +446,10 @@ export default function StoryLifeClient() {
           className="hidden lg:block"
           style={{ position: "sticky", top: "108px", flexShrink: 0, width: "150px", alignSelf: "flex-start" }}
         >
-          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 700, marginBottom: "3px" }}>
+          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.34em", textTransform: "uppercase", fontWeight: 900, marginBottom: "3px" }}>
             The Chapters
           </p>
-          <p className="font-serif italic" style={{ color: "#6A4F1E", fontSize: "14px", marginBottom: "18px", fontWeight: 700 }}>
+          <p className="font-serif italic" style={{ color: "#6A4F1E", fontSize: "16px", marginBottom: "18px", fontWeight: 900 }}>
             Τα Κεφάλαια
           </p>
 
@@ -421,7 +489,7 @@ export default function StoryLifeClient() {
                         fontSize: isActive ? "16px" : "13px",
                         letterSpacing: "0.12em",
                         color: isActive ? "#6A4F1E" : "#A0906E",
-                        fontWeight: isActive ? 700 : 500,
+                        fontWeight: isActive ? 900 : 700,
                         transition: "all 0.2s ease",
                       }}>
                         {ch.roman}
@@ -443,7 +511,7 @@ export default function StoryLifeClient() {
           transform: visible ? "translateY(0)" : "translateY(10px)",
           transition: "opacity 0.24s ease, transform 0.24s ease",
         }}>
-          <div style={{
+          <div className="max-md:flex-col" style={{
             background: "linear-gradient(145deg, #F8F4EA 0%, #EFE5CC 100%)",
             border: "1px solid #D8C48E",
             borderRadius: "6px",
@@ -456,7 +524,7 @@ export default function StoryLifeClient() {
           }}>
             {/* Text — always left, always wide */}
             <div style={{ flex: "1 1 0", minWidth: 0 }}>
-              <p className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 700, marginBottom: "12px" }}>
+              <p className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.44em", textTransform: "uppercase", fontWeight: 900, marginBottom: "12px" }}>
                 Chapter {chapter.roman}
               </p>
               <BilingualHeading
@@ -464,21 +532,21 @@ export default function StoryLifeClient() {
                 el={chapter.greek}
                 en={chapter.title}
                 className="font-display"
-                style={{ color: "#6A4F1E", fontSize: "clamp(22px,2.8vw,36px)", letterSpacing: "0.06em", fontWeight: 700, lineHeight: 1.15 }}
-                subStyle={{ color: "#6A4F1E", fontSize: "clamp(18px,1.5vw,22px)", marginTop: "6px", fontStyle: "italic", fontWeight: 700 }}
+                style={{ color: "#6A4F1E", fontSize: "clamp(25px,3.22vw,41px)", letterSpacing: "0.06em", fontWeight: 900, lineHeight: 1.15 }}
+                subStyle={{ color: "#6A4F1E", fontSize: "clamp(21px,1.72vw,25px)", marginTop: "6px", fontStyle: "italic", fontWeight: 900 }}
               />
               <OrnamentDivider />
-              <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(14px,1.35vw,17px)", lineHeight: 1.95, marginBottom: "24px" }}>
+              <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(16px,1.55vw,20px)", lineHeight: 1.95, marginBottom: "24px" }}>
                 {chapter.body}
               </p>
 
               {chapter.extras === "quality-cards" && (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "12px", marginBottom: "28px" }} className="max-sm:grid-cols-2">
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "12px", marginBottom: "28px" }} className="max-sm:!grid-cols-2">
                   {qualityCards.map((card) => (
                     <div key={card.label} style={{ textAlign: "center", padding: "14px 8px" }}>
                       <div style={{ marginBottom: "8px", display: "flex", justifyContent: "center" }}>{card.icon}</div>
-                      <p className="font-display" style={{ color: "#1C1814", fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 700, marginBottom: "4px" }}>{card.label}</p>
-                      <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "12px", lineHeight: 1.6 }}>{card.text}</p>
+                      <p className="font-display" style={{ color: "#1C1814", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 900, marginBottom: "4px" }}>{card.label}</p>
+                      <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "14px", lineHeight: 1.6 }}>{card.text}</p>
                     </div>
                   ))}
                 </div>
@@ -491,8 +559,8 @@ export default function StoryLifeClient() {
                   display: "inline-flex", alignItems: "center", gap: "12px",
                   color: "#6A4F1E", border: "1px solid #8B7030",
                   padding: "11px 22px",
-                  fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase",
-                  fontWeight: 700, textDecoration: "none",
+                  fontSize: "13px", letterSpacing: "0.3em", textTransform: "uppercase",
+                  fontWeight: 900, textDecoration: "none",
                   transition: "background 0.22s ease, color 0.22s ease",
                 }}
                 onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#8B7030"; el.style.color = "#F5F1E6"; }}
@@ -506,7 +574,7 @@ export default function StoryLifeClient() {
             </div>
 
             {/* Image — always right, fixed width, contained */}
-            <div style={{ flexShrink: 0, width: "clamp(160px,18vw,220px)", overflow: "hidden" }}>
+            <div className="max-md:!w-full" style={{ flexShrink: 0, width: "clamp(160px,18vw,220px)", overflow: "hidden" }}>
               <ChapterCollage images={chapter.images} />
             </div>
           </div>
@@ -533,13 +601,13 @@ export default function StoryLifeClient() {
                 <path d="M13 4H1M5 1L1 4L5 7" stroke="currentColor" strokeWidth="1.2" />
               </svg>
             </div>
-            <span className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }} aria-hidden="true">
+            <span className="font-display hidden sm:inline-block" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 900 }} aria-hidden="true">
               {activeIdx > 0 ? chapters[activeIdx - 1].title : ""}
             </span>
           </button>
 
           {/* Counter */}
-          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700 }}>
+          <p className="font-display" style={{ color: "#6A4F1E", fontSize: "14px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 900, whiteSpace: "nowrap" }}>
             {chapter.roman} <span style={{ color: "#D8C48E", margin: "0 6px" }}>·</span> {activeIdx + 1} of {chapters.length}
           </p>
 
@@ -556,7 +624,7 @@ export default function StoryLifeClient() {
             }}
             disabled={activeIdx === chapters.length - 1}
           >
-            <span className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700, textAlign: "right" }} aria-hidden="true">
+            <span className="font-display hidden sm:inline-block" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 900, textAlign: "right" }} aria-hidden="true">
               {activeIdx < chapters.length - 1 ? chapters[activeIdx + 1].title : ""}
             </span>
             <div style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid #B9974D", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -568,14 +636,14 @@ export default function StoryLifeClient() {
         </div>
 
         {/* Archive card */}
-        <div style={{ marginTop: "clamp(32px,4vh,48px)", border: "1px solid #C5A84A", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }} className="max-sm:flex-col max-sm:items-start">
+        <div style={{ marginTop: "clamp(32px,4vh,48px)", border: "1px solid #C5A84A", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }} className="max-sm:flex-col max-sm:!items-start">
           <div>
-            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "10px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 700, marginBottom: "6px" }}>View Related Archive</p>
-            <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "13px", lineHeight: 1.65 }}>
+            <p className="font-display" style={{ color: "#6A4F1E", fontSize: "12px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 900, marginBottom: "6px" }}>View Related Archive</p>
+            <p className="font-serif" style={{ color: "#7A6E5E", fontSize: "15px", lineHeight: 1.65 }}>
               Explore the original clippings, articles, and notes that tell Mary&rsquo;s story.
             </p>
           </div>
-          <Link href="/archive" className="font-display" style={{ color: "#6A4F1E", fontSize: "11px", letterSpacing: "0.26em", textTransform: "uppercase", textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+          <Link href="/archive" className="font-display" style={{ color: "#6A4F1E", fontSize: "13px", letterSpacing: "0.26em", textTransform: "uppercase", textDecoration: "none", fontWeight: 900, display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
             Archive
             <svg width="14" height="5" viewBox="0 0 14 5" fill="none" aria-hidden="true">
               <path d="M0 2.5H12M9 1L12 2.5L9 4" stroke="currentColor" strokeWidth="1" />

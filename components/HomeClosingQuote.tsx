@@ -69,7 +69,7 @@ export default function HomeClosingQuote() {
             className="font-serif italic"
             style={{
               color: "#4A3C2A",
-              fontSize: "clamp(16px,1.8vw,22px)",
+              fontSize: "clamp(18px,2.07vw,25px)",
               lineHeight: 1.75,
               fontStyle: "italic",
               margin: 0,
@@ -101,10 +101,10 @@ export default function HomeClosingQuote() {
               className="font-display"
               style={{
                 color: "#6A4F1E",
-                fontSize: "10.5px",
+                fontSize: "12px",
                 letterSpacing: "0.34em",
                 textTransform: "uppercase",
-                fontWeight: 700,
+                fontWeight: 900,
                 marginBottom: "5px",
               }}
             >
@@ -114,13 +114,13 @@ export default function HomeClosingQuote() {
               className="font-display"
               style={{
                 color: "#6A4F1E",
-                fontSize: "10.5px",
+                fontSize: "12px",
                 letterSpacing: "0.34em",
                 textTransform: "uppercase",
-                fontWeight: 700,
+                fontWeight: 900,
               }}
             >
-              Restored by Mary James
+              Restored with Love
             </p>
           </div>
         </div>

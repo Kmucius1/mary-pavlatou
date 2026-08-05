@@ -137,8 +137,7 @@ export default function BookFeature() {
           >
             {[
               ["Compilation", "The Pulos Brothers"],
-              ["Photo &amp; Article Restoration", "Mary James"],
-              ["Book Design", "Mary James"],
+              ["Restoration &amp; Book Design", "Completed with Love"],
             ].map(([label, value]) => (
               <div key={label}>
                 <span
