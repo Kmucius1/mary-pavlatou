@@ -1028,14 +1028,16 @@ export default function ArchivePageClient() {
                   10%  { transform-origin: 0% 82%; transform: rotateY(-8deg) rotateX(-5deg); }
                   28%  { transform-origin: 0% 66%; transform: rotateY(-46deg) rotateX(-9deg); }
                   55%  { transform-origin: 0% 50%; transform: rotateY(-98deg) rotateX(-3deg); }
-                  100% { transform-origin: 0% 50%; transform: rotateY(-176deg) rotateX(0deg); }
+                  85%  { transform-origin: 0% 50%; transform: rotateY(-160deg) rotateX(0deg); }
+                  100% { transform-origin: 0% 50%; transform: rotateY(-180deg) rotateX(0deg); }
                 }
                 @keyframes bookFlipPrev {
                   0%   { transform-origin: 100% 92%; transform: rotateY(0deg) rotateX(0deg); }
                   10%  { transform-origin: 100% 82%; transform: rotateY(8deg) rotateX(-5deg); }
                   28%  { transform-origin: 100% 66%; transform: rotateY(46deg) rotateX(-9deg); }
                   55%  { transform-origin: 100% 50%; transform: rotateY(98deg) rotateX(-3deg); }
-                  100% { transform-origin: 100% 50%; transform: rotateY(176deg) rotateX(0deg); }
+                  85%  { transform-origin: 100% 50%; transform: rotateY(160deg) rotateX(0deg); }
+                  100% { transform-origin: 100% 50%; transform: rotateY(180deg) rotateX(0deg); }
                 }
                 @keyframes bookFlipShade {
                   0%   { opacity: 0; }
@@ -1112,34 +1114,76 @@ export default function ArchivePageClient() {
                     pointerEvents: "none",
                     transformStyle: "preserve-3d",
                     WebkitTransformStyle: "preserve-3d",
-                    backfaceVisibility: "hidden",
-                    WebkitBackfaceVisibility: "hidden",
                     transformOrigin: flipDir === "next" ? "0% 92%" : "100% 92%",
                     animation: `${flipDir === "next" ? "bookFlipNext" : "bookFlipPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
-                    boxShadow: "0 0 40px rgba(0,0,0,0.35)",
-                    background: C.bookPage,
                   }}
                 >
-                  <Image
-                    src={`/images/pdf-pages/page-${String(flipDir === "next" ? flipFromPage + 1 : flipFromPage).padStart(2, "0")}.png`}
-                    alt=""
-                    fill
-                    sizes="900px"
-                    style={{ objectFit: "cover", objectPosition: "center" }}
-                  />
-                  {/* Gutter shadow on the spine-facing edge, matching the static pages */}
+                  {/* Front face — the page's printed content, visible for the first half of the turn */}
                   <div
-                    aria-hidden="true"
                     style={{
-                      position: "absolute", top: 0, bottom: 0,
-                      [flipDir === "next" ? "left" : "right"]: 0,
-                      width: "9%",
-                      background: flipDir === "next"
-                        ? "linear-gradient(to right, rgba(20,14,6,0.22), transparent)"
-                        : "linear-gradient(to left, rgba(20,14,6,0.22), transparent)",
-                      pointerEvents: "none",
+                      position: "absolute",
+                      inset: 0,
+                      backfaceVisibility: "hidden",
+                      WebkitBackfaceVisibility: "hidden",
+                      boxShadow: "0 0 40px rgba(0,0,0,0.35)",
+                      background: C.bookPage,
+                      overflow: "hidden",
                     }}
-                  />
+                  >
+                    <Image
+                      src={`/images/pdf-pages/page-${String(flipDir === "next" ? flipFromPage + 1 : flipFromPage).padStart(2, "0")}.png`}
+                      alt=""
+                      fill
+                      sizes="900px"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
+                    />
+                    {/* Gutter shadow on the spine-facing edge, matching the static pages */}
+                    <div
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute", top: 0, bottom: 0,
+                        [flipDir === "next" ? "left" : "right"]: 0,
+                        width: "9%",
+                        background: flipDir === "next"
+                          ? "linear-gradient(to right, rgba(20,14,6,0.22), transparent)"
+                          : "linear-gradient(to left, rgba(20,14,6,0.22), transparent)",
+                        pointerEvents: "none",
+                      }}
+                    />
+                  </div>
+
+                  {/* Back face — the blank reverse of the leaf, facing the viewer once it's landed on the opposite page */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      backfaceVisibility: "hidden",
+                      WebkitBackfaceVisibility: "hidden",
+                      transform: "rotateY(180deg)",
+                      background: C.bookPage,
+                      boxShadow: "0 0 40px rgba(0,0,0,0.35)",
+                    }}
+                  >
+                    <div
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute", inset: 0,
+                        background: `radial-gradient(ellipse at ${flipDir === "next" ? "0%" : "100%"} 50%, rgba(20,14,6,0.14), transparent 65%)`,
+                      }}
+                    />
+                    <div
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute", top: 0, bottom: 0,
+                        [flipDir === "next" ? "right" : "left"]: 0,
+                        width: "9%",
+                        background: flipDir === "next"
+                          ? "linear-gradient(to left, rgba(20,14,6,0.22), transparent)"
+                          : "linear-gradient(to right, rgba(20,14,6,0.22), transparent)",
+                      }}
+                    />
+                  </div>
+
                   {/* Shading child — rotates with the page, darkening it as it turns edge-on to the viewer */}
                   <div
                     style={{
