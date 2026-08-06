@@ -157,6 +157,10 @@ function ZoomablePage({
 const PAGE_W = 1388;
 const PAGE_H = 1838;
 const SPREAD_ASPECT = `${PAGE_W * 2} / ${PAGE_H}`;
+const SPREAD_RATIO = (PAGE_W * 2) / PAGE_H;
+// How much of the viewport height the open book is allowed to fill —
+// keeps it fully visible without scrolling on shorter screens.
+const SPREAD_MAX_VH = 62;
 
 /**
  * One full two-page spread, sized so both pages fill their half of the
@@ -263,10 +267,16 @@ export default function ArchivePageClient() {
   React.useEffect(() => { setZoom(1); }, [pdfPage]);
 
   // ── Page-turn flip animation (inline book viewer) ──────────────────────
-  const FLIP_MS = 650;
+  // A real page turn hinges at the spine (not the center of the spread),
+  // darkens as its surface rotates edge-on to the viewer, and casts a
+  // moving shadow onto the page being revealed underneath. All three are
+  // driven by CSS @keyframes (see the <style> block below) rather than a
+  // plain transition, so a `key` remount is enough to restart it cleanly —
+  // no rAF timing hacks needed.
+  const FLIP_MS = 850;
   const [flipFromPage, setFlipFromPage] = useState<number | null>(null);
   const [flipDir, setFlipDir] = useState<"next" | "prev">("next");
-  const [flipActive, setFlipActive] = useState(false);
+  const [flipKey, setFlipKey] = useState(0);
 
   function turnPage(dir: "next" | "prev") {
     if (flipFromPage !== null) return; // already mid-flip — ignore extra clicks
@@ -275,16 +285,10 @@ export default function ArchivePageClient() {
     setFlipFromPage(pdfPage);
     setFlipDir(dir);
     setPdfPage(newPage);
-    setFlipActive(false);
-    // Double rAF: let the browser paint the overlay at rotateY(0) first,
-    // then flip the target angle so the CSS transition actually animates.
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => setFlipActive(true));
-    });
+    setFlipKey((k) => k + 1);
     window.setTimeout(() => {
       setFlipFromPage(null);
-      setFlipActive(false);
-    }, FLIP_MS + 40);
+    }, FLIP_MS);
   }
 
   React.useEffect(() => {
@@ -781,7 +785,11 @@ export default function ArchivePageClient() {
                       alt={cat.imgAlt}
                       fill
                       sizes="(max-width: 1240px) 15vw, 180px"
-                      style={{ objectFit: "contain", objectPosition: "top" }}
+                      style={
+                        cat.isOval
+                          ? { objectFit: "cover", objectPosition: "center 25%" }
+                          : { objectFit: "contain", objectPosition: "top" }
+                      }
                     />
                   ) : (
                     <RestorationIcon />
@@ -995,20 +1003,71 @@ export default function ArchivePageClient() {
             <div
               style={{
                 position: "relative",
-                width: "100%",
-                maxWidth: 1800,
+                width: `min(1550px, 100%, calc(${SPREAD_MAX_VH}vh * ${SPREAD_RATIO}))`,
                 margin: "0 auto",
                 aspectRatio: SPREAD_ASPECT,
                 perspective: "2600px",
                 WebkitPerspective: "2600px",
               }}
             >
+              <style>{`
+                @keyframes bookFlipNext {
+                  0%   { transform: rotateY(0deg); }
+                  100% { transform: rotateY(-176deg); }
+                }
+                @keyframes bookFlipPrev {
+                  0%   { transform: rotateY(0deg); }
+                  100% { transform: rotateY(176deg); }
+                }
+                @keyframes bookFlipShade {
+                  0%   { opacity: 0; }
+                  46%  { opacity: 0.62; }
+                  54%  { opacity: 0.62; }
+                  100% { opacity: 0; }
+                }
+                @keyframes bookFlipCastShadowNext {
+                  0%   { opacity: 0; transform: scaleX(0.05); }
+                  12%  { opacity: 0.5; transform: scaleX(0.4); }
+                  50%  { opacity: 0.32; transform: scaleX(1); }
+                  100% { opacity: 0; transform: scaleX(1); }
+                }
+                @keyframes bookFlipCastShadowPrev {
+                  0%   { opacity: 0; transform: scaleX(0.05); }
+                  12%  { opacity: 0.5; transform: scaleX(0.4); }
+                  50%  { opacity: 0.32; transform: scaleX(1); }
+                  100% { opacity: 0; transform: scaleX(1); }
+                }
+              `}</style>
+
               {/* Base layer — always the current spread */}
               <BookSpread page={pdfPage} onOpenFullscreen={() => setFullscreenReader(true)} />
 
-              {/* Flip overlay — the outgoing spread, animating away to reveal the base layer beneath */}
+              {/* Cast shadow — the lifting page darkening the newly-revealed page beneath it */}
               {flipFromPage !== null && (
                 <div
+                  key={`shadow-${flipKey}`}
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    [flipDir === "next" ? "left" : "right"]: "50%",
+                    width: "50%",
+                    zIndex: 3,
+                    pointerEvents: "none",
+                    transformOrigin: flipDir === "next" ? "left center" : "right center",
+                    background: flipDir === "next"
+                      ? "linear-gradient(to right, rgba(20,14,6,0.55), transparent 75%)"
+                      : "linear-gradient(to left, rgba(20,14,6,0.55), transparent 75%)",
+                    animation: `${flipDir === "next" ? "bookFlipCastShadowNext" : "bookFlipCastShadowPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+                  }}
+                />
+              )}
+
+              {/* Flip overlay — the outgoing spread, hinged at the spine and rotating away to reveal the base layer beneath */}
+              {flipFromPage !== null && (
+                <div
+                  key={`flip-${flipKey}`}
                   aria-hidden="true"
                   style={{
                     position: "absolute",
@@ -1019,14 +1078,21 @@ export default function ArchivePageClient() {
                     WebkitTransformStyle: "preserve-3d",
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
-                    transformOrigin: "center center",
-                    transform: flipActive
-                      ? `rotateY(${flipDir === "next" ? "-180deg" : "180deg"})`
-                      : "rotateY(0deg)",
-                    transition: `transform ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95)`,
+                    transformOrigin: flipDir === "next" ? "left center" : "right center",
+                    animation: `${flipDir === "next" ? "bookFlipNext" : "bookFlipPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+                    boxShadow: "0 0 40px rgba(0,0,0,0.35)",
                   }}
                 >
                   <BookSpread page={flipFromPage} interactive={false} />
+                  {/* Shading child — rotates with the page, darkening it as it turns edge-on to the viewer */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.5))",
+                      animation: `bookFlipShade ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+                    }}
+                  />
                 </div>
               )}
 

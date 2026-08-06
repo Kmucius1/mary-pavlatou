@@ -45,7 +45,7 @@ export default function HomeFeatureStrip() {
     },
     {
       key: "couture",
-      title: "Couture Houses",
+      title: "Couture Fashion",
       text: "Dior, Givenchy, Balmain, Nina Ricci & more.",
       icon: (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
