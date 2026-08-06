@@ -312,19 +312,16 @@ export default function ArchivePageClient() {
   const navCards = [
     {
       href: "/story",
-      image: "/images/hf-atelier.jpg",
       label: "HER LIFE",
       text: "The story of grace, discipline, and love.",
     },
     {
       href: "/fashion",
-      image: "/images/hf-vanity.jpg",
       label: "FASHION WORLD",
       text: "The world she inspired on and beyond the runway.",
     },
     {
       href: "/legacy",
-      image: "/images/hf-temple.jpg",
       label: "LEGACY",
       text: "Her influence, her values, her timeless legacy.",
     },
@@ -1887,27 +1884,7 @@ export default function ArchivePageClient() {
                   (e.currentTarget as HTMLElement).style.borderColor = C.borderMuted;
                 }}
               >
-                {/* Image */}
-                <div
-                  style={{
-                    width: "100%",
-                    aspectRatio: "3/4",
-                    position: "relative",
-                    borderBottom: `1px solid ${C.borderMuted}`,
-                    background: C.bg,
-                    overflow: "hidden",
-                  }}
-                >
-                  <Image
-                    src={card.image}
-                    alt={card.label}
-                    fill
-                    sizes="(max-width: 1240px) 30vw, 380px"
-                    style={{ objectFit: "contain", objectPosition: "top" }}
-                  />
-                </div>
-
-                <div style={{ padding: "20px 20px 24px" }}>
+                <div style={{ padding: "32px 24px" }}>
                   <p
                     style={{
                       fontFamily: "var(--font-cinzel)",
