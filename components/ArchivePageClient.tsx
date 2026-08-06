@@ -1209,10 +1209,7 @@ export default function ArchivePageClient() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "flex-end",
-                padding: "16px 24px",
-                background: C.card,
-                border: `1px solid ${C.borderMuted}`,
-                borderTop: `1px solid ${C.borderMuted}`,
+                padding: "20px 4px 0",
               }}
             >
               {/* Toolbar actions */}
@@ -1224,7 +1221,8 @@ export default function ArchivePageClient() {
                   style={{
                     padding: "6px 12px",
                     border: `1px solid ${C.accent}`,
-                    background: "transparent",
+                    background: C.card,
+                    boxShadow: "0 3px 10px rgba(20,12,4,0.3)",
                     color: C.accent,
                     fontFamily: "var(--font-cinzel)",
                     fontSize: 13,
@@ -1241,7 +1239,8 @@ export default function ArchivePageClient() {
                   style={{
                     padding: "6px 12px",
                     border: `1px solid ${C.accent}`,
-                    background: "transparent",
+                    background: C.card,
+                    boxShadow: "0 3px 10px rgba(20,12,4,0.3)",
                     color: "#6A4F1E",
                     fontFamily: "var(--font-cinzel)",
                     fontSize: 14,
@@ -1263,7 +1262,8 @@ export default function ArchivePageClient() {
                   style={{
                     padding: "6px 12px",
                     border: `1px solid ${C.accent}`,
-                    background: "transparent",
+                    background: C.card,
+                    boxShadow: "0 3px 10px rgba(20,12,4,0.3)",
                     color: C.accent,
                     fontFamily: "var(--font-cinzel)",
                     fontSize: 13,
