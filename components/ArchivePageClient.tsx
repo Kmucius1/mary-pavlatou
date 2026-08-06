@@ -706,7 +706,7 @@ export default function ArchivePageClient() {
                 subtitle: "Photographs & formal studies",
                 image: "/images/mary-archive-diamond-earrings-cropped.png",
                 imgAlt: "Mary Pavlatou — Colorized glamour portrait with diamond earrings, family archive",
-                isOval: true,
+                isOval: false,
               },
               {
                 id: "clippings",
@@ -916,6 +916,21 @@ export default function ArchivePageClient() {
           </button>
         </div>
 
+        {/* Wooden table surface — the book rests on top of this */}
+        <div
+          style={{
+            position: "relative",
+            padding: "56px clamp(20px, 5vw, 72px)",
+            borderRadius: 8,
+            background: `
+              repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 3px),
+              repeating-linear-gradient(93deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 2px, transparent 2px, transparent 96px),
+              repeating-linear-gradient(87deg, rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 140px),
+              linear-gradient(180deg, #8F5D35 0%, #7A4B27 45%, #5F3A1E 100%)
+            `,
+            boxShadow: "inset 0 0 10px rgba(0,0,0,0.35), inset 0 0 140px rgba(0,0,0,0.4), 0 24px 60px rgba(20,12,4,0.35)",
+          }}
+        >
         {showFullBook ? (
           /* ── Full Book thumbnail grid ── */
           <div
@@ -1012,12 +1027,18 @@ export default function ArchivePageClient() {
             >
               <style>{`
                 @keyframes bookFlipNext {
-                  0%   { transform: rotateY(0deg); }
-                  100% { transform: rotateY(-176deg); }
+                  0%   { transform-origin: 0% 92%; transform: rotateY(0deg) rotateX(0deg); }
+                  10%  { transform-origin: 0% 82%; transform: rotateY(-8deg) rotateX(-5deg); }
+                  28%  { transform-origin: 0% 66%; transform: rotateY(-46deg) rotateX(-9deg); }
+                  55%  { transform-origin: 0% 50%; transform: rotateY(-98deg) rotateX(-3deg); }
+                  100% { transform-origin: 0% 50%; transform: rotateY(-176deg) rotateX(0deg); }
                 }
                 @keyframes bookFlipPrev {
-                  0%   { transform: rotateY(0deg); }
-                  100% { transform: rotateY(176deg); }
+                  0%   { transform-origin: 100% 92%; transform: rotateY(0deg) rotateX(0deg); }
+                  10%  { transform-origin: 100% 82%; transform: rotateY(8deg) rotateX(-5deg); }
+                  28%  { transform-origin: 100% 66%; transform: rotateY(46deg) rotateX(-9deg); }
+                  55%  { transform-origin: 100% 50%; transform: rotateY(98deg) rotateX(-3deg); }
+                  100% { transform-origin: 100% 50%; transform: rotateY(176deg) rotateX(0deg); }
                 }
                 @keyframes bookFlipShade {
                   0%   { opacity: 0; }
@@ -1025,15 +1046,29 @@ export default function ArchivePageClient() {
                   54%  { opacity: 0.62; }
                   100% { opacity: 0; }
                 }
+                @keyframes bookFlipCornerLiftNext {
+                  0%   { opacity: 0; clip-path: polygon(100% 100%, 100% 100%, 100% 100%); }
+                  8%   { opacity: 0.9; clip-path: polygon(62% 100%, 100% 62%, 100% 100%); }
+                  22%  { opacity: 0.75; clip-path: polygon(30% 100%, 100% 28%, 100% 100%); }
+                  38%  { opacity: 0.35; clip-path: polygon(4% 100%, 100% 2%, 100% 100%); }
+                  100% { opacity: 0; clip-path: polygon(0% 100%, 100% 0%, 100% 100%); }
+                }
+                @keyframes bookFlipCornerLiftPrev {
+                  0%   { opacity: 0; clip-path: polygon(0% 100%, 0% 100%, 0% 100%); }
+                  8%   { opacity: 0.9; clip-path: polygon(38% 100%, 0% 62%, 0% 100%); }
+                  22%  { opacity: 0.75; clip-path: polygon(70% 100%, 0% 28%, 0% 100%); }
+                  38%  { opacity: 0.35; clip-path: polygon(96% 100%, 0% 2%, 0% 100%); }
+                  100% { opacity: 0; clip-path: polygon(100% 100%, 0% 0%, 0% 100%); }
+                }
                 @keyframes bookFlipCastShadowNext {
                   0%   { opacity: 0; transform: scaleX(0.05); }
-                  12%  { opacity: 0.5; transform: scaleX(0.4); }
+                  12%  { opacity: 0.55; transform: scaleX(0.4); }
                   50%  { opacity: 0.32; transform: scaleX(1); }
                   100% { opacity: 0; transform: scaleX(1); }
                 }
                 @keyframes bookFlipCastShadowPrev {
                   0%   { opacity: 0; transform: scaleX(0.05); }
-                  12%  { opacity: 0.5; transform: scaleX(0.4); }
+                  12%  { opacity: 0.55; transform: scaleX(0.4); }
                   50%  { opacity: 0.32; transform: scaleX(1); }
                   100% { opacity: 0; transform: scaleX(1); }
                 }
@@ -1055,7 +1090,7 @@ export default function ArchivePageClient() {
                     width: "50%",
                     zIndex: 3,
                     pointerEvents: "none",
-                    transformOrigin: flipDir === "next" ? "left center" : "right center",
+                    transformOrigin: flipDir === "next" ? "0% 90%" : "100% 90%",
                     background: flipDir === "next"
                       ? "linear-gradient(to right, rgba(20,14,6,0.55), transparent 75%)"
                       : "linear-gradient(to left, rgba(20,14,6,0.55), transparent 75%)",
@@ -1078,7 +1113,7 @@ export default function ArchivePageClient() {
                     WebkitTransformStyle: "preserve-3d",
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
-                    transformOrigin: flipDir === "next" ? "left center" : "right center",
+                    transformOrigin: flipDir === "next" ? "0% 92%" : "100% 92%",
                     animation: `${flipDir === "next" ? "bookFlipNext" : "bookFlipPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
                     boxShadow: "0 0 40px rgba(0,0,0,0.35)",
                   }}
@@ -1091,6 +1126,17 @@ export default function ArchivePageClient() {
                       inset: 0,
                       background: "linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.5))",
                       animation: `bookFlipShade ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+                    }}
+                  />
+                  {/* Corner-lift highlight — a warm gleam that peels up from the bottom corner first, as if a hand lifted it */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: flipDir === "next"
+                        ? "linear-gradient(230deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)"
+                        : "linear-gradient(310deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)",
+                      animation: `${flipDir === "next" ? "bookFlipCornerLiftNext" : "bookFlipCornerLiftPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
                     }}
                   />
                 </div>
@@ -1232,6 +1278,7 @@ export default function ArchivePageClient() {
             </div>
           </div>
         )}
+        </div>
       </section>
 
       {/* ══════════════════════════════════════════
@@ -1281,12 +1328,12 @@ export default function ArchivePageClient() {
 
           <div
             onClick={(e) => e.stopPropagation()}
-            className="max-md:!flex-col"
+            className="max-md:!flex-col max-md:!w-full max-md:!h-[85vh]"
             style={{
               display: "flex",
-              width: "100%",
-              maxWidth: "1900px",
-              height: "min(90vh, 1500px)",
+              width: `min(97vw, calc(93vh * ${SPREAD_RATIO}))`,
+              aspectRatio: SPREAD_ASPECT,
+              boxShadow: "0 40px 90px rgba(0,0,0,0.55)",
               position: "relative",
             }}
           >
@@ -1326,6 +1373,8 @@ export default function ArchivePageClient() {
                 zoom={zoom}
                 onToggleZoom={() => setZoom((z) => (z === 1 ? 2 : 1))}
               />
+              {/* Gutter shadow toward the spine */}
+              <div aria-hidden="true" style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: "6%", background: "linear-gradient(to right, transparent, rgba(20,14,6,0.28))", pointerEvents: "none" }} />
             </div>
 
             {/* Spine */}
@@ -1351,6 +1400,8 @@ export default function ArchivePageClient() {
                   </p>
                 </div>
               )}
+              {/* Gutter shadow toward the spine */}
+              <div aria-hidden="true" style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: "6%", background: "linear-gradient(to left, transparent, rgba(20,14,6,0.28))", pointerEvents: "none" }} />
             </div>
 
             {/* Next */}
@@ -1382,16 +1433,23 @@ export default function ArchivePageClient() {
             </button>
           </div>
 
-          <div onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 20 }}>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              display: "flex", alignItems: "center", gap: 18, marginTop: 22,
+              padding: "10px 22px", borderRadius: 999,
+              background: "rgba(245,241,230,0.08)", border: `1px solid ${C.border}`,
+            }}
+          >
             <button
               onClick={() => setZoom((z) => Math.max(ZOOM_MIN, z - ZOOM_STEP))}
               disabled={zoom <= ZOOM_MIN}
               aria-label="Zoom out"
               style={{
-                width: 32, height: 32, borderRadius: "50%",
-                border: `1px solid ${C.border}`, background: "none", color: C.border,
+                width: 36, height: 36, borderRadius: "50%",
+                border: `1px solid ${C.border}`, background: "rgba(245,241,230,0.92)", color: C.accent,
                 cursor: zoom <= ZOOM_MIN ? "not-allowed" : "pointer", opacity: zoom <= ZOOM_MIN ? 0.35 : 1,
-                fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 19, display: "flex", alignItems: "center", justifyContent: "center",
               }}
             >
               −
@@ -1400,9 +1458,9 @@ export default function ArchivePageClient() {
               onClick={() => setZoom(1)}
               aria-label="Reset zoom to fit screen"
               style={{
-                fontFamily: "var(--font-cinzel)", fontSize: 13, letterSpacing: "0.2em",
-                color: "rgba(245,241,230,0.75)", background: "none", border: "none", cursor: "pointer",
-                minWidth: 48,
+                fontFamily: "var(--font-cinzel)", fontSize: 14, letterSpacing: "0.2em", fontWeight: 700,
+                color: "rgba(245,241,230,0.9)", background: "none", border: "none", cursor: "pointer",
+                minWidth: 52,
               }}
             >
               {Math.round(zoom * 100)}%
@@ -1412,10 +1470,10 @@ export default function ArchivePageClient() {
               disabled={zoom >= ZOOM_MAX}
               aria-label="Zoom in"
               style={{
-                width: 32, height: 32, borderRadius: "50%",
-                border: `1px solid ${C.border}`, background: "none", color: C.border,
+                width: 36, height: 36, borderRadius: "50%",
+                border: `1px solid ${C.border}`, background: "rgba(245,241,230,0.92)", color: C.accent,
                 cursor: zoom >= ZOOM_MAX ? "not-allowed" : "pointer", opacity: zoom >= ZOOM_MAX ? 0.35 : 1,
-                fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 19, display: "flex", alignItems: "center", justifyContent: "center",
               }}
             >
               +
@@ -1426,11 +1484,11 @@ export default function ArchivePageClient() {
             aria-live="polite"
             style={{
               fontFamily: "var(--font-cinzel)",
-              fontSize: 13,
-              letterSpacing: "0.3em",
+              fontSize: 12,
+              letterSpacing: "0.28em",
               textTransform: "uppercase",
-              color: "rgba(245,241,230,0.75)",
-              marginTop: 10,
+              color: "rgba(245,241,230,0.6)",
+              marginTop: 14,
               textAlign: "center",
             }}
           >
