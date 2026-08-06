@@ -299,13 +299,22 @@ export default function FashionWorldClient() {
 
           {/* Center: portrait */}
           <div className="animate-fade-in delay-2 max-lg:order-first" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
-            <div style={{ overflow: "hidden", maxWidth: "320px", boxShadow: "0 6px 40px rgba(139,112,48,0.18)" }}>
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                width: "min(320px, 100%, calc(clamp(300px,46vh,500px) * 0.6222))",
+                aspectRatio: "476 / 765",
+                boxShadow: "0 6px 40px rgba(139,112,48,0.18)",
+              }}
+            >
               <Image
                 src="/images/mary-archive-polkadot-named.png"
                 alt="Newspaper clipping naming Mary Pavlatou — polka-dot dress modeled for the Malliris fashion review"
-                width={1388} height={1838}
+                fill
                 priority
-                style={{ width: "100%", height: "auto", maxHeight: "clamp(300px,46vh,500px)", objectFit: "contain", objectPosition: "top center", display: "block" }}
+                sizes="320px"
+                style={{ objectFit: "cover", objectPosition: "top center" }}
               />
             </div>
             <p className="font-serif italic" style={{ color: "rgba(245,241,230,0.55)", fontSize: "13px", letterSpacing: "0.04em" }}>

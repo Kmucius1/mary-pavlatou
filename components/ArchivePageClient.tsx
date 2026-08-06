@@ -743,7 +743,7 @@ export default function ArchivePageClient() {
             ].map((cat) => (
               <a
                 key={cat.id}
-                href={`#${cat.id}`}
+                href="#archive-viewer"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -1099,14 +1099,18 @@ export default function ArchivePageClient() {
                 />
               )}
 
-              {/* Flip overlay — the outgoing spread, hinged at the spine and rotating away to reveal the base layer beneath */}
+              {/* Flip overlay — ONLY the single page being turned, hinged at the spine (center binding).
+                  The other side of the spread never moves. */}
               {flipFromPage !== null && (
                 <div
                   key={`flip-${flipKey}`}
                   aria-hidden="true"
                   style={{
                     position: "absolute",
-                    inset: 0,
+                    top: 0,
+                    bottom: 0,
+                    [flipDir === "next" ? "right" : "left"]: 0,
+                    width: "50%",
                     zIndex: 4,
                     pointerEvents: "none",
                     transformStyle: "preserve-3d",
@@ -1116,9 +1120,29 @@ export default function ArchivePageClient() {
                     transformOrigin: flipDir === "next" ? "0% 92%" : "100% 92%",
                     animation: `${flipDir === "next" ? "bookFlipNext" : "bookFlipPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
                     boxShadow: "0 0 40px rgba(0,0,0,0.35)",
+                    background: C.bookPage,
                   }}
                 >
-                  <BookSpread page={flipFromPage} interactive={false} />
+                  <Image
+                    src={`/images/pdf-pages/page-${String(flipDir === "next" ? flipFromPage + 1 : flipFromPage).padStart(2, "0")}.png`}
+                    alt=""
+                    fill
+                    sizes="900px"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
+                  {/* Gutter shadow on the spine-facing edge, matching the static pages */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute", top: 0, bottom: 0,
+                      [flipDir === "next" ? "left" : "right"]: 0,
+                      width: "9%",
+                      background: flipDir === "next"
+                        ? "linear-gradient(to right, rgba(20,14,6,0.22), transparent)"
+                        : "linear-gradient(to left, rgba(20,14,6,0.22), transparent)",
+                      pointerEvents: "none",
+                    }}
+                  />
                   {/* Shading child — rotates with the page, darkening it as it turns edge-on to the viewer */}
                   <div
                     style={{
