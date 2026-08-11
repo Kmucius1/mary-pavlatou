@@ -162,6 +162,10 @@ const SPREAD_RATIO = (PAGE_W * 2) / PAGE_H;
 // keeps it fully visible without scrolling on shorter screens.
 const SPREAD_MAX_VH = 62;
 
+// Duration of the page-turn flip animation, shared by the inline viewer
+// and the full-screen reader so both turn pages identically.
+const FLIP_MS = 850;
+
 /**
  * One full two-page spread, sized so both pages fill their half of the
  * frame exactly (no gaps, no cropping) and meet at a shaded gutter in the
@@ -251,6 +255,210 @@ function BookSpread({
   );
 }
 
+/**
+ * The page-turn flip animation itself — a single leaf hinged at the spine,
+ * with a front face (outgoing page), a back face (revealed once past 90°),
+ * a shading pass that darkens it edge-on, a corner-lift highlight, and a
+ * cast shadow onto the page beneath. Shared by the inline viewer and the
+ * full-screen reader so a page turn looks identical in both places.
+ *
+ * Must be rendered inside a `position: relative` container sized to the
+ * full two-page spread, with `perspective` set on that same container.
+ */
+function PageFlipOverlay({
+  flipFromPage,
+  flipDir,
+  flipKey,
+}: {
+  flipFromPage: number | null;
+  flipDir: "next" | "prev";
+  flipKey: number;
+}) {
+  if (flipFromPage === null) return null;
+
+  return (
+    <>
+      <style>{`
+        @keyframes bookFlipNext {
+          0%   { transform-origin: 0% 92%; transform: rotateY(0deg) rotateX(0deg); }
+          10%  { transform-origin: 0% 82%; transform: rotateY(-8deg) rotateX(-5deg); }
+          28%  { transform-origin: 0% 66%; transform: rotateY(-46deg) rotateX(-9deg); }
+          55%  { transform-origin: 0% 50%; transform: rotateY(-98deg) rotateX(-3deg); }
+          85%  { transform-origin: 0% 50%; transform: rotateY(-160deg) rotateX(0deg); }
+          100% { transform-origin: 0% 50%; transform: rotateY(-180deg) rotateX(0deg); }
+        }
+        @keyframes bookFlipPrev {
+          0%   { transform-origin: 100% 92%; transform: rotateY(0deg) rotateX(0deg); }
+          10%  { transform-origin: 100% 82%; transform: rotateY(8deg) rotateX(-5deg); }
+          28%  { transform-origin: 100% 66%; transform: rotateY(46deg) rotateX(-9deg); }
+          55%  { transform-origin: 100% 50%; transform: rotateY(98deg) rotateX(-3deg); }
+          85%  { transform-origin: 100% 50%; transform: rotateY(160deg) rotateX(0deg); }
+          100% { transform-origin: 100% 50%; transform: rotateY(180deg) rotateX(0deg); }
+        }
+        @keyframes bookFlipShade {
+          0%   { opacity: 0; }
+          46%  { opacity: 0.62; }
+          54%  { opacity: 0.62; }
+          100% { opacity: 0; }
+        }
+        @keyframes bookFlipCornerLiftNext {
+          0%   { opacity: 0; clip-path: polygon(100% 100%, 100% 100%, 100% 100%); }
+          8%   { opacity: 0.9; clip-path: polygon(62% 100%, 100% 62%, 100% 100%); }
+          22%  { opacity: 0.75; clip-path: polygon(30% 100%, 100% 28%, 100% 100%); }
+          38%  { opacity: 0.35; clip-path: polygon(4% 100%, 100% 2%, 100% 100%); }
+          100% { opacity: 0; clip-path: polygon(0% 100%, 100% 0%, 100% 100%); }
+        }
+        @keyframes bookFlipCornerLiftPrev {
+          0%   { opacity: 0; clip-path: polygon(0% 100%, 0% 100%, 0% 100%); }
+          8%   { opacity: 0.9; clip-path: polygon(38% 100%, 0% 62%, 0% 100%); }
+          22%  { opacity: 0.75; clip-path: polygon(70% 100%, 0% 28%, 0% 100%); }
+          38%  { opacity: 0.35; clip-path: polygon(96% 100%, 0% 2%, 0% 100%); }
+          100% { opacity: 0; clip-path: polygon(100% 100%, 0% 0%, 0% 100%); }
+        }
+        @keyframes bookFlipCastShadowNext {
+          0%   { opacity: 0; transform: scaleX(0.05); }
+          12%  { opacity: 0.55; transform: scaleX(0.4); }
+          50%  { opacity: 0.32; transform: scaleX(1); }
+          100% { opacity: 0; transform: scaleX(1); }
+        }
+        @keyframes bookFlipCastShadowPrev {
+          0%   { opacity: 0; transform: scaleX(0.05); }
+          12%  { opacity: 0.55; transform: scaleX(0.4); }
+          50%  { opacity: 0.32; transform: scaleX(1); }
+          100% { opacity: 0; transform: scaleX(1); }
+        }
+      `}</style>
+
+      {/* Cast shadow — the lifting page darkening the newly-revealed page beneath it */}
+      <div
+        key={`shadow-${flipKey}`}
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          [flipDir === "next" ? "left" : "right"]: "50%",
+          width: "50%",
+          zIndex: 3,
+          pointerEvents: "none",
+          transformOrigin: flipDir === "next" ? "0% 90%" : "100% 90%",
+          background: flipDir === "next"
+            ? "linear-gradient(to right, rgba(20,14,6,0.55), transparent 75%)"
+            : "linear-gradient(to left, rgba(20,14,6,0.55), transparent 75%)",
+          animation: `${flipDir === "next" ? "bookFlipCastShadowNext" : "bookFlipCastShadowPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+        }}
+      />
+
+      {/* Flip overlay — ONLY the single page being turned, hinged at the spine (center binding).
+          The other side of the spread never moves. */}
+      <div
+        key={`flip-${flipKey}`}
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          [flipDir === "next" ? "right" : "left"]: 0,
+          width: "50%",
+          zIndex: 4,
+          pointerEvents: "none",
+          transformStyle: "preserve-3d",
+          WebkitTransformStyle: "preserve-3d",
+          transformOrigin: flipDir === "next" ? "0% 92%" : "100% 92%",
+          animation: `${flipDir === "next" ? "bookFlipNext" : "bookFlipPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+        }}
+      >
+        {/* Front face — the page's printed content, visible for the first half of the turn */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            boxShadow: "0 0 40px rgba(0,0,0,0.35)",
+            background: C.bookPage,
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src={`/images/pdf-pages/page-${String(flipDir === "next" ? flipFromPage + 1 : flipFromPage).padStart(2, "0")}.png`}
+            alt=""
+            fill
+            sizes="900px"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+          {/* Gutter shadow on the spine-facing edge, matching the static pages */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute", top: 0, bottom: 0,
+              [flipDir === "next" ? "left" : "right"]: 0,
+              width: "9%",
+              background: flipDir === "next"
+                ? "linear-gradient(to right, rgba(20,14,6,0.22), transparent)"
+                : "linear-gradient(to left, rgba(20,14,6,0.22), transparent)",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
+
+        {/* Back face — the blank reverse of the leaf, facing the viewer once it's landed on the opposite page */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            background: C.bookPage,
+            boxShadow: "0 0 40px rgba(0,0,0,0.35)",
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute", inset: 0,
+              background: `radial-gradient(ellipse at ${flipDir === "next" ? "0%" : "100%"} 50%, rgba(20,14,6,0.14), transparent 65%)`,
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute", top: 0, bottom: 0,
+              [flipDir === "next" ? "right" : "left"]: 0,
+              width: "9%",
+              background: flipDir === "next"
+                ? "linear-gradient(to left, rgba(20,14,6,0.22), transparent)"
+                : "linear-gradient(to right, rgba(20,14,6,0.22), transparent)",
+            }}
+          />
+        </div>
+
+        {/* Shading child — rotates with the page, darkening it as it turns edge-on to the viewer */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.5))",
+            animation: `bookFlipShade ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+          }}
+        />
+        {/* Corner-lift highlight — a warm gleam that peels up from the bottom corner first, as if a hand lifted it */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: flipDir === "next"
+              ? "linear-gradient(230deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)"
+              : "linear-gradient(310deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)",
+            animation: `${flipDir === "next" ? "bookFlipCornerLiftNext" : "bookFlipCornerLiftPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
+          }}
+        />
+      </div>
+    </>
+  );
+}
+
 /* ─────────────────────────────────────────────
    MAIN COMPONENT
 ───────────────────────────────────────────── */
@@ -273,7 +481,6 @@ export default function ArchivePageClient() {
   // driven by CSS @keyframes (see the <style> block below) rather than a
   // plain transition, so a `key` remount is enough to restart it cleanly —
   // no rAF timing hacks needed.
-  const FLIP_MS = 850;
   const [flipFromPage, setFlipFromPage] = useState<number | null>(null);
   const [flipDir, setFlipDir] = useState<"next" | "prev">("next");
   const [flipKey, setFlipKey] = useState(0);
@@ -295,8 +502,8 @@ export default function ArchivePageClient() {
     if (!fullscreenReader) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setFullscreenReader(false);
-      if (e.key === "ArrowLeft") setPdfPage((p) => Math.max(1, p - 2));
-      if (e.key === "ArrowRight") setPdfPage((p) => Math.min(61, p + 2));
+      if (e.key === "ArrowLeft") turnPage("prev");
+      if (e.key === "ArrowRight") turnPage("next");
       if (e.key === "+" || e.key === "=") setZoom((z) => Math.min(ZOOM_MAX, z + ZOOM_STEP));
       if (e.key === "-" || e.key === "_") setZoom((z) => Math.max(ZOOM_MIN, z - ZOOM_STEP));
       if (e.key === "0") setZoom(1);
@@ -1022,190 +1229,10 @@ export default function ArchivePageClient() {
                 WebkitPerspective: "2600px",
               }}
             >
-              <style>{`
-                @keyframes bookFlipNext {
-                  0%   { transform-origin: 0% 92%; transform: rotateY(0deg) rotateX(0deg); }
-                  10%  { transform-origin: 0% 82%; transform: rotateY(-8deg) rotateX(-5deg); }
-                  28%  { transform-origin: 0% 66%; transform: rotateY(-46deg) rotateX(-9deg); }
-                  55%  { transform-origin: 0% 50%; transform: rotateY(-98deg) rotateX(-3deg); }
-                  85%  { transform-origin: 0% 50%; transform: rotateY(-160deg) rotateX(0deg); }
-                  100% { transform-origin: 0% 50%; transform: rotateY(-180deg) rotateX(0deg); }
-                }
-                @keyframes bookFlipPrev {
-                  0%   { transform-origin: 100% 92%; transform: rotateY(0deg) rotateX(0deg); }
-                  10%  { transform-origin: 100% 82%; transform: rotateY(8deg) rotateX(-5deg); }
-                  28%  { transform-origin: 100% 66%; transform: rotateY(46deg) rotateX(-9deg); }
-                  55%  { transform-origin: 100% 50%; transform: rotateY(98deg) rotateX(-3deg); }
-                  85%  { transform-origin: 100% 50%; transform: rotateY(160deg) rotateX(0deg); }
-                  100% { transform-origin: 100% 50%; transform: rotateY(180deg) rotateX(0deg); }
-                }
-                @keyframes bookFlipShade {
-                  0%   { opacity: 0; }
-                  46%  { opacity: 0.62; }
-                  54%  { opacity: 0.62; }
-                  100% { opacity: 0; }
-                }
-                @keyframes bookFlipCornerLiftNext {
-                  0%   { opacity: 0; clip-path: polygon(100% 100%, 100% 100%, 100% 100%); }
-                  8%   { opacity: 0.9; clip-path: polygon(62% 100%, 100% 62%, 100% 100%); }
-                  22%  { opacity: 0.75; clip-path: polygon(30% 100%, 100% 28%, 100% 100%); }
-                  38%  { opacity: 0.35; clip-path: polygon(4% 100%, 100% 2%, 100% 100%); }
-                  100% { opacity: 0; clip-path: polygon(0% 100%, 100% 0%, 100% 100%); }
-                }
-                @keyframes bookFlipCornerLiftPrev {
-                  0%   { opacity: 0; clip-path: polygon(0% 100%, 0% 100%, 0% 100%); }
-                  8%   { opacity: 0.9; clip-path: polygon(38% 100%, 0% 62%, 0% 100%); }
-                  22%  { opacity: 0.75; clip-path: polygon(70% 100%, 0% 28%, 0% 100%); }
-                  38%  { opacity: 0.35; clip-path: polygon(96% 100%, 0% 2%, 0% 100%); }
-                  100% { opacity: 0; clip-path: polygon(100% 100%, 0% 0%, 0% 100%); }
-                }
-                @keyframes bookFlipCastShadowNext {
-                  0%   { opacity: 0; transform: scaleX(0.05); }
-                  12%  { opacity: 0.55; transform: scaleX(0.4); }
-                  50%  { opacity: 0.32; transform: scaleX(1); }
-                  100% { opacity: 0; transform: scaleX(1); }
-                }
-                @keyframes bookFlipCastShadowPrev {
-                  0%   { opacity: 0; transform: scaleX(0.05); }
-                  12%  { opacity: 0.55; transform: scaleX(0.4); }
-                  50%  { opacity: 0.32; transform: scaleX(1); }
-                  100% { opacity: 0; transform: scaleX(1); }
-                }
-              `}</style>
-
               {/* Base layer — always the current spread */}
               <BookSpread page={pdfPage} onOpenFullscreen={() => setFullscreenReader(true)} />
 
-              {/* Cast shadow — the lifting page darkening the newly-revealed page beneath it */}
-              {flipFromPage !== null && (
-                <div
-                  key={`shadow-${flipKey}`}
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    [flipDir === "next" ? "left" : "right"]: "50%",
-                    width: "50%",
-                    zIndex: 3,
-                    pointerEvents: "none",
-                    transformOrigin: flipDir === "next" ? "0% 90%" : "100% 90%",
-                    background: flipDir === "next"
-                      ? "linear-gradient(to right, rgba(20,14,6,0.55), transparent 75%)"
-                      : "linear-gradient(to left, rgba(20,14,6,0.55), transparent 75%)",
-                    animation: `${flipDir === "next" ? "bookFlipCastShadowNext" : "bookFlipCastShadowPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
-                  }}
-                />
-              )}
-
-              {/* Flip overlay — ONLY the single page being turned, hinged at the spine (center binding).
-                  The other side of the spread never moves. */}
-              {flipFromPage !== null && (
-                <div
-                  key={`flip-${flipKey}`}
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    [flipDir === "next" ? "right" : "left"]: 0,
-                    width: "50%",
-                    zIndex: 4,
-                    pointerEvents: "none",
-                    transformStyle: "preserve-3d",
-                    WebkitTransformStyle: "preserve-3d",
-                    transformOrigin: flipDir === "next" ? "0% 92%" : "100% 92%",
-                    animation: `${flipDir === "next" ? "bookFlipNext" : "bookFlipPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
-                  }}
-                >
-                  {/* Front face — the page's printed content, visible for the first half of the turn */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      backfaceVisibility: "hidden",
-                      WebkitBackfaceVisibility: "hidden",
-                      boxShadow: "0 0 40px rgba(0,0,0,0.35)",
-                      background: C.bookPage,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Image
-                      src={`/images/pdf-pages/page-${String(flipDir === "next" ? flipFromPage + 1 : flipFromPage).padStart(2, "0")}.png`}
-                      alt=""
-                      fill
-                      sizes="900px"
-                      style={{ objectFit: "cover", objectPosition: "center" }}
-                    />
-                    {/* Gutter shadow on the spine-facing edge, matching the static pages */}
-                    <div
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute", top: 0, bottom: 0,
-                        [flipDir === "next" ? "left" : "right"]: 0,
-                        width: "9%",
-                        background: flipDir === "next"
-                          ? "linear-gradient(to right, rgba(20,14,6,0.22), transparent)"
-                          : "linear-gradient(to left, rgba(20,14,6,0.22), transparent)",
-                        pointerEvents: "none",
-                      }}
-                    />
-                  </div>
-
-                  {/* Back face — the blank reverse of the leaf, facing the viewer once it's landed on the opposite page */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      backfaceVisibility: "hidden",
-                      WebkitBackfaceVisibility: "hidden",
-                      transform: "rotateY(180deg)",
-                      background: C.bookPage,
-                      boxShadow: "0 0 40px rgba(0,0,0,0.35)",
-                    }}
-                  >
-                    <div
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute", inset: 0,
-                        background: `radial-gradient(ellipse at ${flipDir === "next" ? "0%" : "100%"} 50%, rgba(20,14,6,0.14), transparent 65%)`,
-                      }}
-                    />
-                    <div
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute", top: 0, bottom: 0,
-                        [flipDir === "next" ? "right" : "left"]: 0,
-                        width: "9%",
-                        background: flipDir === "next"
-                          ? "linear-gradient(to left, rgba(20,14,6,0.22), transparent)"
-                          : "linear-gradient(to right, rgba(20,14,6,0.22), transparent)",
-                      }}
-                    />
-                  </div>
-
-                  {/* Shading child — rotates with the page, darkening it as it turns edge-on to the viewer */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.5))",
-                      animation: `bookFlipShade ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
-                    }}
-                  />
-                  {/* Corner-lift highlight — a warm gleam that peels up from the bottom corner first, as if a hand lifted it */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: flipDir === "next"
-                        ? "linear-gradient(230deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)"
-                        : "linear-gradient(310deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)",
-                      animation: `${flipDir === "next" ? "bookFlipCornerLiftNext" : "bookFlipCornerLiftPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
-                    }}
-                  />
-                </div>
-              )}
+              <PageFlipOverlay flipFromPage={flipFromPage} flipDir={flipDir} flipKey={flipKey} />
 
               {/* Left nav arrow */}
               <button
@@ -1400,11 +1427,15 @@ export default function ArchivePageClient() {
               aspectRatio: SPREAD_ASPECT,
               boxShadow: "0 40px 90px rgba(0,0,0,0.55)",
               position: "relative",
+              perspective: "2600px",
+              WebkitPerspective: "2600px",
             }}
           >
+            <PageFlipOverlay flipFromPage={flipFromPage} flipDir={flipDir} flipKey={flipKey} />
+
             {/* Previous */}
             <button
-              onClick={() => setPdfPage((p) => Math.max(1, p - 2))}
+              onClick={() => turnPage("prev")}
               aria-label="Previous spread"
               disabled={pdfPage <= 1}
               style={{
@@ -1471,7 +1502,7 @@ export default function ArchivePageClient() {
 
             {/* Next */}
             <button
-              onClick={() => setPdfPage((p) => Math.min(61, p + 2))}
+              onClick={() => turnPage("next")}
               aria-label="Next spread"
               disabled={pdfPage >= 61}
               style={{
