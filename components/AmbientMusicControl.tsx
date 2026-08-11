@@ -12,7 +12,6 @@ const VOLUME = 0.25;
  *   by client-side navigation between pages.
  * - Honors prefers-reduced-motion by skipping the automatic session resume —
  *   those visitors can still start playback manually if they choose to.
- * - TODO: add the licensed track at /public/audio/mary-theme.mp3 (see its README).
  */
 export default function AmbientMusicControl() {
   const audioRef = useRef<HTMLAudioElement>(null);
