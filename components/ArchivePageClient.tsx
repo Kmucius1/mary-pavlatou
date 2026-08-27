@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BilingualHeading from "@/components/BilingualHeading";
@@ -107,44 +107,72 @@ function GridIcon() {
   );
 }
 
+// Diameter of the magnifier loupe, and how much it enlarges the page
+// underneath the cursor. Both are plain constants (not props) since every
+// page in the reader magnifies identically.
+const LENS_SIZE = 260;
+const LENS_ZOOM = 2.75;
+
 /**
- * One page of the full-screen reader. At zoom 1 it fits the whole page in
- * frame (fast, uses next/image). Above 1x it renders the page at its full
- * source resolution inside a scrollable frame, so the visitor can pan
- * around to read fine print instead of squinting at a shrunk page.
+ * One page of the full-screen reader. The page always sits at a fixed
+ * fit-to-screen size — there is no click-to-zoom or +/- zoom level anymore.
+ * Instead, hovering shows a circular magnifying-glass lens that follows the
+ * cursor and renders an enlarged view of whatever is directly underneath
+ * it, so fine print can be read without shrinking the rest of the page.
+ *
+ * The lens's position and background are set imperatively via refs on
+ * mousemove (not React state) so tracking the cursor doesn't trigger a
+ * re-render on every pixel of movement.
  */
-function ZoomablePage({
-  src,
-  alt,
-  zoom,
-  onToggleZoom,
-}: {
-  src: string;
-  alt: string;
-  zoom: number;
-  onToggleZoom: () => void;
-}) {
-  if (zoom === 1) {
-    return (
-      <button
-        onClick={onToggleZoom}
-        aria-label={`${alt} — click to zoom in`}
-        style={{ position: "absolute", inset: 0, background: "none", border: "none", padding: 0, cursor: "zoom-in", width: "100%", height: "100%" }}
-      >
-        <Image src={src} alt={alt} fill sizes="90vw" style={{ objectFit: "contain", objectPosition: "center" }} priority />
-      </button>
-    );
+function MagnifierPage({ src, alt }: { src: string; alt: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lensRef = useRef<HTMLDivElement>(null);
+
+  function moveLens(clientX: number, clientY: number) {
+    const container = containerRef.current;
+    const lens = lensRef.current;
+    if (!container || !lens) return;
+    const rect = container.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    lens.style.left = `${x - LENS_SIZE / 2}px`;
+    lens.style.top = `${y - LENS_SIZE / 2}px`;
+    lens.style.backgroundSize = `${rect.width * LENS_ZOOM}px ${rect.height * LENS_ZOOM}px`;
+    lens.style.backgroundPosition = `${-(x * LENS_ZOOM - LENS_SIZE / 2)}px ${-(y * LENS_ZOOM - LENS_SIZE / 2)}px`;
   }
+
   return (
-    <div style={{ position: "absolute", inset: 0, overflow: "auto" }}>
-      <button
-        onClick={onToggleZoom}
-        aria-label={`${alt} — click to reset zoom`}
-        style={{ display: "block", width: `${zoom * 100}%`, margin: "0 auto", background: "none", border: "none", padding: 0, cursor: "zoom-out" }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} style={{ width: "100%", height: "auto", display: "block" }} />
-      </button>
+    <div
+      ref={containerRef}
+      onMouseEnter={(e) => {
+        if (lensRef.current) lensRef.current.style.opacity = "1";
+        moveLens(e.clientX, e.clientY);
+      }}
+      onMouseMove={(e) => moveLens(e.clientX, e.clientY)}
+      onMouseLeave={() => {
+        if (lensRef.current) lensRef.current.style.opacity = "0";
+      }}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", cursor: "none" }}
+    >
+      <Image src={src} alt={alt} fill sizes="90vw" style={{ objectFit: "contain", objectPosition: "center" }} priority />
+      <div
+        ref={lensRef}
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          width: LENS_SIZE,
+          height: LENS_SIZE,
+          borderRadius: "50%",
+          border: `3px solid ${C.border}`,
+          boxShadow: "0 10px 34px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.15)",
+          backgroundImage: `url(${src})`,
+          backgroundRepeat: "no-repeat",
+          opacity: 0,
+          transition: "opacity 120ms ease",
+          pointerEvents: "none",
+          zIndex: 20,
+        }}
+      />
     </div>
   );
 }
@@ -466,13 +494,6 @@ export default function ArchivePageClient() {
   const [pdfPage, setPdfPage] = useState(1);
   const [showFullBook, setShowFullBook] = useState(false);
   const [fullscreenReader, setFullscreenReader] = useState(false);
-  const [zoom, setZoom] = useState(1);
-  const ZOOM_MIN = 1;
-  const ZOOM_MAX = 3;
-  const ZOOM_STEP = 0.5;
-
-  // Reading a new spread always starts back at fit-to-screen.
-  React.useEffect(() => { setZoom(1); }, [pdfPage]);
 
   // ── Page-turn flip animation (inline book viewer) ──────────────────────
   // A real page turn hinges at the spine (not the center of the spread),
@@ -504,9 +525,6 @@ export default function ArchivePageClient() {
       if (e.key === "Escape") setFullscreenReader(false);
       if (e.key === "ArrowLeft") turnPage("prev");
       if (e.key === "ArrowRight") turnPage("next");
-      if (e.key === "+" || e.key === "=") setZoom((z) => Math.min(ZOOM_MAX, z + ZOOM_STEP));
-      if (e.key === "-" || e.key === "_") setZoom((z) => Math.max(ZOOM_MIN, z - ZOOM_STEP));
-      if (e.key === "0") setZoom(1);
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -1463,11 +1481,9 @@ export default function ArchivePageClient() {
 
             {/* Left page */}
             <div style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
-              <ZoomablePage
+              <MagnifierPage
                 src={`/images/pdf-pages/page-${String(pdfPage).padStart(2, "0")}.png`}
                 alt={`Book page ${pdfPage}`}
-                zoom={zoom}
-                onToggleZoom={() => setZoom((z) => (z === 1 ? 2 : 1))}
               />
               {/* Gutter shadow toward the spine */}
               <div aria-hidden="true" style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: "6%", background: "linear-gradient(to right, transparent, rgba(20,14,6,0.28))", pointerEvents: "none" }} />
@@ -1483,11 +1499,9 @@ export default function ArchivePageClient() {
             {/* Right page */}
             <div style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
               {pdfPage + 1 <= 62 ? (
-                <ZoomablePage
+                <MagnifierPage
                   src={`/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png`}
                   alt={`Book page ${pdfPage + 1}`}
-                  zoom={zoom}
-                  onToggleZoom={() => setZoom((z) => (z === 1 ? 2 : 1))}
                 />
               ) : (
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
@@ -1529,53 +1543,6 @@ export default function ArchivePageClient() {
             </button>
           </div>
 
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              display: "flex", alignItems: "center", gap: 18, marginTop: 22,
-              padding: "10px 22px", borderRadius: 999,
-              background: "rgba(245,241,230,0.08)", border: `1px solid ${C.border}`,
-            }}
-          >
-            <button
-              onClick={() => setZoom((z) => Math.max(ZOOM_MIN, z - ZOOM_STEP))}
-              disabled={zoom <= ZOOM_MIN}
-              aria-label="Zoom out"
-              style={{
-                width: 36, height: 36, borderRadius: "50%",
-                border: `1px solid ${C.border}`, background: "rgba(245,241,230,0.92)", color: C.accent,
-                cursor: zoom <= ZOOM_MIN ? "not-allowed" : "pointer", opacity: zoom <= ZOOM_MIN ? 0.35 : 1,
-                fontSize: 19, display: "flex", alignItems: "center", justifyContent: "center",
-              }}
-            >
-              −
-            </button>
-            <button
-              onClick={() => setZoom(1)}
-              aria-label="Reset zoom to fit screen"
-              style={{
-                fontFamily: "var(--font-cinzel)", fontSize: 14, letterSpacing: "0.2em", fontWeight: 700,
-                color: "rgba(245,241,230,0.9)", background: "none", border: "none", cursor: "pointer",
-                minWidth: 52,
-              }}
-            >
-              {Math.round(zoom * 100)}%
-            </button>
-            <button
-              onClick={() => setZoom((z) => Math.min(ZOOM_MAX, z + ZOOM_STEP))}
-              disabled={zoom >= ZOOM_MAX}
-              aria-label="Zoom in"
-              style={{
-                width: 36, height: 36, borderRadius: "50%",
-                border: `1px solid ${C.border}`, background: "rgba(245,241,230,0.92)", color: C.accent,
-                cursor: zoom >= ZOOM_MAX ? "not-allowed" : "pointer", opacity: zoom >= ZOOM_MAX ? 0.35 : 1,
-                fontSize: 19, display: "flex", alignItems: "center", justifyContent: "center",
-              }}
-            >
-              +
-            </button>
-          </div>
-
           <p
             aria-live="polite"
             style={{
@@ -1588,7 +1555,7 @@ export default function ArchivePageClient() {
               textAlign: "center",
             }}
           >
-            Pages {pdfPage}–{Math.min(pdfPage + 1, 62)} of 62 · Click a page to zoom · ← → to turn pages · Esc to close
+            Pages {pdfPage}–{Math.min(pdfPage + 1, 62)} of 62 · Hover a page to magnify · ← → to turn pages · Esc to close
           </p>
         </div>
       )}
