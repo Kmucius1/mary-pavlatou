@@ -54,7 +54,7 @@ const chapters: Chapter[] = [
     cta: { label: "View the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-beaded-gown.png", alt: "Mary Pavlatou — Full-body photograph in draped, beaded evening gown with train, family archive", w: 1388, h: 1838, rot: -2 },
+      { src: "/images/mary-archive-colorized-bow-portrait.png", alt: "Mary Pavlatou — Colorized close-up portrait with bow headband, family archive", w: 1388, h: 1838, rot: -2 },
     ],
   },
   {
