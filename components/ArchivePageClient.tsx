@@ -107,72 +107,126 @@ function GridIcon() {
   );
 }
 
-// Diameter of the magnifier loupe, and how much it enlarges the page
-// underneath the cursor. Both are plain constants (not props) since every
-// page in the reader magnifies identically.
-const LENS_SIZE = 260;
-const LENS_ZOOM = 2.75;
+// Diameter of the magnifier loupe, and how much it enlarges the spread
+// underneath the cursor. Sized big and zoomed gently on purpose — this is
+// meant to be a comfortable reading window (more words visible at once),
+// not a tight pixel-peeping loupe.
+const LENS_SIZE = 400;
+const LENS_ZOOM = 1.65;
+// Length of the brass handle extending from the rim, and the angle (in
+// degrees, measured like a clock from the 3 o'clock position) it extends
+// at — bottom-right, like a real hand-held magnifying glass.
+const HANDLE_LENGTH = 150;
+const HANDLE_ANGLE_DEG = 45;
 
 /**
- * One page of the full-screen reader. The page always sits at a fixed
- * fit-to-screen size — there is no click-to-zoom or +/- zoom level anymore.
- * Instead, hovering shows a circular magnifying-glass lens that follows the
- * cursor and renders an enlarged view of whatever is directly underneath
- * it, so fine print can be read without shrinking the rest of the page.
- *
- * The lens's position and background are set imperatively via refs on
- * mousemove (not React state) so tracking the cursor doesn't trigger a
- * re-render on every pixel of movement.
+ * A plain, non-magnifying page image — the fit-to-screen page underneath
+ * the lens. Magnification is handled once, for the whole spread, by
+ * <SpreadMagnifierLens> below, rather than per page.
  */
-function MagnifierPage({ src, alt }: { src: string; alt: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const lensRef = useRef<HTMLDivElement>(null);
+function PagePane({ src, alt }: { src: string; alt: string }) {
+  return <Image src={src} alt={alt} fill sizes="90vw" style={{ objectFit: "contain", objectPosition: "center" }} priority />;
+}
 
-  function moveLens(clientX: number, clientY: number) {
-    const container = containerRef.current;
-    const lens = lensRef.current;
-    if (!container || !lens) return;
-    const rect = container.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-    lens.style.left = `${x - LENS_SIZE / 2}px`;
-    lens.style.top = `${y - LENS_SIZE / 2}px`;
-    lens.style.backgroundSize = `${rect.width * LENS_ZOOM}px ${rect.height * LENS_ZOOM}px`;
-    lens.style.backgroundPosition = `${-(x * LENS_ZOOM - LENS_SIZE / 2)}px ${-(y * LENS_ZOOM - LENS_SIZE / 2)}px`;
-  }
+/**
+ * The magnifying-glass loupe for the full-screen reader. One instance
+ * covers the *entire* two-page spread (not one per page), so the lens can
+ * cross the spine and show both pages' content at once instead of
+ * disappearing or clipping at the gutter.
+ *
+ * Position and the magnified content's pan offset are both driven
+ * imperatively via refs from the parent's mousemove handler — no React
+ * state on every pixel of movement, so it stays smooth.
+ */
+function SpreadMagnifierLens({
+  lensRef,
+  contentRef,
+  leftSrc,
+  rightSrc,
+  leftAlt,
+  rightAlt,
+  paneWidth,
+  paneHeight,
+}: {
+  lensRef: React.RefObject<HTMLDivElement | null>;
+  contentRef: React.RefObject<HTMLDivElement | null>;
+  leftSrc: string;
+  rightSrc: string | null;
+  leftAlt: string;
+  rightAlt: string;
+  paneWidth: number;
+  paneHeight: number;
+}) {
+  const r = LENS_SIZE / 2;
+  const rad = (HANDLE_ANGLE_DEG * Math.PI) / 180;
+  // Where the handle meets the rim, so it reads as one continuous object
+  // rather than a rod floating next to a separate circle.
+  const handleAnchorX = r + r * Math.cos(rad);
+  const handleAnchorY = r + r * Math.sin(rad);
+  const zoomedW = paneWidth * LENS_ZOOM;
+  const zoomedH = paneHeight * LENS_ZOOM;
 
   return (
     <div
-      ref={containerRef}
-      onMouseEnter={(e) => {
-        if (lensRef.current) lensRef.current.style.opacity = "1";
-        moveLens(e.clientX, e.clientY);
+      ref={lensRef}
+      aria-hidden="true"
+      style={{
+        position: "absolute",
+        width: LENS_SIZE,
+        height: LENS_SIZE,
+        opacity: 0,
+        transition: "opacity 140ms ease",
+        pointerEvents: "none",
+        zIndex: 30,
       }}
-      onMouseMove={(e) => moveLens(e.clientX, e.clientY)}
-      onMouseLeave={() => {
-        if (lensRef.current) lensRef.current.style.opacity = "0";
-      }}
-      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", cursor: "none" }}
     >
-      <Image src={src} alt={alt} fill sizes="90vw" style={{ objectFit: "contain", objectPosition: "center" }} priority />
+      {/* Handle — a brass rod anchored at the rim, angled down-right like a real loupe */}
       <div
-        ref={lensRef}
-        aria-hidden="true"
         style={{
           position: "absolute",
-          width: LENS_SIZE,
-          height: LENS_SIZE,
-          borderRadius: "50%",
-          border: `3px solid ${C.border}`,
-          boxShadow: "0 10px 34px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.15)",
-          backgroundImage: `url(${src})`,
-          backgroundRepeat: "no-repeat",
-          opacity: 0,
-          transition: "opacity 120ms ease",
-          pointerEvents: "none",
-          zIndex: 20,
+          left: handleAnchorX - 10,
+          top: handleAnchorY - 8,
+          width: 20,
+          height: HANDLE_LENGTH,
+          borderRadius: 10,
+          background: "linear-gradient(180deg, #E7C766 0%, #B5943D 30%, #6B5220 72%, #362809 100%)",
+          boxShadow: "0 8px 20px rgba(0,0,0,0.55), inset -2px 0 3px rgba(0,0,0,0.35), inset 2px 0 3px rgba(255,255,255,0.35)",
+          transform: `rotate(${HANDLE_ANGLE_DEG}deg)`,
+          transformOrigin: "top center",
         }}
       />
+      {/* Glass rim + magnified content, on top of the handle */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "50%",
+          overflow: "hidden",
+          border: `7px solid ${C.border}`,
+          boxShadow:
+            "0 18px 46px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255,255,255,0.3), inset 0 0 34px rgba(0,0,0,0.18)",
+          background: C.bookPage,
+        }}
+      >
+        <div ref={contentRef} style={{ position: "absolute", top: 0, left: 0, display: "flex" }}>
+          <div style={{ position: "relative", width: zoomedW, height: zoomedH, flexShrink: 0 }}>
+            <Image src={leftSrc} alt={leftAlt} fill sizes="1200px" style={{ objectFit: "contain" }} />
+          </div>
+          <div style={{ position: "relative", width: zoomedW, height: zoomedH, flexShrink: 0, background: rightSrc ? undefined : C.bookPage }}>
+            {rightSrc && <Image src={rightSrc} alt={rightAlt} fill sizes="1200px" style={{ objectFit: "contain" }} />}
+          </div>
+        </div>
+        {/* Glass shine, purely cosmetic */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: "50%",
+            background: "radial-gradient(circle at 30% 26%, rgba(255,255,255,0.4), transparent 45%)",
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -533,6 +587,53 @@ export default function ArchivePageClient() {
       document.body.style.overflow = "";
     };
   }, [fullscreenReader]);
+
+  // ── Magnifying-glass loupe (full-screen reader) ─────────────────────────
+  // One lens spans the whole spread (see SpreadMagnifierLens above) so it
+  // can cross the spine without disappearing or clipping. `paneSize` — the
+  // rendered CSS-pixel size of a single page — is regular React state
+  // because it only changes on resize/page-load; the lens's position and
+  // pan offset are set imperatively on every mousemove for smoothness.
+  const spreadRef = useRef<HTMLDivElement>(null);
+  const leftPageRef = useRef<HTMLDivElement>(null);
+  const lensRef = useRef<HTMLDivElement>(null);
+  const lensContentRef = useRef<HTMLDivElement>(null);
+  const [paneSize, setPaneSize] = useState({ w: 0, h: 0 });
+
+  React.useEffect(() => {
+    if (!fullscreenReader) return;
+    function measure() {
+      const rect = leftPageRef.current?.getBoundingClientRect();
+      if (rect) setPaneSize({ w: rect.width, h: rect.height });
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [fullscreenReader, pdfPage]);
+
+  function moveLens(clientX: number, clientY: number) {
+    const leftEl = leftPageRef.current;
+    const spreadEl = spreadRef.current;
+    const lens = lensRef.current;
+    const content = lensContentRef.current;
+    if (!leftEl || !spreadEl || !lens || !content) return;
+    const leftRect = leftEl.getBoundingClientRect();
+    const spreadRect = spreadEl.getBoundingClientRect();
+    const cx = clientX - leftRect.left;
+    const cy = clientY - leftRect.top;
+    lens.style.left = `${clientX - spreadRect.left - LENS_SIZE / 2}px`;
+    lens.style.top = `${clientY - spreadRect.top - LENS_SIZE / 2}px`;
+    content.style.transform = `translate(${-(cx * LENS_ZOOM - LENS_SIZE / 2)}px, ${-(cy * LENS_ZOOM - LENS_SIZE / 2)}px)`;
+  }
+
+  function showLens(clientX: number, clientY: number) {
+    if (lensRef.current) lensRef.current.style.opacity = "1";
+    moveLens(clientX, clientY);
+  }
+
+  function hideLens() {
+    if (lensRef.current) lensRef.current.style.opacity = "0";
+  }
 
   const navCards = [
     {
@@ -1437,7 +1538,11 @@ export default function ArchivePageClient() {
           </button>
 
           <div
+            ref={spreadRef}
             onClick={(e) => e.stopPropagation()}
+            onMouseEnter={(e) => showLens(e.clientX, e.clientY)}
+            onMouseMove={(e) => moveLens(e.clientX, e.clientY)}
+            onMouseLeave={hideLens}
             className="max-md:!flex-col max-md:!w-full max-md:!h-[85vh]"
             style={{
               display: "flex",
@@ -1447,6 +1552,7 @@ export default function ArchivePageClient() {
               position: "relative",
               perspective: "2600px",
               WebkitPerspective: "2600px",
+              cursor: "none",
             }}
           >
             <PageFlipOverlay flipFromPage={flipFromPage} flipDir={flipDir} flipKey={flipKey} />
@@ -1480,8 +1586,8 @@ export default function ArchivePageClient() {
             </button>
 
             {/* Left page */}
-            <div style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
-              <MagnifierPage
+            <div ref={leftPageRef} style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
+              <PagePane
                 src={`/images/pdf-pages/page-${String(pdfPage).padStart(2, "0")}.png`}
                 alt={`Book page ${pdfPage}`}
               />
@@ -1499,7 +1605,7 @@ export default function ArchivePageClient() {
             {/* Right page */}
             <div style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
               {pdfPage + 1 <= 62 ? (
-                <MagnifierPage
+                <PagePane
                   src={`/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png`}
                   alt={`Book page ${pdfPage + 1}`}
                 />
@@ -1541,6 +1647,17 @@ export default function ArchivePageClient() {
             >
               ›
             </button>
+
+            <SpreadMagnifierLens
+              lensRef={lensRef}
+              contentRef={lensContentRef}
+              leftSrc={`/images/pdf-pages/page-${String(pdfPage).padStart(2, "0")}.png`}
+              rightSrc={pdfPage + 1 <= 62 ? `/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png` : null}
+              leftAlt={`Book page ${pdfPage}, magnified`}
+              rightAlt={`Book page ${pdfPage + 1}, magnified`}
+              paneWidth={paneSize.w}
+              paneHeight={paneSize.h}
+            />
           </div>
 
           <p
