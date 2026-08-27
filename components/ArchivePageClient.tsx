@@ -166,63 +166,6 @@ const SPREAD_MAX_VH = 62;
 // and the full-screen reader so both turn pages identically.
 const FLIP_MS = 850;
 
-// ── Page-turn curl geometry ────────────────────────────────────────────
-// A real page doesn't turn as one rigid flat card — it bows, with the free
-// edge leading the spine. We fake that by splitting the turning page into
-// vertical strips that all hinge at the same spine line but rotate by
-// slightly different amounts at any instant: strips near the free edge
-// lead, strips near the spine lag, and all of them reconverge to a
-// perfectly flat, aligned page by the time the turn finishes.
-const CURL_STRIPS = 7;
-const CURL_DEG = 15;
-
-type FlipStep = { p: number; rotY: number; rotX: number; amp: number; originY: number };
-
-// Base rotation magnitude + curl strength at each keyframe percent. `rotY`
-// is always a positive magnitude here — direction is applied separately so
-// "next" and "prev" can share one table.
-const FLIP_STEPS: FlipStep[] = [
-  { p: 0, rotY: 0, rotX: 0, amp: 0, originY: 92 },
-  { p: 10, rotY: 8, rotX: -5, amp: 0.35, originY: 82 },
-  { p: 28, rotY: 46, rotX: -9, amp: 1, originY: 66 },
-  { p: 55, rotY: 98, rotX: -3, amp: 0.55, originY: 50 },
-  { p: 80, rotY: 155, rotX: 2, amp: 0.2, originY: 50 },
-  { p: 92, rotY: 175, rotX: -1, amp: 0.05, originY: 50 },
-  { p: 100, rotY: 180, rotX: 0, amp: 0, originY: 50 },
-];
-
-function stripKeyframeName(dir: "next" | "prev", i: number) {
-  return `bookFlip${dir === "next" ? "Next" : "Prev"}_s${i}`;
-}
-
-// Where strip i's hinge sits, expressed as a percentage of *its own* box —
-// every strip pivots around the same physical spine line, so strips further
-// from that line need a correspondingly larger (or negative) origin-x.
-function stripOriginX(dir: "next" | "prev", i: number) {
-  return dir === "next" ? -i * 100 : (CURL_STRIPS - i) * 100;
-}
-
-// 0 (at the spine) → 1 (at the free edge), regardless of direction.
-function stripHingeDistance(dir: "next" | "prev", i: number) {
-  return dir === "next" ? i / (CURL_STRIPS - 1) : (CURL_STRIPS - 1 - i) / (CURL_STRIPS - 1);
-}
-
-// Built once at module load: one @keyframes rule per strip, per direction.
-const STRIP_KEYFRAMES_CSS = (["next", "prev"] as const)
-  .map((dir) => {
-    const rotSign = dir === "next" ? -1 : 1;
-    return Array.from({ length: CURL_STRIPS }, (_, i) => {
-      const originX = stripOriginX(dir, i);
-      const hingeDistance = stripHingeDistance(dir, i);
-      const body = FLIP_STEPS.map(({ p, rotY, rotX, amp, originY }) => {
-        const y = rotSign * rotY + rotSign * amp * hingeDistance * CURL_DEG;
-        return `${p}% { transform-origin: ${originX}% ${originY}%; transform: rotateY(${y.toFixed(2)}deg) rotateX(${rotX}deg); }`;
-      }).join("\n          ");
-      return `@keyframes ${stripKeyframeName(dir, i)} {\n          ${body}\n        }`;
-    }).join("\n        ");
-  })
-  .join("\n        ");
-
 /**
  * One full two-page spread, sized so both pages fill their half of the
  * frame exactly (no gaps, no cropping) and meet at a shaded gutter in the
@@ -333,17 +276,29 @@ function PageFlipOverlay({
 }) {
   if (flipFromPage === null) return null;
 
-  const pageSrc = `/images/pdf-pages/page-${String(flipDir === "next" ? flipFromPage + 1 : flipFromPage).padStart(2, "0")}.png`;
-  const spineStripIndex = flipDir === "next" ? 0 : CURL_STRIPS - 1;
-
   return (
     <>
       <style>{`
-        ${STRIP_KEYFRAMES_CSS}
+        @keyframes bookFlipNext {
+          0%   { transform-origin: 0% 92%; transform: rotateY(0deg) rotateX(0deg); }
+          10%  { transform-origin: 0% 82%; transform: rotateY(-8deg) rotateX(-5deg); }
+          28%  { transform-origin: 0% 66%; transform: rotateY(-46deg) rotateX(-9deg); }
+          55%  { transform-origin: 0% 50%; transform: rotateY(-98deg) rotateX(-3deg); }
+          85%  { transform-origin: 0% 50%; transform: rotateY(-160deg) rotateX(0deg); }
+          100% { transform-origin: 0% 50%; transform: rotateY(-180deg) rotateX(0deg); }
+        }
+        @keyframes bookFlipPrev {
+          0%   { transform-origin: 100% 92%; transform: rotateY(0deg) rotateX(0deg); }
+          10%  { transform-origin: 100% 82%; transform: rotateY(8deg) rotateX(-5deg); }
+          28%  { transform-origin: 100% 66%; transform: rotateY(46deg) rotateX(-9deg); }
+          55%  { transform-origin: 100% 50%; transform: rotateY(98deg) rotateX(-3deg); }
+          85%  { transform-origin: 100% 50%; transform: rotateY(160deg) rotateX(0deg); }
+          100% { transform-origin: 100% 50%; transform: rotateY(180deg) rotateX(0deg); }
+        }
         @keyframes bookFlipShade {
           0%   { opacity: 0; }
-          46%  { opacity: 0.55; }
-          54%  { opacity: 0.55; }
+          46%  { opacity: 0.62; }
+          54%  { opacity: 0.62; }
           100% { opacity: 0; }
         }
         @keyframes bookFlipCornerLiftNext {
@@ -394,8 +349,7 @@ function PageFlipOverlay({
         }}
       />
 
-      {/* Flip group — the single page being turned, hinged at the spine (center binding),
-          split into vertical strips that bow like real paper as it turns.
+      {/* Flip overlay — ONLY the single page being turned, hinged at the spine (center binding).
           The other side of the spread never moves. */}
       <div
         key={`flip-${flipKey}`}
@@ -408,82 +362,85 @@ function PageFlipOverlay({
           width: "50%",
           zIndex: 4,
           pointerEvents: "none",
+          transformStyle: "preserve-3d",
+          WebkitTransformStyle: "preserve-3d",
+          transformOrigin: flipDir === "next" ? "0% 92%" : "100% 92%",
+          animation: `${flipDir === "next" ? "bookFlipNext" : "bookFlipPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
         }}
       >
-        {Array.from({ length: CURL_STRIPS }, (_, i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              top: 0,
-              bottom: 0,
-              left: `${(i * 100) / CURL_STRIPS}%`,
-              width: `${100 / CURL_STRIPS}%`,
-              transformStyle: "preserve-3d",
-              WebkitTransformStyle: "preserve-3d",
-              animation: `${stripKeyframeName(flipDir, i)} ${FLIP_MS}ms cubic-bezier(0.4,0.05,0.5,1) forwards`,
-            }}
-          >
-            {/* Front face — a slice of the page's printed content, visible for the first half of the turn */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                backfaceVisibility: "hidden",
-                WebkitBackfaceVisibility: "hidden",
-                background: `${C.bookPage} url("${pageSrc}") no-repeat`,
-                backgroundSize: `${CURL_STRIPS * 100}% 100%`,
-                backgroundPositionX: i === 0 ? "0%" : `${(i * 100) / (CURL_STRIPS - 1)}%`,
-                backgroundPositionY: "center",
-                overflow: "hidden",
-              }}
-            >
-              {/* Gutter shadow on the spine-facing edge, matching the static pages */}
-              {i === spineStripIndex && (
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute", top: 0, bottom: 0,
-                    [flipDir === "next" ? "left" : "right"]: 0,
-                    width: "60%",
-                    background: flipDir === "next"
-                      ? "linear-gradient(to right, rgba(20,14,6,0.22), transparent)"
-                      : "linear-gradient(to left, rgba(20,14,6,0.22), transparent)",
-                    pointerEvents: "none",
-                  }}
-                />
-              )}
-            </div>
-
-            {/* Back face — the blank reverse of the leaf, facing the viewer once it's landed on the opposite page.
-                One continuous vignette sliced across all strips (same technique as the front face), so it reads
-                as a single gradient rather than repeating per strip. */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                backfaceVisibility: "hidden",
-                WebkitBackfaceVisibility: "hidden",
-                transform: "rotateY(180deg)",
-                background: C.bookPage,
-                backgroundImage: `radial-gradient(ellipse at ${flipDir === "next" ? "0%" : "100%"} 50%, rgba(20,14,6,0.14), transparent 65%)`,
-                backgroundSize: `${CURL_STRIPS * 100}% 100%`,
-                backgroundPositionX: i === 0 ? "0%" : `${(i * 100) / (CURL_STRIPS - 1)}%`,
-                backgroundPositionY: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            />
-          </div>
-        ))}
-
-        {/* Shading — a flat pass over the whole leaf, darkening it as it turns edge-on to the viewer */}
+        {/* Front face — the page's printed content, visible for the first half of the turn */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            zIndex: 1,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            boxShadow: "0 0 40px rgba(0,0,0,0.35)",
+            background: C.bookPage,
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src={`/images/pdf-pages/page-${String(flipDir === "next" ? flipFromPage + 1 : flipFromPage).padStart(2, "0")}.png`}
+            alt=""
+            fill
+            sizes="900px"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+          {/* Gutter shadow on the spine-facing edge, matching the static pages */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute", top: 0, bottom: 0,
+              [flipDir === "next" ? "left" : "right"]: 0,
+              width: "9%",
+              background: flipDir === "next"
+                ? "linear-gradient(to right, rgba(20,14,6,0.22), transparent)"
+                : "linear-gradient(to left, rgba(20,14,6,0.22), transparent)",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
+
+        {/* Back face — the blank reverse of the leaf, facing the viewer once it's landed on the opposite page */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            background: C.bookPage,
+            boxShadow: "0 0 40px rgba(0,0,0,0.35)",
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute", inset: 0,
+              background: `radial-gradient(ellipse at ${flipDir === "next" ? "0%" : "100%"} 50%, rgba(20,14,6,0.14), transparent 65%)`,
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute", top: 0, bottom: 0,
+              [flipDir === "next" ? "right" : "left"]: 0,
+              width: "9%",
+              background: flipDir === "next"
+                ? "linear-gradient(to left, rgba(20,14,6,0.22), transparent)"
+                : "linear-gradient(to right, rgba(20,14,6,0.22), transparent)",
+            }}
+          />
+        </div>
+
+        {/* Shading child — rotates with the page, darkening it as it turns edge-on to the viewer */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
             background: "linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.5))",
-            animation: `bookFlipShade ${FLIP_MS}ms cubic-bezier(0.4,0.05,0.5,1) forwards`,
+            animation: `bookFlipShade ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
           }}
         />
         {/* Corner-lift highlight — a warm gleam that peels up from the bottom corner first, as if a hand lifted it */}
@@ -491,11 +448,10 @@ function PageFlipOverlay({
           style={{
             position: "absolute",
             inset: 0,
-            zIndex: 2,
             background: flipDir === "next"
               ? "linear-gradient(230deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)"
               : "linear-gradient(310deg, rgba(255,250,232,0.85) 0%, rgba(255,250,232,0.4) 35%, transparent 65%)",
-            animation: `${flipDir === "next" ? "bookFlipCornerLiftNext" : "bookFlipCornerLiftPrev"} ${FLIP_MS}ms cubic-bezier(0.4,0.05,0.5,1) forwards`,
+            animation: `${flipDir === "next" ? "bookFlipCornerLiftNext" : "bookFlipCornerLiftPrev"} ${FLIP_MS}ms cubic-bezier(0.45,0.05,0.55,0.95) forwards`,
           }}
         />
       </div>
