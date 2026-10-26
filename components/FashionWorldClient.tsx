@@ -130,7 +130,7 @@ const featureCards = [
     body: "Mary presented collections at Athens' most prestigious venues — the Grande Bretagne and the King George Hotel — for the great fashion houses of postwar Greece.",
     cta: { label: "View Archive Clippings", href: "/archive" },
     images: [
-      { src: "/images/mary-archive-inset-evening-gown-named.png", alt: "Newspaper clipping naming Miss Pavlatou — inset evening gown photograph", w: 1388, h: 1838, rot: -4 },
+      { src: "/images/feature-cards/fashion-presentations.png", alt: "Mary Pavlatou — colorized runway photograph in a patterned dress beneath hotel chandeliers", w: 800, h: 1000 },
     ],
   },
   {
@@ -138,7 +138,7 @@ const featureCards = [
     body: "Her signature runway music was the theme from The Third Man — cinematic, timeless, and unforgettable. As she walked, the room fell silent.",
     cta: { label: "Enter the Archive", href: "/archive" },
     images: [
-      { src: "/images/mary-archive-black-velvet-clipping.png", alt: "Mary Pavlatou in black velvet gown — archival press photograph", w: 600, h: 1100, rot: 0 },
+      { src: "/images/feature-cards/third-man.png", alt: "Mary Pavlatou in a black velvet gown with puffed sleeves — archival press photograph", w: 800, h: 1000 },
     ],
   },
   {
@@ -146,7 +146,7 @@ const featureCards = [
     body: "At the Patricia Vance School of Fashion in Chicago, Mary trained as the first Greek to earn international certification. For her, the mannequin was not an instrument — she was an artist.",
     cta: { label: "About Her Training", href: "/story#chicago" },
     images: [
-      { src: "/images/mary-archive-floral-sundress.png", alt: "Mary Pavlatou — Full-body photograph in floral-print sundress, from the family archive", w: 1388, h: 1838, rot: -3 },
+      { src: "/images/feature-cards/training.png", alt: "Mary Pavlatou — photograph in a floral-print sundress, from the family archive", w: 800, h: 1000 },
     ],
   },
 ];
@@ -424,7 +424,7 @@ export default function FashionWorldClient() {
                     alt={`Mary Pavlatou — ${house.name}`}
                     width={house.imageW}
                     height={house.imageH}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                    style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
                     loading="lazy"
                   />
                 </button>
@@ -456,36 +456,25 @@ export default function FashionWorldClient() {
                 {card.body}
               </p>
 
-              {/* Image collage */}
-              <div style={{ position: "relative", height: "180px", marginBottom: "24px", flexShrink: 0 }}>
+              {/* Image frame */}
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "24px", flexShrink: 0 }}>
                 {card.images.map((img, i) => (
                   <div key={i} style={{
-                    position: "absolute",
-                    left: i === 0 ? "0" : "auto",
-                    right: i === 1 ? "0" : "auto",
-                    top: i === 0 ? "0" : "20px",
-                    width: card.images.length === 1 ? "100%" : "58%",
+                    width: "min(100%, 300px)",
+                    aspectRatio: "4 / 5",
+                    position: "relative",
                     border: "6px solid #F0EBD9",
                     outline: "1px solid #C5A84A",
                     background: "#EDE8D8",
-                    transform: `rotate(${img.rot ?? 0}deg)`,
                     boxShadow: "0 2px 12px rgba(139,112,48,0.15)",
                     overflow: "hidden",
-                    zIndex: i,
                   }}>
                     <Image
                       src={img.src}
                       alt={img.alt}
                       width={img.w}
                       height={img.h}
-                      style={{
-                        width: "100%",
-                        height: card.images.length === 1 ? "160px" : "140px",
-                        objectFit: "cover",
-                        objectPosition: "center top",
-                        display: "block",
-                        filter: "grayscale(1)",
-                      }}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
                       loading="lazy"
                     />
                   </div>

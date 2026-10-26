@@ -998,6 +998,7 @@ export default function PopUpBookClient() {
             {[
               {
                 id: "portraits",
+                page: 53,
                 label: "Portraits",
                 subtitle: "Photographs & formal studies",
                 image: "/images/archive-tiles/portraits.png",
@@ -1006,6 +1007,7 @@ export default function PopUpBookClient() {
               },
               {
                 id: "clippings",
+                page: 25,
                 label: "Newspaper Clippings",
                 subtitle: "Press & media coverage",
                 image: "/images/archive-tiles/clippings.png",
@@ -1014,6 +1016,7 @@ export default function PopUpBookClient() {
               },
               {
                 id: "fashion-shows",
+                page: 45,
                 label: "Fashion Shows",
                 subtitle: "Runway & presentations",
                 image: "/images/archive-tiles/fashion-shows.png",
@@ -1022,6 +1025,7 @@ export default function PopUpBookClient() {
               },
               {
                 id: "career-records",
+                page: 41,
                 label: "Career Records",
                 subtitle: "Documentation & history",
                 image: "/images/archive-tiles/career-records.png",
@@ -1030,6 +1034,7 @@ export default function PopUpBookClient() {
               },
               {
                 id: "family-memory",
+                page: 13,
                 label: "Family Memory",
                 subtitle: "Personal & intimate",
                 image: "/images/archive-tiles/family-memory.png",
@@ -1040,6 +1045,10 @@ export default function PopUpBookClient() {
               <a
                 key={cat.id}
                 href="#archive-viewer"
+                onClick={() => {
+                  setShowFullBook(false);
+                  setPdfPage(cat.page);
+                }}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -1796,8 +1805,8 @@ export default function PopUpBookClient() {
                 },
                 {
                   step: "Restored Page",
-                  image: "/images/book-clipping-mary-celebrated.png",
-                  alt: "Final restored archive page — celebrated fashion model press clipping",
+                  image: "/images/gen-greek-archive.png",
+                  alt: "Restored archive photographs and pages laid out on a candlelit study desk",
                 },
               ].map((step, i, arr) => (
                 <div key={step.step}>

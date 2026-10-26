@@ -312,12 +312,12 @@ export default function StoryLifeClient() {
           {/* Left: title block */}
           <div className="max-lg:order-2">
             <p className="font-display" style={{ color: "#C5A84A", fontSize: "15px", letterSpacing: "0.42em", textTransform: "uppercase", fontWeight: 900, marginBottom: "16px" }}>
-              The World of Fashion
+              Her Life
             </p>
             <BilingualHeading
               as="h1"
-              el="Ο Κόσμος της Μόδας"
-              en={<>The World<br />of Fashion</>}
+              el="Η Ζωή της Μαρίας"
+              en={<>The Life<br />of Mary</>}
               className="font-display"
               style={{ color: "#F5F1E6", fontSize: "clamp(46px,6.21vw,92px)", letterSpacing: "0.02em", fontWeight: 900, lineHeight: 1.02 }}
               subStyle={{ fontSize: "clamp(22px,2.18vw,30px)", marginTop: "16px", color: "#C5A84A", fontWeight: 900, fontStyle: "italic", letterSpacing: "0.02em" }}
