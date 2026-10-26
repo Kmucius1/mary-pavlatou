@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const cards = [
   {
-    href: "/story",
+    href: "/archive#archive-viewer",
     label: "Her Life",
     copy: "The story of a girl who dreamed and a woman who changed the world of fashion.",
     cta: "Read Her Story",

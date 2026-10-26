@@ -130,7 +130,7 @@ const featureCards = [
     body: "Mary presented collections at Athens' most prestigious venues — the Grande Bretagne and the King George Hotel — for the great fashion houses of postwar Greece.",
     cta: { label: "View Archive Clippings", href: "/archive" },
     images: [
-      { src: "/images/feature-cards/fashion-presentations.png", alt: "Mary Pavlatou — colorized runway photograph in a patterned dress beneath hotel chandeliers", w: 800, h: 1000 },
+      { src: "/images/feature-cards/third-man.png", alt: "Mary Pavlatou in a black velvet gown with puffed sleeves — archival press photograph", w: 800, h: 1000 },
     ],
   },
   {
@@ -138,7 +138,7 @@ const featureCards = [
     body: "Her signature runway music was the theme from The Third Man — cinematic, timeless, and unforgettable. As she walked, the room fell silent.",
     cta: { label: "Enter the Archive", href: "/archive" },
     images: [
-      { src: "/images/feature-cards/third-man.png", alt: "Mary Pavlatou in a black velvet gown with puffed sleeves — archival press photograph", w: 800, h: 1000 },
+      { src: "/images/feature-cards/fashion-presentations.png", alt: "Mary Pavlatou — colorized runway photograph in a patterned dress beneath hotel chandeliers", w: 800, h: 1000 },
     ],
   },
   {

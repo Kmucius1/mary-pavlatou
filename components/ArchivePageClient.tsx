@@ -776,41 +776,54 @@ export default function ArchivePageClient() {
           </p>
 
           {/* CTA buttons */}
-          <div style={{ display: "flex", gap: 16, marginBottom: 44 }}>
+          <div style={{ display: "flex", gap: 16, marginBottom: 44, flexWrap: "wrap" }}>
             <a
-              href="#archive-viewer"
+              href="#collection-index"
               style={{
-                display: "inline-block",
-                padding: "13px 28px",
-                background: C.accent,
-                color: C.fillText,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "15px 30px",
+                background: "#C5A84A",
+                color: "#1C1814",
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 12,
-                letterSpacing: "0.3em",
+                fontSize: 14,
+                fontWeight: 900,
+                letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 textDecoration: "none",
-                border: `1px solid ${C.accent}`,
+                whiteSpace: "nowrap",
+                border: "1px solid #C5A84A",
+                transition: "background 0.2s ease, color 0.2s ease",
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#D8C48E"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "#C5A84A"; }}
             >
-              Explore the Collection
+              Explore the Collection <span aria-hidden="true">↓</span>
             </a>
             <a
               href="#archive-viewer"
               style={{
-                display: "inline-block",
-                padding: "13px 28px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "15px 30px",
                 background: "transparent",
-                color: "#D8C48E",
+                color: "#F5F1E6",
                 fontFamily: "var(--font-cinzel)",
-                fontSize: 15,
+                fontSize: 14,
                 fontWeight: 900,
-                letterSpacing: "0.3em",
+                letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 textDecoration: "none",
+                whiteSpace: "nowrap",
                 border: "1px solid #C5A84A",
+                transition: "background 0.2s ease, color 0.2s ease",
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(197,168,74,0.18)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
             >
-              View the Book
+              Read Her Story <span aria-hidden="true">→</span>
             </a>
           </div>
 
@@ -1856,7 +1869,7 @@ export default function ArchivePageClient() {
                         alt={step.alt}
                         fill
                         sizes="80px"
-                        style={{ objectFit: "contain" }}
+                        style={{ objectFit: "cover", objectPosition: "center" }}
                       />
                     </div>
                     <p

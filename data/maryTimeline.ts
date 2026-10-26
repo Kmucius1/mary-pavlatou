@@ -34,7 +34,7 @@ export const timelineSlides: TimelineSlide[] = [
     dateLabel: "Family Archive",
     text: "Mary Pavlatou was the name the world came to know — and the name her family carries with pride. Dedicated by her three sons: the one they call God's Special Angel.",
     ctaLabel: "Read Her Story",
-    ctaHref: "/story",
+    ctaHref: "/archive#archive-viewer",
     images: [
       { src: "/images/mary-archive-headline-profile.png", alt: "Newspaper feature headlined \"Mary Pavlatou\" — profile piece, family archive", mode: "clipping", caption: "From the family archive" },
     ],

@@ -372,7 +372,7 @@ export default function LegacyPageClient() {
               Explore the Archive
             </Link>
             <Link
-              href="/story"
+              href="/archive#archive-viewer"
               className="font-display"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "12px",
