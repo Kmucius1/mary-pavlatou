@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 import AmbientMusicControl from "@/components/AmbientMusicControl";
 import { LanguageProvider } from "@/lib/language";
 
@@ -53,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${cormorant.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${cinzel.variable} ${cormorant.variable}`}>
       <body className="antialiased">
         <script
           type="application/ld+json"
@@ -64,6 +65,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollProgress />
+          <ScrollToTop />
           <AmbientMusicControl />
         </LanguageProvider>
       </body>
