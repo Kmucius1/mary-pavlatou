@@ -41,7 +41,7 @@ const chapters: Chapter[] = [
     cta: { label: "Explore Her Heritage", href: "/archive" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-archive-colorized-veiled-hat.png", alt: "Mary Pavlatou — Colorized close-up portrait with veiled hat and pearl choker, from the family archive", w: 1388, h: 1838 },
+      { src: "/images/mary-archive-dedication-cropped.png", alt: "Mary Pavlatou — Colorized portrait with gold-lapel jacket and drop earrings, from the family archive", w: 1388, h: 1838 },
     ],
     extras: "quality-cards",
   },
@@ -281,7 +281,7 @@ export default function StoryLifeClient() {
         }} />
         <div aria-hidden="true" style={{
           position: "absolute", right: 0, top: 0, bottom: 0, width: "16%",
-          backgroundImage: "url('/images/mary-archive-dedication-cropped.png')", backgroundSize: "cover", backgroundPosition: "center",
+          backgroundImage: "url('/images/mary-archive-beaded-gown.png')", backgroundSize: "cover", backgroundPosition: "center",
           opacity: 0.1, maskImage: "linear-gradient(to left, black, transparent)", WebkitMaskImage: "linear-gradient(to left, black, transparent)",
           pointerEvents: "none",
         }} />
