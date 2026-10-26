@@ -143,7 +143,7 @@ const featureCards = [
   },
   {
     title: "Η Τέχνη του Μανεκέν",
-    body: "At the Patricia Vance School of Fashion in Chicago, Mary trained as the first Greek to earn international certification. For her, the mannequin was not an instrument — she was an artist.",
+    body: "At the Patricia Vance School of Fashion in Chicago, Mary became the first Greek to earn international certification. To her, the mannequin was an artist.",
     cta: { label: "About Her Training", href: "/story#chicago" },
     images: [
       { src: "/images/feature-cards/training.png", alt: "Mary Pavlatou — photograph in a floral-print sundress, from the family archive", w: 800, h: 1000 },
@@ -457,7 +457,7 @@ export default function FashionWorldClient() {
               </p>
 
               {/* Image frame */}
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: "24px", flexShrink: 0 }}>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "auto", marginBottom: "24px", flexShrink: 0 }}>
                 {card.images.map((img, i) => (
                   <div key={i} style={{
                     width: "min(100%, 300px)",
@@ -481,7 +481,7 @@ export default function FashionWorldClient() {
                 ))}
               </div>
 
-              <div style={{ marginTop: "auto" }}>
+              <div>
                 <Link href={card.cta.href} className="font-display" style={{
                   display: "inline-flex", alignItems: "center", gap: "10px",
                   color: "#6A4F1E", border: "1px solid #8B7030",
