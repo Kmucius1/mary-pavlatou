@@ -874,31 +874,6 @@ export default function ArchivePageClient() {
             </div>
           </div>
 
-          {/* Clipping rotated behind top-right */}
-          <div
-            style={{
-              position: "absolute",
-              top: 40,
-              right: -12,
-              width: "45%",
-              transform: "rotate(4deg)",
-              border: `1px solid ${C.borderMuted}`,
-              boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
-              background: C.card,
-              zIndex: 2,
-            }}
-          >
-            <div style={{ position: "relative", aspectRatio: "3/4" }}>
-              <Image
-                src="/images/mary-archive-mallidou-collection-named.png"
-                alt="Newspaper clipping — Miss Pavlatou modeling a Mallidou collection piece"
-                fill
-                sizes="(max-width: 768px) 40vw, 250px"
-                style={{ objectFit: "contain" }}
-              />
-            </div>
-          </div>
-
           {/* Clipping overlapping bottom-left */}
           <div
             style={{
@@ -1027,7 +1002,7 @@ export default function ArchivePageClient() {
                 id: "portraits",
                 label: "Portraits",
                 subtitle: "Photographs & formal studies",
-                image: "/images/mary-archive-diamond-earrings-cropped.png",
+                image: "/images/archive-tiles/portraits.png",
                 imgAlt: "Mary Pavlatou — Colorized glamour portrait with diamond earrings, family archive",
                 isOval: false,
               },
@@ -1035,7 +1010,7 @@ export default function ArchivePageClient() {
                 id: "clippings",
                 label: "Newspaper Clippings",
                 subtitle: "Press & media coverage",
-                image: "/images/book-clipping-etam-pajamas.png",
+                image: "/images/archive-tiles/clippings.png",
                 imgAlt: "Mary Pavlatou newspaper clipping — ETAM pajama exhibition",
                 isOval: false,
               },
@@ -1043,7 +1018,7 @@ export default function ArchivePageClient() {
                 id: "fashion-shows",
                 label: "Fashion Shows",
                 subtitle: "Runway & presentations",
-                image: "/images/mary-archive-colorized-chandelier-gown.png",
+                image: "/images/archive-tiles/fashion-shows.png",
                 imgAlt: "Mary Pavlatou — colorized runway portrait under chandeliers",
                 isOval: false,
               },
@@ -1051,7 +1026,7 @@ export default function ArchivePageClient() {
                 id: "career-records",
                 label: "Career Records",
                 subtitle: "Documentation & history",
-                image: "/images/mary-archive-feathered-hat-named.png",
+                image: "/images/archive-tiles/career-records.png",
                 imgAlt: "Newspaper clipping — Mary Pavlatou, feathered hat, career documentation",
                 isOval: false,
               },
@@ -1059,7 +1034,7 @@ export default function ArchivePageClient() {
                 id: "family-memory",
                 label: "Family Memory",
                 subtitle: "Personal & intimate",
-                image: "/images/mary-archive-bridal-veil.png",
+                image: "/images/archive-tiles/family-memory.png",
                 imgAlt: "Mary Pavlatou — bridal veil portrait, family archive",
                 isOval: false,
               },
@@ -1111,7 +1086,7 @@ export default function ArchivePageClient() {
                       style={
                         cat.isOval
                           ? { objectFit: "cover", objectPosition: "center 25%" }
-                          : { objectFit: "contain", objectPosition: "top" }
+                          : { objectFit: "cover", objectPosition: "center" }
                       }
                     />
                   ) : (

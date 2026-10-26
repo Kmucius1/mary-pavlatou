@@ -49,7 +49,7 @@ export const timelineSlides: TimelineSlide[] = [
     ctaLabel: "World of Fashion",
     ctaHref: "/fashion",
     images: [
-      { src: "/images/mary-archive-veil-hat-cropped.png", alt: "Mary Pavlatou — Colorized close-up portrait with veil hat and pearl necklace", mode: "portrait", caption: "Mary Pavlatou · Preserved from the family archive" },
+      { src: "/images/mary-archive-etam-miss-mary-clip.png", alt: "Newspaper clipping — Mary Pavlatou, Greek-American graduate of the Patricia Vance school, presenting hats and fashions for ETAM", mode: "clipping", caption: "Mary Pavlatou · Preserved from the family archive" },
     ],
   },
   {

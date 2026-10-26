@@ -78,7 +78,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-colorized-bow-portrait.png", alt: "Mary Pavlatou — Colorized close-up portrait with bow headband, family archive", w: 1388, h: 1838, rot: -1 },
+      { src: "/images/mary-archive-colorized-navy-veiled-hat.png", alt: "Mary Pavlatou — Colorized photograph on the runway in a navy gown and veiled hat, family archive", w: 1388, h: 1838, rot: -1 },
     ],
   },
   {
@@ -275,13 +275,13 @@ export default function StoryLifeClient() {
         {/* Ghosted side portraits */}
         <div aria-hidden="true" style={{
           position: "absolute", left: 0, top: 0, bottom: 0, width: "16%",
-          backgroundImage: "url('/images/mary-runway-white.jpg')", backgroundSize: "cover", backgroundPosition: "center",
+          backgroundImage: "url('/images/mary-archive-colorized-chandelier-gown.png')", backgroundSize: "cover", backgroundPosition: "center",
           opacity: 0.1, maskImage: "linear-gradient(to right, black, transparent)", WebkitMaskImage: "linear-gradient(to right, black, transparent)",
           pointerEvents: "none",
         }} />
         <div aria-hidden="true" style={{
           position: "absolute", right: 0, top: 0, bottom: 0, width: "16%",
-          backgroundImage: "url('/images/mary-glamour-portrait.jpg')", backgroundSize: "cover", backgroundPosition: "center",
+          backgroundImage: "url('/images/mary-archive-dedication-cropped.png')", backgroundSize: "cover", backgroundPosition: "center",
           opacity: 0.1, maskImage: "linear-gradient(to left, black, transparent)", WebkitMaskImage: "linear-gradient(to left, black, transparent)",
           pointerEvents: "none",
         }} />
