@@ -339,8 +339,8 @@ export default function StoryLifeClient() {
             <Image
               src="/images/mary-white-gown.jpg"
               alt="Mary Pavlatou — full-length colorized portrait in a white tiered couture gown"
-              width={800}
-              height={1388}
+              width={900}
+              height={1654}
               priority
               style={{ width: "auto", height: "auto", maxWidth: "100%", maxHeight: "clamp(360px,64vh,640px)", objectFit: "contain", display: "block", filter: "drop-shadow(0 10px 30px rgba(139,112,48,0.22))" }}
             />
