@@ -114,7 +114,7 @@ const chapters: Chapter[] = [
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-archive-colorized-dramatic-portrait.png", alt: "Mary Pavlatou — Colorized dramatic close-up portrait with diamond earring, family archive", w: 960, h: 1200 },
+      { src: "/images/mary-archive-black-outfit-cropped.png", alt: "Mary Pavlatou — Colorized smiling portrait in a dark gown with drop earrings, family archive", w: 889, h: 1195 },
     ],
   },
   {
