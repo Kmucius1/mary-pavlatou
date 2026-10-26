@@ -277,8 +277,8 @@ export default function LegacyPageClient() {
             <div style={{ border: "1px solid #C5A84A", boxShadow: "0 16px 56px rgba(28,24,20,0.25)", background: "#F5F1E6", padding: "10px" }}>
               <div style={{ position: "relative", aspectRatio: "3/4" }}>
                 <Image
-                  src="/images/mary-archive-colorized-social-group.png"
-                  alt="Mary Pavlatou — colorized social gathering, family archive"
+                  src="/images/mary-archive-colorized-cream-hat-portrait.png"
+                  alt="Mary Pavlatou — colorized portrait in a cream hat with flowers and pearl choker, family archive"
                   fill
                   sizes="(max-width: 1024px) 90vw, 500px"
                   style={{ objectFit: "cover", objectPosition: "top center" }}

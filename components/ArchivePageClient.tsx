@@ -898,7 +898,7 @@ export default function ArchivePageClient() {
               boxShadow: "0 8px 24px rgba(139,112,48,0.15)",
               background: C.card,
               zIndex: 4,
-              transform: "rotate(-3deg)",
+              transform: "none",
             }}
           >
             <div style={{ position: "relative", aspectRatio: "3/4" }}>

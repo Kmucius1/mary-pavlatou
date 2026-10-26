@@ -29,7 +29,7 @@ const chapters: Chapter[] = [
     cta: { label: "View Archive Sources", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-sundress-hat.png", alt: "Mary Pavlatou — Full-body newspaper photograph in white sundress and wide-brimmed hat, family archive", w: 1388, h: 1838, rot: -3 },
+      { src: "/images/mary-archive-sundress-hat.png", alt: "Mary Pavlatou — Full-body newspaper photograph in white sundress and wide-brimmed hat, family archive", w: 1388, h: 1838 },
     ],
   },
   {
@@ -37,7 +37,7 @@ const chapters: Chapter[] = [
     roman: "II",
     title: "A Daughter of Greece",
     greek: "Ρίζες Ελληνικές",
-    body: "Mary's life carried the dignity, faith, and pride of her Greek roots. Her story is woven with family, culture, and the enduring Greek idea of χάρη — grace that lives in both presence and soul.",
+    body: "Mary's life carried the dignity, faith, and pride of her Greek roots. Her story is woven with family, culture, and the enduring Greek ideal of grace, which lives in both presence and soul.",
     cta: { label: "Explore Her Heritage", href: "/archive" },
     imageLeft: true,
     images: [
@@ -54,7 +54,7 @@ const chapters: Chapter[] = [
     cta: { label: "View the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-colorized-bow-portrait.png", alt: "Mary Pavlatou — Colorized close-up portrait with bow headband, family archive", w: 1388, h: 1838, rot: -2 },
+      { src: "/images/mary-archive-colorized-bow-portrait.png", alt: "Mary Pavlatou — Colorized close-up portrait with bow headband, family archive", w: 1388, h: 1838 },
     ],
   },
   {
@@ -74,11 +74,11 @@ const chapters: Chapter[] = [
     roman: "V",
     title: "Chicago and the Discipline of Fashion",
     greek: "Η Τέχνη του Μανεκέν",
-    body: "At the Patricia Vance School of Fashion in Chicago, Mary studied the art of the μανεκέν — posture, movement, and presence as a living language. She learned that the body in motion carries meaning.",
+    body: "At the Patricia Vance School of Fashion in Chicago, Mary studied the art of the mannequin — posture, movement, and presence as a living language. She learned that the body in motion carries meaning.",
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-colorized-navy-veiled-hat.png", alt: "Mary Pavlatou — Colorized photograph on the runway in a navy gown and veiled hat, family archive", w: 1388, h: 1838, rot: -1 },
+      { src: "/images/mary-archive-colorized-navy-veiled-hat.png", alt: "Mary Pavlatou — Colorized photograph on the runway in a navy gown and veiled hat, family archive", w: 1388, h: 1838 },
     ],
   },
   {
@@ -98,11 +98,11 @@ const chapters: Chapter[] = [
     roman: "VII",
     title: "Athens Recognizes Her",
     greek: "Η Αθήνα Τη Αναγνωρίζει",
-    body: "Mary became one of Athens's best-known μανεκέν — appearing at ETAM and Halifa salons at the Grande Bretagne, at the Tsitsopoulos house at the King George Hotel, and at couture houses across the city.",
+    body: "Mary became Athens's best-known mannequin — appearing at ETAM and Halifa salons at the Grande Bretagne, at the Tsitsopoulos house at the King George Hotel, and at couture houses across the city.",
     cta: { label: "View Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-hat-mirror.png", alt: "Newspaper clipping — hat feature with Mary Pavlatou at the mirror, Archontaki-Kallergi salon", w: 1388, h: 1838, rot: 2 },
+      { src: "/images/mary-archive-hat-mirror.png", alt: "Newspaper clipping — hat feature with Mary Pavlatou at the mirror, Archontaki-Kallergi salon", w: 1388, h: 1838 },
     ],
   },
   {
@@ -146,11 +146,11 @@ const chapters: Chapter[] = [
     roman: "XI",
     title: "Eternal Memory",
     greek: "Αιωνία η Μνήμη",
-    body: "The Pulos Brothers kept her photographs, clippings, and memories safe for decades. Through their compilation, restoration, and book design, Mary's story was brought back into the light. Αιωνία η μνήμη της.",
+    body: "The Pulos Brothers kept her photographs, clippings, and memories safe for decades. Through their compilation, restoration, and book design, Mary's story was brought back into the light. May her memory be eternal.",
     cta: { label: "Enter the Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-strapless-cocktail-named.png", alt: "Newspaper feature referencing \"the style of Mary Pavlatou\" — strapless patterned cocktail dress, family archive", w: 1388, h: 1838, rot: -2 },
+      { src: "/images/mary-archive-strapless-cocktail-named.png", alt: "Newspaper feature referencing \"the style of Mary Pavlatou\" — strapless patterned cocktail dress, family archive", w: 1388, h: 1838 },
     ],
   },
 ];
@@ -426,8 +426,8 @@ export default function StoryLifeClient() {
                 Athens&rsquo; Best Mannequin
               </h3>
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85 }}>
-                In the archive, Mary Pavlatou is remembered as one of Athens&rsquo;s best-known and
-                most respected mannequins — recognized for her poise, discipline, and commanding
+                In the archive, Mary Pavlatou is remembered as Athens&rsquo;s best-known and
+                most respected mannequin — recognized for her poise, discipline, and commanding
                 presence at the city&rsquo;s most celebrated fashion salons. In the period press,
                 &ldquo;mannequin&rdquo; was the professional term for a trained fashion model — a
                 credential Mary earned through rigorous formal study, not a casual title.

@@ -26,7 +26,7 @@ const houses = [
     name: "ETAM",
     nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(18px,2.07vw,25px)", letterSpacing: "0.22em", fontWeight: 900 },
     city: "Grande Bretagne · Athens",
-    caption: "Επιδείξεις μόδας at the Grande Bretagne — the most celebrated fashion salons of Athens.",
+    caption: "Fashion shows at the Grande Bretagne — the most celebrated fashion salons of Athens.",
     image: "/images/mary-archive-etam-miss-mary-clip.png",
     imageW: 375, imageH: 904,
   },
@@ -34,7 +34,7 @@ const houses = [
     name: "Halifa",
     nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(17px,1.95vw,25px)", fontWeight: 700 },
     city: "Γουναρικά · Athens",
-    caption: "Γουναρικά — the finest fur house in Athens. Ermine and mink at the Grande Bretagne.",
+    caption: "Furs — the finest fur house in Athens. Ermine and mink at the Grande Bretagne.",
     image: "/images/book-clipping-fur-coat.png",
     imageW: 1388, imageH: 1838,
   },
@@ -42,7 +42,7 @@ const houses = [
     name: "Tsitsopoulos",
     nameStyle: { fontFamily: "var(--font-cinzel)", fontSize: "clamp(13px,1.38vw,16px)", letterSpacing: "0.18em", fontWeight: 900 },
     city: "King George Hotel · Athens",
-    caption: "Καλοκαιρινά μοντέλλα — summer and spring collections at the King George Hotel.",
+    caption: "Summer and spring collections at the King George Hotel.",
     image: "/images/mary-archive-street-coat-named.png",
     imageW: 1388, imageH: 1838,
   },
@@ -50,7 +50,7 @@ const houses = [
     name: "Archontaki-Kallergi",
     nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(14px,1.49vw,18px)", fontWeight: 700 },
     city: "Μόδα Καπέλα · Athens",
-    caption: "Μανεκέν Μαίρη Παυλάτου — presenting Rose Valois hat models at the Archontaki-Kallergi salon.",
+    caption: "Mannequin Mary Pavlatou — presenting Rose Valois hat models at the Archontaki-Kallergi salon.",
     image: "/images/mary-archive-hat-portraits-named.png",
     imageW: 1388, imageH: 1838,
   },
@@ -58,7 +58,7 @@ const houses = [
     name: "Eleni Mallidou",
     nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(16px,1.72vw,21px)", fontWeight: 700 },
     city: "Ανοιξιάτικη Επίδειξις",
-    caption: "Η Ανοιξιάτικη Επίδειξις — the spring fashion show of the Mallidou house.",
+    caption: "The spring fashion show of the Mallidou house.",
     image: "/images/book-clipping-mallidou-spring.png",
     imageW: 1388, imageH: 1838,
   },
@@ -114,7 +114,7 @@ const stats = [
   },
   {
     label: "Iconic Mannequin",
-    text: "Recognized as one of the best in Athens and among the very best of her era",
+    text: "Recognized as the best-known mannequin in Athens",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <path d="M16 3L19 11H28L21 16.5L23.5 25L16 20.5L8.5 25L11 16.5L4 11H13Z" stroke="#8B7030" strokeWidth="1.2" fill="none" />
@@ -356,7 +356,7 @@ export default function FashionWorldClient() {
               The Golden Era of Haute Couture
             </h2>
             <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.9 }}>
-              The 1950s were a time of couture, craftsmanship, and cultural beauty. Mary Pavlatou stood among the world's finest mannequins, representing Greece with poise, intelligence, and unforgettable presence.
+              The 1950s were a time of couture, craftsmanship, and cultural beauty. Mary Pavlatou was Athens's best-known mannequin, representing Greece with poise, intelligence, and unforgettable presence.
             </p>
           </div>
           {/* Right: 4 stats */}
@@ -524,7 +524,7 @@ export default function FashionWorldClient() {
             color: "#1C1814", fontSize: "clamp(17px,2.07vw,25px)",
             lineHeight: 1.75, flex: 1, display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap",
           }}>
-            <span>&ldquo;Η δις Παυλάτου σας παρουσιάζει αυτό το κομψό παλτό — Miss Pavlatou presents this elegant coat.&rdquo;</span>
+            <span>&ldquo;Miss Pavlatou presents this elegant coat.&rdquo;</span>
             <TranslateIcon />
           </blockquote>
 
