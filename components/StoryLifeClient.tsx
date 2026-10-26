@@ -66,7 +66,7 @@ const chapters: Chapter[] = [
     cta: { label: "Her Archive", href: "/archive" },
     imageLeft: true,
     images: [
-      { src: "/images/mary-archive-floral-gown-tiara.png", alt: "Mary Pavlatou — Full-body photograph in ornate floral-embroidered gown with tiara headpiece, family archive", w: 800, h: 1388 },
+      { src: "/images/story-crops/ch4-evening-gown.png", alt: "Newspaper photograph — Mary Pavlatou presenting an evening gown in the American line, family archive", w: 470, h: 1046 },
     ],
   },
   {
@@ -126,7 +126,7 @@ const chapters: Chapter[] = [
     cta: { label: "Archive", href: "/archive" },
     imageLeft: false,
     images: [
-      { src: "/images/mary-archive-ballgown-gloves.png", alt: "Mary Pavlatou — Full-body photograph in voluminous evening ball gown with long gloves", w: 1388, h: 1838 },
+      { src: "/images/mary-archive-mallidou-collection-named.png", alt: "Newspaper photograph — Mary Pavlatou presenting a model from the Mallidou collection, family archive", w: 562, h: 1326 },
     ],
   },
   {
