@@ -275,7 +275,7 @@ export default function FashionWorldClient() {
             </div>
             <OrnamentDivider />
             <p className="font-serif" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(16px,1.67vw,20px)", lineHeight: 1.9, marginBottom: "12px" }}>
-              Mary Pavlatou moved with grace through the golden era of haute couture — a Greek fashion pioneer connected to the international world of couture, editorial fashion, and European cinema.
+              Mary Pavlatou moved with grace through the golden era of haute couture — a Greek fashion pioneer connected to the international world of couture and editorial fashion.
             </p>
             <p className="font-serif" style={{ color: "rgba(245,241,230,0.6)", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85, marginBottom: "32px" }}>
               A certified professional mannequin trained in Chicago and celebrated in Athens, she belonged to an international fashion world spanning Greece, the United States, and Europe.

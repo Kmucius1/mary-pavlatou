@@ -330,7 +330,7 @@ export default function StoryLifeClient() {
               <div style={{ width: "24px", height: "1px", background: "rgba(185,151,77,0.4)" }} />
             </div>
             <p className="font-serif" style={{ color: "rgba(245,241,230,0.75)", fontSize: "clamp(17px,1.72vw,21px)", lineHeight: 1.85, fontWeight: 700, maxWidth: "340px" }} >
-              A Greek fashion pioneer and certified professional mannequin whose international career reached Athens, New York, and Europe — connecting fashion, cinema, culture, and family.
+              A Greek fashion pioneer and certified professional mannequin whose international career reached Athens, New York, and Europe — connecting fashion, culture, and family.
             </p>
           </div>
 
@@ -411,7 +411,7 @@ export default function StoryLifeClient() {
               <OrnamentDivider />
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(16px,1.55vw,18px)", lineHeight: 1.95 }}>
                 Mary&rsquo;s journey unfolded during a period when Greek women were entering a new
-                cultural era. International fashion, travel, cinema, and Western influences were
+                cultural era. International fashion, travel, and Western influences were
                 reshaping ideas of femininity, independence, and public life. Her career stood at
                 the meeting point between Greek heritage and a changing international world.
               </p>

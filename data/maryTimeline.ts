@@ -56,7 +56,7 @@ export const timelineSlides: TimelineSlide[] = [
     id: "iii",
     roman: "III",
     greekPhrase: "Αθήνα",
-    title: "The Salons of Athens",
+    title: "The Great Fashion Houses of Athens",
     dateLabel: "Athens · 1950s",
     text: "The great fashion houses of Athens — ETAM, Halifa, Tsitsopoulos, Archontaki-Kallergi — knew her by name. Their shows at the Grande Bretagne and the King George were the most celebrated salons in the city.",
     ctaLabel: "View Archive",

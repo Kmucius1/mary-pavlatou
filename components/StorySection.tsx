@@ -91,7 +91,7 @@ export default function StorySection() {
               A Renaissance woman in every sense — she received awards in dance,
               music, art, writing, oratory, academia, and sports. She spoke
               several languages, earned advanced university degrees, and was
-              offered roles in film, television, and theatre.
+              offered roles in film, television, and theatre, which she declined.
             </p>
 
             {/* Signature music callout */}
