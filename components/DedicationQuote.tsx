@@ -112,7 +112,7 @@ export default function DedicationQuote() {
               textTransform: "uppercase",
             }}
           >
-            — The Pulos Brothers
+            — Her Three Sons
           </p>
 
           <div className="flex items-center gap-4 mt-6">

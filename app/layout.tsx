@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Mary Pavlatou — Memorial Archive",
     title: "Mary Pavlatou — An Official Memorial Archive",
     description:
-      "International celebrity fashion model. Greek icon. A life preserved through photographs, press, and memory. Archive compiled by The Pulos Brothers.",
+      "International celebrity fashion model. Greek icon. A life preserved through photographs, press, and memory. Archive compiled by her three sons.",
   },
   robots: { index: true, follow: true },
 };

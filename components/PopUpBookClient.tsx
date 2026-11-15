@@ -1715,7 +1715,7 @@ export default function PopUpBookClient() {
             alignItems: "start",
           }}
         >
-          {/* LEFT: The Pulos Brothers */}
+          {/* LEFT: Her Three Sons */}
           <div
             style={{
               background: C.card,
@@ -1756,7 +1756,7 @@ export default function PopUpBookClient() {
                 marginBottom: 8,
               }}
             >
-              The Pulos Brothers
+              Her Three Sons
             </p>
             <p
               style={{

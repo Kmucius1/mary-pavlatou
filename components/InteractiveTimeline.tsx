@@ -119,7 +119,7 @@ const slides = [
     era: "Eternal Memory",
     title: "Preserved by Love",
     greek: "Αιωνία η Μνήμη",
-    body: "The Pulos Brothers carried her photographs and memories for decades, restoring every image with care. What remains is not only a record — it is devotion made visible.",
+    body: "Her three sons carried her photographs and memories for decades, restoring every image with care. What remains is not only a record — it is devotion made visible.",
     image: "/images/mary-cover.jpg",
     imageW: 900,
     imageH: 1200,

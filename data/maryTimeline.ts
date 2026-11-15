@@ -84,7 +84,7 @@ export const timelineSlides: TimelineSlide[] = [
     greekPhrase: "Αιωνία η Μνήμη",
     title: "A Lasting Legacy",
     dateLabel: "Preserved by Love",
-    text: "Her three sons kept the photographs, clippings, and memories safe for decades. Through The Pulos Brothers' compilation and careful restoration, Mary's story was brought back into the light where it belongs.",
+    text: "Her three sons kept the photographs, clippings, and memories safe for decades. Through their compilation and careful restoration, Mary's story was brought back into the light where it belongs.",
     ctaLabel: "Enter the Archive",
     ctaHref: "/archive",
     images: [

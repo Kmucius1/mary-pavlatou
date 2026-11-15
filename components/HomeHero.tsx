@@ -248,7 +248,6 @@ export default function HomeHero() {
           <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", borderTop: "1px solid rgba(197,168,74,0.3)", paddingTop: "24px" }}>
             {[
               { name: "Mary Pavlatou", role: "Professional stage name" },
-              { name: "Maria Pulos", role: "Married name" },
             ].map(({ name, role }) => (
               <div
                 key={name}

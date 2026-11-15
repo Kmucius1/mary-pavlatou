@@ -56,7 +56,7 @@ export default function TempleSection() {
             marginTop: "14px",
           }}
         >
-          The Pulos Brothers
+          Her Three Sons
         </p>
       </div>
     </section>

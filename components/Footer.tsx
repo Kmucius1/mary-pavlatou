@@ -67,7 +67,7 @@ export default function Footer() {
         {/* Credits */}
         <div className="flex flex-col items-center gap-1 text-center">
           <p className="font-serif italic text-[13px]" style={{ color: "#7A6E5E" }}>
-            Photo and article compilation by The Pulos Brothers
+            Photo and article compilation by her three sons
           </p>
           <p className="font-serif italic text-[13px]" style={{ color: "#7A6E5E" }}>
             Photo restoration, article restoration, and book design completed with love, in her memory
@@ -79,7 +79,7 @@ export default function Footer() {
           className="font-serif text-[11px] tracking-widest"
           style={{ color: "#7A6E5E" }}
         >
-          &copy; {new Date().getFullYear()} The Pulos Brothers. All rights reserved.
+          &copy; {new Date().getFullYear()} Her Three Sons. All rights reserved.
         </p>
       </div>
 

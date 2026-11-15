@@ -8,8 +8,8 @@ const notes = [
     body: "Lovingly kept for decades by her three sons — each piece of the archive a testament to a mother whose life illuminated the world.",
   },
   {
-    heading: "The Pulos Brothers",
-    body: "Photo and article compilation by The Pulos Brothers. A labor of love assembled across a lifetime of memory.",
+    heading: "Compiled by Her Three Sons",
+    body: "Photo and article compilation by her three sons. A labor of love assembled across a lifetime of memory.",
   },
   {
     heading: "Restored with Care",

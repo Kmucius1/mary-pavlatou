@@ -108,7 +108,7 @@ export default function HomeClosingQuote() {
                 marginBottom: "5px",
               }}
             >
-              Preserved by The Pulos Brothers
+              Preserved by Her Three Sons
             </p>
             <p
               className="font-display"

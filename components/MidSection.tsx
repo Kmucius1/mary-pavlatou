@@ -228,7 +228,7 @@ export default function MidSection() {
             className="font-serif italic text-[12px] text-center mt-4"
             style={{ color: "rgba(245,208,80,0.82)" }}
           >
-            Photo &amp; article compilation by The Pulos Brothers
+            Photo &amp; article compilation by her three sons
           </p>
         </div>
       </div>

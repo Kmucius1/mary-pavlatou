@@ -147,7 +147,7 @@ const chapters: Chapter[] = [
     roman: "XI",
     title: "Eternal Memory",
     greek: "Αιωνία η Μνήμη",
-    body: "The Pulos Brothers kept her photographs, clippings, and memories safe for decades. Through their compilation, restoration, and book design, Mary's story was brought back into the light. May her memory be eternal.",
+    body: "Her three sons kept her photographs, clippings, and memories safe for decades. Through their compilation, restoration, and book design, Mary's story was brought back into the light. May her memory be eternal.",
     cta: { label: "Enter the Archive", href: "/archive" },
     imageLeft: false,
     images: [

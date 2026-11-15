@@ -136,7 +136,7 @@ export default function BookFeature() {
             }}
           >
             {[
-              ["Compilation", "The Pulos Brothers"],
+              ["Compilation", "Her Three Sons"],
               ["Restoration &amp; Book Design", "Completed with Love"],
             ].map(([label, value]) => (
               <div key={label}>
@@ -160,7 +160,7 @@ export default function BookFeature() {
             className="font-display mt-8"
             style={{ color: "rgba(245,208,80,0.68)", fontSize: "9px", letterSpacing: "0.2em" }}
           >
-            &copy; 2026 Pulos Brothers. All Rights Reserved.
+            &copy; 2026 Her Three Sons. All Rights Reserved.
           </p>
         </div>
       </div>

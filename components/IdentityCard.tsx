@@ -43,10 +43,6 @@ export default function IdentityCard() {
       label: "Professional stage name:",
       value: "Mary Pavlatou",
     },
-    {
-      label: "Married name:",
-      value: "Maria Pulos",
-    },
   ];
 
   return (
