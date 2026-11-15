@@ -42,7 +42,7 @@ export const timelineSlides: TimelineSlide[] = [
   {
     id: "ii",
     roman: "II",
-    greekPhrase: "Η Τέχνη του Μανεκέν",
+    greekPhrase: "Το Πρώτο Πιστοποιημένο Ελληνικό Μανεκέν",
     title: "The First Greek Certified Mannequin",
     dateLabel: "Chicago · Athens",
     text: "At the Patricia Vance School of Fashion in Chicago, Mary studied the art of the mannequin — posture, movement, and presence as a living language. She returned to Greece as the first certified professional mannequin her country had ever known.",
@@ -55,7 +55,7 @@ export const timelineSlides: TimelineSlide[] = [
   {
     id: "iii",
     roman: "III",
-    greekPhrase: "Αθήνα",
+    greekPhrase: "Οι Μεγάλοι Οίκοι Μόδας της Αθήνας",
     title: "The Great Fashion Houses of Athens",
     dateLabel: "Athens · 1950s",
     text: "The great fashion houses of Athens — ETAM, Halifa, Tsitsopoulos, Archontaki-Kallergi — knew her by name. Their shows at the Grande Bretagne and the King George were the most celebrated salons in the city.",
@@ -68,10 +68,10 @@ export const timelineSlides: TimelineSlide[] = [
   {
     id: "iv",
     roman: "IV",
-    greekPhrase: "Επίδειξις Μόδας",
+    greekPhrase: "Στην Πασαρέλα",
     title: "On the Runway",
     dateLabel: "Grande Bretagne · King George",
-    text: "Under the chandeliers of Athens' finest hotels, Mary presented the season's collections — from ermine fur coats at the Grande Bretagne to summer day dresses at the King George. Her presence on the runway was unmistakable.",
+    text: "Under the chandeliers of Athens’ finest hotels, Mary presented the season's collections — from ermine fur coats at the Grande Bretagne to summer day dresses at the King George. Her presence on the runway was unmistakable.",
     ctaLabel: "Explore This Chapter",
     ctaHref: "/fashion",
     images: [

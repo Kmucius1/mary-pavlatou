@@ -4,7 +4,6 @@ import { useHeightLock } from "@/hooks/useHeightLock";
 import Image from "next/image";
 import Link from "next/link";
 import BilingualHeading from "@/components/BilingualHeading";
-import GreekTerm from "@/components/GreekTerm";
 
 // ─── Chapter data ───────────────────────────────────────────────────────────
 
@@ -25,7 +24,7 @@ const chapters: Chapter[] = [
     id: "names",
     roman: "I",
     title: "The Names She Carried",
-    greek: "Τα Ονόματα της",
+    greek: "Τα Ονόματά της",
     body: "Mary Pavlatou was the name the world came to know — and the name her family carries with pride. Her three sons dedicate their book of memories to her: the one they call God's Special Angel.",
     cta: { label: "View Archive Sources", href: "/archive" },
     imageLeft: false,
@@ -37,7 +36,7 @@ const chapters: Chapter[] = [
     id: "greece",
     roman: "II",
     title: "A Daughter of Greece",
-    greek: "Ρίζες Ελληνικές",
+    greek: "Κόρη της Ελλάδας",
     body: "Mary's life carried the dignity, faith, and pride of her Greek roots. Her story is woven with family, culture, and the enduring Greek ideal of grace, which lives in both presence and soul.",
     cta: { label: "Explore Her Heritage", href: "/archive" },
     imageLeft: true,
@@ -50,7 +49,7 @@ const chapters: Chapter[] = [
     id: "war",
     roman: "III",
     title: "A Child of War and Resilience",
-    greek: "Πόλεμος και Δύναμη",
+    greek: "Ένα Παιδί του Πολέμου και της Αντοχής",
     body: "The family archive remembers Mary as a child hero of World War II. Her strength, courage, and spirit during those difficult years shaped the extraordinary woman she would become.",
     cta: { label: "View the Archive", href: "/archive" },
     imageLeft: false,
@@ -74,7 +73,7 @@ const chapters: Chapter[] = [
     id: "chicago",
     roman: "V",
     title: "Chicago and the Discipline of Fashion",
-    greek: "Η Τέχνη του Μανεκέν",
+    greek: "Το Σικάγο και η Πειθαρχία της Μόδας",
     body: "At the Patricia Vance School of Fashion in Chicago, Mary studied the art of the mannequin — posture, movement, and presence as a living language. She learned that the body in motion carries meaning.",
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: false,
@@ -86,7 +85,7 @@ const chapters: Chapter[] = [
     id: "mannequin",
     roman: "VI",
     title: "The First Greek Certified Mannequin",
-    greek: "Το Πρώτο Ελληνικό Μανεκέν",
+    greek: "Το Πρώτο Πιστοποιημένο Ελληνικό Μανεκέν",
     body: "Mary returned to Greece as the first Greek certified professional mannequin — a distinction earned through rigorous training and unshakable commitment to her craft. \"How I Became the First Greek Certified Mannequin\" — Apogevmatini newspaper interview.",
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
@@ -98,8 +97,8 @@ const chapters: Chapter[] = [
     id: "athens",
     roman: "VII",
     title: "Athens Recognizes Her",
-    greek: "Η Αθήνα Τη Αναγνωρίζει",
-    body: "Mary became Athens's best-known mannequin — appearing at ETAM and Halifa salons at the Grande Bretagne, at the Tsitsopoulos house at the King George Hotel, and at couture houses across the city.",
+    greek: "Η Αθήνα την Αναγνωρίζει",
+    body: "Mary became Athens’ best-known mannequin — appearing at ETAM and Halifa salons at the Grande Bretagne, at the Tsitsopoulos house at the King George Hotel, and at couture houses across the city.",
     cta: { label: "View Archive", href: "/archive" },
     imageLeft: false,
     images: [
@@ -110,7 +109,7 @@ const chapters: Chapter[] = [
     id: "continents",
     roman: "VIII",
     title: "Across Continents",
-    greek: "Πέρα από Σύνορα",
+    greek: "Σε Όλες τις Ηπείρους",
     body: "Her career connected her with international fashion — training in Chicago, walking the salons of Athens, modeling for the great houses of the era. She carried Greece with her everywhere she went.",
     cta: { label: "Fashion World", href: "/fashion" },
     imageLeft: true,
@@ -122,7 +121,7 @@ const chapters: Chapter[] = [
     id: "sound",
     roman: "IX",
     title: "The Sound Before She Walked",
-    greek: "Ο Ήχος Πριν την Εμφάνιση",
+    greek: "Ο Ήχος Πριν Βαδίσει",
     body: "Her signature runway music was the theme from The Third Man — cinematic, timeless, and unforgettable. The room changed before she entered it. Those who saw her on stage never forgot the moment.",
     cta: { label: "Archive", href: "/archive" },
     imageLeft: false,
@@ -373,7 +372,7 @@ export default function StoryLifeClient() {
       {/* ── Greek key strip ── */}
       <div aria-hidden="true" style={{ height: "10px", background: "repeating-linear-gradient(90deg, rgba(139,112,48,0.35) 0px, rgba(139,112,48,0.35) 2px, transparent 2px, transparent 7px)", borderBottom: "1px solid #D0C4A0" }} />
 
-      {/* ── A Renaissance Woman / The Modern Greek Woman / Athens' Best Mannequin ── */}
+      {/* ── A Renaissance Woman / The Modern Greek Woman / Athens’ Best Mannequin ── */}
       <section style={{ background: "#F5F1E6", borderBottom: "1px solid #D0C4A0", padding: "clamp(56px,7vh,88px) clamp(24px,5vw,72px)" }}>
         <div style={{ maxWidth: "1160px", margin: "0 auto" }}>
 
@@ -384,7 +383,7 @@ export default function StoryLifeClient() {
             </p>
             <BilingualHeading
               as="h2"
-              el="Γυναίκα της Αναγέννησης"
+              el="Μια Γυναίκα της Αναγέννησης"
               en="A Renaissance Woman"
               className="font-display"
               style={{ color: "#6A4F1E", fontSize: "clamp(28px,3.45vw,44px)", letterSpacing: "0.06em", fontWeight: 900, lineHeight: 1.2 }}
@@ -399,7 +398,7 @@ export default function StoryLifeClient() {
             </p>
           </div>
 
-          {/* The Modern Greek Woman + Athens' Best Mannequin */}
+          {/* The Modern Greek Woman + Athens’ Best Mannequin */}
           <div
             style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "clamp(32px,4vw,56px)", alignItems: "start" }}
             className="max-lg:!grid-cols-1"
@@ -421,7 +420,7 @@ export default function StoryLifeClient() {
               </p>
             </div>
 
-            {/* Athens' Best Mannequin */}
+            {/* Athens’ Best Mannequin */}
             <div style={{ background: "linear-gradient(145deg, #F8F4EA 0%, #EFE5CC 100%)", border: "1px solid #D8C48E", padding: "clamp(28px,3.5vw,40px)", textAlign: "center" }}>
               <p className="font-display" style={{ color: "#8B7030", fontSize: "12px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 900, marginBottom: "10px" }}>
                 A Historic Title
@@ -430,7 +429,7 @@ export default function StoryLifeClient() {
                 Athens&rsquo; Best Mannequin
               </h3>
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85 }}>
-                In the archive, Mary Pavlatou is remembered as Athens&rsquo;s best-known and
+                In the archive, Mary Pavlatou is remembered as Athens&rsquo; best-known and
                 most respected mannequin — recognized for her poise, discipline, and commanding
                 presence at the city&rsquo;s most celebrated fashion salons. In the period press,
                 &ldquo;mannequin&rdquo; was the professional term for a trained fashion model — a

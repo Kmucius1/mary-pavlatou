@@ -10,12 +10,12 @@ const pillars = [
   {
     roman: "II",
     title: "The Great Parisian Houses",
-    body: "Her career encompassed Pierre Balmain, Hubert de Givenchy, Jacques Fath, and Nina Ricci — the defining names of postwar haute couture — presented through Athens's finest ateliers.",
+    body: "Her career encompassed Pierre Balmain, Hubert de Givenchy, Jacques Fath, and Nina Ricci — the defining names of postwar haute couture — presented through Athens’ finest ateliers.",
     accent: "Balmain · Givenchy · Fath · Ricci",
   },
   {
     roman: "III",
-    title: "Athens's Finest Stages",
+    title: "Athens’ Finest Stages",
     body: "She graced the runways of the Hotel Grande Bretagne, the King George Hotel, the Mousouris Theatre, and the Attic Club — every prestige address the city had to offer.",
     accent: "Grande Bretagne · King George · Mousouris",
   },

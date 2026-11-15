@@ -32,7 +32,7 @@ const highlights = [
   {
     number: "07",
     heading: "Venues of Prestige",
-    body: "Her shows were held at Athens's most storied addresses: the Hotel Grande Bretagne, the King George Hotel, the Mousouris Theatre, and the Attic Club. Each venue a stage worthy of the work she brought to life on it.",
+    body: "Her shows were held at Athens’ most storied addresses: the Hotel Grande Bretagne, the King George Hotel, the Mousouris Theatre, and the Attic Club. Each venue a stage worthy of the work she brought to life on it.",
   },
   {
     number: "08",

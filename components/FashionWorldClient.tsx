@@ -33,7 +33,7 @@ const houses = [
   {
     name: "Halifa",
     nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(17px,1.95vw,25px)", fontWeight: 700 },
-    city: "Γουναρικά · Athens",
+    city: "Furs · Athens",
     caption: "Furs — the finest fur house in Athens. Ermine and mink at the Grande Bretagne.",
     image: "/images/book-clipping-fur-coat.png",
     imageW: 1388, imageH: 1838,
@@ -49,7 +49,7 @@ const houses = [
   {
     name: "Archontaki-Kallergi",
     nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(14px,1.49vw,18px)", fontWeight: 700 },
-    city: "Μόδα Καπέλα · Athens",
+    city: "Hats · Athens",
     caption: "Mannequin Mary Pavlatou — presenting Rose Valois hat models at the Archontaki-Kallergi salon.",
     image: "/images/mary-archive-hat-portraits-named.png",
     imageW: 1388, imageH: 1838,
@@ -57,7 +57,7 @@ const houses = [
   {
     name: "Eleni Mallidou",
     nameStyle: { fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(16px,1.72vw,21px)", fontWeight: 700 },
-    city: "Ανοιξιάτικη Επίδειξις",
+    city: "Spring Show · Athens",
     caption: "The spring fashion show of the Mallidou house.",
     image: "/images/book-clipping-mallidou-spring.png",
     imageW: 1388, imageH: 1838,
@@ -126,8 +126,9 @@ const stats = [
 // ─── Bottom feature cards ────────────────────────────────────────────────────
 const featureCards = [
   {
-    title: "Επιδείξεις Μόδας",
-    body: "Mary presented collections at Athens' most prestigious venues — the Grande Bretagne and the King George Hotel — for the great fashion houses of postwar Greece.",
+    title: "Fashion Presentations",
+    greek: "Επιδείξεις Μόδας",
+    body: "Mary presented collections at Athens’ most prestigious venues — the Grande Bretagne and the King George Hotel — for the great fashion houses of postwar Greece.",
     cta: { label: "View Archive Clippings", href: "/archive" },
     images: [
       { src: "/images/feature-cards/third-man.png", alt: "Mary Pavlatou in a black velvet gown with puffed sleeves — archival press photograph", w: 800, h: 1000 },
@@ -135,6 +136,7 @@ const featureCards = [
   },
   {
     title: "The Third Man",
+    greek: "Ο Τρίτος Άνθρωπος",
     body: "Her signature runway music was the theme from The Third Man — cinematic, timeless, and unforgettable. As she walked, the room fell silent.",
     cta: { label: "Enter the Archive", href: "/archive" },
     images: [
@@ -142,7 +144,8 @@ const featureCards = [
     ],
   },
   {
-    title: "Η Τέχνη του Μανεκέν",
+    title: "The Art of the Mannequin",
+    greek: "Η Τέχνη του Μανεκέν",
     body: "At the Patricia Vance School of Fashion in Chicago, Mary became the first Greek to earn international certification. To her, the mannequin was an artist.",
     cta: { label: "About Her Training", href: "/story#chicago" },
     images: [
@@ -272,7 +275,7 @@ export default function FashionWorldClient() {
             <div style={{ marginBottom: "10px" }}>
               <BilingualHeading
                 as="h1"
-                el="Ο Κοσμος της Μοδας"
+                el="Ο Κόσμος της Μόδας"
                 en="The World of Fashion"
                 className="font-display"
                 style={{ color: "#F5F1E6", fontSize: "clamp(32px,5.17vw,64px)", letterSpacing: "0.12em", fontWeight: 900, lineHeight: 1.05 }}
@@ -453,9 +456,13 @@ export default function FashionWorldClient() {
               padding: "clamp(24px,3vw,36px)",
               display: "flex", flexDirection: "column",
             }}>
-              <h3 className="font-display" style={{ color: "#8B7030", fontSize: "clamp(16px,1.72vw,21px)", letterSpacing: "0.08em", fontWeight: 900, lineHeight: 1.2, marginBottom: "8px" }}>
-                {card.title}
-              </h3>
+              <BilingualHeading
+                as="h3"
+                el={card.greek}
+                en={card.title}
+                className="font-display"
+                style={{ color: "#8B7030", fontSize: "clamp(16px,1.72vw,21px)", letterSpacing: "0.08em", fontWeight: 900, lineHeight: 1.2, marginBottom: "8px" }}
+              />
               <OrnamentDivider />
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85, marginBottom: "24px" }}>
                 {card.body}

@@ -418,7 +418,7 @@ export default function HomeHero() {
                 </svg>
               ),
               label: "Athens · 1950s",
-              sub: "Fashion salons of Athens' golden era.",
+              sub: "Fashion salons of Athens’ golden era.",
             },
             {
               icon: (

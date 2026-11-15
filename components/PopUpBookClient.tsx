@@ -929,7 +929,7 @@ export default function PopUpBookClient() {
           >
             <BilingualHeading
               as="p"
-              el="Ζει Εις Αιώνας"
+              el="Ζει Μέσα στους Αιώνες"
               en="She Lives Through the Ages"
               style={{
                 fontFamily: "var(--font-cinzel)",

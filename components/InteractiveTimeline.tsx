@@ -10,7 +10,7 @@ const slides = [
     number: "01",
     era: "Her Identity",
     title: "The Names She Carried",
-    greek: "Η Ταυτότητά Της",
+    greek: "Τα Ονόματά της",
     body: "She was Mary Pavlatou — to the fashion world, to her family, and to everyone who remembers her. One name. One extraordinary woman.",
     image: "/images/mary-young-portrait.jpg",
     imageW: 900,
@@ -34,7 +34,7 @@ const slides = [
     number: "03",
     era: "Her Range",
     title: "A Renaissance Woman",
-    greek: "Γυναίκα της Αναγέννησης",
+    greek: "Μια Γυναίκα της Αναγέννησης",
     body: "Awards in dance, music, art, writing, oratory, academics, and sport. Several languages. Advanced university degrees. Offers from film and theatre. The portrait was only the beginning.",
     image: "/images/mary-portrait-framed.jpg",
     imageW: 900,
@@ -46,7 +46,7 @@ const slides = [
     number: "04",
     era: "Chicago · Training",
     title: "The Discipline of Fashion",
-    greek: "Η Τέχνη της Μόδας",
+    greek: "Η Πειθαρχία της Μόδας",
     body: "At the Patricia Vance School of Fashion in Chicago, she studied modeling as science, art, and psychology. Every movement a message. Every step a choice.",
     image: "/images/mary-veil-hat.jpg",
     imageW: 900,
@@ -58,7 +58,7 @@ const slides = [
     number: "05",
     era: "A Historic First",
     title: "The First Greek Certified Mannequin",
-    greek: "Η Πρώτη Ελληνίδα",
+    greek: "Το Πρώτο Πιστοποιημένο Ελληνικό Μανεκέν",
     body: "She became the first Greek woman to earn an official certified diploma as a professional mannequin. A distinction earned through discipline, not simply beauty.",
     image: "/images/mary-runway-white.jpg",
     imageW: 900,
@@ -71,7 +71,7 @@ const slides = [
     era: "Athens",
     title: "Athens Recognizes Her",
     greek: "Η Αθήνα την Αναγνωρίζει",
-    body: "She became Athens's best-known mannequin — appearing at the Hotel Grande Bretagne, the King George Hotel, the Mousouris Theatre, and the Attic Club.",
+    body: "She became Athens’ best-known mannequin — appearing at the Hotel Grande Bretagne, the King George Hotel, the Mousouris Theatre, and the Attic Club.",
     image: "/images/mary-runway-blue.jpg",
     imageW: 900,
     imageH: 1660,
@@ -82,7 +82,7 @@ const slides = [
     number: "07",
     era: "Haute Couture",
     title: "The Great Fashion Houses",
-    greek: "Ο Κόσμος της Μόδας",
+    greek: "Οι Μεγάλοι Οίκοι Μόδας",
     body: "Christian Dior. Hubert de Givenchy. Jacques Fath. Pierre Balmain. Nina Ricci. She carried the defining names of postwar fashion to Athenian audiences.",
     image: "/images/mary-white-gown.jpg",
     imageW: 900,
@@ -94,7 +94,7 @@ const slides = [
     number: "08",
     era: "Her Signature",
     title: "The Sound Before She Walked",
-    greek: "Το Σήμα της",
+    greek: "Ο Ήχος Πριν Βαδίσει",
     body: "Her signature runway music was the theme from The Third Man. When that melody began, the room knew. Mary Pavlatou was about to walk.",
     image: "/images/mary-social-event.jpg",
     imageW: 900,
@@ -106,7 +106,7 @@ const slides = [
     number: "09",
     era: "Her Heart",
     title: "The Dream of Family",
-    greek: "Το Όνειρό Της",
+    greek: "Το Όνειρο της Οικογένειας",
     body: "Her dream: to become one of the world's finest mannequins and one day create a good family. She achieved both. Her three sons are her greatest legacy.",
     image: "/images/endsheet-portrait.jpg",
     imageW: 666,
@@ -182,7 +182,7 @@ export default function InteractiveTimeline() {
         </p>
         <BilingualHeading
           as="h2"
-          el="Η Ζωή της Μαρίας"
+          el="Μια Ζωή μέσα στο Φως"
           en="A Life in Light"
           className="font-display"
           style={{ color: "#f5d050", fontSize: "clamp(22px,3vw,40px)", letterSpacing: "0.14em", fontWeight: 700, marginBottom: "10px" }}
