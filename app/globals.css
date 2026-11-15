@@ -82,7 +82,14 @@
 .delay-6 { animation-delay: 1s; }
 
 /* ── Base ── */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Sticky header is 68px tall — keep anchor targets clear of it. */
+  scroll-padding-top: 88px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 
 body {
   background-color: #F0EBD9;

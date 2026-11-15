@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useHeightLock } from "@/hooks/useHeightLock";
 import Image from "next/image";
 import Link from "next/link";
 import { publishedTimelineSlides as timelineSlides } from "@/data/maryTimeline";
@@ -9,15 +10,18 @@ export default function LifeInLightSlider() {
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(true);
   const transitioning = useRef(false);
+  const slideLock = useHeightLock();
 
   function goTo(i: number) {
     if (i === active || transitioning.current) return;
     transitioning.current = true;
+    slideLock.lock();
     setVisible(false);
     setTimeout(() => {
       setActive(i);
       setVisible(true);
       transitioning.current = false;
+      setTimeout(slideLock.release, 300);
     }, 260);
   }
 
@@ -157,6 +161,7 @@ export default function LifeInLightSlider() {
 
           {/* RIGHT: Slide card */}
           <div
+            ref={slideLock.ref}
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(8px)",

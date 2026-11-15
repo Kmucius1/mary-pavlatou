@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useHeightLock } from "@/hooks/useHeightLock";
 import Image from "next/image";
 import Link from "next/link";
 import BilingualHeading from "@/components/BilingualHeading";
@@ -137,15 +138,18 @@ export default function InteractiveTimeline() {
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(true);
   const transitioning = useRef(false);
+  const slideLock = useHeightLock();
 
   function goTo(i: number) {
     if (i === active || transitioning.current) return;
     transitioning.current = true;
+    slideLock.lock();
     setVisible(false);
     setTimeout(() => {
       setActive(i);
       setVisible(true);
       transitioning.current = false;
+      setTimeout(slideLock.release, 320);
     }, 280);
   }
 
@@ -256,6 +260,7 @@ export default function InteractiveTimeline() {
 
       {/* ── Slide ── */}
       <div
+        ref={slideLock.ref}
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(10px)",

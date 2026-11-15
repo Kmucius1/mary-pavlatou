@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
+import { useHeightLock } from "@/hooks/useHeightLock";
 import Image from "next/image";
 import Link from "next/link";
 import BilingualHeading from "@/components/BilingualHeading";
@@ -235,15 +236,18 @@ export default function StoryLifeClient() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [visible, setVisible] = useState(true);
   const transitioning = useRef(false);
+  const cardLock = useHeightLock();
 
   function goTo(i: number) {
     if (i === activeIdx || transitioning.current) return;
     transitioning.current = true;
+    cardLock.lock();
     setVisible(false);
     setTimeout(() => {
       setActiveIdx(i);
       setVisible(true);
       transitioning.current = false;
+      setTimeout(cardLock.release, 280);
     }, 240);
   }
 
@@ -506,7 +510,7 @@ export default function StoryLifeClient() {
         <div style={{ flex: "1 1 0", minWidth: 0 }}>
 
         {/* Fade-in chapter card */}
-        <div style={{
+        <div ref={cardLock.ref} style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(10px)",
           transition: "opacity 0.24s ease, transform 0.24s ease",

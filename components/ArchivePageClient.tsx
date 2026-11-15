@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { scrollToId } from "@/lib/scrollToId";
 import BilingualHeading from "@/components/BilingualHeading";
 import HistoricalNotes from "@/components/HistoricalNotes";
 
@@ -1012,15 +1013,6 @@ export default function ArchivePageClient() {
           >
             {[
               {
-                id: "portraits",
-                page: 53,
-                label: "Portraits",
-                subtitle: "Photographs & formal studies",
-                image: "/images/archive-tiles/portraits.png",
-                imgAlt: "Mary Pavlatou — Colorized glamour portrait with diamond earrings, family archive",
-                isOval: false,
-              },
-              {
                 id: "clippings",
                 page: 25,
                 label: "Newspaper Clippings",
@@ -1030,12 +1022,12 @@ export default function ArchivePageClient() {
                 isOval: false,
               },
               {
-                id: "fashion-shows",
-                page: 45,
-                label: "Fashion Shows",
-                subtitle: "Runway & presentations",
-                image: "/images/archive-tiles/fashion-shows.png",
-                imgAlt: "Mary Pavlatou — colorized runway portrait under chandeliers",
+                id: "portraits",
+                page: 53,
+                label: "Portraits",
+                subtitle: "Photographs & formal studies",
+                image: "/images/archive-tiles/portraits.png",
+                imgAlt: "Mary Pavlatou — Colorized glamour portrait with diamond earrings, family archive",
                 isOval: false,
               },
               {
@@ -1045,6 +1037,15 @@ export default function ArchivePageClient() {
                 subtitle: "Documentation & history",
                 image: "/images/archive-tiles/career-records.png",
                 imgAlt: "Newspaper clipping — Mary Pavlatou, feathered hat, career documentation",
+                isOval: false,
+              },
+              {
+                id: "fashion-shows",
+                page: 45,
+                label: "Fashion Shows",
+                subtitle: "Runway & presentations",
+                image: "/images/archive-tiles/fashion-shows.png",
+                imgAlt: "Mary Pavlatou — colorized runway portrait under chandeliers",
                 isOval: false,
               },
               {
@@ -1060,9 +1061,11 @@ export default function ArchivePageClient() {
               <a
                 key={cat.id}
                 href="#archive-viewer"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   setShowFullBook(false);
                   setPdfPage(cat.page);
+                  scrollToId("archive-viewer");
                 }}
                 style={{
                   display: "flex",
@@ -1197,7 +1200,7 @@ export default function ArchivePageClient() {
             Read Full Screen
           </button>
           <button
-            onClick={() => setShowFullBook(false)}
+            onClick={() => { setShowFullBook(false); scrollToId("archive-viewer"); }}
             style={{
               padding: "8px 18px",
               borderRadius: 24,
@@ -1216,7 +1219,7 @@ export default function ArchivePageClient() {
             Book View
           </button>
           <button
-            onClick={() => setShowFullBook(true)}
+            onClick={() => { setShowFullBook(true); scrollToId("archive-viewer"); }}
             style={{
               padding: "8px 18px",
               borderRadius: 24,
@@ -1291,6 +1294,7 @@ export default function ArchivePageClient() {
                     onClick={() => {
                       setPdfPage(n % 2 === 0 ? Math.max(1, n - 1) : n);
                       setShowFullBook(false);
+                      scrollToId("archive-viewer");
                     }}
                     aria-label={`Go to page ${n}`}
                     style={{
@@ -1442,7 +1446,7 @@ export default function ArchivePageClient() {
                   ««
                 </button>
                 <button
-                  onClick={() => setShowFullBook(true)}
+                  onClick={() => { setShowFullBook(true); scrollToId("archive-viewer"); }}
                   aria-label="View full book grid"
                   style={{
                     padding: "6px 12px",
