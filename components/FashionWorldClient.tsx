@@ -275,7 +275,7 @@ export default function FashionWorldClient() {
             </div>
             <OrnamentDivider />
             <p className="font-serif" style={{ color: "rgba(245,241,230,0.85)", fontSize: "clamp(16px,1.67vw,20px)", lineHeight: 1.9, marginBottom: "12px" }}>
-              Mary Pavlatou moved with grace through the golden era of haute couture — a Greek fashion pioneer connected to the international world of couture and editorial fashion.
+              Mary Pavlatou moved with grace through the golden era of haute couture, a Greek fashion pioneer connected to the international world of couture, European cinema, and editorial fashion.
             </p>
             <p className="font-serif" style={{ color: "rgba(245,241,230,0.6)", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85, marginBottom: "32px" }}>
               A certified professional mannequin trained in Chicago and celebrated in Athens, she belonged to an international fashion world spanning Greece, the United States, and Europe.
@@ -356,7 +356,7 @@ export default function FashionWorldClient() {
               The Golden Era of Haute Couture
             </h2>
             <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.9 }}>
-              The 1950s were a time of couture, craftsmanship, and cultural beauty. Mary Pavlatou was Athens's best-known mannequin, representing Greece with poise, intelligence, and unforgettable presence.
+              The 1950s were a time of couture, craftsmanship, and cultural beauty. Mary Pavlatou was Athens’ best-known mannequin, who stood among the very best of her era, representing Greece with poise, intelligence, and unforgettable presence.
             </p>
           </div>
           {/* Right: 4 stats */}
