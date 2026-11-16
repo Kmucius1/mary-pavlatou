@@ -266,7 +266,7 @@ function BookSpread({
   interactive?: boolean;
 }) {
   const rightPage = page + 1;
-  const hasRight = rightPage <= 63;
+  const hasRight = rightPage <= 64;
 
   const pageCell = (n: number, side: "left" | "right") => (
     <div style={{ position: "relative", overflow: "hidden", background: C.bookPage }}>
@@ -563,7 +563,7 @@ export default function ArchivePageClient() {
 
   function turnPage(dir: "next" | "prev") {
     if (flipFromPage !== null) return; // already mid-flip — ignore extra clicks
-    const newPage = dir === "next" ? Math.min(63, pdfPage + 2) : Math.max(1, pdfPage - 2);
+    const newPage = dir === "next" ? Math.min(64, pdfPage + 2) : Math.max(1, pdfPage - 2);
     if (newPage === pdfPage) return;
     setFlipFromPage(pdfPage);
     setFlipDir(dir);
@@ -1275,7 +1275,7 @@ export default function ArchivePageClient() {
                 marginBottom: 24,
               }}
             >
-              All 63 Pages — Click any page to open it
+              All 64 Pages — Click any page to open it
             </p>
             <div
               className="max-lg:!grid-cols-6 max-sm:!grid-cols-4"
@@ -1285,7 +1285,7 @@ export default function ArchivePageClient() {
                 gap: 8,
               }}
             >
-              {Array.from({ length: 63 }, (_, i) => i + 1).map((n) => {
+              {Array.from({ length: 64 }, (_, i) => i + 1).map((n) => {
                 const src = `/images/pdf-pages/page-${String(n).padStart(2, "0")}.png`;
                 const isCurrentSpread = n === pdfPage || n === pdfPage + 1;
                 return (
@@ -1388,7 +1388,7 @@ export default function ArchivePageClient() {
               <button
                 onClick={() => turnPage("next")}
                 aria-label="Next spread"
-                disabled={pdfPage >= 63}
+                disabled={pdfPage >= 64}
                 style={{
                   position: "absolute",
                   right: -20,
@@ -1400,14 +1400,14 @@ export default function ArchivePageClient() {
                   border: `1px solid ${C.border}`,
                   background: C.card,
                   color: C.accent,
-                  cursor: pdfPage >= 63 ? "not-allowed" : "pointer",
+                  cursor: pdfPage >= 64 ? "not-allowed" : "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   zIndex: 5,
                   fontFamily: "var(--font-cinzel)",
                   fontSize: 18,
-                  opacity: pdfPage >= 63 ? 0.4 : 1,
+                  opacity: pdfPage >= 64 ? 0.4 : 1,
                   transition: "opacity 0.2s",
                 }}
               >
@@ -1468,8 +1468,8 @@ export default function ArchivePageClient() {
                   <GridIcon /> All Pages
                 </button>
                 <button
-                  onClick={() => setPdfPage(63)}
-                  disabled={pdfPage >= 63}
+                  onClick={() => setPdfPage(64)}
+                  disabled={pdfPage >= 64}
                   aria-label="Last spread"
                   style={{
                     padding: "6px 12px",
@@ -1480,8 +1480,8 @@ export default function ArchivePageClient() {
                     fontFamily: "var(--font-cinzel)",
                     fontSize: 13,
                     letterSpacing: "0.1em",
-                    cursor: pdfPage >= 63 ? "not-allowed" : "pointer",
-                    opacity: pdfPage >= 63 ? 0.4 : 1,
+                    cursor: pdfPage >= 64 ? "not-allowed" : "pointer",
+                    opacity: pdfPage >= 64 ? 0.4 : 1,
                   }}
                 >
                   »»
@@ -1605,7 +1605,7 @@ export default function ArchivePageClient() {
 
             {/* Right page */}
             <div style={{ flex: 1, background: C.bookPage, position: "relative", overflow: "hidden" }}>
-              {pdfPage + 1 <= 63 ? (
+              {pdfPage + 1 <= 64 ? (
                 <PagePane
                   src={`/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png`}
                   alt={`Book page ${pdfPage + 1}`}
@@ -1625,7 +1625,7 @@ export default function ArchivePageClient() {
             <button
               onClick={() => turnPage("next")}
               aria-label="Next spread"
-              disabled={pdfPage >= 63}
+              disabled={pdfPage >= 64}
               style={{
                 position: "absolute",
                 right: -8,
@@ -1637,8 +1637,8 @@ export default function ArchivePageClient() {
                 border: `1px solid ${C.border}`,
                 background: "rgba(245,241,230,0.92)",
                 color: C.accent,
-                cursor: pdfPage >= 63 ? "not-allowed" : "pointer",
-                opacity: pdfPage >= 63 ? 0.35 : 1,
+                cursor: pdfPage >= 64 ? "not-allowed" : "pointer",
+                opacity: pdfPage >= 64 ? 0.35 : 1,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1653,7 +1653,7 @@ export default function ArchivePageClient() {
               lensRef={lensRef}
               contentRef={lensContentRef}
               leftSrc={`/images/pdf-pages/page-${String(pdfPage).padStart(2, "0")}.png`}
-              rightSrc={pdfPage + 1 <= 63 ? `/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png` : null}
+              rightSrc={pdfPage + 1 <= 64 ? `/images/pdf-pages/page-${String(pdfPage + 1).padStart(2, "0")}.png` : null}
               leftAlt={`Book page ${pdfPage}, magnified`}
               rightAlt={`Book page ${pdfPage + 1}, magnified`}
               paneWidth={paneSize.w}
@@ -1673,7 +1673,7 @@ export default function ArchivePageClient() {
               textAlign: "center",
             }}
           >
-            Pages {pdfPage}–{Math.min(pdfPage + 1, 63)} of 63 · Hover a page to magnify · ← → to turn pages · Esc to close
+            Pages {pdfPage}–{Math.min(pdfPage + 1, 64)} of 64 · Hover a page to magnify · ← → to turn pages · Esc to close
           </p>
         </div>
       )}
