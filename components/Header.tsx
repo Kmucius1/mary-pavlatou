@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Her Life", href: "/story" },
   { label: "Fashion World", href: "/fashion" },
   { label: "Archive", href: "/archive" },
+  { label: "Video", href: "/video" },
   { label: "Legacy", href: "/legacy" },
 ];
 
