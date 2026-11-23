@@ -425,9 +425,12 @@ export default function StoryLifeClient() {
               <p className="font-display" style={{ color: "#8B7030", fontSize: "12px", letterSpacing: "0.36em", textTransform: "uppercase", fontWeight: 900, marginBottom: "10px" }}>
                 A Historic Title
               </p>
-              <h3 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,2.53vw,30px)", letterSpacing: "0.06em", fontWeight: 900, marginBottom: "14px" }}>
-                Athens&rsquo; Best Mannequin
+              <h3 className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(22px,2.53vw,30px)", letterSpacing: "0.06em", fontWeight: 900, marginBottom: "6px" }}>
+                Greece&rsquo;s First Certified Mannequin
               </h3>
+              <p className="font-display" style={{ color: "#6A4F1E", fontSize: "clamp(15px,1.6vw,19px)", letterSpacing: "0.06em", fontWeight: 900, marginBottom: "14px" }}>
+                Athens&rsquo; Best Mannequin
+              </p>
               <p className="font-serif" style={{ color: "#4A3C2A", fontSize: "clamp(15px,1.49vw,17px)", lineHeight: 1.85 }}>
                 In the archive, Mary Pavlatou is remembered as Athens&rsquo; best-known and
                 most respected mannequin — recognized for her poise, discipline, and commanding

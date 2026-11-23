@@ -1030,7 +1030,7 @@ export default function PopUpBookClient() {
               },
               {
                 id: "career-records",
-                page: 41,
+                page: 43,
                 label: "Career Records",
                 subtitle: "Documentation & history",
                 image: "/images/archive-tiles/career-records.png",
